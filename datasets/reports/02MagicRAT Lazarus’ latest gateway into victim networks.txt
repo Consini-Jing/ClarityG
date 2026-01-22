@@ -1,0 +1,34 @@
+MagicRATMagicRAT is programmed in C++ programming language and uses the Qt Framework by statically linking it to the RAT on 32- and 64-bit versions.
+
+The RAT uses the Qt classes throughout its entire code.
+
+The configuration is dynamically stored in a QSettings class eventually being saved to disk, a typical functionality provided by that class.
+
+The malware configuration (containing author-defined QSettings) is stored in the file "visual.1991-06.com.microsoft_sd.kit" in the path "\ProgramData\WindowsSoftwareToolkit"- names and paths obviously chosen to trick the victim into believing they were part of the operating system.
+
+[os] which contains the command and control (C2) URLs.
+
+All analyzed samples had three encoded C2 URLs that are used to register infections and then receive commands to execute on the infected endpoint.
+
+The URLs are stored in the configuration file with the keys "windows", "linux" and "mac."
+
+Upon execution, MagicRAT achieves persistence for itself by executing a hardcoded command that creates scheduled tasks on the victim machine.
+
+Scheduled task starting at a specific time [T1053/005]
+
+Scheduled task starting at a different time an path [T1053/005]
+
+Link created on startup folder [T1547/001]
+
+Upon achieving persistence, the RAT contacts the C2.
+
+During the initial stages of execution, MagicRAT will perform just enough system reconnaissance to identify the system and environment in which the attackers are operating.
+
+This is done by executing the commands whoami, systeminfo and ipconfig /all.
+
+The last command has its results returned via the upload of the file zero_dump.mix to the C2.
+
+The operator can determine the timing for the implant to sleep, change the C2 URLs and delete the implant from the infected system.
+
+This sample now consisted of the ability to delete itself from the infected endpoint using a BAT file.
+cmd /c del /f /q %TEMP%\self.bat & exit

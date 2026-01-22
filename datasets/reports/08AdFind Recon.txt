@@ -1,0 +1,31 @@
+A threat actor logged into the RDP honeypot from 217[.]182[.]242[.]13 (OVH) with a hostname of WORK9F3B.
+Within 20 seconds they opened a command prompt and issued the following commands
+They then logged off and 15 minutes later logged back in from a hostname of MacBook-Pro.
+From there they ran whoami /upn and then dropped AdFind.
+AdFind is described as the following:
+Command line Active Directory query tool.
+Mixture of ldapsearch, search.vbs, ldp, dsquery, and dsget tools with a ton of other cool features thrown in for good measure.
+This tool proceeded dsquery/dsget/etc by years though I did adopt some of the useful stuff from those tools.
+This tool proceeded dsquery/dsget/etc by years though I did adopt some of the useful stuff from those tools.
+The threat actor then ran a batch file which ran AdFind commands and output them to txt files.
+cd /d "C:\Users\SVC-DA-1\AppData\Local\Temp\10\tmp$\Downloads"
+adfind.exe -f "(objectcategory=person)" > ad_users.txt
+adfind.exe -f "(objectcategory=computer)" > ad_computers.txt
+adfind.exe -sc trustdmp > trustdmp.txt
+adfind.exe -subnets -f "(objectCategory=subnet)" > subnets.txt
+adfind.exe -gcb -sc trustdmp > trustdmp.txt
+adfind.exe -sc domainlist > domainlist.txt
+adfind.exe -sc dcmodes > dcmodes.txt
+adfind.exe -sc adinfo > adinfo.txt
+adfind.exe -sc dclist > dclist.txt
+adfind.exe -sc computers_pwdnotreqd > computers_pwdnotreqd.txt
+objectcategory=person – Finds all person objects
+objectcategory=computer – Finds all computers in domain
+trustdmp – Dumps trust objects.
+objectcategory=subnet –  Finds all subnets
+domainlist – Dumps all Domain NCs in forest in sorted DNS list format
+dcmodes – Shows modes of all DCs in forest from config
+adinfo – Shows Active Directory Info with whoami info.
+dclist – Dumps Domain Controllers FQDNs.
+computers_pwdnotreqd – Dumps users set with password not required.
+The threat actors then added a local admin user named Adm.1c with a password of adm99!@.

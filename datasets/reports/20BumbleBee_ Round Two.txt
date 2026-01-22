@@ -1,0 +1,98 @@
+In this intrusion from May 2022, the threat actors used BumbleBee as the initial access vector.
+BumbleBee has been identified as an initial access vector utilized by several ransomware affiliates.
+In this intrusion, we see the threat actor use BumbleBee to deploy Cobalt Strike and Meterpreter.
+The threat actor then used RDP and SMB to move around the network looking at backup systems and file shares before being evicted from the network.
+The intrusion began with the delivery of an ISO file containing a LNK file and a BumbleBee payload in the form of a hidden DLL file.
+A user on a workstation mounted the ISO file and executed the LNK file, running the Bumblebee payload.
+Around 15 minutes after the execution of BumbleBee, multiple processes were spawned with the goal of injecting Meterpreter into each of them.
+After the threat actors gained access with Meterpreter, they began conducting reconnaissance on the workstation and network, including querying domain controllers, mapping domain joined computers, enumerating Active Directory trusts, and listing Domain Admin accounts.
+All of this first wave of discovery relied on built in Windows utilities like nltest, arp, net, ping, nbtstat, and nslookup.
+BumbleBee executed under a user with local administrator privileges on all workstations in the environment.
+At around six hours after initial execution, we observed a new process created that was then used to host a Cobalt Strike beacon, from the same command and control server observed in a prior BumbleBee case.
+This beacon reprised discovery activity, but also cut a common command short net user /dom instead of /domain, whether from keyboard laziness or a trick to trip-up detections.
+The threat actor then used their access to execute procdump via a remote service creation with the intention of dumping credentials from LSASS from an adjacent workstation on the network.
+Next, the threat actors moved laterally via RDP to a server.
+A new local user, sql_admin, was created and added to the local administrator’s group and AnyDesk remote access software was installed.
+Through the AnyDesk session, the threat actor was observed connecting to a file share and accessing multiple documents related to cyber insurance and spreadsheets with passwords.
+A second round of enumeration was observed on the beachhead using AdFind, which was executed via the Cobalt Strike beacon on the system.
+Following this second round of enumeration, the threat actor moved latterly to a server hosting backups, via RDP and interacted with the backup console.
+From the backup system, the threat actors also opened internet explorer and attempted to load the environment’s mail server, likely checking for Outlook Web Access.
+A third round of enumeration, this time taking place from the first lateral server host, was observed via a script named ‘1.bat’ that would ping all computers in the environment.
+Following this third round of enumeration the threat actors were evicted from the environment and no further impact was observed.
+We assess with medium confidence this intrusion was related to pre-ransomware activity due to the tool set and techniques the actor displayed.
+We offer multiple services including a Threat Feed service which tracks Command and Control frameworks such as Cobalt Strike, BumbleBee, Covenant, Metasploit, Empire, PoshC2, etc.
+We also have artifacts and IOCs available from this case such as pcaps, memory captures, files, event logs including Sysmon, Kape packages, and more, under our Security Researcher and Organization services.
+The BumbleBee malware has been following the trend of using the effective combination of utilizing an .iso image containing a .lnk and .dll file.
+Using the event log, “Microsoft-Windows-VHDMP-Operational.evtx”, we can quickly find when the user mounted the .iso.
+Upon clicking the LNK file the BumbleBee payload was executed.
+"C:\Windows\System32\rundll32.exe" tamirlan.dll,EdHVntqdWt
+Following the user mounting the .iso file, they clicked on a .lnk file documents.lnk.
+As noted in previous reports, the .dll is hidden from the user unless they display hidden items in explorer like so:
+The .lnk contains instructions to execute a specific exported function with the BumbleBee DLL file.
+When the .lnk was doubled clicked by the user, the BumbleBee malware tamirlan.dll was executed:
+C:\Windows\System32\rundll32.exe tamirlan.dll,EdHVntqdWt
+The output of LECmd.exe, when used ondocuments.lnk, provided additional context to where and when this .lnk file was created.
+Approximately 5 seconds after execution, the rundll32.exe process contacted the IP 154.56.0.221.
+More information on this traffic is covered in the Command and Control section below.
+An interesting tactic of note, was the use of WMI and COM function calls to start the process, used to inject into.
+The BumbleBee loader uses WMI to start new process by calling COM functions to create a new process.
+Below you can see the COM instance creation followed by defining the WMI namespace and WMI object being created – “Win32_Process”.
+Analysis of the loader found that a function of the malware chooses 1 of 3 target processes before injecting the supplied code:
+C:\Program Files\Windows Mail\wabmig.exe
+C:\Program Files\Windows Mail\wab.exe
+C:\Program Files\Windows Photo Viewer\ImagingDevices.exe
+This resulted in new processes not being a child of BumbleBee, but rather WmiPrvSE.exe.
+In this intrusion, an instance of C:\Program Files\Windows Photo Viewer\ImagingDevices.exe was created and accessed by the BumbleBee rundll32.exe process.
+Shortly after this interaction, the process started communicating to a Meterpreter C2 3.85.198.66.
+This process spawned cmd.exe and several typical discovery commands that are covered in more detail below.
+The second process, was spawned the WMI technique was an instance of C:\Program Files\Windows Mail\wabmig.exe.
+This process was used to host both a session to another Meterpreter C2 50.16.62.87 and a Cobalt Strike C2 server 45.153.243.142, which was then used to conduct the majority of additional activity including credential dumping and discovery exercises highlighted below.
+The pivot to using Cobalt Strike began around 6 hours after the execution of the BumbleBee loader.
+A new local administrator user was created on a server to facilitate persistence on the machine.
+The user account was observed to be accessed via an AnyDesk session on the same machine.
+C:\Windows\System32\cmd.exe
+net user sql_admin P@ssw0rd! /add
+net localgroup Administrators sql_admin /ADD
+The BumbleBee loader itself uses several defense evasion and anti-analysis techniques.
+As detailed in the Execution section, the use of WMI to spawn new processes is a known technique to evade any parent/child process heuristics or detections.
+Once the malware is unpacked, it becomes quite apparent to what the malware author(s) were looking for.
+Known sandbox usernames (Sorry if your name is Peter Wilson, no malware for you).
+Specific Virtualization Software files on disk and registry keys (Virtual Box, Qemu, Parallels).
+Create Remote Thread – The malware used the win32 function CreateRemoteThread in order to execute code in rundll32.exe.
+Named Pipes – Two named pipes were created in order to establish inter-process communications (IPC) between rundll32.exe and wabmig.exe.
+A remote service was created on one of the workstations in order to dump lsass.Event 7045 from Service Control Manager
+C:\programdata\procdump64.exe -accepteula -ma lsass.exe
+C:\programdata\lsass.dmp
+The first discovery stage includes TTPs that we have seen in multiple cases, such as trusts discovery, domain admin group discovery, network discovery and process enumeration.
+C:\Windows\system32\cmd.exe /C ipconfig /all
+C:\Windows\system32\cmd.exe /C ping -n 1 <REDACTED_DOMAIN_NAME>
+C:\Windows\system32\cmd.exe /C nltest /dclist:
+C:\Windows\system32\cmd.exe /C nltest /domain_trusts
+C:\Windows\system32\cmd.exe /C net group "domain admins" /domain
+C:\Windows\system32\cmd.exe /C tasklist /v /s <REDACTED_IP>
+AdFind.exe was renamed to af.exe and was used by threat actors in order to enumerate AD users, computers, OU, trusts, subnets and groups.
+C:\Windows\system32\cmd.exe /C af.exe -f "(objectcategory=person)" > ad_users.txt
+C:\Windows\system32\cmd.exe /C af.exe -f "objectcategory=computer" > ad_computers.txt
+C:\Windows\system32\cmd.exe /C af.exe -f "(objectcategory=organizationalUnit)" > ad_ous.txt
+C:\Windows\system32\cmd.exe /C af.exe -sc trustdmp > trustdmp.txt
+C:\Windows\system32\cmd.exe /C af.exe -subnets -f (objectCategory=subnet) > subnets.txt
+C:\Windows\system32\cmd.exe /C af.exe -f "(objectcategory=group)" > ad_group.txt
+C:\Windows\system32\cmd.exe /C af.exe -gcb -sc trustdmp > trustdmp.txt
+Lateral Movement
+The threat actor was observed moving via RDP throughout the network with a Domain Admin account.
+As mentioned in Credential Access, the threat actor used remote services to execute commands on remote hosts.
+SMB was used to transfer the various tools laterally, as needed in the environment, like procdump.exe and AnyDesk executables.
+The threat actor accessed multiple documents and folders from a remote file server.
+The SMB share was accessed through a compromised server via an AnyDesk session.
+The lsass dump file ran remotely, was copied to the beachhead through the admin share C$.
+After being copied, the file was zipped using 7za.exe (7-zip), in preparation for exfiltration.
+C:\Windows\system32\cmd.exe /C copy \\<REMOTE_WORKSTATION>\C$\ProgramData\lsass.dmp c:\programdata\lsass.dmp
+C:\Windows\system32\cmd.exe /C 7za.exe a -tzip -mx5 c:\programdata\lsass.zip c:\programdata\lsass.dmp
+This C2 server was observed in a previous BumbleBee case.
+AnyDesk was installed to facilitate interactive desktop command and control access to a server in the environment.
+Reviewing the ad_svc.trace logs from Anydesk located in %programdata%\AnyDesk reveal the logins originating from 108.177.235.25.
+This was again the same IP observered in the prior Bumblebee case.
+info REDACTED 19:07:21.173 gsvc 1160 408 24 anynet.any_socket - Logged in from 108.177.235.25:49672 on relay dafa4c5b.info REDACTED 19:27:45.255 gsvc 1160 408 41 anynet.any_socket - Logged in from 108.177.235.25:49672 on relay dafa4c5b.
+The Client-ID observed in the logs was 892647610
+info REDACTED 18:56:00.723 lsvc 5924 5928 2 anynet.connection_mgr - New user data. Client-ID: 892647610
+No exfiltration methods were observed beyond the established command and control channels, which can be assessed as likely used to take data like the lsass dump out of the network.

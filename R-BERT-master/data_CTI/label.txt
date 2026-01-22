@@ -1,0 +1,11 @@
+Other
+process-file-read(e1,e2)
+process-file-write(e1,e2)
+process-file-exec(e1,e2)
+process-file-chmod(e1,e2)
+process-file-unlink(e1,e2)
+process-socket-send(e1,e2)
+process-socket-receive(e1,e2)
+process-process-fork(e1,e2)
+process-process-inject(e1,e2)
+process-process-unlink(e1,e2)
