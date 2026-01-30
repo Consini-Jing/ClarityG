@@ -1,0 +1,90 @@
+CTI_Report	CRUcialG_Nodes	ClarityG_Nodes	Node_Diff	CRUcialG_Edges	ClarityG_Edges	Edge_Diff
+01Threat Spotlight Cyber Criminal Adoption of IPFS for Phishing, Malware Campaigns	45	52	7	80	92	12
+02MagicRAT Lazarus’ latest gateway into victim networks	12	15	3	14	16	2
+03ModernLoader delivers multiple stealers, cryptominers and RATs	57	59	2	82	85	3
+04From BlackMatter to BlackCat Analyzing two attacks from one affiliate	62	84	22	89	111	22
+05 2021 Year In Review	85	97	12	120	131	11
+06 2022 Year in Review	134	162	28	223	250	27
+07A Truly Graceful Wipe Out	178	201	23	380	415	35
+08AdFind Recon	8	21	13	6	18	12
+09All That for a Coinminer_	28	35	7	35	43	8
+10Another Confluence Bites the Dust_ Falling to ELPACO-team Ransomware	222	233	11	484	496	12
+11Bazar Drops the Anchor	64	93	29	86	111	25
+12Bazar, No Ryuk_	67	84	17	109	128	19
+13BazarCall to Conti Ransomware via Trickbot and Cobalt Strike	88	99	11	154	167	13
+14BazarLoader and the Conti Leaks	104	125	21	214	246	32
+15WebLogic RCE Leads to XMRig	42	44	2	75	76	1
+16BazarLoader to Conti Ransomware in 32 Hours	70	88	18	130	152	22
+17BlackSuit Ransomware	141	159	18	254	271	17
+18BumbleBee Roasts Its Way to Domain Admin	112	128	16	218	240	22
+19BumbleBee Zeros in on Meterpreter	94	106	12	172	191	19
+20BumbleBee_ Round Two	89	109	20	177	203	26
+21Buzzing on Christmas Eve_ Trigona Ransomware in 3 Hours	109	137	28	209	238	29
+22Cobalt Strike and a Pair of SOCKS Lead to LockBit Ransomware	139	164	25	311	342	31
+23Cobalt Strike, a Defender’s Guide – Part 2	106	108	2	183	185	2
+24Cobalt Strike, a Defender’s Guide	82	84	2	181	183	2
+25Collect, Exfiltrate, Sleep, Repeat	88	101	13	169	178	9
+26Confluence Exploit Leads to LockBit Ransomware	130	136	6	308	313	5
+27Conti Ransomware	39	56	17	51	70	19
+28CONTInuing the Bazar Ransomware Story	102	105	3	204	206	2
+29Cryptominers Exploiting WebLogic RCE CVE-2020-14882	16	22	6	21	27	6
+30Dead or Alive_ An Emotet Story	87	101	14	178	196	18
+31Defender Control	11	13	2	9	11	2
+32Dharma Ransomware	20	26	6	23	27	4
+33Diavol Ransomware	109	151	42	244	283	39
+34Dridex – From Word to Domain Dominance	43	61	18	61	77	16
+35Emotet Strikes Again – LNK File Leads to Domain Wide Ransomware	133	150	17	328	344	16
+36Fake Zoom Ends in BlackSuit Ransomware	153	162	9	304	314	10
+37From IcedID to Dagon Locker Ransomware in 29 Days	127	137	10	243	254	11
+38From OneNote to RansomNote_ An Ice Cold Intrusion	160	173	13	375	389	14
+39From Word to Lateral Movement in 1 Hour	70	74	4	103	107	4
+40From Zero to Domain Admin	81	96	15	183	211	28
+41GoGoogle Ransomware	43	58	15	48	64	16
+42Hancitor Continues to Push Cobalt Strike	51	51	0	86	87	1
+43Hide Your RDP_ Password Spray Leads to RansomHub Deployment	134	144	10	283	295	12
+44HTML Smuggling Leads to Domain Wide Ransomware	105	131	26	214	242	28
+45IcedID and Cobalt Strike vs Antivirus	60	79	19	107	128	21
+46IcedID Brings ScreenConnect and CSharp Streamer to ALPHV Ransomware Deployment	138	140	2	309	311	2
+47IcedID Macro Ends in Nokoyawa Ransomware	154	170	16	281	312	31
+48IcedID to XingLocker Ransomware in 24 hours	94	153	59	168	232	64
+49Inside the Open Directory of the “You Dun” Threat Group	49	63	14	72	89	17
+50Laravel Apps Leaking Secrets	34	35	1	54	58	4
+51Lets Open(Dir) Some Presents_ An Analysis of a Persistent Actor’s Activity	100	149	49	155	209	54
+52Malicious ISO File Leads to Domain Wide Ransomware	208	256	48	354	417	63
+53Navigating Through The Fog	84	90	6	125	132	7
+54NetSupport Intrusion Results in Domain Compromise	125	175	50	236	309	73
+55NetWalker Ransomware in 1 Hour	39	48	9	59	70	11
+56Nitrogen Campaign Drops Sliver and Ends With BlackCat Ransomware	155	195	40	295	362	67
+57PHOSPHORUS Automates Initial Access Using ProxyShell	66	103	37	117	160	43
+58PYSA_Mespinoza Ransomware	84	104	20	159	180	21
+59Qbot and Zerologon Lead To Full Domain Compromise	78	99	21	119	138	19
+60Qbot Likes to Move It, Move It	44	59	15	84	99	15
+61Quantum Ransomware	95	103	8	181	193	12
+62Ransomware Again…But We Changed the RDP Port!_!_!	11	24	13	15	24	9
+63Ryuk in 5 Hours	47	65	18	78	94	16
+64Ryuk Speed Run, 2 Hours to Ransom	42	71	29	66	90	24
+65Ryuk’s Return	50	94	44	87	126	39
+66SANS Ransomware Summit 2022, Can You Detect This_	33	38	5	39	43	4
+67SELECT XMRig FROM SQLServer	106	131	25	200	233	33
+68SEO Poisoning – A Gootloader Story	93	115	22	194	215	21
+69SEO Poisoning to Domain Control_ The Gootloader Saga Continues	155	159	4	318	321	3
+70ShareFinder_ How Threat Actors Discover File Shares	33	35	2	37	39	2
+71Snatch Ransomware	29	32	3	35	37	2
+72Sodinokibi (aka REvil) Ransomware	84	104	20	172	192	20
+73SQL Brute Force Leads to BlueSky Ransomware	81	85	4	137	144	7
+74Sqlserver, or the Miner in the Basement	31	35	4	30	34	4
+75Stolen Images Campaign Ends in Conti Ransomware	119	129	10	203	214	11
+76The Curious Case of an Egg-Cellent Resume	174	202	28	323	372	49
+77The Little Ransomware That Couldn’t (Dharma)	12	16	4	13	16	3
+78Threat Actors’ Toolkit_ Leveraging Sliver, PoshC2 & Batch Scripts	193	215	22	354	382	28
+79Will the Real Msiexec Please Stand Up_ Exploit Leads to Data Exfiltration	70	88	18	149	169	20
+80Trickbot Brief_ Creds and Beacons	29	34	5	41	45	4
+81Trickbot Leads Up to Fake 1Password Installation	63	84	21	98	118	20
+82Trickbot Still Alive and Well	41	65	24	70	98	28
+83Tricky Pyxie	22	47	25	23	46	23
+84Unwrapping Ursnifs Gifts	105	132	27	207	244	37
+85trace_In-memory attack with firefox	15	30	15	30	41	11
+86trace_Information gather and exfiltration	3	16	13	3	12	9
+87trace_Malicious file download and execute (ccleaner attack)	11	14	3	14	18	4
+88trace_Malicious file download and execute (hc attack)	7	11	4	9	13	4
+Average	80.75	96.90	16.15	150.47	168.91	18.44
