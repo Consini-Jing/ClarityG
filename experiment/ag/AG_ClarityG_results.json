@@ -1,0 +1,506 @@
+{
+  "59Qbot and Zerologon Lead To Full Domain Compromise": {
+    "precision": 0.8726394378568292,
+    "recall": 0.9259030183077684,
+    "f1": 0.8984688828084066,
+    "similarity": 0.9062949290462569
+  },
+  "74Sqlserver, or the Miner in the Basement": {
+    "precision": 0.796218487394958,
+    "recall": 0.822192513368984,
+    "f1": 0.8088235294117647,
+    "similarity": 0.827446101235643
+  },
+  "15WebLogic RCE Leads to XMRig": {
+    "precision": 0.9132775119617225,
+    "recall": 0.9074675324675324,
+    "f1": 0.9103535353535352,
+    "similarity": 0.9137898764711745
+  },
+  "41GoGoogle Ransomware": {
+    "precision": 0.8232758620689655,
+    "recall": 0.8882611424984306,
+    "f1": 0.8545296167247387,
+    "similarity": 0.8763513282934825
+  },
+  "69SEO Poisoning to Domain Control_ The Gootloader Saga Continues": {
+    "precision": 0.9125374713454417,
+    "recall": 0.9432656053623796,
+    "f1": 0.9276325782507874,
+    "similarity": 0.9319798253451926
+  },
+  "09All That for a Coinminer_": {
+    "precision": 0.887375415282392,
+    "recall": 0.9743589743589743,
+    "f1": 0.9288314524936294,
+    "similarity": 0.9313922038153997
+  },
+  "68SEO Poisoning – A Gootloader Story": {
+    "precision": 0.8106167846309404,
+    "recall": 0.899337385412515,
+    "f1": 0.8526725758796669,
+    "similarity": 0.8766654190073655
+  },
+  "14BazarLoader and the Conti Leaks": {
+    "precision": 0.9118181818181819,
+    "recall": 0.9443656226722945,
+    "f1": 0.9278048780487804,
+    "similarity": 0.9324858671142942
+  },
+  "81Trickbot Leads Up to Fake 1Password Installation": {
+    "precision": 0.889041514041514,
+    "recall": 0.8799601196410768,
+    "f1": 0.8844768978975198,
+    "similarity": 0.8932823476516805
+  },
+  "82Trickbot Still Alive and Well": {
+    "precision": 0.9105180533751962,
+    "recall": 0.915146708961142,
+    "f1": 0.9128205128205129,
+    "similarity": 0.9168244457849672
+  },
+  "45IcedID and Cobalt Strike vs Antivirus": {
+    "precision": 0.8653085443037974,
+    "recall": 0.9100877192982456,
+    "f1": 0.8870967741935485,
+    "similarity": 0.8982923143618815
+  },
+  "70ShareFinder_ How Threat Actors Discover File Shares": {
+    "precision": 0.8945054945054944,
+    "recall": 0.8607723577235773,
+    "f1": 0.8772887323943661,
+    "similarity": 0.8893712607503338
+  },
+  "22Cobalt Strike and a Pair of SOCKS Lead to LockBit Ransomware": {
+    "precision": 0.9039947071024963,
+    "recall": 0.9659107205047835,
+    "f1": 0.9336085311317509,
+    "similarity": 0.9387190360011477
+  },
+  "18BumbleBee Roasts Its Way to Domain Admin": {
+    "precision": 0.9036458333333333,
+    "recall": 0.9474910394265232,
+    "f1": 0.9249871991807476,
+    "similarity": 0.9316243749398452
+  },
+  "20BumbleBee_ Round Two": {
+    "precision": 0.8869480724906222,
+    "recall": 0.9687229904926534,
+    "f1": 0.9256219733096743,
+    "similarity": 0.9288457716399484
+  },
+  "08AdFind Recon": {
+    "precision": 0.8214285714285714,
+    "recall": 0.96875,
+    "f1": 0.8885448916408669,
+    "similarity": 0.89698726439237
+  },
+  "73SQL Brute Force Leads to BlueSky Ransomware": {
+    "precision": 0.8861928104575163,
+    "recall": 0.9245593733309596,
+    "f1": 0.9049587657425362,
+    "similarity": 0.9161147433020178
+  },
+  "03ModernLoader delivers multiple stealers, cryptominers and RATs": {
+    "precision": 0.8804586241276171,
+    "recall": 0.9308105687416033,
+    "f1": 0.9045584045584045,
+    "similarity": 0.9145658348742646
+  },
+  "47IcedID Macro Ends in Nokoyawa Ransomware": {
+    "precision": 0.9210626185958255,
+    "recall": 0.9563758389261745,
+    "f1": 0.9383863851244878,
+    "similarity": 0.9432658668492688
+  },
+  "71Snatch Ransomware": {
+    "precision": 0.8606418918918919,
+    "recall": 0.8757628596338274,
+    "f1": 0.868082368082368,
+    "similarity": 0.8879945604488103
+  },
+  "57PHOSPHORUS Automates Initial Access Using ProxyShell": {
+    "precision": 0.8307992916895646,
+    "recall": 0.9479703608247423,
+    "f1": 0.8841811846689895,
+    "similarity": 0.899410938296938
+  },
+  "79Will the Real Msiexec Please Stand Up_ Exploit Leads to Data Exfiltration": {
+    "precision": 0.9237829478214094,
+    "recall": 0.9685534591194969,
+    "f1": 0.9455977724517131,
+    "similarity": 0.9495208791484078
+  },
+  "31Defender Control": {
+    "precision": 0.7412587412587412,
+    "recall": 0.7147435897435898,
+    "f1": 0.7274247491638797,
+    "similarity": 0.7920643945535024
+  },
+  "56Nitrogen Campaign Drops Sliver and Ends With BlackCat Ransomware": {
+    "precision": 0.9055387496398732,
+    "recall": 0.9542332447404656,
+    "f1": 0.9292207299491615,
+    "similarity": 0.9343189485217561
+  },
+  "23Cobalt Strike, a Defender’s Guide – Part 2": {
+    "precision": 0.8922922922922922,
+    "recall": 0.9342857142857143,
+    "f1": 0.9127882599580712,
+    "similarity": 0.9233797618806192
+  },
+  "25Collect, Exfiltrate, Sleep, Repeat": {
+    "precision": 0.9210701969073312,
+    "recall": 0.9667279411764707,
+    "f1": 0.9433455860902036,
+    "similarity": 0.9462949087388539
+  },
+  "50Laravel Apps Leaking Secrets": {
+    "precision": 0.8486215538847117,
+    "recall": 0.9299999999999999,
+    "f1": 0.8871632765255635,
+    "similarity": 0.8996730736323766
+  },
+  "44HTML Smuggling Leads to Domain Wide Ransomware": {
+    "precision": 0.8826613030946122,
+    "recall": 0.9446902654867257,
+    "f1": 0.9126202909835719,
+    "similarity": 0.9217261552899616
+  },
+  "05 2021 Year In Review": {
+    "precision": 0.9036875495638382,
+    "recall": 0.9376600102406554,
+    "f1": 0.9203536184210526,
+    "similarity": 0.926879491052057
+  },
+  "21Buzzing on Christmas Eve_ Trigona Ransomware in 3 Hours": {
+    "precision": 0.8369011838311967,
+    "recall": 0.9210526315789473,
+    "f1": 0.8767548858216201,
+    "similarity": 0.8947950786675329
+  },
+  "38From OneNote to RansomNote_ An Ice Cold Intrusion": {
+    "precision": 0.8412782144820721,
+    "recall": 0.9119368102902932,
+    "f1": 0.8749838730486388,
+    "similarity": 0.8940228603058457
+  },
+  "58PYSA_Mespinoza Ransomware": {
+    "precision": 0.8504273504273505,
+    "recall": 0.9347826086956521,
+    "f1": 0.8905571847507332,
+    "similarity": 0.9046644867607063
+  },
+  "65Ryuk’s Return": {
+    "precision": 0.8993583248902398,
+    "recall": 0.9361721611721612,
+    "f1": 0.9173807954295758,
+    "similarity": 0.9258628172982007
+  },
+  "28CONTInuing the Bazar Ransomware Story": {
+    "precision": 0.8983356449375867,
+    "recall": 0.9187192118226601,
+    "f1": 0.908401544948797,
+    "similarity": 0.9206382270744299
+  },
+  "37From IcedID to Dagon Locker Ransomware in 29 Days": {
+    "precision": 0.9013300251002567,
+    "recall": 0.94055702250723,
+    "f1": 0.9205183390274371,
+    "similarity": 0.927744033525316
+  },
+  "16BazarLoader to Conti Ransomware in 32 Hours": {
+    "precision": 0.7809301625526791,
+    "recall": 0.8952456892255557,
+    "f1": 0.833972343083617,
+    "similarity": 0.8624126729122586
+  },
+  "01Threat Spotlight Cyber Criminal Adoption of IPFS for Phishing, Malware Campaigns": {
+    "precision": 0.822742474916388,
+    "recall": 0.8671150278293136,
+    "f1": 0.8443344334433442,
+    "similarity": 0.8644062811678106
+  },
+  "27Conti Ransomware": {
+    "precision": 0.8714285714285714,
+    "recall": 0.9523809523809523,
+    "f1": 0.91005291005291,
+    "similarity": 0.9166250143732344
+  },
+  "66SANS Ransomware Summit 2022, Can You Detect This_": {
+    "precision": 0.8659730722154223,
+    "recall": 0.9337606837606838,
+    "f1": 0.898483849703362,
+    "similarity": 0.9070567001467166
+  },
+  "78Threat Actors’ Toolkit_ Leveraging Sliver, PoshC2 & Batch Scripts": {
+    "precision": 0.923943747717034,
+    "recall": 0.9521857923497268,
+    "f1": 0.937818533303206,
+    "similarity": 0.9434070647643737
+  },
+  "40From Zero to Domain Admin": {
+    "precision": 0.9168154761904761,
+    "recall": 0.9421706320092234,
+    "f1": 0.9293105645469606,
+    "similarity": 0.9333577947626019
+  },
+  "49Inside the Open Directory of the “You Dun” Threat Group": {
+    "precision": 0.8952202603887998,
+    "recall": 0.9470211915233906,
+    "f1": 0.9202508960573477,
+    "similarity": 0.9248063073708461
+  },
+  "77The Little Ransomware That Couldn’t (Dharma)": {
+    "precision": 0.875,
+    "recall": 0.9041666666666667,
+    "f1": 0.8891129032258065,
+    "similarity": 0.8625502973989724
+  },
+  "10Another Confluence Bites the Dust_ Falling to ELPACO-team Ransomware": {
+    "precision": 0.8937335594628271,
+    "recall": 0.9397417228694053,
+    "f1": 0.9161302356050716,
+    "similarity": 0.9239482099168659
+  },
+  "17BlackSuit Ransomware": {
+    "precision": 0.8805379563229594,
+    "recall": 0.9596072582649764,
+    "f1": 0.9182626711809592,
+    "similarity": 0.9254160399255456
+  },
+  "60Qbot Likes to Move It, Move It": {
+    "precision": 0.9219128329297821,
+    "recall": 0.9526315789473684,
+    "f1": 0.9370198320528853,
+    "similarity": 0.9388122905439248
+  },
+  "52Malicious ISO File Leads to Domain Wide Ransomware": {
+    "precision": 0.903070274758454,
+    "recall": 0.9616530076597568,
+    "f1": 0.9313523895605016,
+    "similarity": 0.9355194953887149
+  },
+  "80Trickbot Brief_ Creds and Beacons": {
+    "precision": 0.8447712418300654,
+    "recall": 0.9010416666666667,
+    "f1": 0.8719958202716824,
+    "similarity": 0.8800256670831323
+  },
+  "76The Curious Case of an Egg-Cellent Resume": {
+    "precision": 0.9172389013094857,
+    "recall": 0.9699660330135272,
+    "f1": 0.9428054922483893,
+    "similarity": 0.9461734203287504
+  },
+  "24Cobalt Strike, a Defender’s Guide": {
+    "precision": 0.8773419203747073,
+    "recall": 0.8820031712473573,
+    "f1": 0.8790206354405503,
+    "similarity": 0.8832992645018857
+  },
+  "55NetWalker Ransomware in 1 Hour": {
+    "precision": 0.8754528985507246,
+    "recall": 0.9424825174825175,
+    "f1": 0.9076898118105127,
+    "similarity": 0.9135155023198549
+  },
+  "35Emotet Strikes Again – LNK File Leads to Domain Wide Ransomware": {
+    "precision": 0.829437984496124,
+    "recall": 0.9075773220068521,
+    "f1": 0.86626157591996,
+    "similarity": 0.8892645093043127
+  },
+  "07A Truly Graceful Wipe Out": {
+    "precision": 0.8269882471699475,
+    "recall": 0.8969226425748165,
+    "f1": 0.8605237065812785,
+    "similarity": 0.8717227012121351
+  },
+  "26Confluence Exploit Leads to LockBit Ransomware": {
+    "precision": 0.8598830107122721,
+    "recall": 0.9456521739130435,
+    "f1": 0.9005467796807116,
+    "similarity": 0.9114967575563491
+  },
+  "13BazarCall to Conti Ransomware via Trickbot and Cobalt Strike": {
+    "precision": 0.9075787818302788,
+    "recall": 0.9648277276456112,
+    "f1": 0.9352937397616677,
+    "similarity": 0.9336491946756306
+  },
+  "46IcedID Brings ScreenConnect and CSharp Streamer to ALPHV Ransomware Deployment": {
+    "precision": 0.9210496095544327,
+    "recall": 0.9344483027425413,
+    "f1": 0.9276872015837895,
+    "similarity": 0.9342569417187924
+  },
+  "83Tricky Pyxie": {
+    "precision": 0.8593894542090657,
+    "recall": 0.8968655207280081,
+    "f1": 0.8776126615923643,
+    "similarity": 0.8941846491971932
+  },
+  "34Dridex – From Word to Domain Dominance": {
+    "precision": 0.7672982754949969,
+    "recall": 0.850132625994695,
+    "f1": 0.80589418866138,
+    "similarity": 0.8376066834432225
+  },
+  "33Diavol Ransomware": {
+    "precision": 0.8533030095920435,
+    "recall": 0.9204081632653061,
+    "f1": 0.88492357159262,
+    "similarity": 0.9042919760508253
+  },
+  "53Navigating Through The Fog": {
+    "precision": 0.9416666666666667,
+    "recall": 0.9363553113553114,
+    "f1": 0.9389963167587476,
+    "similarity": 0.9411158069553625
+  },
+  "29Cryptominers Exploiting WebLogic RCE CVE-2020-14882": {
+    "precision": 0.8804713804713804,
+    "recall": 0.96,
+    "f1": 0.9184981684981685,
+    "similarity": 0.9139772416282224
+  },
+  "19BumbleBee Zeros in on Meterpreter": {
+    "precision": 0.9040630927423381,
+    "recall": 0.9744318181818181,
+    "f1": 0.9379264034380876,
+    "similarity": 0.9407589611483229
+  },
+  "04From BlackMatter to BlackCat Analyzing two attacks from one affiliate": {
+    "precision": 0.8080759330759331,
+    "recall": 0.8605769230769231,
+    "f1": 0.8334997859894422,
+    "similarity": 0.8689572286038172
+  },
+  "39From Word to Lateral Movement in 1 Hour": {
+    "precision": 0.8498989643849457,
+    "recall": 0.9134391380314502,
+    "f1": 0.880484832069339,
+    "similarity": 0.8937240146136866
+  },
+  "72Sodinokibi (aka REvil) Ransomware": {
+    "precision": 0.9264823717948718,
+    "recall": 0.9752747252747253,
+    "f1": 0.9502515739838253,
+    "similarity": 0.9531091818214603
+  },
+  "51Lets Open(Dir) Some Presents_ An Analysis of a Persistent Actor’s Activity": {
+    "precision": 0.9123626106409882,
+    "recall": 0.9662847790507365,
+    "f1": 0.9385486361296964,
+    "similarity": 0.9414645614679794
+  },
+  "42Hancitor Continues to Push Cobalt Strike": {
+    "precision": 0.8958755916159566,
+    "recall": 0.9425,
+    "f1": 0.9183612972075651,
+    "similarity": 0.9247498289461091
+  },
+  "62Ransomware Again…But We Changed the RDP Port!_!_!": {
+    "precision": 0.8333333333333333,
+    "recall": 0.8903162055335969,
+    "f1": 0.860777058279371,
+    "similarity": 0.8572446833338057
+  },
+  "06 2022 Year in Review": {
+    "precision": 0.85809906291834,
+    "recall": 0.9529721135029354,
+    "f1": 0.9030504379341588,
+    "similarity": 0.9098142852622689
+  },
+  "11Bazar Drops the Anchor": {
+    "precision": 0.8956698634117989,
+    "recall": 0.9499290934875095,
+    "f1": 0.9219472116668378,
+    "similarity": 0.9269153119451649
+  },
+  "64Ryuk Speed Run, 2 Hours to Ransom": {
+    "precision": 0.9262910798122066,
+    "recall": 0.9333333333333333,
+    "f1": 0.9297872340425533,
+    "similarity": 0.9375203095049333
+  },
+  "75Stolen Images Campaign Ends in Conti Ransomware": {
+    "precision": 0.9315547344780121,
+    "recall": 0.9386455649613545,
+    "f1": 0.9350292541781904,
+    "similarity": 0.9386011383191784
+  },
+  "43Hide Your RDP_ Password Spray Leads to RansomHub Deployment": {
+    "precision": 0.8878060263653484,
+    "recall": 0.9105564546246732,
+    "f1": 0.8987647300796091,
+    "similarity": 0.9090316507007415
+  },
+  "67SELECT XMRig FROM SQLServer": {
+    "precision": 0.8507191298365167,
+    "recall": 0.9134622648636398,
+    "f1": 0.8809749670619236,
+    "similarity": 0.8941915405680826
+  },
+  "36Fake Zoom Ends in BlackSuit Ransomware": {
+    "precision": 0.8846426043878273,
+    "recall": 0.9675090252707581,
+    "f1": 0.9239545564418661,
+    "similarity": 0.9309946637715362
+  },
+  "48IcedID to XingLocker Ransomware in 24 hours": {
+    "precision": 0.9334417901076005,
+    "recall": 0.9405865986552284,
+    "f1": 0.9370002876042565,
+    "similarity": 0.9413421265532257
+  },
+  "84Unwrapping Ursnifs Gifts": {
+    "precision": 0.8432687531048186,
+    "recall": 0.9151785714285714,
+    "f1": 0.8777508580658187,
+    "similarity": 0.8955064133856852
+  },
+  "12Bazar, No Ryuk_": {
+    "precision": 0.8802083333333333,
+    "recall": 0.9362126944094158,
+    "f1": 0.9073086419753087,
+    "similarity": 0.9165009858989479
+  },
+  "02MagicRAT Lazarus’ latest gateway into victim networks": {
+    "precision": 0.74375,
+    "recall": 0.8928571428571428,
+    "f1": 0.8111111111111111,
+    "similarity": 0.7762820400689778
+  },
+  "30Dead or Alive_ An Emotet Story": {
+    "precision": 0.868104667609618,
+    "recall": 0.8654600301659126,
+    "f1": 0.8667682965240069,
+    "similarity": 0.8853994962511822
+  },
+  "61Quantum Ransomware": {
+    "precision": 0.8853815584284923,
+    "recall": 0.9545454545454546,
+    "f1": 0.9186043360433604,
+    "similarity": 0.9251323963566122
+  },
+  "54NetSupport Intrusion Results in Domain Compromise": {
+    "precision": 0.9135064935064935,
+    "recall": 0.93511457825451,
+    "f1": 0.9240408842405514,
+    "similarity": 0.9316144595232908
+  },
+  "63Ryuk in 5 Hours": {
+    "precision": 0.8808933002481389,
+    "recall": 0.9506268081002893,
+    "f1": 0.9143927233814875,
+    "similarity": 0.9204359505393288
+  },
+  "32Dharma Ransomware": {
+    "precision": 0.792022792022792,
+    "recall": 0.8945454545454545,
+    "f1": 0.8397435897435896,
+    "similarity": 0.8599016882124402
+  }
+}
