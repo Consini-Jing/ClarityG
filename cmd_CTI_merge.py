@@ -20,9 +20,8 @@ print(device)
 
 def load_report_and_graph(json_path, idx):
     with open(json_path, encoding="utf-8") as f:
-        # 跳到第 idx 行
         line = next(islice(f, idx, idx+1), None)
-        if line is None:          # 文件行数不足
+        if line is None:          
             return None, [], []
         data = json.loads(line.strip())
 
@@ -86,7 +85,6 @@ def normalize_cmd_nodes(cmd_relations):
             "type": t2,
             "source": "cmd"
         })
-    # 去重（按内容+类型）
     seen = set()
     unique = []
     for node in normalized:
@@ -97,7 +95,7 @@ def normalize_cmd_nodes(cmd_relations):
     return unique
 
 def load_encoder():
-    model = SentenceTransformer('/root/ClarityG/experiment/model/all-MiniLM-L6-v2')
+    model = SentenceTransformer('ClarityG/experiment/model/all-MiniLM-L6-v2')
     node_types = ["process", "file", "socket","other"]
     type_embeddings = {
         t: np.eye(len(node_types))[i]
@@ -164,15 +162,14 @@ def normalize_relations(relations, relation_mapping):
     normalized = []
     for r in relations:
         e1, t1, e2, t2, rel = r
-        norm_rel = relation_mapping.get(rel, "other")  # 不在表里的设为 "other"
+        norm_rel = relation_mapping.get(rel, "other") 
         normalized.append([e1, t1, e2, t2, norm_rel])
     return normalized
 def normalize_text(text):
-    # 去掉多余空格、特殊符号，统一大小写，统一路径分隔符
     text = text.strip().lower()
-    text = re.sub(r'\s+', '', text)  # 去掉所有空格
-    text = text.replace("\\", "/")   # 统一路径分隔符
-    text = re.sub(r'[^a-z0-9:/._-]', '', text)  # 保留常见文件/路径字符
+    text = re.sub(r'\s+', '', text)  
+    text = text.replace("\\", "/")   
+    text = re.sub(r'[^a-z0-9:/._-]', '', text) 
     return text
 def get_last_segment(path):
     return os.path.basename(path)
@@ -244,7 +241,7 @@ def merge_graphs(report_nodes, report_relations, cmd_nodes, cmd_relations, match
             rep_key = rep_text.lower()
 
             if rep_key in merged_nodes:
-                # 合并类型
+           
                 old_type = merged_nodes[rep_key]["type"]
                 new_type = n["type"]
 
@@ -259,7 +256,7 @@ def merge_graphs(report_nodes, report_relations, cmd_nodes, cmd_relations, match
                 merged_nodes[rep_key].setdefault("aliases", []).append(n["text"])
 
                 src = merged_nodes[rep_key].get("source", [])
-                if isinstance(src, str):  # 如果是字符串，转为列表
+                if isinstance(src, str):  
                     src = [src]
                 if "cmd" not in src:
                     src.append("cmd")
@@ -333,7 +330,7 @@ def build_merged_attack_graph(models,report_path, cti_path,idx, regex_file,speci
     doc_key, ners, relations = load_report_and_graph(cti_path,idx)
     commands,lines_with_index=detect_commands_in_file(
         file_path=report_path,
-        output_path="/root/ClarityG/experiment/ag/command_results.txt",
+        output_path="ClarityG/experiment/ag/command_results.txt",
         threshold=0.9
     )
     text_samples, cmd_samples = build_text_and_text_cmd(lines_with_index)
@@ -423,19 +420,19 @@ def build_merged_attack_graph(models,report_path, cti_path,idx, regex_file,speci
                 )
 
     relation_mapping = {
-        # 文件操作
+
         "RD": "read",
         "WR": "write",
         "EX": "exec",
         "CD": "chmod",
         "UK": "unlink",
-        # 套接字操作
+ 
         "ST": "send",
         "RF": "receive",
-        # 进程操作
+
         "FR": "fork",
         "IJ": "inject",
-        # 命令行
+
         "process-file-read(e1,e2)": "read",
         "process-file-write(e1,e2)": "write",
         "process-file-exec(e1,e2)": "exec",
@@ -460,9 +457,9 @@ def build_merged_attack_graph(models,report_path, cti_path,idx, regex_file,speci
     return merged_nodes, merged_relations
 
 node_shapes = {
-    'file': 'rect',             # 正方形
-    'socket': 'diamond',          # 菱形
-    'process': 'ellipse'           # 椭圆形（与圆形相同）
+    'file': 'rect',             
+    'socket': 'diamond',         
+    'process': 'ellipse'           
 }
 def draw_graph(nodes, relations, output_filename):
 
@@ -498,13 +495,13 @@ def draw_graph(nodes, relations, output_filename):
         if isinstance(src, str):
             src = [src]
         if "cmd" in src and "report" in src:
-            border_color = "blue"  # 合并节点 → 蓝色
+            border_color = "blue"  
             node_source_type = "merged"
         elif "cmd" in src:
-            border_color = "red"   # 新增命令行节点 → 红色
+            border_color = "red"   
             node_source_type = "cmd_only"
         else:
-            border_color = "black" # 报告原始节点 → 黑色
+            border_color = "black" 
             node_source_type = "report_only"
 
         graph.node(
@@ -530,14 +527,14 @@ def draw_graph(nodes, relations, output_filename):
             src_type_2 = target_info["source_type"]
 
             if src_type_1 == "cmd_only" and src_type_2 == "cmd_only":
-                edge_color = "red"  # 两端都是新增节点，红色
+                edge_color = "red"  
             elif src_type_1 == "merged" and src_type_2 == "merged":
-                edge_color = "blue"  # 两端都是合并节点，蓝色
+                edge_color = "blue"  
             elif (src_type_1 == "cmd_only" and src_type_2 == "merged") or (src_type_1 == "merged" and src_type_2 == "cmd_only"):
-                # 一端新增一端合并，边颜色看终点
+           
                 edge_color = "red" if src_type_2 == "cmd_only" else "blue"
             else:
-                edge_color = "black"  # 其他情况黑色
+                edge_color = "black"  
 
             graph.edge(
                 source_info["id"],
@@ -563,7 +560,6 @@ def compare_entities_order(ent1, ent2, positions):
     if not pos_list2:
         return -1
 
-    # 比较最早出现位置
     if min(pos_list1) < min(pos_list2):
         return -1
     elif min(pos_list1) > min(pos_list2):
@@ -575,15 +571,15 @@ def normalize_text_for_match(text):
     if not text:
         return ""
     text = text.lower().strip()
-    text = text.replace("\\\\", "\\").replace("\\", "/")  # 双斜杠和单斜杠统一
-    text = re.sub(r'\s+', '', text)  # 去掉所有空格
-    # 保留常见路径/文件/单词字符
+    text = text.replace("\\\\", "\\").replace("\\", "/")  
+    text = re.sub(r'\s+', '', text)  
+
     text = re.sub(r'[^a-z0-9:/._%-]', '', text)
     return text
 def build_entity_positions(text, entities):
 
     positions = {}
-    text_norm = normalize_text_for_match(text)  # 全文归一化
+    text_norm = normalize_text_for_match(text) 
 
     for ent in entities:
         ent_norm = normalize_text_for_match(ent)
@@ -616,14 +612,13 @@ def process_single_CTI(model,report_path, grucialg_path,idx,regex_file,special_f
 
 
     merged_nodes, merged_relations = build_merged_attack_graph(model,report_path, grucialg_path,idx,regex_file,special_file, threshold=0.9, top_k=1)
-    # 读取全文文本
+    
     with open(report_path, "r", encoding="utf-8") as f:
         full_text = f.read()
-    # 抽取所有实体文本（合并节点和命令行节点都有）
     all_entities = [node["text"] for node in merged_nodes]
-    # 构建实体位置字典
+
     entity_positions = build_entity_positions(full_text, all_entities)
-    # 排序关系
+ 
     sorted_relations = sort_relations_by_text_order(merged_relations, entity_positions)
 
     return merged_nodes, sorted_relations
@@ -632,19 +627,16 @@ def batch_process_reports(models,report_dir, grucialg_path,regex_file, special_f
 
     report_dir = Path(report_dir)
     if not report_dir.exists():
-        print(f"错误: 报告目录 {report_dir} 不存在")
-        return {"error": "报告目录不存在"}
+        return {"error""}
 
     grucialg_data = []
     with open(grucialg_path, "r", encoding="utf-8") as f:
         for line in f:
             line = line.strip()
-            if not line:  # 跳过空行
+            if not line:  
                 continue
             grucialg_data.append(json.loads(line))
 
-    print(f"开始批量处理 CTI 报告...")
-    print(f"找到 {len(grucialg_data)} 个报告文件")
 
     all_results = []
     for idx,detail in enumerate(grucialg_data):
@@ -652,8 +644,8 @@ def batch_process_reports(models,report_dir, grucialg_path,regex_file, special_f
         report_path = report_dir / f"{doc_key}.txt"
         print(report_path)
         nodes,relations=process_single_CTI(models,report_path, grucialg_path,idx,regex_file,special_file, threshold, top_k)
-        # 保存最终得到的图
-        draw_graph(nodes, relations, f"/root/ClarityG/experiment/ag/graph_withTTP_cmd/{doc_key}")
+        
+        draw_graph(nodes, relations, f"ClarityG/experiment/ag/graph_withTTP_cmd/{doc_key}")
         def drop_vec(nodes):
             for n in nodes:
                 n.pop("vec", None)
@@ -664,17 +656,17 @@ def batch_process_reports(models,report_dir, grucialg_path,regex_file, special_f
             "ners": nodes,
             "relations": relations
         })
-    output_json = "/root/ClarityG/experiment/ag/result_cmd_withTTP.json"
+    output_json = "ClarityG/experiment/ag/result_cmd_withTTP.json"
     with open(output_json, "w", encoding="utf-8") as f:
         json.dump(all_results, f, ensure_ascii=False, indent=2)
-    print(f"结果已保存到 {output_json}")
+ 
 
     return all_results
 def load_models():
-    save_path_text = "/root/ClarityG/TTP/result/text_roberta_0.5"
+    save_path_text = "ClarityG/TTP/result/text_roberta_0.5"
     text_model, tokenizer_text, id2label_text = init_text_model(save_path_text, model_path=os.path.join(save_path_text, "best_model_state.pt"))
 
-    save_path_cmd = "/root/ClarityG/TTP/result/dual_0.4"
+    save_path_cmd = "ClarityG/TTP/result/dual_0.4"
     cmd_model, tokenizer_text_cmd, tokenizer_cmd, id2label_cmd = init_dual_model(
         save_path_cmd,
         model_path=os.path.join(save_path_cmd, "best_model_state.pt")
@@ -696,12 +688,11 @@ def load_models():
 
 if __name__ == "__main__":
     models = load_models()
-    regex_file = "/root/ClarityG/regexPattern.json"
-    special_file = "/root/ClarityG/datasets/NER_teshu.txt"
-    report_dir="/root/ClarityG/datasets/reports"
-    grucialg_path= "/root/ClarityG/experiment/ag/crucialg/test_AG_result_all.json"
+    regex_file = "ClarityG/regexPattern.json"
+    special_file = "ClarityG/datasets/NER_teshu.txt"
+    report_dir="ClarityG/datasets/reports"
+    grucialg_path= "ClarityG/experiment/ag/crucialg/test_AG_result_all.json"
 
     start_time = time.time()
     batch_process_reports(models,report_dir, grucialg_path,regex_file, special_file,threshold=0.9, top_k=1)
     end_time = time.time()
-    print(f"总耗时: {end_time - start_time:.2f} 秒")
