@@ -15,12 +15,10 @@ def load_ground_truth_detailed(file_path):
     current_labels = []
 
     def merge_spans(tokens, labels):
-        """
-        按照严格 BIO 规则合并实体。
-        """
+   
         merged = []
         span_tokens = []
-        span_type = None  # 当前 span 类型
+        span_type = None  
 
         def flush_span():
             if span_tokens:
@@ -31,24 +29,24 @@ def load_ground_truth_detailed(file_path):
                 lab_type = "other"
                 lab_prefix = "O"
             else:
-                lab_prefix = lab[0]  # B 或 I
+                lab_prefix = lab[0]  
                 lab_type = lab[2:].lower()
 
             if lab_prefix == "B":
-                # 新开一个实体 span
+              
                 flush_span()
                 span_tokens = [tok]
                 span_type = lab_type
             elif lab_prefix == "I":
-                # 如果当前 span 类型一致且非 other → 合并
+               
                 if span_tokens and span_type == lab_type and span_type != "other":
                     span_tokens.append(tok)
                 else:
-                    # I- 开头但类型不一致，当作 B- 开始新实体
+                   
                     flush_span()
                     span_tokens = [tok]
                     span_type = lab_type
-            else:  # "O"
+            else:  
                 flush_span()
                 span_tokens = [tok]
                 span_type = lab_type
@@ -56,11 +54,10 @@ def load_ground_truth_detailed(file_path):
         flush_span()
         return merged
 
-    # 逐行读取
+
     for line in lines:
         line = line.strip()
 
-        # 空行代表一个命令结束
         if not line:
             if current_cmd_tokens:
                 cmd_text = " ".join(current_cmd_tokens)
@@ -75,7 +72,6 @@ def load_ground_truth_detailed(file_path):
             current_cmd_tokens.append(parts[0])
             current_labels.append(parts[1])
 
-    # 最后一条命令
     if current_cmd_tokens:
         cmd_text = " ".join(current_cmd_tokens)
         merged = merge_spans(current_cmd_tokens, current_labels)
@@ -85,7 +81,7 @@ def load_ground_truth_detailed(file_path):
 
 
 def load_special_phrases(special_file):
-    """加载特殊短语文件"""
+
     special_phrases = {}
     try:
         with open(special_file, 'r', encoding='utf-8') as f:
@@ -95,10 +91,8 @@ def load_special_phrases(special_file):
                     phrase, entity_type = line.split('\t', 1)
                     special_phrases[phrase] = entity_type
 
-        print(f"成功加载 {len(special_phrases)} 个特殊短语")
         return special_phrases
     except Exception as e:
-        print(f"加载特殊短语文件失败: {e}")
         return {}
 
 def match_entity(token, patterns):
@@ -113,13 +107,9 @@ def match_entity(token, patterns):
                     return major_category
     return None
 def extract_entities_from_command(command, patterns, special_phrases):
-    """
-    从单个命令中提取实体
-    输入: 命令行字符串, 正则模式文件路径, 特殊短语字典
-    输出: [(实体内容, 实体类型), ...]
-    """
+
     entities=[]
-    used_positions = set()  # 记录已匹配的位置
+    used_positions = set()  
 
     sorted_special_phrases = sorted(special_phrases.items(), key=lambda x: len(x[0]), reverse=True)
 
@@ -192,9 +182,9 @@ def process_cmd_file(cmd_file, regex_file, special_file):
     try:
         with open(cmd_file, 'r', encoding='utf-8') as f:
             commands = [line.strip() for line in f if line.strip()]
-        print(f"成功读取 {len(commands)} 个命令")
+
     except Exception as e:
-        print(f"读取命令行文件失败: {e}")
+      
         return []
 
     results = []
@@ -203,7 +193,6 @@ def process_cmd_file(cmd_file, regex_file, special_file):
         entities = extract_entities_from_command(command, patterns, special_phrases)
         results.append((command, entities))
 
-    print(f"处理完成！总共处理了 {len(commands)} 个命令")
 
     return results
 
@@ -216,8 +205,7 @@ def evaluate_with_details(ground_truth, regex_results, target_types={"process","
     detailed_results = []
     all_errors = []
 
-    if len(ground_truth) != len(regex_results):
-        print(f"警告：真实标签 {len(ground_truth)} 条，预测 {len(regex_results)} 条，不一致！")
+
     N = min(len(ground_truth), len(regex_results))
 
     for idx in range(N):
@@ -256,7 +244,7 @@ def evaluate_with_details(ground_truth, regex_results, target_types={"process","
             "FN": list(fn_set_all)
         })
 
-        # 记录差错
+  
         if fp_set_all or fn_set_all:
             all_errors.append({
                 "index": idx,
@@ -277,22 +265,17 @@ def evaluate_with_details(ground_truth, regex_results, target_types={"process","
     f1_target = 2 * precision_target * recall_target / (precision_target + recall_target + 1e-10)
     accuracy_target = total_tp_target / (total_gt_target + 1e-10)
 
-    for err in all_errors:
-        print(f"\n【第 {err['index']} 条】命令：{err['cmd']}")
-        print("  真实集合：", err["gt"])
-        print("  预测集合：", err["pred"])
-        print("  FP:", err["FP"])
-        print("  FN:", err["FN"])
+
 
     return (precision_all, recall_all, accuracy_all, f1_all,
             precision_target, recall_target, accuracy_target, f1_target,
             detailed_results)
 
 if __name__ == "__main__":
-    ground_truth_file = "/root/ClarityG/datasets/NER_bio.txt"
-    cmd_file = "/root/ClarityG/datasets/NER_cmd.txt"
-    regex_file = "/root/ClarityG/regexPattern.json"
-    special_file = "/root/ClarityG/datasets/NER_teshu.txt"
+    ground_truth_file = "ClarityG/datasets/NER_bio.txt"
+    cmd_file = "ClarityG/datasets/NER_cmd.txt"
+    regex_file = "ClarityG/regexPattern.json"
+    special_file = "ClarityG/datasets/NER_teshu.txt"
 
     ground_truth=load_ground_truth_detailed(ground_truth_file)
     regex_results = process_cmd_file(cmd_file, regex_file, special_file)
