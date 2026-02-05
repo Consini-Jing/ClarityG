@@ -13,29 +13,23 @@ from torch_geometric.data import Data
 from torch_geometric.loader import DataLoader
 from torch_geometric.nn import GCNConv, ARGVA
 
-##########################################
-#           全局配置
-##########################################
+
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-EMBED_DIM = 64          # 输出图 embedding 维度
+EMBED_DIM = 64         
 HIDDEN_DIM = EMBED_DIM * 2
 EPOCHS = 300
 LR = 1e-3
 BATCH_SIZE = 4
 
-##########################################
-#        读取 JSON 格式的 CAG 图
-##########################################
+
 
 def load_json_graph(path):
     with open(path, "r", encoding="utf-8") as f:
         g = json.load(f)
     return g
 
-##########################################
-#     扫描文件每一行，并构建 node/edge 类型集合
-##########################################
+
 
 def scan_graph_types(file_path):
     node_types = set()
@@ -51,13 +45,10 @@ def scan_graph_types(file_path):
     edge_types = sorted(list(edge_types))
     node_map = {t: i for i, t in enumerate(node_types)}
     edge_map = {t: i for i, t in enumerate(edge_types)}
-    print("节点类型映射：", node_map)
-    print("边类型映射：", edge_map)
+
     return node_map, edge_map
 
-##########################################
-#     JSON → PyG Data（含小图处理）
-##########################################
+
 
 def graph_to_data(g, node_map, edge_map):
     node_index = {}
@@ -76,16 +67,16 @@ def graph_to_data(g, node_map, edge_map):
         src = node_index[e["source"]]
         tgt = node_index[e["target"]]
         etype = edge_map[e["type"]]
-        # 双向边
+   
         edge_index.append([src, tgt])
         edge_index.append([tgt, src])
         edge_attr.append([etype])
         edge_attr.append([etype])
 
-    # ---- 小图处理 ----
+
     num_nodes = len(node_features)
     if num_nodes <= 1:
-        # 至少有一个自环
+     
         edge_index.append([0, 0])
         edge_index.append([0, 0])
         edge_attr.append([0])
@@ -96,9 +87,7 @@ def graph_to_data(g, node_map, edge_map):
 
     return Data(x=x, edge_index=edge_index, edge_attr=edge_attr)
 
-##########################################
-#         Graph Encoder（GCN）
-##########################################
+
 
 class Encoder(torch.nn.Module):
     def __init__(self, in_channels, hidden_channels, out_channels):
@@ -111,9 +100,7 @@ class Encoder(torch.nn.Module):
         h = self.conv1(x, edge_index).relu()
         return self.conv_mu(h, edge_index), self.conv_logstd(h, edge_index)
 
-##########################################
-#               训练模型
-##########################################
+
 
 def train_autoencoder(datalist, feature_dim):
     dataloader = DataLoader(datalist, batch_size=BATCH_SIZE, shuffle=True)
@@ -131,11 +118,11 @@ def train_autoencoder(datalist, feature_dim):
 
             z = model.encode(data.x, data.edge_index)
 
-            # ---- 小图安全处理 ----
+      
             try:
                 loss = model.recon_loss(z, data.edge_index)
             except AssertionError:
-                # 对于 1~2 节点的小图，负采样失败时跳过重建损失
+        
                 loss = torch.tensor(0.0, device=device)
 
             loss += model.reg_loss(z)
@@ -147,9 +134,7 @@ def train_autoencoder(datalist, feature_dim):
 
     return model
 
-##########################################
-#       生成每张图的 embedding
-##########################################
+
 
 def get_graph_embedding(model, data):
     model.eval()
@@ -158,9 +143,7 @@ def get_graph_embedding(model, data):
         z = z.mean(dim=0)
         return z.cpu().numpy()
 
-##########################################
-#                相似度计算
-##########################################
+
 
 def calculate_similarity(emb1, emb2):
     sims = []
@@ -170,9 +153,7 @@ def calculate_similarity(emb1, emb2):
     sims = [(x + 1) / 2 for x in sims]
     return float(np.mean(sims)), sims
 
-##########################################
-#                 主程序
-##########################################
+
 
 def load_graph_file(jsonl_path, node_map, edge_map):
     datalist = []
@@ -185,43 +166,35 @@ def load_graph_file(jsonl_path, node_map, edge_map):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--train_gt", type=str, help="用于训练的 GT 图文件")
-    parser.add_argument("--test_gt", type=str, help="用于测试的 GT 图文件")
-    parser.add_argument("--test_pred", type=str, help="用于测试的预测图文件")
+    parser.add_argument("--train_gt", type=str)
+    parser.add_argument("--test_gt", type=str)
+    parser.add_argument("--test_pred", type=str)
     parser.add_argument("--train", action="store_true")
     parser.add_argument("--eval", action="store_true")
     parser.add_argument("--model", type=str, default="./graph_autoencoder.pt")
     args = parser.parse_args()
 
-    # 构建类型映射
     node_map, edge_map = scan_graph_types(args.train_gt)
 
-    # 加载训练数据
     train_list = load_graph_file(args.train_gt, node_map, edge_map)
 
-    # 加载测试数据
     if args.eval:
         test_gt_list = load_graph_file(args.test_gt, node_map, edge_map)
         test_pred_list = load_graph_file(args.test_pred, node_map, edge_map)
 
-    # 训练
     if args.train:
         print("==== Training Graph AutoEncoder ====")
         model = train_autoencoder(train_list, feature_dim=len(node_map))
         torch.save(model, args.model)
-        print("模型已保存:", args.model)
+        
 
-    # 测试
     if args.eval:
         print("==== Evaluating Similarity ====")
         model = torch.load(args.model)
         gt_emb = np.array([get_graph_embedding(model, g) for g in test_gt_list])
         pred_emb = np.array([get_graph_embedding(model, p) for p in test_pred_list])
         avg_sim, sims = calculate_similarity(gt_emb, pred_emb)
-        print("\n===============================")
-        print("平均图相似度 =", avg_sim)
-        print("===============================")
-        print("每张图相似度 =", sims)
+ 
 
 if __name__ == "__main__":
     main()
