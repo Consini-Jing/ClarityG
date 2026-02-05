@@ -10,7 +10,6 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 from tqdm import tqdm
 import numpy as np
 
-# ===== 配置参数 =====
 roberta_path = "./models/roberta-base"
 codebert_path = "./models/codebert-base"
 dataset_path = "./data/cmd/TTPs_cmd_text_filtered.json"
@@ -21,7 +20,6 @@ EPOCHS = 50
 lr_encoder = 2e-5
 lr_classifier = 4e-5
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-print("识别到的设备:", device)
 
 
 def clean_text(text):
@@ -148,7 +146,7 @@ def evaluate(model, dataloader, device, threshold=0.5, label2id=None,):
     macro_p = precision_score(all_labels, all_preds, average="macro", zero_division=0)
     macro_r = recall_score(all_labels, all_preds, average="macro", zero_division=0)
 
-    # 自定义 F0.5
+  
     def f_beta(p, r, beta=0.5):
         if p + r == 0:
             return 0.0
@@ -201,12 +199,11 @@ if __name__ == "__main__":
         item["text"] = clean_text(item.get("text", ""))
         item["command"] = clean_text(item.get("command", ""))
 
-    print(f"数据数量: {len(raw_data)} 条")
+
 
     all_labels = sorted({l for item in raw_data for l in item.get("labels", [])})
     label2id = {label: idx for idx, label in enumerate(all_labels)}
-    print(f"标签数量: {len(all_labels)}")
-    print(f"标签列表: {all_labels}")
+  
 
     dataset = TextCmdDataset(raw_data, tokenizer_text, tokenizer_cmd, max_length, label2id)
     total_size = len(dataset)
@@ -301,7 +298,7 @@ if __name__ == "__main__":
             tokenizer_cmd.save_pretrained(f"{save_path}/tokenizer_cmd")
             with open(os.path.join(save_path, "label2id.json"), "w", encoding="utf-8") as f_json:
                 json.dump(label2id, f_json, ensure_ascii=False, indent=4)
-            print(f"最优模型已保存 (Val Macro-F0.5={best_score:.4f})")
+
 
         gc.collect()
         torch.cuda.empty_cache()
