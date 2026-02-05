@@ -37,7 +37,7 @@ def init_dual_model(save_path, model_path=None):
         "ClarityG/TTP/models/roberta-base"
     )
     codebert_encoder = RobertaModel.from_pretrained(
-        "/root/ClarityG/TTP/models/codebert-base"
+        "ClarityG/TTP/models/codebert-base"
     )
 
     model = DualEncoder(
