@@ -144,7 +144,7 @@ def evaluate(model, dataloader, device, threshold=0.05, label2id=None,
 
 
 if __name__ == "__main__":
-    # 参数
+
     roberta_path = "./models/roberta-base"
     dataset_path = "./data/text/TTPs_text_filtered.json"
     save_path = "./text_roberta_0.5"
@@ -154,7 +154,7 @@ if __name__ == "__main__":
     lr_classifier = 4e-5
     EPOCHS = 40
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    print("当前训练设备:", device)
+
 
     tokenizer = RobertaTokenizer.from_pretrained(roberta_path)
     roberta_encoder = RobertaModel.from_pretrained(roberta_path)
@@ -167,13 +167,10 @@ if __name__ == "__main__":
         text = clean_text(item.get("text", ""))
         item["text"] = text
 
-    print(f"原始数据: {len(raw_data_all)} 条, 过滤后仅 text 类型: {len(raw_data)} 条")
-
+ 
     all_labels = sorted({l for item in raw_data for l in item.get("labels", [])})
     label2id = {label: idx for idx, label in enumerate(all_labels)}
-    print(f"标签数量: {len(all_labels)}")
-    print(f"标签列表: {all_labels}")
-
+   
     dataset = TextDataset(raw_data, tokenizer, max_length, label2id)
     total_size = len(dataset)
     train_size = int(0.7 * total_size)
@@ -195,7 +192,6 @@ if __name__ == "__main__":
         {"params": model.classifier.parameters(), "lr": lr_classifier}
     ])
 
-    # 日志
     os.makedirs(save_path, exist_ok=True)
     log_file = os.path.join(save_path, "train_log.csv")
     with open(log_file, "w", encoding="utf-8") as f:
@@ -208,7 +204,7 @@ if __name__ == "__main__":
             "test_macro_p,test_macro_r,test_macro_f05,"
             "test_sample_p,test_sample_r,test_sample_f05\n"
         )
-    # 训练
+
     best_score = 0.0
     for epoch in range(0,EPOCHS):
         model.train()
@@ -269,7 +265,7 @@ if __name__ == "__main__":
             tokenizer.save_pretrained(f"{save_path}/tokenizer")
             with open(os.path.join(save_path, "label2id.json"), "w", encoding="utf-8") as f_json:
                 json.dump(label2id, f_json, ensure_ascii=False, indent=4)
-            print(f"最优模型已保存 (Val Macro-F0.5={best_score:.4f})")
+
 
         gc.collect()
         torch.cuda.empty_cache()
