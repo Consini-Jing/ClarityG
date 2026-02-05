@@ -13,16 +13,7 @@ logger = logging.getLogger(__name__)
 
 
 class InputExample(object):
-    """
-    A single training/test example for simple sequence classification.
-    每条命令行或句子在训练前都会被封装成 InputExample 对象
-    Args:
-        guid: Unique id for the example.
-        text_a: string. The untokenized text of the first sequence. For single
-        sequence tasks, only this sequence must be specified.
-        label: (Optional) string. The label of the example. This should be
-        specified for train and dev examples, but not for test examples.
-    """
+
 
     def __init__(self, guid, text_a, label):
         self.guid = guid
@@ -32,62 +23,47 @@ class InputExample(object):
     def __repr__(self):
         return str(self.to_json_string())
 
-    #把对象转换成字典
     def to_dict(self):
-        """Serializes this instance to a Python dictionary."""
         output = copy.deepcopy(self.__dict__)
         return output
-    #把对象序列化成 JSON，方便打印和调试。
     def to_json_string(self):
-        """Serializes this instance to a JSON string."""
+ 
         return json.dumps(self.to_dict(), indent=2, sort_keys=True) + "\n"
 
 
 class InputFeatures(object):
-    """
-    A single set of features of data.
-    表示模型输入的特征
-    Args:
-        input_ids: Indices of input sequence tokens in the vocabulary.
-        attention_mask: Mask to avoid performing attention on padding token indices.
-            Mask values selected in ``[0, 1]``:
-            Usually  ``1`` for tokens that are NOT MASKED, ``0`` for MASKED (padded) tokens.
-        token_type_ids: Segment token indices to indicate first and second portions of the inputs.
-    """
+
 
     def __init__(self, input_ids, attention_mask, token_type_ids, label_id, e1_mask, e2_mask,text):
-        self.input_ids = input_ids #tokenizer 将文本转换的 token id。
-        self.attention_mask = attention_mask #用于指示哪些 token 是 padding（0）哪些是实际 token（1）
-        self.token_type_ids = token_type_ids #BERT 用于区分 sequence A 和 B 的 segment id
-        self.label_id = label_id #对应的关系标签 id
+        self.input_ids = input_ids
+        self.attention_mask = attention_mask 
+        self.token_type_ids = token_type_ids 
+        self.label_id = label_id 
         self.e1_mask = e1_mask
-        self.e2_mask = e2_mask #表示实体1/实体2在序列中的位置（span mask）
-        self.text=text #实际的文本
+        self.e2_mask = e2_mask 
+        self.text=text 
 
     def __repr__(self):
         return str(self.to_json_string())
 
     def to_dict(self):
-        """Serializes this instance to a Python dictionary."""
         output = copy.deepcopy(self.__dict__)
         return output
 
     def to_json_string(self):
-        """Serializes this instance to a JSON string."""
         return json.dumps(self.to_dict(), indent=2, sort_keys=True) + "\n"
 
 
 class SemEvalProcessor(object):
-    """Processor for the Semeval data set """
-    #专门读取数据集（这里是 SemEval 格式或者类似格式）并生成
+
     def __init__(self, args):
         self.args = args
         self.relation_labels = get_label(args)
 
-    #作用：读取 TSV 文件（Tab 分隔文件），返回 lines 列表。
+
     @classmethod
     def _read_tsv(cls, input_file, quotechar=None):
-        """Reads a tab separated value file."""
+    
         with open(input_file, "r", encoding="utf-8") as f:
             reader = csv.reader(f, delimiter="\t", quotechar=quotechar)
             lines = []
@@ -95,9 +71,8 @@ class SemEvalProcessor(object):
                 # print(line)
                 lines.append(line)
             return lines
-    #把 lines 转换成 InputExample 对象
+   
     def _create_examples(self, lines, set_type):
-        """Creates examples for the training and dev sets."""
         examples = []
         for (i, line) in enumerate(lines):
             guid = "%s-%s" % (set_type, i)
@@ -107,12 +82,9 @@ class SemEvalProcessor(object):
                 logger.info(line)
             examples.append(InputExample(guid=guid, text_a=text_a, label=label))
         return examples
-    #根据 mode 选择读取文件（train/dev/test）
+
     def get_examples(self, mode):
-        """
-        Args:
-            mode: train, dev, test
-        """
+       
         file_to_read = None
         if mode == "train":
             file_to_read = self.args.train_file
@@ -146,35 +118,23 @@ def convert_examples_to_features(
             logger.info("Writing example %d of %d" % (ex_index, len(examples)))
 
         tokens_a = tokenizer.tokenize(example.text_a)
-        #定位实体
+    
         e11_p = tokens_a.index("<e1>")  # the start position of entity1
         e12_p = tokens_a.index("</e1>")  # the end position of entity1
         e21_p = tokens_a.index("<e2>")  # the start position of entity2
         e22_p = tokens_a.index("</e2>")  # the end position of entity2
-        # try:
-        #     e11_p = tokens_a.index("<e1>")
-        #     e12_p = tokens_a.index("</e1>")
-        #     e21_p = tokens_a.index("<e2>")
-        #     e22_p = tokens_a.index("</e2>")
-        # except ValueError as e:
-        #     logger.warning(f"Skipping example {ex_index} due to missing entity tag: {example.text_a}")
-        #     continue
-
-        #替换实体标签为特殊符号
-        # Replace the token
+        
         tokens_a[e11_p] = "$"
         tokens_a[e12_p] = "$"
         tokens_a[e21_p] = "#"
         tokens_a[e22_p] = "#"
 
-        # Add 1 because of the [CLS] token
         e11_p += 1
         e12_p += 1
         e21_p += 1
         e22_p += 1
 
-        #计算 token 位置 + 截断
-        # Account for [CLS] and [SEP] with "- 2" and with "- 3" for RoBERTa.
+       
         if add_sep_token:
             special_tokens_count = 2
         else:
@@ -183,37 +143,26 @@ def convert_examples_to_features(
             tokens_a = tokens_a[: (max_seq_len - special_tokens_count)]
             print(tokens_a)
         tokens = tokens_a
-        #拼接 [SEP]
+     
         if add_sep_token:
             tokens += [sep_token]
 
         token_type_ids = [sequence_a_segment_id] * len(tokens)
-        # 拼接 [CLS]
+   
         tokens = [cls_token] + tokens
         token_type_ids = [cls_token_segment_id] + token_type_ids
 
         input_ids = tokenizer.convert_tokens_to_ids(tokens)
-        # ---------------- 检查 input_ids 是否越界 ----------------
-        num_embeddings = tokenizer.vocab_size  # 或者 model.get_input_embeddings().num_embeddings
-        for idx in input_ids:
-            if idx >= num_embeddings or idx < 0:
-                print("⚠️ 越界 token idx:", idx)
-                print("对应 tokens:", tokens)
-                print("原文本:", example.text_a)
-                # 可选择替换成 [UNK] 或跳过此样本
-                # idx = tokenizer.unk_token_id
-        # ---------------------------------------------------------
 
-        # The mask has 1 for real tokens and 0 for padding tokens. Only real tokens are attended to.
+        num_embeddings = tokenizer.vocab_size 
+
         attention_mask = [1 if mask_padding_with_zero else 0] * len(input_ids)
 
-        # Zero-pad up to the sequence length.
         padding_length = max_seq_len - len(input_ids)
         input_ids = input_ids + ([pad_token] * padding_length)
         attention_mask = attention_mask + ([0 if mask_padding_with_zero else 1] * padding_length)
         token_type_ids = token_type_ids + ([pad_token_segment_id] * padding_length)
 
-        # e1 mask, e2 mask
         e1_mask = [0] * len(attention_mask)
         e2_mask = [0] * len(attention_mask)
 
@@ -254,14 +203,13 @@ def convert_examples_to_features(
                 text=example.text_a
             )
         )
-        #打印恶意样本
+        
         for f in features:
             if sum(f.e1_mask) == 0 or sum(f.e2_mask) == 0:
                 print("Mask issue:", f.text)
 
     return features
 
-# 把 dataset 转成 PyTorch TensorDataset 并缓存，避免每次训练都重新处理。
 def load_and_cache_examples(args, tokenizer, mode):
     processor = processors[args.task](args)
 
@@ -296,7 +244,6 @@ def load_and_cache_examples(args, tokenizer, mode):
         logger.info("Saving features into cached file %s", cached_features_file)
         torch.save(features, cached_features_file)
 
-    # Convert to Tensors and build dataset
     all_input_ids = torch.tensor([f.input_ids for f in features], dtype=torch.long)
     all_attention_mask = torch.tensor([f.attention_mask for f in features], dtype=torch.long)
     all_token_type_ids = torch.tensor([f.token_type_ids for f in features], dtype=torch.long)
