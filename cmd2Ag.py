@@ -8,23 +8,17 @@ from collections import defaultdict
 from test import predict_single
 
 def read_commands_from_file(file_path):
-    """
-    从文本文件中读取命令行内容
-    参数: file_path (str): 文本文件的路径
-    返回: list: 包含所有非空命令行的列表
-    """
+   
     commands = []
     try:
         with open(file_path, 'r', encoding='utf-8') as file:
             for line in file:
-                stripped_line = line.strip()     # 去除首尾空白字符
-                if stripped_line: # 跳过空行
+                stripped_line = line.strip()    
+                if stripped_line: 
                     commands.append(stripped_line)
     except FileNotFoundError:
-        print(f"错误: 文件 {file_path} 未找到")
         return None
     except Exception as e:
-        print(f"读取文件时发生错误: {str(e)}")
         return None
     return commands
 
@@ -37,7 +31,6 @@ def cmd_split(cmd):
     cmd=remove_all_quotes(cmd)
     return shlex.split(cmd, posix=False)
 
-# 实体识别
 def load_patterns(filepath):
     with open(filepath, 'r', encoding='utf-8') as f:
         return json.load(f)
@@ -92,10 +85,7 @@ def generate_tagged_sentences(entities, valid_types={'process', 'file', 'socket'
     return cmd
 
 def process_command_line_single(command, regex_file="regexPattern.json"):
-    """
-    处理单句命令行,得到标注的命令行以及对应的标签,通过合理性以进行判断修复
-    最后得到所有的关系，包括两个实体节点和对应的边
-    """
+ 
     raw_relations=[]
     patterns = load_patterns(regex_file)
     cmd_list = cmd_split(command)
@@ -223,9 +213,8 @@ def rule_based_relation_fix(command,tagged_cmd,e1_text,e1_type,e2_text,e2_type,p
         "process-process-unlink(e1,e2)"
     ]
     if type_pair not in valid_relations:
-        return prediction  # 类型不支持，无修复
+        return prediction  
 
-    # 获取实体在命令中的位置（基于tagged_cmd的e1/e2）
     tokens = tagged_cmd.split()
     e1_idx = next((i for i, tok in enumerate(tokens) if "<e1>" in tok), -1)
     e2_idx = next((i for i, tok in enumerate(tokens) if "<e2>" in tok), -1)
@@ -238,7 +227,7 @@ def rule_based_relation_fix(command,tagged_cmd,e1_text,e1_type,e2_text,e2_type,p
         e2_window = tokens[max(0, e2_idx - window_size): e2_idx + window_size + 1]
         context_window = set(e1_window + e2_window)
         for word in context_window:
-            # 清理特殊标记符号
+        
             word_clean = word.lower().strip("<>/\\\"'=,;()[]")
             if word_clean in keywords:
                 score += keywords[word_clean]
@@ -246,10 +235,10 @@ def rule_based_relation_fix(command,tagged_cmd,e1_text,e1_type,e2_text,e2_type,p
         prob_dict = dict(zip(label_list, probs))
         fused_scores = {}
         for rel in relation_scores:
-            # prob = probs.get(rel, 0)  # 原模型 softmax 概率
+            # prob = probs.get(rel, 0)  
             prob = prob_dict.get(rel, 0)
             keyword_score = relation_scores[rel]
-            fused_scores[rel] = 0.3 * keyword_score + 0.7 * prob  # 可调整权重比例
+            fused_scores[rel] = 0.3 * keyword_score + 0.7 * prob  
 
     best_relation, best_score = max(fused_scores.items(), key=lambda x: x[1])
     threshold = 0.5
@@ -328,32 +317,26 @@ def repair_other_relations_with_defaults(relations, entities_list):
 
         return unique_relations
     else:
-        # 不是所有都是 Other，保持原样返回
         return relations
 
 node_shapes = {
-    'file': 'rect',             # 正方形
-    'socket': 'diamond',          # 菱形
-    'process': 'ellipse'           # 椭圆形（与圆形相同）
+    'file': 'rect',             
+    'socket': 'diamond',         
+    'process': 'ellipse'           
 }
 def draw_graph(relations,output_filename):
-    """
-       将多对关系绘制成图形，但过滤掉Other类型的关系
-       参数:
-           relations: 关系列表，每个元素格式为 [源节点, 源类型, 目标节点, 目标类型, 关系类型]
-           output_filename: 输出文件名(不带扩展名)
-       """
+
     graph = graphviz.Digraph(output_filename, filename=output_filename + ".dot")
 
     graph.attr(
-        rankdir='LR',  # 从左到右布局
-        size='9',  # 图形大小
-        splines='true',  # 使用曲线边
-        nodesep='0.3',  # 节点间距
-        ranksep='0.5',  # 层级间距
-        fontsize='10',  # 字体大小
-        overlap='false',  # 防止节点重叠
-        engine='dot'  # 更适合复杂图的布局引擎
+        rankdir='LR', 
+        size='9',  
+        splines='true',  
+        nodesep='0.3', 
+        ranksep='0.5',  
+        fontsize='10',  
+        overlap='false',  
+        engine='dot'  
     )
 
     added_nodes = {}
@@ -362,7 +345,7 @@ def draw_graph(relations,output_filename):
         source_node, source_type, target_node, target_type, relation_type = relation
 
         if relation_type=="Other":
-            continue  # 跳过Other类型的关系
+            continue  
 
         source_label = source_node.replace('\\', '\\\\')
         target_label = target_node.replace('\\', '\\\\')
@@ -400,5 +383,4 @@ def draw_graph(relations,output_filename):
 if __name__ == "__main__":
     commands=r"C:\Windows\system32\cmd.exe /c cd %appdata%\Microsoft\Network && powershell Expand-Archive python-3.10.4-embed-amd64.zip -DestinationPath %appdata%\Microsoft\Network"
     results=process_command_line_single(commands)
-    print(results)
     # draw_graph(results,"aaa")
