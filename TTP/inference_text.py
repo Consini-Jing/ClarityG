@@ -4,7 +4,7 @@ from transformers import RobertaTokenizer, RobertaModel
 import json
 import torch.nn as nn
 
-save_path = "/root/ClarityG/TTP/result/text_roberta_0.5"
+save_path = "ClarityG/TTP/result/text_roberta_0.5"
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
@@ -27,7 +27,7 @@ def init_text_model(save_path, model_path=None):
 
     tokenizer = RobertaTokenizer.from_pretrained(f"{save_path}/tokenizer")
 
-    roberta_encoder = RobertaModel.from_pretrained("/root/ClarityG/TTP/models/roberta-base")
+    roberta_encoder = RobertaModel.from_pretrained("ClarityG/TTP/models/roberta-base")
     model = RobertaClassifier(roberta_encoder, hidden_size=768, num_labels=len(label2id))
     if model_path is not None:
         model.load_state_dict(torch.load(model_path, map_location=device))
@@ -59,7 +59,7 @@ def predict_texts(texts, model, tokenizer, id2label, threshold=0.4):
         results.append({"labels": pred_labels, "probs": prob})
     return results
 
-# ===== 使用示例 =====
+
 if __name__ == "__main__":
     texts = [
         "The attacker exploited a vulnerability to achieve remote code execution.",
