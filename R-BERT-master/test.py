@@ -102,8 +102,8 @@ def predict_single(text, model_dir, no_cuda=False):
     return label_list[pred_idx],probs[0].tolist()
 
 
-# 示例调用
+
 if __name__ == "__main__":
     command_line = '<e1>powershell.exe</e1>  Set-ItemProperty -Force -Path  \'HKLM:\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\WDigest\' -Name  \'<e2>UseLogonCredential</e2>\' -Value \'1\''
-    model_path = "/root/ClarityG/R-BERT-master/model"
+    model_path = "ClarityG/R-BERT-master/model"
     prediction,confidence = predict_single(command_line, model_path)
