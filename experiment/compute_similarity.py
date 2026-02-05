@@ -129,7 +129,7 @@ def get_graph_embedding(model, data):
     model.eval()
     with torch.no_grad():
         z = model.encode(data.x.to(device), data.edge_index.to(device))
-        z = z.mean(dim=0)  # 图级 embedding
+        z = z.mean(dim=0)  
         return z.cpu().numpy()
 
 def calculate_similarity(emb1, emb2):
