@@ -6,9 +6,9 @@ import graphviz
 import argparse
 
 node_shapes = {
-    'F': 'rect',             # 正方形
-    'O': 'diamond',          # 菱形
-    'P': 'ellipse'           # 椭圆形（与圆形相同）
+    'F': 'rect',             
+    'O': 'diamond',          
+    'P': 'ellipse'           
 }
 
 def read(json_file):
@@ -18,7 +18,7 @@ def read(json_file):
 def get_new_ner_re(ns, rs):
     final_ner = []
     final_re = []
-    re_nodes = set()#
+    re_nodes = set()
     for e in rs:
         re_nodes.add(e[0])
         re_nodes.add(e[3])
@@ -40,7 +40,7 @@ def deduplicate_nodes(nodes,res):
     node_map_new={}
     index = 0
     for n in nodes:
-        n_lower=n[4].lower()#大小写统一处理
+        n_lower=n[4].lower()
         if n_lower not in node_pos:
             node_pos[n_lower]=n
             node_map_new[n_lower]=index
@@ -59,7 +59,7 @@ def deduplicate_nodes(nodes,res):
 
 def deduplicate_edges(res):
     new_re = []
-    edge_pos = set()  # 存储边的内容
+    edge_pos = set()  
     index = 0
     for r in res:
         edge_tuple=(r[6],r[7],r[8])
@@ -90,7 +90,6 @@ def draw_graph(new_nodes, new_edges, li):
         n_id += 1
     e_id = 0
     for edge in new_edges:
-        #索引、索引、label、边类型（字符）
         new_graph.edge(str(edge[0]), str(edge[1]), label=str(e_id) + '. ' + edge[2])
         e_id += 1
 
@@ -100,17 +99,16 @@ def draw_graph(new_nodes, new_edges, li):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    #输入 JSON 文件的路径
     parser.add_argument('--graph_generator_json', type=str, default=None, required=True,
                         help="result from ner model")
-    #输出的 JSON 文件路径
+
     parser.add_argument('--asg_reconstruction_json', type=str, default=None, required=True,
                         help="ner screening results")
-    #输出的可视化图存储目录
+   
     parser.add_argument('--asg_reconstruction_graph', type=str, default=None, required=True,
                         help="ner screening results")
     args = parser.parse_args()
-    re_predict_data = read(args.graph_generator_json)# 读入指定的文件
+    re_predict_data = read(args.graph_generator_json)
     f = open(args.asg_reconstruction_json, 'w', encoding='utf-8')
     for d_js in re_predict_data:
         new_json = {}
@@ -118,7 +116,6 @@ if __name__ == "__main__":
         ners = d_js['ners']
         res = d_js['relations']
         indice = -1
-        #处理节点格式
         for i in range(len(ners)):
             if len(ners[i]) < 2:
                 ners[i] = [indice, indice, ners[i][0]]
