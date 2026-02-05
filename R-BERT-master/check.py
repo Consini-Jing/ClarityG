@@ -3,22 +3,22 @@ import torch
 import torch.nn as nn
 from transformers import BertTokenizer
 import pandas as pd
-from model import RBERT  # 你的模型文件
+from model import RBERT  
 from types import SimpleNamespace
 
 
 args = SimpleNamespace()
-args.dropout_rate = 0.1  # 根据你训练时的 dropout_rate
-args.max_seq_len = 256   # 和训练一致
+args.dropout_rate = 0.1  
+args.max_seq_len = 256   
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-# 配置
-MODEL_NAME = "bert-base-uncased"  # 或你的本地模型路径
+
+MODEL_NAME = "bert-base-uncased"  
 MAX_SEQ_LEN = 256
 TRAIN_FILE = "./data_CTI/train.tsv"
 
-# 你的标签列表
+
 LABEL_LIST = [
     "Other",
     "process-file-read(e1,e2)",
@@ -37,7 +37,6 @@ LABEL2ID = {label: i for i, label in enumerate(LABEL_LIST)}
 
 
 def preprocess_text(text, tokenizer, max_len):
-    """Tokenize并生成input_ids, attention_mask"""
     encoded = tokenizer.encode_plus(
         text,
         add_special_tokens=True,
@@ -50,14 +49,12 @@ def preprocess_text(text, tokenizer, max_len):
 
 
 def main():
-    # 加载tokenizer和模型
     tokenizer = BertTokenizer.from_pretrained(MODEL_NAME)
     model = RBERT.from_pretrained(MODEL_NAME, args=args, num_labels=len(LABEL_LIST))
 
     model.to(DEVICE)
     model.eval()
 
-    # 加载训练数据
     df = pd.read_csv(TRAIN_FILE, sep="\t", header=None, names=["label", "text"])
 
     nan_found = False
