@@ -2,7 +2,7 @@ import torch
 from transformers import RobertaTokenizer, RobertaForSequenceClassification
 from typing import List, Tuple, Union
 
-MODEL_PATH = "/root/ClarityG/experiment/results/command-detection-roberta-balanced"
+MODEL_PATH = "ClarityG/experiment/results/command-detection-roberta-balanced"
 BATCH_SIZE = 32
 MAX_LENGTH = 128
 tokenizer = RobertaTokenizer.from_pretrained(MODEL_PATH)
@@ -21,14 +21,13 @@ def model_is_command(text: str, threshold: float = 0.9) -> Tuple[bool, float]:
     with torch.no_grad():
         outputs = model(**inputs)
         probs = torch.softmax(outputs.logits, dim=1)
-        prob = probs[0, 1].item()  # 获取命令类别的概率
+        prob = probs[0, 1].item()  
 
     return prob >= threshold, prob
 def detect_commands_in_file(file_path: str, output_path: str, threshold: float = 0.9):
     with open(file_path, "r", encoding="utf-8") as f:
         lines = [line.strip() for line in f if line.strip()]
 
-    # ===== 1. 原来的命令行识别 =====
     results = []
     commands = []
 
@@ -63,15 +62,14 @@ def detect_commands_in_file(file_path: str, output_path: str, threshold: float =
     with open(output_path, "w", encoding="utf-8") as f_out:
         for text, is_command, prob in results:
             status = "[COMMAND]" if is_command else "[TEXT]"
-            f_out.write(f"{status} {text} (置信度: {prob:.4f})\n")
+            f_out.write(f"{status} {text} (Confidence: {prob:.4f})\n")
 
     return commands, all_lines_with_index
 
 
-#  运行入口
 if __name__ == "__main__":
     results,_=detect_commands_in_file(
-        file_path="/root/ClarityG/datasets/reports_cmd/01Threat Spotlight Cyber Criminal Adoption of IPFS for Phishing, Malware Campaigns.txt",
+        file_path="ClarityG/datasets/reports_cmd/01Threat Spotlight Cyber Criminal Adoption of IPFS for Phishing, Malware Campaigns.txt",
         output_path="command_results.txt",
         threshold=0.9
     )
