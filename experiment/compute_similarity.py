@@ -49,8 +49,6 @@ def scan_graph_types(folder):
     node_map = {t: i for i, t in enumerate(node_types)}
     edge_map = {t: i for i, t in enumerate(edge_types)}
 
-    print("节点类型映射：", node_map)
-    print("边类型映射：", edge_map)
 
     return node_map, edge_map
 
@@ -59,7 +57,7 @@ def graph_to_data(g, node_map, edge_map):
     node_index = {}
     node_features = []
 
-    # ---- 建立节点编号映射 ----
+
     for idx, node in enumerate(g["nodes"]):
         node_index[node["id"]] = idx
         node_features.append(node_map[node["type"]])
@@ -135,9 +133,7 @@ def get_graph_embedding(model, data):
         return z.cpu().numpy()
 
 def calculate_similarity(emb1, emb2):
-    """
-    emb1, emb2: 均为矩阵 shape = (N_graphs, embed_dim)
-    """
+
     sims = []
     for a, b in zip(emb1, emb2):
         s = cosine_similarity(a.reshape(1, -1), b.reshape(1, -1))[0][0]
@@ -159,8 +155,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--train", action="store_true")
     parser.add_argument("--eval", action="store_true")
-    parser.add_argument("--gt", type=str, help="GT 图目录")
-    parser.add_argument("--pred", type=str, help="预测 ASG 图目录")
+    parser.add_argument("--gt", type=str)
+    parser.add_argument("--pred", type=str)
     parser.add_argument("--model", type=str, default="graph_autoencoder.pt")
     args = parser.parse_args()
 
@@ -173,7 +169,7 @@ def main():
         print("==== Training Graph AutoEncoder ====")
         model = train_autoencoder(gt_list + pred_list, feature_dim=len(node_map))
         torch.save(model, args.model)
-        print("模型已保存:", args.model)
+    
 
     if args.eval:
         print("==== Evaluating Similarity ====")
@@ -183,11 +179,6 @@ def main():
         pred_emb = np.array([get_graph_embedding(model, d) for d in pred_list])
 
         avg_sim, sims = calculate_similarity(gt_emb, pred_emb)
-
-        print("\n===============================")
-        print("平均图相似度 =", avg_sim)
-        print("===============================")
-        print("每张图相似度 =", sims)
 
 
 if __name__ == "__main__":
