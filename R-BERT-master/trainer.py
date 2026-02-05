@@ -110,9 +110,7 @@ class Trainer(object):
                     loss = loss / self.args.gradient_accumulation_steps
 
                 loss.backward()
-                # ====== 检查 loss 是否为 NaN ======
                 if torch.isnan(loss):
-                    # 把 tensor 转到 CPU 并转成 list
                     input_ids_list = inputs["input_ids"].detach().cpu().tolist()
                     # labels_list = inputs["labels"].detach().cpu().tolist()
                     # e1_mask_list = inputs["e1_mask"].detach().cpu().tolist()
@@ -121,16 +119,6 @@ class Trainer(object):
 
                     print(">>> LOSS is NaN <<<")
                     print("Step:", step)
-                    # print("Input IDs:", input_ids_list)
-                    # print("Labels:", labels_list)
-                    # print("E1 mask:", e1_mask_list)
-                    # print("E2 mask:", e2_mask_list)
-                    # if logits_list is not None:
-                        # print("Logits:", logits_list)
-                    # 可以不直接 raise，让训练继续，或者 raise 看情况
-                    # raise RuntimeError("Loss is NaN, check above")
-
-                # ===================================
 
                 tr_loss += loss.item()
                 if (step + 1) % self.args.gradient_accumulation_steps == 0:
@@ -154,8 +142,8 @@ class Trainer(object):
             if 0 < self.args.max_steps < global_step:
                 train_iterator.close()
                 break
-            # 新增：每轮结束后 evaluate 并写文件
-            results = self.evaluate("test")          # 已经有的函数，直接用
+     
+            results = self.evaluate("test")         
             with open(os.path.join(self.args.model_dir, "epoch_results.txt"), "a") as f:
                 f.write(f"epoch {train_iterator.n}\t"
                         f"loss {results.get('loss', -1):.4f}\t"
@@ -219,14 +207,13 @@ class Trainer(object):
 
         result = compute_metrics(preds, out_label_ids)
         results.update(result)
-        # -----------------------------
-        # 新增：每个类别指标
+       
         report = classification_report(
             out_label_ids,
             preds,
             target_names=self.label_lst,
             digits=4,
-            output_dict=False  # True 可以得到 dict 方便写 CSV
+            output_dict=False  
         )
         print("\n=== Per-class Evaluation ===\n")
         print(report)
