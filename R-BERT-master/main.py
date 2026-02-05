@@ -14,10 +14,8 @@ def main(args):
     trainer = Trainer(args, train_dataset=train_dataset, test_dataset=test_dataset)
 
     if args.do_train:
-        print(">>> 开始训练 <<<")
         trainer.train()
-    else:
-        print(">>> 未开启训练参数，跳过训练 <<<")
+  
 
     if args.do_eval:
         trainer.load_model()
@@ -30,7 +28,7 @@ if __name__ == "__main__":
     parser.add_argument("--task", default="semeval", type=str, help="The name of the task to train")
     parser.add_argument(
         "--data_dir",
-        default="/root/ClarityG/R-BERT-master/data_CTI",
+        default="ClarityG/R-BERT-master/data_CTI",
         type=str,
         help="The input data dir. Should contain the .tsv files (or other data files) for the task.",
     )
@@ -129,6 +127,6 @@ python main.py \
   --train_file train.tsv \
   --test_file test.tsv \
   --label_file label.txt \
-  --model_name_or_path /root/roberta/R-BERT-master/bert-base-uncased
+  --model_name_or_path roberta/R-BERT-master/bert-base-uncased
   
 '''
