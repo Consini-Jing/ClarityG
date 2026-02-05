@@ -61,7 +61,7 @@ def command_analysis_rule(command, regex_file,special_file):
 
 
     entities_list = [[t, tp] for t, tp in entities]
-    model_path = "/root/ClarityG/R-BERT-master/model"
+    model_path = "ClarityG/R-BERT-master/model"
     raw_relations = []
     for cmd in tagged_cmd:
         prediction,probs = predict_single(cmd, model_path)
@@ -148,27 +148,27 @@ def command_analysis(command, regex_file,special_file):
     entities,tagged_cmd = process_command_line_single(command, regex_file,special_file)
 
     entities_list = [[t, tp] for t, tp in entities]
-    model_path = "/root/ClarityG/R-BERT-master/model"
+    model_path = "ClarityG/R-BERT-master/model"
     raw_relations = []
     for cmd in tagged_cmd:
         prediction,probs = predict_single(cmd, model_path)
         if(prediction=="Other"):
             continue
-        # 1. 提实体文本
+     
         e1_match = re.search(r"<e1>(.+?)</e1>", cmd)
         e1_text = e1_match.group(1) if e1_match else ""
         e2_match = re.search(r"<e2>(.+?)</e2>", cmd)
         e2_text = e2_match.group(1) if e2_match else ""
-        # 2. 查类型
+  
         def find_ent_type(text, entities_list):
             for ent, tp in entities_list:
                 if ent.strip().lower() == text.strip().lower():
                     return tp
-            return "other"          # 兜底
+            return "other"       
         e1_type = find_ent_type(e1_text, entities_list)
         e2_type = find_ent_type(e2_text, entities_list)
 
-        # 3. 组成 5 元组并去重
+  
         rel = [e1_text, e1_type, e2_text, e2_type, prediction]
         if rel not in raw_relations:
             raw_relations.append(rel)
@@ -195,7 +195,6 @@ def verify_and_correct_relation(command,tagged_cmd,entities_list,prediction,prob
     e2_text = e2_match.group(1) if e2_match else ""
 
     def find_entity_type(entity_text, entities_list):
-        """根据实体原文在 entities_list 中查找其类型"""
         for ent, ent_type in entities_list:
             if ent.strip().lower() == entity_text.strip().lower():
                 return ent_type
@@ -285,7 +284,7 @@ def rule_based_relation_fix(command,tagged_cmd,e1_text,e1_type,e2_text,e2_type,p
         "process-process-unlink(e1,e2)"
     ]
     if type_pair not in valid_relations:
-        return prediction  # 类型不支持，无修复
+        return prediction  
 
     tokens = tagged_cmd.split()
     e1_idx = next((i for i, tok in enumerate(tokens) if "<e1>" in tok), -1)
@@ -338,7 +337,7 @@ def detect_and_repairc_conflict_relations(command,relations):
         except nx.NetworkXNoPath:
             continue
 
-    # 3. 构建清洗后的关系列表
+
     cleaned_relations = []
     for (e1, e2), rel_list in edge_to_relations.items():
         if (e1, e2) not in to_remove:
@@ -360,7 +359,7 @@ def repair_other_relations_with_defaults(relations, entities_list):
 
         for idx, ent in enumerate(entities_sorted):
             if ent[1] == 'process':
-                # 找最近前面的进程实体
+               
                 prev_procs = [p for p in process_positions if p[0] < idx]
                 if prev_procs:
                     nearest_proc = prev_procs[-1][1]
@@ -370,7 +369,7 @@ def repair_other_relations_with_defaults(relations, entities_list):
                         relation_map[('process', 'process')]
                     ])
             elif ent[1] in ['file', 'socket']:
-                # 找最近前面的进程实体
+                
                 prev_procs = [p for p in process_positions if p[0] < idx]
                 if prev_procs:
                     nearest_proc = prev_procs[-1][1]
@@ -408,7 +407,7 @@ def evaluate_attack_graphs(pred_file, gt_file):
         if pred is None or gt is None:
             continue
 
-        # -------- 节点 --------
+    
         pred_nodes = set((n['text'], n['type']) for n in pred['nodes'])
         gt_nodes = set((n['text'], n['type']) for n in gt['nodes'])
         node_tp = len(pred_nodes & gt_nodes)
@@ -418,7 +417,7 @@ def evaluate_attack_graphs(pred_file, gt_file):
         node_fp_total += node_fp
         node_fn_total += node_fn
 
-        # -------- 边 --------
+
         pred_id_map = {n['id']: (n['text'], n['type']) for n in pred['nodes']}
         gt_id_map = {n['id']: (n['text'], n['type']) for n in gt['nodes']}
         pred_edges_set = set((pred_id_map[e['source']], pred_id_map[e['target']], e['type']) for e in pred['edges'])
@@ -435,7 +434,7 @@ def evaluate_attack_graphs(pred_file, gt_file):
         graph_prec_total += graph_prec
         graph_recall_total += graph_recall
 
-        pred_graph_set = pred_nodes | pred_edges_set  # 节点 + 边
+        pred_graph_set = pred_nodes | pred_edges_set  
         gt_graph_set = gt_nodes | gt_edges_set
 
         inter = len(pred_graph_set & gt_graph_set)
@@ -461,7 +460,7 @@ def evaluate_attack_graphs(pred_file, gt_file):
     graph_precision_avg = graph_prec_total / count
     graph_recall_avg = graph_recall_total / count
     graph_f1_avg = 2 * graph_precision_avg * graph_recall_avg / (graph_precision_avg + graph_recall_avg + 1e-8)
-    graph_accuracy_avg = (graph_precision_avg + graph_recall_avg)/2  # 可近似
+    graph_accuracy_avg = (graph_precision_avg + graph_recall_avg)/2  
     graphsim_avg = graphsim_total / count
 
     metrics = {
@@ -479,12 +478,11 @@ def evaluate_attack_graphs(pred_file, gt_file):
 
 if __name__ == "__main__":
 
-    ground_truth_file = "/root/ClarityG/experiment/data/cmd_graph_GT.jsonl"
-    regex_file = "/root/ClarityG/regexPattern.json"
-    special_file = "/root/ClarityGa/datasets/NER_teshu.txt"
-    output_tmp_file = "/root/ClarityG/experiment/data/GT.jsonl"
+    ground_truth_file = "ClarityG/experiment/data/cmd_graph_GT.jsonl"
+    regex_file = "ClarityG/regexPattern.json"
+    special_file = "ClarityGa/datasets/NER_teshu.txt"
+    output_tmp_file = "ClarityG/experiment/data/GT.jsonl"
 
 
-    #使用三条规则生成的图
     # build_rule_command_graph(ground_truth_file, regex_file, special_file, output2_file)
     # evaluate_attack_graphs(ground_truth_file,output2_file)
