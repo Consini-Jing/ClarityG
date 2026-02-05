@@ -6,7 +6,7 @@ import numpy as np
 import torch
 from transformers import BertTokenizer
 from sklearn.metrics import precision_recall_fscore_support, f1_score
-# from official_eval import official_f1
+
 
 ADDITIONAL_SPECIAL_TOKENS = ["<e1>", "</e1>", "<e2>", "</e2>"]
 
@@ -22,11 +22,7 @@ def load_tokenizer(args):
 
 
 def write_prediction(args, output_file, preds):
-    """
-    For official evaluation script
-    :param output_file: prediction_file_path (e.g. eval/proposed_answers.txt)
-    :param preds: [0,1,0,2,18,...]
-    """
+
     relation_labels = get_label(args)
     with open(output_file, "w", encoding="utf-8") as f:
         for idx, pred in enumerate(preds):
@@ -58,17 +54,16 @@ def simple_accuracy(preds, labels):
     return (preds == labels).mean()
 
 def acc_and_f1_all(preds, labels, average="macro"):
-    acc = simple_accuracy(preds, labels)            # 你原来的
-    f1 = f1_score(labels, preds, average=average)   # 你原来的
+    acc = simple_accuracy(preds, labels)           
+    f1 = f1_score(labels, preds, average=average)   
 
-    # 新增：precision / recall
     precision, recall, _, _ = precision_recall_fscore_support(
         labels, preds, average=average, zero_division=0
     )
     return {
         "acc": acc,
-        "precision": precision,   # 新增
-        "recall": recall,         # 新增
+        "precision": precision,  
+        "recall": recall,         
         "f1": f1,
     }
 def acc_and_f1(preds, labels, average="macro"):
