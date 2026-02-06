@@ -53,7 +53,7 @@ def convert_crucialg_ag(
         
             ners = []
             for ner in raw_ners:
-                # 原格式: [start, end, label, score, text]
+
                 if len(ner) < 5:
                     continue
 
