@@ -7,9 +7,6 @@ from transformers import RobertaTokenizerFast, RobertaModel
 MODEL_PATH = "/experiment/models/codebert-base"
 SAVE_PATH  = "/experiment/models/best_cmdner_model.pt"
 
-# ─────────────────────────────────────────
-# 标签
-# ─────────────────────────────────────────
 LABEL2ID = {
     "O": 0,
     "B-Process": 1, "I-Process": 2,
